@@ -18,5 +18,8 @@ ln $SCRIPT_DIR/.tmux.conf ~/.tmux.conf
 ln $SCRIPT_DIR/.zshrc ~/.zshrc
 ln -s $SCRIPT_DIR/.config/nvim/init.vim ~/.nvimrc 
 
+touch ~/.env-vars
+chmod 600 ~/.env-vars
+
 echo done!
 
