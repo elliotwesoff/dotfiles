@@ -1,6 +1,9 @@
 #!/bin/bash
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+
+# TODO: symlinking the entire .config folder may be bad.
+# maybe we should symlink only the subdirectories we care about?
 
 mv ~/.config ~/.config.old 2> /dev/null
 mv ~/.fonts ~/.fonts.old 2> /dev/null
@@ -16,3 +19,4 @@ ln $SCRIPT_DIR/.zshrc ~/.zshrc
 ln -s $SCRIPT_DIR/.config/nvim/init.vim ~/.nvimrc 
 
 echo done!
+
