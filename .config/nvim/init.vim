@@ -69,14 +69,16 @@ if has('mouse')
 endif
 
 
+" general key mappings
 let mapleader = "," " map leader to comma
 inoremap jj <Esc>
+nmap ss :w<CR>
 nmap qq :q<CR>
 
 " NERDTree mappings
 map tt :NERDTreeToggle<CR>
 map tf :NERDTreeFocus<CR>
-map tb tf :RevealBookmark 
+map tr :NERDTreeFind<CR>
 
 " NERDCommenter
 map <leader>, <plug>NERDCommenterToggle
@@ -125,7 +127,7 @@ let g:ctrlp_custom_ignore = {
 \ }
 
 " **************** coc settings here to the end ****************
-let g:coc_global_extensions=['coc-omnisharp']
+let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver']
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -167,6 +169,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+inoremap <silent><expr> <c-space> coc#refresh()
 
 function! s:check_back_space() abort
       let col = col('.') - 1
