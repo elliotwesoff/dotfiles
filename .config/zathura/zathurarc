@@ -1,0 +1,6 @@
+# Zathura configuration file
+# https://man.archlinux.org/man/zathurarc.5
+
+map [fullscreen] <Down> navigate next
+map [fullscreen] <Up> navigate previous
+
