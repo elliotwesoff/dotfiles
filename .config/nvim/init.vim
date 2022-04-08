@@ -10,6 +10,8 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kien/ctrlp.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'Mofiqul/adwaita.nvim'
 
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -23,7 +25,13 @@ call plug#end()
 
 " colorscheme onehalfdark
 colorscheme seoul256-light
+" let g:adwaita_mode = "light"
+" colorscheme adwaita
+
+" colorscheme modifications
 " hi Normal guibg=NONE ctermbg=NONE
+hi Search guibg=wheat guifg=DarkSlateGray
+
 
 set nocompatible
 set hidden
@@ -127,7 +135,7 @@ let g:ctrlp_custom_ignore = {
 \ }
 
 " **************** coc settings here to the end ****************
-let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver']
+let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver', 'coc-json']
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -153,8 +161,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
