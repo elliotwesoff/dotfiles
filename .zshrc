@@ -108,5 +108,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=/home/ewesoff/.local/bin:$PATH
 
+export EDITOR='nvim'
+
 source ~/.env-vars
 

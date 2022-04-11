@@ -135,7 +135,7 @@ let g:ctrlp_custom_ignore = {
 \ }
 
 " **************** coc settings here to the end ****************
-let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver', 'coc-json']
+let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver', 'coc-json', 'coc-pyright']
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
