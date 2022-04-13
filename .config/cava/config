@@ -5,7 +5,6 @@
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
 ; mode = normal
-mode = waves
 
 # Accepts only non-negative values.
 ; framerate = 14q
@@ -19,7 +18,7 @@ mode = waves
 # Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
 # 200 means double height. Accepts only non-negative values.
 ; sensitivity = 100
-sensitivity = 20
+sensitivity = 50
 
 # The number of bars (0-200). 0 sets it to auto (fill up console).
 # Bars' width and space between bars in number of characters.
@@ -30,7 +29,7 @@ sensitivity = 20
 ; bar_height = 32
 
 # For SDL width and space between bars is in pixels, defaults are:
-; bar_width = 20
+bar_width = 5
 ; bar_spacing = 5
 
 
@@ -103,6 +102,7 @@ sensitivity = 20
 ; channels = stereo
 ; mono_option = average
 ; reverse = 0
+reverse = 1
 
 # Raw output target. A fifo will be created if target does not exist.
 ; raw_target = /dev/stdout
@@ -136,6 +136,8 @@ sensitivity = 20
 # default is to keep current terminal color
 ; background = default
 ; foreground = default
+background = blue
+foreground = yellow
 
 # SDL only support hex code colors, these are the default:
 ; background = '#111111'
@@ -171,7 +173,7 @@ sensitivity = 20
 # Set gravity percentage for "drop off". Higher values means bars will drop faster.
 # Accepts only non-negative values. 50 means half gravity, 200 means double. Set to 0 to disable "drop off".
 ; gravity = 100
-gravity = 25
+gravity = 100 
 
 
 # In bar height, bars that would have been lower that this will not be drawn.
