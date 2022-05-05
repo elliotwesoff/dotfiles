@@ -24,7 +24,7 @@ endif
 call plug#end()
 
 " colorscheme onehalfdark
-colorscheme seoul256-light
+colorscheme seoul256
 " let g:adwaita_mode = "light"
 " colorscheme adwaita
 
@@ -41,7 +41,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set ruler
-set autoindent
+set noautoindent
 set nostartofline
 set cursorline
 set noswapfile
@@ -62,9 +62,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*  " Windows
+set pastetoggle=<F3>
 
-set shiftwidth=2
-set softtabstop=2
+" set shiftwidth=2
+" set softtabstop=2
+set sw=2 sts=2 ts=2 et
 " this doesn't work... WHY
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 
@@ -78,29 +80,37 @@ endif
 
 
 " general key mappings
-let mapleader = "," " map leader to comma
+let mapleader = ","
 inoremap jj <Esc>
-nmap ss :w<CR>
-nmap qq :q<CR>
+map <leader>h :noh<CR>
+map <leader>w :w<CR>
+map <leader>q :q<CR>
+
+" navigate splits with WASD but all shifted right
+map <leader>s <C-w>h
+map <leader>d <C-w>j
+map <leader>e <C-w>k
+map <leader>f <C-w>l
 
 " NERDTree mappings
-map tt :NERDTreeToggle<CR>
-map tf :NERDTreeFocus<CR>
-map tr :NERDTreeFind<CR>
+" map tt :NERDTreeToggle<CR>
+map <leader>tt :NERDTreeToggle<CR>
+map <leader>tf :NERDTreeFocus<CR>
+map <leader>tr :NERDTreeFind<CR>
 
 " NERDCommenter
 map <leader>, <plug>NERDCommenterToggle
 
 " vimspector
-map <F4> <plug>VimspectorStop
-map <F5> <plug>VimspectorContinue
-map <F6> <plug>VimspectorUpFrame
-map <F7> <plug>VimspectorDownFrame
-map <F8> <plug>VimspectorToggleBreakpoint
-map <F9> <plug>VimspectorStepInto
-map <F10> <plug>VimspectorStepOver
-map <F11> <plug>VimspectorStepOut
-map <F12> :VimspectorReset<CR>
+" map <F4> <plug>VimspectorStop
+" map <F5> <plug>VimspectorContinue
+" map <F6> <plug>VimspectorUpFrame
+" map <F7> <plug>VimspectorDownFrame
+" map <F8> <plug>VimspectorToggleBreakpoint
+" map <F9> <plug>VimspectorStepInto
+" map <F10> <plug>VimspectorStepOver
+" map <F11> <plug>VimspectorStepOut
+" map <F12> :VimspectorReset<CR>
 
 " Syntastic settings
 let g:syntastic_always_populate_loc_list = 1
