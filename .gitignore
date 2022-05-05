@@ -1,5 +1,11 @@
 __pycache__
-.config/coc
-.config/google-chrome
+.config/*
+!.config/neofetch
+!.config/polybar
+!.config/kitty
+!.config/nvim
+!.config/htop
+!.config/ranger
+!.config/zathura
 *.log
 
