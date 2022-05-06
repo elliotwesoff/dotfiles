@@ -85,15 +85,20 @@ inoremap jj <Esc>
 map <leader>h :noh<CR>
 map <leader>w :w<CR>
 map <leader>q :q<CR>
+map <leader>Q :qa<CR>
+map <leader>W :wa<CR>
 
-" navigate splits with WASD but all shifted right
-map <leader>s <C-w>h
-map <leader>d <C-w>j
-map <leader>e <C-w>k
+" navigate split windows, vim-style
+map <leader>a <C-w>h
+map <leader>s <C-w>j
+map <leader>d <C-w>k
 map <leader>f <C-w>l
 
+" tmux-style window splitting
+map <leader>5 :vsp<CR>
+map <leader>' :sp<CR>
+
 " NERDTree mappings
-" map tt :NERDTreeToggle<CR>
 map <leader>tt :NERDTreeToggle<CR>
 map <leader>tf :NERDTreeFocus<CR>
 map <leader>tr :NERDTreeFind<CR>
@@ -130,7 +135,7 @@ let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
-let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=50
 
 " vimspector settings
 let g:vimspector_install_gadgets = ['debugpy', 'vscode-cpptools']
@@ -144,7 +149,7 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
 
-" **************** coc settings here to the end ****************
+" **************** coc(k) settings here to the end ****************
 let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver', 'coc-json', 'coc-pyright']
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
