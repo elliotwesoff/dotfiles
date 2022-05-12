@@ -89,8 +89,7 @@ endif
 
 
 " general key mappings
-" let mapleader = ","
-let mapleader = "\<Space>"
+let mapleader = ","
 inoremap jj <Esc>
 map <leader>h :noh<CR>
 map <leader>w :w<CR>
@@ -114,8 +113,7 @@ map <leader>tf :NERDTreeFocus<CR>
 map <leader>tr :NERDTreeFind<CR>
 
 " NERDCommenter
-" map <leader>, <plug>NERDCommenterToggle
-map <leader><Space> <plug>NERDCommenterToggle
+map <leader>, <plug>NERDCommenterToggle
 
 " vimspector
 " map <F4> <plug>VimspectorStop
