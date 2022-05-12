@@ -12,6 +12,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Mofiqul/adwaita.nvim'
+Plug 'dracula/vim'
 
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -51,7 +52,6 @@ set visualbell
 set laststatus=2
 set number
 set expandtab
-set notimeout ttimeout ttimeoutlen=200
 set nobackup
 set nowritebackup
 set cmdheight=1
@@ -63,6 +63,15 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*  " Windows
 set pastetoggle=<F3>
+
+" https://essais.co/better-folding-in-neovim/
+setlocal foldmethod=indent
+set nofoldenable
+set foldlevel=99
+
+" make esc FAST!
+" https://vi.stackexchange.com/a/20220
+set notimeout ttimeout ttimeoutlen=10
 
 " set shiftwidth=2
 " set softtabstop=2
@@ -80,7 +89,8 @@ endif
 
 
 " general key mappings
-let mapleader = ","
+" let mapleader = ","
+let mapleader = "\<Space>"
 inoremap jj <Esc>
 map <leader>h :noh<CR>
 map <leader>w :w<CR>
@@ -104,7 +114,8 @@ map <leader>tf :NERDTreeFocus<CR>
 map <leader>tr :NERDTreeFind<CR>
 
 " NERDCommenter
-map <leader>, <plug>NERDCommenterToggle
+" map <leader>, <plug>NERDCommenterToggle
+map <leader><Space> <plug>NERDCommenterToggle
 
 " vimspector
 " map <F4> <plug>VimspectorStop
@@ -148,6 +159,9 @@ let g:ctrlp_custom_ignore = {
 \ 'dir': '\.git$\|node_modules\|log\|tmp$\|dist',
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
+
+" custom commands
+command! RefreshConfig source ~/dotfiles/.config/nvim/init.vim
 
 " **************** coc(k) settings here to the end ****************
 let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver', 'coc-json', 'coc-pyright']
