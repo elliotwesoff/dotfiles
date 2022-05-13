@@ -97,8 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshc="mate ~/.zshrc"
 alias ll="ls -lah"
 alias vim="nvim"
 alias zath="zathura"
@@ -109,7 +108,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=/home/ewesoff/.local/bin:$PATH
-
 export EDITOR='nvim'
 export MYVIMRC=~/dotfiles/.config/nvim/init.vim
 

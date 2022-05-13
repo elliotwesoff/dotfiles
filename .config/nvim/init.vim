@@ -124,13 +124,12 @@ nnoremap <leader>tf :NERDTreeFocus<CR>
 nnoremap <leader>tr :NERDTreeFind<CR>
 
 " NERDCommenter
-nmap <leader>, <plug>NERDCommenterToggle
+map <leader>, <plug>NERDCommenterToggle
 
 " normal mode mappings
 nnoremap <c-u> <esc>viw U <esc>
 
 " insert mode mappings
-
 inoremap <c-u> <esc>viw U <esc>i
 
 " vimspector
