@@ -10,9 +10,10 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kien/ctrlp.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Mofiqul/adwaita.nvim'
 Plug 'dracula/vim'
+Plug 'Raimondi/delimitMate'
 
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -54,6 +55,7 @@ set number
 set expandtab
 set nobackup
 set nowritebackup
+set showmatch
 set cmdheight=1
 set updatetime=300
 set backspace=indent,eol,start
@@ -63,6 +65,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*  " Windows
 set pastetoggle=<F3>
+
 
 " https://essais.co/better-folding-in-neovim/
 setlocal foldmethod=indent
@@ -87,33 +90,47 @@ if has('mouse')
   set mouse=a
 endif
 
+" custom commands
+command! RefreshConfig source $MYVIMRC
 
 " general key mappings
 let mapleader = ","
+let maplocalleader = "\<space>"
+
 inoremap jj <Esc>
-map <leader>h :noh<CR>
-map <leader>w :w<CR>
-map <leader>q :q<CR>
-map <leader>Q :qa<CR>
-map <leader>W :wa<CR>
+
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader><F5> :RefreshConfig<CR>
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qa<CR>
+nnoremap <leader>W :wa<CR>
 
 " navigate split windows, vim-style
-map <leader>a <C-w>h
-map <leader>s <C-w>j
-map <leader>d <C-w>k
-map <leader>f <C-w>l
+nnoremap <leader>a <C-w>h
+nnoremap <leader>s <C-w>j
+nnoremap <leader>d <C-w>k
+nnoremap <leader>f <C-w>l
 
 " tmux-style window splitting
-map <leader>5 :vsp<CR>
-map <leader>' :sp<CR>
+nnoremap <leader>5 :vsp<CR>
+nnoremap <leader>' :sp<CR>
 
 " NERDTree mappings
-map <leader>tt :NERDTreeToggle<CR>
-map <leader>tf :NERDTreeFocus<CR>
-map <leader>tr :NERDTreeFind<CR>
+nnoremap <leader>tt :NERDTreeToggle<CR>
+nnoremap <leader>tf :NERDTreeFocus<CR>
+nnoremap <leader>tr :NERDTreeFind<CR>
 
 " NERDCommenter
-map <leader>, <plug>NERDCommenterToggle
+nnoremap <leader>, <plug>NERDCommenterToggle
+
+" normal mode mappings
+nnoremap <c-u> <esc>viw U <esc>
+
+" insert mode mappings
+
+inoremap <c-u> <esc>viw U <esc>i
 
 " vimspector
 " map <F4> <plug>VimspectorStop
@@ -157,9 +174,6 @@ let g:ctrlp_custom_ignore = {
 \ 'dir': '\.git$\|node_modules\|log\|tmp$\|dist',
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
-
-" custom commands
-command! RefreshConfig source ~/dotfiles/.config/nvim/init.vim
 
 " **************** coc(k) settings here to the end ****************
 let g:coc_global_extensions=['coc-omnisharp', 'coc-tsserver', 'coc-json', 'coc-pyright']
