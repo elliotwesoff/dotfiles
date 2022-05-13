@@ -113,5 +113,5 @@ export PATH=/home/ewesoff/.local/bin:$PATH
 export EDITOR='nvim'
 export MYVIMRC=~/dotfiles/.config/nvim/init.vim
 
-source ~/.env-vars
+source ~/.secrets
 
