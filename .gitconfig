@@ -3,8 +3,9 @@
 	email = elliot.wesoff@gmail.com
 
 [diff]
-    tool = vimdiff
-[difftool]
-    prompt = false
-[difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE"
+    tool = nvim
+[difftool "nvim"]
+    cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE
+[mergetool "nvim"]
+    cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+

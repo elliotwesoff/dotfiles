@@ -8,6 +8,8 @@ do
   ln -s ~/dotfiles/$item ~/$item
 done
 
+ln -s ~/dotfiles/.config/nvim/init.vim ~/.nvimrc
+
 touch ~/.secrets
 chmod 600 ~/.secrets
 

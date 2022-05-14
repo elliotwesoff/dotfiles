@@ -174,6 +174,11 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
 
+" nvim difftool configuration
+if &diff
+  highlight! link DiffText MatchParen
+endif
+
 " coc config is a lot, let's keep it in another file
 source ~/dotfiles/.config/nvim/.coc-config.vim
 

@@ -102,6 +102,7 @@ alias ll="ls -lah"
 alias vim="nvim"
 alias zath="zathura"
 alias vimdiff="nvim -d"
+alias dft="git difftool"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
