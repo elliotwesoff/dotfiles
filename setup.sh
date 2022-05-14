@@ -8,6 +8,7 @@ do
   ln -s ~/dotfiles/$item ~/$item
 done
 
+echo "symlinking\t~/.nvimrc => ~/dotfiles/.config/nvim/init.vim"
 ln -s ~/dotfiles/.config/nvim/init.vim ~/.nvimrc
 
 touch ~/.secrets
