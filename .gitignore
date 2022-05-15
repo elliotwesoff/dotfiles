@@ -8,4 +8,5 @@ __pycache__
 !.config/ranger
 !.config/zathura
 *.log
+*.uuid
 
