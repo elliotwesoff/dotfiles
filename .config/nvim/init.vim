@@ -99,14 +99,14 @@ let maplocalleader = "\<space>"
 
 inoremap jj <Esc>
 inoremap jk <Esc>
+nnoremap W :wa<CR>
+nnoremap Q :qa<CR>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :qa<CR>
-nnoremap <leader>W :wa<CR>
 
 " navigate split windows, vim-style
 nnoremap <leader>a <C-w>h
