@@ -14,6 +14,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'Mofiqul/adwaita.nvim'
 Plug 'dracula/vim'
 Plug 'Raimondi/delimitMate'
+Plug 'nathanaelkane/vim-indent-guides'
 
 if has('nvim')
   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -25,15 +26,10 @@ endif
 
 call plug#end()
 
-" colorscheme onehalfdark
 colorscheme seoul256
-" let g:adwaita_mode = "light"
-" colorscheme adwaita
-
-" colorscheme modifications
-" hi Normal guibg=NONE ctermbg=NONE
 hi Search guibg=wheat guifg=DarkSlateGray
-
+" remove background for transparent terminals, but we ain't usin it now!
+" hi Normal guibg=NONE ctermbg=NONE
 
 set nocompatible
 set hidden
@@ -101,6 +97,16 @@ inoremap jj <Esc>
 inoremap jk <Esc>
 nnoremap W :wa<CR>
 nnoremap Q :qa<CR>
+
+" yank to system clipboard
+noremap <c-c> "+y
+
+" colorscheme favs!
+nnoremap <leader>c1 :colorscheme seoul256-light<CR>
+nnoremap <leader>c2 :colorscheme seoul256<CR>
+nnoremap <leader>c3 :colorscheme desert<CR>
+nnoremap <leader>c4 :colorscheme adwaita<CR>
+nnoremap <leader>c5 :colorscheme onehalfdark<CR>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
@@ -174,11 +180,13 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
 
+let g:indent_guides_enable_on_vim_startup = 1
+
 " nvim difftool configuration
 if &diff
   highlight! link DiffText MatchParen
 endif
 
 " coc config is a lot, let's keep it in another file
-source ~/dotfiles/.config/nvim/.coc-config.vim
+source ~/dotfiles/.config/nvim/coc-config.vim
 
