@@ -1,32 +1,40 @@
+" YO!!!!!!!!!!!! this (n)vimrc only works on neovim!
+" some of the plugins had `if ("nvim") ...` statements,
+" but i removed them because once you go nvim you
+" never go back! later!!!
+
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'puremourning/vimspector'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kien/ctrlp.vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'sheerun/vim-polyglot'
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'sheerun/vim-polyglot'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'Mofiqul/adwaita.nvim'
 Plug 'dracula/vim'
 Plug 'Raimondi/delimitMate'
-Plug 'nathanaelkane/vim-indent-guides'
-
-if has('nvim')
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/denite.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
+" Plug 'OmniSharp/omnisharp-vim'
+" disabling coc.nvim while testing out ale
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+Plug 'Shougo/ddc.vim'
+Plug 'Shougo/pum.vim'
+Plug 'vim-denops/denops.vim'
+Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-matcher_head'
+Plug 'Shougo/ddc-sorter_rank'
+Plug 'statiolake/ddc-ale'
+Plug 'Shougo/ddc-nvim-lsp'
+Plug 'delphinus/ddc-treesitter'
 call plug#end()
 
-colorscheme seoul256
+colorscheme seoul256-light
 hi Search guibg=wheat guifg=DarkSlateGray
 " remove background for transparent terminals, but we ain't usin it now!
 " hi Normal guibg=NONE ctermbg=NONE
@@ -52,16 +60,15 @@ set expandtab
 set nobackup
 set nowritebackup
 set showmatch
-set cmdheight=1
 set updatetime=300
 set backspace=indent,eol,start
-set statusline+=%F%m
+set statusline=%F%m
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*  " Windows
 set pastetoggle=<F3>
-
+set signcolumn=number
 
 " https://essais.co/better-folding-in-neovim/
 setlocal foldmethod=indent
@@ -107,6 +114,11 @@ nnoremap <leader>c2 :colorscheme seoul256<CR>
 nnoremap <leader>c3 :colorscheme desert<CR>
 nnoremap <leader>c4 :colorscheme adwaita<CR>
 nnoremap <leader>c5 :colorscheme onehalfdark<CR>
+" :highlight Pmenu ctermbg=gray guibg=gray
+" nnoremap <leader>a1 :AirlineTheme solarized<CR>
+" nnoremap <leader>a2 :AirlineTheme papercolor<CR>
+" nnoremap <leader>a3 :AirlineTheme bubblegum<CR>
+
 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
@@ -119,6 +131,10 @@ nnoremap <leader>a <C-w>h
 nnoremap <leader>s <C-w>j
 nnoremap <leader>d <C-w>k
 nnoremap <leader>f <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " tmux-style window splitting
 nnoremap <leader>5 :vsp<CR>
@@ -132,32 +148,35 @@ nnoremap <leader>tr :NERDTreeFind<CR>
 " NERDCommenter
 map <leader>, <plug>NERDCommenterToggle
 
-" normal mode mappings
+" capitalze word with ctrl+U
 nnoremap <c-u> <esc>viw U <esc>
-
-" insert mode mappings
 inoremap <c-u> <esc>viw U <esc>i
 
-" vimspector
-" map <F4> <plug>VimspectorStop
-" map <F5> <plug>VimspectorContinue
-" map <F6> <plug>VimspectorUpFrame
-" map <F7> <plug>VimspectorDownFrame
-" map <F8> <plug>VimspectorToggleBreakpoint
-" map <F9> <plug>VimspectorStepInto
-" map <F10> <plug>VimspectorStepOver
-" map <F11> <plug>VimspectorStepOut
-" map <F12> :VimspectorReset<CR>
+" ALE! AAAAAAAAALE!!!!!!!!!
+nnoremap <F4>     :ALEHover<CR>
+nnoremap <F12>    :ALEGoToDefinition<CR>
+nnoremap <A-F12>  :ALEFindReferences<CR>
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
+
+" pum configuration
+inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+inoremap <PageDown> <Cmd>call pum#map#insert_relative_page(+1)<CR>
+inoremap <PageUp>   <Cmd>call pum#map#insert_relative_page(-1)<CR>
 
 " Syntastic settings
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_c_checkers = ['gcc']
-let g:syntastic_c_include_dirs = ['lib']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_aggregate_errors = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_cpp_checkers = ['gcc']
+" let g:syntastic_c_checkers = ['gcc']
+" let g:syntastic_c_include_dirs = ['lib']
 
 
 " NERDTree settings
@@ -169,8 +188,10 @@ let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
 let g:NERDTreeWinSize=50
 
-" vimspector settings
-let g:vimspector_install_gadgets = ['debugpy', 'vscode-cpptools']
+" nvim difftool configuration
+if &diff
+  highlight! link DiffText MatchParen
+endif
 
 " ctrlp settings
 " let g:ctrlp_working_path_mode = 'ra'
@@ -180,13 +201,18 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
 
+" ALE and autocompletion settings
 let g:indent_guides_enable_on_vim_startup = 1
+let g:deoplete#enable_at_startup = 1
+" let g:airline#extensions#ale#enabled = 1
 
-" nvim difftool configuration
-if &diff
-  highlight! link DiffText MatchParen
-endif
+" vim-airline settings
+" let g:airline_theme='papercolor'
+" let g:airline_powerline_fonts = 0
+" let g:airline#extensions#tabline#enabled = 1
 
 " coc config is a lot, let's keep it in another file
-source ~/dotfiles/.config/nvim/coc-config.vim
+" source ~/dotfiles/.config/nvim/coc-config.vim
 
+
+source ~/dotfiles/.config/nvim/ddc.vim
