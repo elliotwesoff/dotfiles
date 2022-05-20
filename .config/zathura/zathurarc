@@ -11,7 +11,7 @@ set statusbar-home-tilde true
 set statusbar-page-percent true
 set incremental-search false
 set page-cache-size 100
-set highlight-transparency 0.25
+set selection-clipboard clipboard
 set default-bg "#1F1F1F"
 set index-bg "#1F1F1F"
 set index-fg "#F8F9F0"
@@ -20,8 +20,11 @@ set index-active-bg "#F8F9F0"
 set recolor false
 set recolor-lightcolor "#292929"
 set recolor-darkcolor "#F8F9F0"
-set statusbar-bg "#292929"
+set statusbar-bg "#1F1F1F"
 set statusbar-fg "#F8F9F0"
 set statusbar-h-padding 20
 set statusbar-v-padding 20
+set highlight-transparency 0.35
+set highlight-color "#FFF75C"
+set highlight-active-color "#338BD3"
 
