@@ -1,32 +1,24 @@
-" Customize global settings
-call ddc#custom#patch_global('sources', ['ddc-ale', 'ale'])
-
+call ddc#custom#patch_global('sources', ['ale', 'around', 'fuzzy', 'nvim-lsp_by-treesitter'])
+call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
-
-" Change source options
-call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ 'nvim-lsp': {
-      \   'mark': 'lsp',
-      \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
+\ '_': {
+\   'matchers': ['matcher_fuzzy'],
+\   'sorters': ['sorter_fuzzy'],
+\   'converters': ['converter_fuzzy']
+\ },
+\ 'nvim-lsp_by-treesitter': {
+\   'mark': 'lsp',
+\ }
 \ })
 call ddc#custom#patch_global('sourceParams', {
-      \ 'around': {'maxSize': 500},
-      \ 'ale': {'cleanResultsWhitespace': v:false},
-      \ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' } }
+\ 'around': {'maxSize': 500},
+\ 'ale': {'cleanResultsWhitespace': v:false}
 \ })
-
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-      \ 'clangd': {'mark': 'C'},
-      \ })
-call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-      \ 'around': {'maxSize': 100},
-      \ })
+call ddc#custom#patch_global('filterParams', {
+\   'converter_fuzzy': {
+\     'hlGroup': 'SpellBad'
+\   }
+\ })
 
 " <TAB>: completion.
 inoremap <silent><expr> <TAB>

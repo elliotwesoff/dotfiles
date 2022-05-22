@@ -8,21 +8,30 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
-" Plug 'vim-syntastic/syntastic'
 Plug 'puremourning/vimspector'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kien/ctrlp.vim'
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'sheerun/vim-polyglot'
-Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'Mofiqul/adwaita.nvim'
 Plug 'dracula/vim'
 Plug 'Raimondi/delimitMate'
-" Plug 'OmniSharp/omnisharp-vim'
-" disabling coc.nvim while testing out ale
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'OmniSharp/omnisharp-vim'
+
+" here is where things get weird.
+" 1. ale provides real-time linting
 Plug 'dense-analysis/ale'
+
+" 2. tree-sitter is supposed to be a next-gen syntax tree parser,
+"     aimed at analyzing your code: syntax highlighting, code jumping,
+"     navigating through files via symbols, etc.
+"     but, why would ddc, an autocompletion engine, integrate with
+"     a syntax tree parser?
+Plug 'nvim-treesitter/nvim-treesitter'
+
+" 3. ddc is the dark deno powered autocomplete engine.
+"     it should only provide autocompletion, but it allows
+"     for many different ddc-adapted vim plugins to cooperate
+"     with it?
 Plug 'Shougo/ddc.vim'
 Plug 'Shougo/pum.vim'
 Plug 'vim-denops/denops.vim'
@@ -32,10 +41,15 @@ Plug 'Shougo/ddc-sorter_rank'
 Plug 'statiolake/ddc-ale'
 Plug 'Shougo/ddc-nvim-lsp'
 Plug 'delphinus/ddc-treesitter'
+Plug 'tani/ddc-fuzzy'
+Plug 'nabezokodaikon/ddc-nvim-lsp_by-treesitter'
+" all of this seems like an extreme amount of effort to get vim
+" to have all the features of a modern IDE. is there something
+" more to this that i'm missing?
+
 call plug#end()
 
-colorscheme seoul256-light
-hi Search guibg=wheat guifg=DarkSlateGray
+colorscheme onehalfdark
 " remove background for transparent terminals, but we ain't usin it now!
 " hi Normal guibg=NONE ctermbg=NONE
 
@@ -64,7 +78,6 @@ set updatetime=300
 set backspace=indent,eol,start
 set statusline=%F%m
 set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*  " Windows
 set pastetoggle=<F3>
@@ -83,7 +96,7 @@ set notimeout ttimeout ttimeoutlen=10
 " set softtabstop=2
 set sw=2 sts=2 ts=2 et
 " this doesn't work... WHY
-autocmd FileType typescript setlocal ts=2 sts=2 sw=2
+" autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 
 " use "+y to yank selection to system clipboard
 " xclip must be installed when using X11
@@ -104,6 +117,7 @@ inoremap jj <Esc>
 inoremap jk <Esc>
 nnoremap W :wa<CR>
 nnoremap Q :qa<CR>
+nnoremap <F5> :e<CR>
 
 " yank to system clipboard
 noremap <c-c> "+y
@@ -114,11 +128,7 @@ nnoremap <leader>c2 :colorscheme seoul256<CR>
 nnoremap <leader>c3 :colorscheme desert<CR>
 nnoremap <leader>c4 :colorscheme adwaita<CR>
 nnoremap <leader>c5 :colorscheme onehalfdark<CR>
-" :highlight Pmenu ctermbg=gray guibg=gray
-" nnoremap <leader>a1 :AirlineTheme solarized<CR>
-" nnoremap <leader>a2 :AirlineTheme papercolor<CR>
-" nnoremap <leader>a3 :AirlineTheme bubblegum<CR>
-
+nnoremap <leader>c6 :colorscheme dracula<CR>
 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
@@ -156,7 +166,6 @@ inoremap <c-u> <esc>viw U <esc>i
 nnoremap <F4>     :ALEHover<CR>
 nnoremap <F12>    :ALEGoToDefinition<CR>
 nnoremap <A-F12>  :ALEFindReferences<CR>
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
 
 " pum configuration
 inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
@@ -167,17 +176,7 @@ inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 inoremap <PageDown> <Cmd>call pum#map#insert_relative_page(+1)<CR>
 inoremap <PageUp>   <Cmd>call pum#map#insert_relative_page(-1)<CR>
-
-" Syntastic settings
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_aggregate_errors = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_cpp_checkers = ['gcc']
-" let g:syntastic_c_checkers = ['gcc']
-" let g:syntastic_c_include_dirs = ['lib']
-
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
 
 " NERDTree settings
 let NERDTreeShowHidden=1
@@ -204,15 +203,6 @@ let g:ctrlp_custom_ignore = {
 " ALE and autocompletion settings
 let g:indent_guides_enable_on_vim_startup = 1
 let g:deoplete#enable_at_startup = 1
-" let g:airline#extensions#ale#enabled = 1
-
-" vim-airline settings
-" let g:airline_theme='papercolor'
-" let g:airline_powerline_fonts = 0
-" let g:airline#extensions#tabline#enabled = 1
-
-" coc config is a lot, let's keep it in another file
-" source ~/dotfiles/.config/nvim/coc-config.vim
-
 
 source ~/dotfiles/.config/nvim/ddc.vim
+
