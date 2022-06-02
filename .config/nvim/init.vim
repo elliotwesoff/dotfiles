@@ -43,13 +43,14 @@ Plug 'Shougo/ddc-nvim-lsp'
 Plug 'delphinus/ddc-treesitter'
 Plug 'tani/ddc-fuzzy'
 Plug 'nabezokodaikon/ddc-nvim-lsp_by-treesitter'
+
 " all of this seems like an extreme amount of effort to get vim
 " to have all the features of a modern IDE. is there something
 " more to this that i'm missing?
 
 call plug#end()
 
-colorscheme onehalfdark
+colorscheme dracula
 " remove background for transparent terminals, but we ain't usin it now!
 " hi Normal guibg=NONE ctermbg=NONE
 
@@ -116,11 +117,16 @@ let maplocalleader = "\<space>"
 inoremap jj <Esc>
 inoremap jk <Esc>
 nnoremap W :wa<CR>
-nnoremap Q :qa<CR>
+nnoremap Q :q<CR>
 nnoremap <F5> :e<CR>
+inoremap <A-BS> <ESC>dF<SPACE>a
+
+" capitalze word with ctrl+U
+nnoremap <c-u> <esc>viw U <esc>
+inoremap <c-u> <esc>viw U <esc>i
 
 " yank to system clipboard
-noremap <c-c> "+y
+xnoremap <c-c> "+y
 
 " colorscheme favs!
 nnoremap <leader>c1 :colorscheme seoul256-light<CR>
@@ -130,7 +136,7 @@ nnoremap <leader>c4 :colorscheme adwaita<CR>
 nnoremap <leader>c5 :colorscheme onehalfdark<CR>
 nnoremap <leader>c6 :colorscheme dracula<CR>
 
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :w<CR>
@@ -147,8 +153,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " tmux-style window splitting
-nnoremap <leader>5 :vsp<CR>
-nnoremap <leader>' :sp<CR>
+nnoremap <A-'> :vsp<CR>
+nnoremap <A-5> :sp<CR>
 
 " NERDTree mappings
 nnoremap <leader>tt :NERDTreeToggle<CR>
@@ -158,14 +164,12 @@ nnoremap <leader>tr :NERDTreeFind<CR>
 " NERDCommenter
 map <leader>, <plug>NERDCommenterToggle
 
-" capitalze word with ctrl+U
-nnoremap <c-u> <esc>viw U <esc>
-inoremap <c-u> <esc>viw U <esc>i
-
 " ALE! AAAAAAAAALE!!!!!!!!!
 nnoremap <F4>     :ALEHover<CR>
+nnoremap <F6>     :ALEInfo<CR>
 nnoremap <F12>    :ALEGoToDefinition<CR>
 nnoremap <A-F12>  :ALEFindReferences<CR>
+let g:ale_completion_enabled=0
 
 " pum configuration
 inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
@@ -202,7 +206,6 @@ let g:ctrlp_custom_ignore = {
 
 " ALE and autocompletion settings
 let g:indent_guides_enable_on_vim_startup = 1
-let g:deoplete#enable_at_startup = 1
 
 source ~/dotfiles/.config/nvim/ddc.vim
 
