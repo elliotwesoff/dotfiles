@@ -16,6 +16,9 @@ Plug 'Mofiqul/adwaita.nvim'
 Plug 'dracula/vim'
 Plug 'Raimondi/delimitMate'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'lambdalisue/battery.vim'
 
 " here is where things get weird.
 " 1. ale provides real-time linting
@@ -43,11 +46,6 @@ Plug 'Shougo/ddc-nvim-lsp'
 Plug 'delphinus/ddc-treesitter'
 Plug 'tani/ddc-fuzzy'
 Plug 'nabezokodaikon/ddc-nvim-lsp_by-treesitter'
-
-" all of this seems like an extreme amount of effort to get vim
-" to have all the features of a modern IDE. is there something
-" more to this that i'm missing?
-
 call plug#end()
 
 colorscheme dracula
@@ -83,6 +81,7 @@ set statusline+=%*
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*  " Windows
 set pastetoggle=<F3>
 set signcolumn=number
+set encoding=utf-8
 
 " https://essais.co/better-folding-in-neovim/
 setlocal foldmethod=indent
@@ -115,7 +114,7 @@ let mapleader = ","
 let maplocalleader = "\<space>"
 
 inoremap jj <Esc>
-inoremap jk <Esc>
+inoremap jk <Esc>:w<CR>
 nnoremap W :wa<CR>
 nnoremap Q :q<CR>
 nnoremap <F5> :e<CR>
@@ -129,12 +128,14 @@ inoremap <c-u> <esc>viw U <esc>i
 xnoremap <c-c> "+y
 
 " colorscheme favs!
-nnoremap <leader>c1 :colorscheme seoul256-light<CR>
-nnoremap <leader>c2 :colorscheme seoul256<CR>
-nnoremap <leader>c3 :colorscheme desert<CR>
-nnoremap <leader>c4 :colorscheme adwaita<CR>
-nnoremap <leader>c5 :colorscheme onehalfdark<CR>
-nnoremap <leader>c6 :colorscheme dracula<CR>
+nnoremap <leader>1 :colorscheme seoul256-light<CR>
+nnoremap <leader>2 :colorscheme seoul256<CR>
+nnoremap <leader>3 :colorscheme desert<CR>
+nnoremap <leader>4 :colorscheme adwaita<CR>
+nnoremap <leader>5 :colorscheme onehalfdark<CR>
+nnoremap <leader>6 :colorscheme dracula<CR>
+nnoremap <leader>7 :colorscheme onehalflight<CR>
+nnoremap <leader>8 :colorscheme github<CR>
 
 nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
@@ -180,16 +181,17 @@ inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 inoremap <PageDown> <Cmd>call pum#map#insert_relative_page(+1)<CR>
 inoremap <PageUp>   <Cmd>call pum#map#insert_relative_page(-1)<CR>
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>" 
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " NERDTree settings
 let NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks=1
-let g:NERDCommentEmptyLines=1
-let g:NERDTrimTrailingWhitespace=1
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
-let g:NERDTreeWinSize=50
+let g:NERDTreeWinSize=35
+
+"NERDCommenter settings
+let g:NERDCommentEmptyLines=1
 
 " nvim difftool configuration
 if &diff
@@ -206,6 +208,25 @@ let g:ctrlp_custom_ignore = {
 
 " ALE and autocompletion settings
 let g:indent_guides_enable_on_vim_startup = 1
+
+" airline settings
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = '㏑'
+let g:airline_symbols.colnr = '∥'
+let g:airline_symbols.maxlinenr = ''
+let g:airline#extensions#ale#enabled = 1
+let airline#extensions#ale#error_symbol = 'E:'
+let airline#extensions#ale#warning_symbol = 'W:'
+let airline#extensions#ale#show_line_numbers = 1
+let airline#extensions#ale#open_lnum_symbol = '(L'
+let airline#extensions#ale#close_lnum_symbol = ')'
+let g:airline#extensions#battery#enabled = 1
+let g:battery#update_tabline = 1
+let g:airline#extensions#nerdtree_statusline = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#whitespace#symbol = '!!!'
 
 source ~/dotfiles/.config/nvim/ddc.vim
 
