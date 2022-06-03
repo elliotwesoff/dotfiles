@@ -49,8 +49,6 @@ Plug 'nabezokodaikon/ddc-nvim-lsp_by-treesitter'
 call plug#end()
 
 colorscheme dracula
-" remove background for transparent terminals, but we ain't usin it now!
-" hi Normal guibg=NONE ctermbg=NONE
 
 set nocompatible
 set hidden
