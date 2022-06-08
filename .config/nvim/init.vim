@@ -90,8 +90,6 @@ set foldlevel=99
 " https://vi.stackexchange.com/a/20220
 set notimeout ttimeout ttimeoutlen=10
 
-" set shiftwidth=2
-" set softtabstop=2
 set sw=2 sts=2 ts=2 et
 " this doesn't work... WHY
 " autocmd FileType typescript setlocal ts=2 sts=2 sw=2
@@ -118,10 +116,6 @@ nnoremap Q :q<CR>
 nnoremap <F5> :e<CR>
 inoremap <A-BS> <ESC>dF<SPACE>a
 
-" capitalze word with ctrl+U
-nnoremap <c-u> <esc>viw U <esc>
-inoremap <c-u> <esc>viw U <esc>i
-
 " yank to system clipboard
 xnoremap <c-c> "+y
 
@@ -135,11 +129,27 @@ nnoremap <leader>6 :colorscheme dracula<CR>
 nnoremap <leader>7 :colorscheme onehalflight<CR>
 nnoremap <leader>8 :colorscheme github<CR>
 
+" TODO
+function! BackgroundToggle()
+  if &background
+    set background=light
+    echom "Set background to light."
+  else
+    set background=dark
+    echom "Set background to dark."
+  endif
+endfunction
+
+nnoremap <leader>b :call BackgroundToggle()<cr>
+
 nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
+
+" vim/toggly things.
+nnoremap <leader><F1> :set wrap!<CR>
 
 " navigate split windows, vim-style
 nnoremap <leader>a <C-w>h
@@ -164,10 +174,11 @@ nnoremap <leader>tr :NERDTreeFind<CR>
 map <leader>, <plug>NERDCommenterToggle
 
 " ALE! AAAAAAAAALE!!!!!!!!!
-nnoremap <F4>     :ALEHover<CR>
-nnoremap <F6>     :ALEInfo<CR>
-nnoremap <F12>    :ALEGoToDefinition<CR>
-nnoremap <A-F12>  :ALEFindReferences<CR>
+" give ALE F9-F12 privileges.
+nnoremap <F11>   :ALEHover<CR>
+nnoremap <F12>   :ALEGoToDefinition<CR>
+nnoremap <A-F12> :ALEFindReferences<CR>
+nnoremap <C-F12> :ALEInfo<CR>
 let g:ale_completion_enabled=0
 
 " pum configuration
