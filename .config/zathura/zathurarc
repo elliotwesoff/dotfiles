@@ -19,7 +19,7 @@ set index-active-fg "#292929"
 set index-active-bg "#F8F9F0"
 set recolor false
 set recolor-lightcolor "#292929"
-set recolor-darkcolor "#F8F9F0"
+set recolor-darkcolor "#FAFAF7"
 set statusbar-bg "#1F1F1F"
 set statusbar-fg "#F8F9F0"
 set statusbar-h-padding 20

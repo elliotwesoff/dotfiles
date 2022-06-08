@@ -7,6 +7,7 @@ __pycache__
 !.config/htop
 !.config/ranger
 !.config/zathura
+!.config/berry
 *.log
 *.uuid
 
