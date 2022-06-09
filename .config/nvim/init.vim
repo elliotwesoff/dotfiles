@@ -135,7 +135,6 @@ nnoremap <leader>4 :colorscheme adwaita<CR>
 nnoremap <leader>5 :colorscheme onehalfdark<CR>
 nnoremap <leader>6 :colorscheme dracula<CR>
 nnoremap <leader>7 :colorscheme onehalflight<CR>
-nnoremap <leader>8 :colorscheme github<CR>
 
 nnoremap <leader>ev :edit $MYVIMRC<CR>
 nnoremap <leader><F5> :RefreshConfig<CR>
