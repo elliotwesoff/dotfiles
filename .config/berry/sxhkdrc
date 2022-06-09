@@ -30,6 +30,14 @@ super + Escape
 super + control + alt + l
   kill -9 -1
 
+# heylp i forgot my key mappings!
+super + F1
+  kitty nvim ~/dotfiles/.config/berry/sxhkdrc
+# p.s. i want to use super + control + alt + F1,
+# but it locks the OS when i try to use that command.
+# good to know, i guess?
+
+
 # volume controls
 alt + Down
   amixer -D pulse sset Master 5%-
