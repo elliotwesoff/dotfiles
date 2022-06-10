@@ -4,24 +4,46 @@
 
 # terminal emulator
 super + Return
-	kitty
+  kitty
 
 super + shift + Return
   kitty tmux
 
 super + control + h
-	kitty htop
+  kitty htop
 
 super + control + r
   kitty ranger
 
+super + control + f
+  nautilus
+
 # program launcher
-super + a
-	rofi -show run
+super + z
+  rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+  pkill -USR1 -x sxhkd
+
+# log out
+super + control + alt + l
+  kill -9 -1
+
+# heylp i forgot my key mappings!
+super + F1
+  kitty nvim ~/dotfiles/.config/berry/sxhkdrc
+# p.s. i want to use super + control + alt + F1,
+# but it locks the OS when i try to use that command.
+# good to know, i guess?
+
+
+# volume controls
+alt + Down
+  amixer -D pulse sset Master 5%-
+
+alt + Up
+  amixer -D pulse sset Master 5%+
 
 #
 # berry hotkeys
@@ -33,11 +55,17 @@ super + {h, j, k, l}
 super + shift + {h, j, k, l}
     berryc window_resize {-50 0, 0 50, 0 -50, 50 0}
 
-super + {1-9}
+super + {0-9}
     berryc switch_workspace {0-9}
+
+super + {a, s, d, f}
+    berryc switch_workspace {0, 1, 2, 3}
 
 super + shift + {1-9}
     berryc send_to_workspace {0-9}
+
+super + shift + {a, s, d, f}
+    berryc send_to_workspace {0, 1, 2, 3}
 
 super + m
     berryc window_monocle
@@ -48,7 +76,7 @@ super + space
 super + p
     berryc snap_right
 
-super + o 
+super + o
     berryc snap_left
 
 super + n
@@ -65,14 +93,4 @@ super + c
 
 ~button1
     berryc pointer_focus
-
-#
-# volume controls
-#
-
-super + shift + Down
-  amixer -D pulse sset Master 5%-
-
-super + shift + Up
-  amixer -D pulse sset Master 5%+
 
