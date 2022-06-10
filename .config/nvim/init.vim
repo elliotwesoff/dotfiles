@@ -19,33 +19,24 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lambdalisue/battery.vim'
-
-" here is where things get weird.
-" 1. ale provides real-time linting
 Plug 'dense-analysis/ale'
-
-" 2. tree-sitter is supposed to be a next-gen syntax tree parser,
-"     aimed at analyzing your code: syntax highlighting, code jumping,
-"     navigating through files via symbols, etc.
-"     but, why would ddc, an autocompletion engine, integrate with
-"     a syntax tree parser?
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" 3. ddc is the dark deno powered autocomplete engine.
-"     it should only provide autocompletion, but it allows
-"     for many different ddc-adapted vim plugins to cooperate
-"     with it?
-Plug 'Shougo/ddc.vim'
-Plug 'Shougo/pum.vim'
-Plug 'vim-denops/denops.vim'
-Plug 'Shougo/ddc-around'
-Plug 'Shougo/ddc-matcher_head'
-Plug 'Shougo/ddc-sorter_rank'
-Plug 'statiolake/ddc-ale'
-Plug 'Shougo/ddc-nvim-lsp'
-Plug 'delphinus/ddc-treesitter'
-Plug 'tani/ddc-fuzzy'
-Plug 'nabezokodaikon/ddc-nvim-lsp_by-treesitter'
+" ddc insanity
+" Plug 'vim-denops/denops.vim'
+" Plug 'Shougo/ddc.vim'
+" Plug 'Shougo/pum.vim'
+" Plug 'Shougo/ddc-omni'
+" Plug 'Shougo/ddc-around'
+" Plug 'Shougo/ddc-matcher_head'
+" Plug 'Shougo/ddc-sorter_rank'
+" Plug 'Shougo/ddc-nvim-lsp'
+" Plug 'tani/ddc-fuzzy'
+" Plug 'tani/ddc-path'
+" Plug 'statiolake/ddc-ale'
+" Plug 'delphinus/ddc-treesitter'
+" Plug 'nabezokodaikon/ddc-nvim-lsp_by-treesitter'
 call plug#end()
 
 colorscheme dracula
@@ -156,10 +147,10 @@ nnoremap <leader>a <C-w>h
 nnoremap <leader>s <C-w>j
 nnoremap <leader>d <C-w>k
 nnoremap <leader>f <C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 " tmux-style window splitting
 nnoremap <A-'> :vsp<CR>
@@ -172,14 +163,6 @@ nnoremap <leader>tr :NERDTreeFind<CR>
 
 " NERDCommenter
 map <leader>, <plug>NERDCommenterToggle
-
-" ALE! AAAAAAAAALE!!!!!!!!!
-" give ALE F9-F12 privileges.
-nnoremap <F11>   :ALEHover<CR>
-nnoremap <F12>   :ALEGoToDefinition<CR>
-nnoremap <A-F12> :ALEFindReferences<CR>
-nnoremap <C-F12> :ALEInfo<CR>
-let g:ale_completion_enabled=0
 
 " pum configuration
 inoremap <Tab>   <Cmd>call pum#map#insert_relative(+1)<CR>
@@ -215,8 +198,6 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\.pyc$\|\.d\.ts$'
 \ }
 
-" ALE and autocompletion settings
-let g:indent_guides_enable_on_vim_startup = 1
 
 " airline settings
 if !exists('g:airline_symbols')
@@ -237,5 +218,15 @@ let g:airline#extensions#nerdtree_statusline = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#symbol = '!!!'
 
-source ~/dotfiles/.config/nvim/ddc.vim
+" ALE! AAAAAAAAALE!!!!!!!!!
+" give ALE F9-F12 privileges.
+nnoremap <F9>  :ALEInfo<CR>
+nnoremap <F10> :ALEHover<CR>
+nnoremap <F11> :ALEFindReferences<CR>
+nnoremap <F12> :ALEGoToDefinition<CR>
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+let g:ale_disable_lsp = 1
+
+" source ~/dotfiles/.config/nvim/ddc.vim
 
