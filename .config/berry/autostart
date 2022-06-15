@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Set multiple monitor layout
-berryc save_monitor 0 0
 berryc save_monitor 1 0
 berryc save_monitor 2 1
-berryc save_monitor 3 1
+berryc save_monitor 3 0
+berryc save_monitor 4 1
 
 # Set decoration geometry
-berryc border_width       5
-berryc inner_border_width 3
-berryc title_height       30
-berryc top_gap            30
+berryc border_width       3
+berryc inner_border_width 0
+berryc title_height      25
+berryc top_gap           25
 
 # Set decoration colors
 berryc focus_color         292D3E
@@ -25,6 +25,7 @@ berryc smart_place "true"
 berryc draw_text   "true"
 berryc edge_lock   "true"
 berryc set_font    "Dina-9"
+berryc decorate_new "true"
 
 # other starty bois
 ~/.config/polybar/launch.sh &
