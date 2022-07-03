@@ -8,6 +8,10 @@ __pycache__
 !.config/ranger
 !.config/zathura
 !.config/berry
+!.config/sway
+!.config/waybar
+!.config/yay
+!.config/pipewire
 *.log
 *.uuid
 

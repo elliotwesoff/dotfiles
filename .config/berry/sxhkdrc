@@ -19,7 +19,7 @@ super + control + f
   nautilus
 
 super + control + v
-  vivaldi
+  vivaldi-stable
 
 # program launcher
 super + z
