@@ -1,11 +1,11 @@
 [user]
-	name = Elliot Wesoff
-	email = elliot.wesoff@gmail.com
+  name = Elliot Wesoff
+  email = ewesoff@gmail.com
 
 [diff]
-    tool = nvim
+  tool = nvim
 [difftool "nvim"]
-    cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE
+  cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE
 [mergetool "nvim"]
-    cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
