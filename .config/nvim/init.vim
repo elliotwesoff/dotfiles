@@ -8,7 +8,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'rking/ag.vim'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'vim-ruby/vim-ruby'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'kien/ctrlp.vim'
@@ -223,7 +223,7 @@ let g:ctrlp_custom_ignore = {
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.linenr = '㏑'
+let g:airline_symbols.linenr = '∥'
 let g:airline_symbols.colnr = '∥'
 let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#ale#enabled = 1

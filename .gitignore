@@ -1,4 +1,5 @@
 __pycache__
+
 .config/*
 !.config/neofetch
 !.config/polybar
@@ -12,6 +13,10 @@ __pycache__
 !.config/waybar
 !.config/yay
 !.config/pipewire
+
+.local/*
+!.local/bin
+
 *.log
 *.uuid
 
