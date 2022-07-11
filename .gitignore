@@ -13,6 +13,7 @@ __pycache__
 !.config/waybar
 !.config/yay
 !.config/pipewire
+!.config/sxhkd
 
 .local/*
 !.local/bin

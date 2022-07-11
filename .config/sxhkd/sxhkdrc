@@ -4,10 +4,10 @@
 
 # terminal emulator & appies
 super + Return
-  kitty
+  kitty tmux
 
 super + shift + Return
-  kitty tmux
+  kitty
 
 super + control + h
   kitty htop
@@ -38,11 +38,11 @@ super + F1
   kitty nvim ~/dotfiles/.config/berry/sxhkdrc
 
 # volume controls
-alt + Down
-  amixer -D pulse sset Master 5%-
+super + alt + Down
+  amixer -q sset Master 5%-
 
-alt + Up
-  amixer -D pulse sset Master 5%+
+super + alt + Up
+  amixer -q sset Master 5%+
 
 #
 # berry hotkeys
@@ -54,14 +54,14 @@ super + {h, j, k, l}
 super + shift + {h, j, k, l}
     berryc window_resize {-50 0, 0 50, 0 -50, 50 0}
 
-super + {1-9}
-    berryc switch_workspace {1-9}
+super + {0-9}
+    berryc switch_workspace {0-9}
 
 super + {a, s, d, f}
     berryc switch_workspace {1, 2, 3, 4}
 
-super + shift + {1-9}
-    berryc send_to_workspace {1-9}
+super + shift + {0-9}
+    berryc send_to_workspace {0-9}
 
 super + shift + {a, s, d, f}
     berryc send_to_workspace {1, 2, 3, 4}
