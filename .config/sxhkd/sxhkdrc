@@ -35,14 +35,21 @@ super + control + alt + l
 
 # heylp i forgot my key mappings!
 super + F1
-  kitty nvim ~/dotfiles/.config/berry/sxhkdrc
+  kitty nvim ~/dotfiles/.config/sxhkd/sxhkdrc
 
 # volume controls
-super + alt + Down
+super + F2
   amixer -q sset Master 5%-
 
-super + alt + Up
+super + F3
   amixer -q sset Master 5%+
+
+# brightness
+super + F8
+  pybright down
+
+super + F9
+  pybright up
 
 #
 # berry hotkeys
