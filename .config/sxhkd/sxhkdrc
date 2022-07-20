@@ -31,7 +31,7 @@ super + Escape
 
 # log out
 super + control + alt + l
-  kill -9 -1
+  pkill -KILL -u elliot
 
 # heylp i forgot my key mappings!
 super + F1
