@@ -5,9 +5,9 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-$HOME/.config/polybar/launch.sh &
 $HOME/.fehbg &
+sxhkd -c $HOME/.config/sxhkd/bspwm-sxhkdrc &
+$HOME/.config/polybar/launch.sh &
 
 # los angeles
 # xflux -z 91016 &
@@ -15,5 +15,6 @@ $HOME/.fehbg &
 # munich
 xflux -l 48 -g 11 &
 
-exec berry
+# exec berry
+exec bspwm
 
