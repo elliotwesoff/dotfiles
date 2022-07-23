@@ -46,10 +46,10 @@ super + F3
 
 # brightness
 super + F8
-  pybright down
+  cbright down
 
 super + F9
-  pybright up
+  cbright up
 
 #
 # bspwm hotkeys
