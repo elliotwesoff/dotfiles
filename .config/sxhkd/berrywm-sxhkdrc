@@ -35,7 +35,7 @@ super + control + alt + l
 
 # heylp i forgot my key mappings!
 super + F1
-  kitty nvim ~/dotfiles/.config/sxhkd/sxhkdrc
+  kitty nvim ~/dotfiles/.config/sxhkd/berrywm-sxhkdrc
 
 # volume controls
 super + F2

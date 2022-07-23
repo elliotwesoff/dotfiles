@@ -95,6 +95,9 @@ set sw=2 sts=2 ts=2 et
 " xclip must be installed when using X11
 " set clipboard+=unnamedplus " does not work on WSL2
 
+" remove background for compositor sexiness
+hi Normal guibg=NONE ctermbg=NONE
+
 if has('mouse')
   set mouse=a
 endif
