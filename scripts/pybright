@@ -1,0 +1,58 @@
+#!/usr/bin/python3
+
+# This program comes without any warranty
+# of any kind. Use of this program is
+# done completely at your own risk.
+
+# the idea is to use this script via berry hotkeys.
+#
+# we should be able to:
+#
+# 1. specify whether the brightness should go up or down
+# 2. optionally give an increment (percentage) of how much
+#    it should go up or down.
+#
+# the actual brightness adjustment can be done by
+# writing to /sys/class/backlight/intel_backlight/brightness
+#
+# we should also perform a check before writing the new
+# value to the brightness file, to ensure we aren't
+# trying to write a value that's higher than the maximum.
+# the file /sys/class/backlight/intel_backlight/max_brightness
+# contains a static integer representing the maximum number
+# one can write to the brightness file.
+
+import argparse
+
+VERSION = "pybright v0.0.1"
+FILE = "/sys/class/backlight/intel_backlight/brightness"
+MAXVALUE = 120000
+MINVALUE = 5000
+parser = argparse.ArgumentParser(description="is it up or down")
+parser.add_argument("decision", type=str)
+args = parser.parse_args()
+
+    # +6000
+with open(FILE, 'r+') as f:
+    try:
+        current_b = int(f.read())
+        if args.decision == "up":
+            value = current_b + 12000 
+        elif args.decision == "down":
+            value = current_b - 12000 
+        else:
+            raise Exception("wtf")
+
+        if value > MAXVALUE:
+            value = MAXVALUE
+        elif value < MINVALUE:
+            value = MINVALUE
+
+        print(f"change brightness from {current_b} to {value}")
+        f.write(str(value))
+    except Exception as e:
+        print(e)
+    finally:
+        f.close()
+
+
