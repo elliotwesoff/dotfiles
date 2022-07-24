@@ -3,6 +3,7 @@ __pycache__
 .config/*
 !.config/neofetch
 !.config/polybar
+!.config/lemonbar
 !.config/kitty
 !.config/nvim
 !.config/htop
