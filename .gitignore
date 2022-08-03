@@ -15,6 +15,7 @@ __pycache__
 !.config/yay
 !.config/pipewire
 !.config/sxhkd
+!.config/dunst
 
 .local/*
 !.local/bin
