@@ -6,6 +6,7 @@
 # sysmodmap=/etc/X11/xinit/.Xmodmap
 
 
+# $HOME/.screenlayout/thunderbolt.sh &
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
 sxhkd -c $HOME/.config/sxhkd/bspwm-sxhkdrc &
