@@ -11,6 +11,13 @@ done
 echo "symlinking\t~/.nvimrc => ~/dotfiles/.config/nvim/init.vim"
 ln -s ~/dotfiles/.config/nvim/init.vim ~/.nvimrc
 
+# mkdir -p ~/.local/bin
+# for script in cbright tp
+# do
+#   chmod +x ~/dotfiles/scripts/$script
+#   ln -s ~/dotfiles/scripts/$script ~/.local/bin/$script
+# done
+# 
 touch ~/.secrets
 chmod 600 ~/.secrets
 

@@ -1,3 +1,4 @@
+vim.cmd([[
 " YO!!!!!!!!!!!! this (n)vimrc only works on neovim!
 " some of the plugins had `if ("nvim") ...` statements,
 " but i removed them because once you go nvim you
@@ -252,4 +253,4 @@ let g:ale_completion_autoimport = 1
 let g:ale_disable_lsp = 1
 
 " source ~/dotfiles/.config/nvim/ddc.vim
-
+]])

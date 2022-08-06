@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if  [[ $1 =~ "on" ]]
+then
+  echo touchpad on
+  xinput enable "ELAN0406:00 04F3:30A6 Touchpad"
+  notify-send -t 2000 "hardware changed!" "touchpad enabled."
+
+elif [[ $1 =~ "off" ]]
+then
+  echo touchpad off
+  xinput disable "ELAN0406:00 04F3:30A6 Touchpad"
+  notify-send -t 2000 "hardware changed!" "touchpad disabled."
+fi
+

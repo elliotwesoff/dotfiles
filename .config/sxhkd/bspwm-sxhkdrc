@@ -53,10 +53,10 @@ super + F9
 
 # touchpad shenanigans
 super + F10
-  xinput disable "ELAN0406:00 04F3:30A6 Touchpad"
+  tp off
 
 super + F11
-  xinput enable "ELAN0406:00 04F3:30A6 Touchpad"
+  tp on
 
 #
 # bspwm hotkeys
