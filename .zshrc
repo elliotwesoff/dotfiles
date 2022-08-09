@@ -110,7 +110,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR='nvim'
-export MYVIMRC=~/dotfiles/.config/nvim/init.vim
+export MYVIMRC=~/dotfiles/.config/nvim/init.lua
 
 source ~/.secrets
 
