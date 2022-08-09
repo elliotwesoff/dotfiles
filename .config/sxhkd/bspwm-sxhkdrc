@@ -33,6 +33,10 @@ super + Escape
 super + control + alt + l
   pkill -KILL -u elliot
 
+# suspend
+super + control + alt + Delete
+  systemctl suspend
+
 # heylp i forgot my key mappings!
 super + F1
   kitty nvim ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc

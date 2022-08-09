@@ -114,3 +114,4 @@ export MYVIMRC=~/dotfiles/.config/nvim/init.vim
 
 source ~/.secrets
 
+source /usr/share/nvm/init-nvm.sh
