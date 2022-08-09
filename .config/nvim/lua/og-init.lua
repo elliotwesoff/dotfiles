@@ -2,11 +2,6 @@ function og_vim_init()
 
   -- plugins
   vim.cmd([[
-    " YO!!!!!!!!!!!! this (n)vimrc only works on neovim!
-    " some of the plugins had `if ("nvim") ...` statements,
-    " but i removed them because once you go nvim you
-    " never go back! later!!!
-
     call plug#begin()
     Plug 'preservim/nerdtree'
     Plug 'preservim/nerdcommenter'
@@ -76,6 +71,8 @@ function og_vim_init()
     set nobackup
     set nowritebackup
     set showmatch
+    set splitright
+    set splitbelow
     set updatetime=300
     set backspace=indent,eol,start
     set statusline=%F%m
@@ -253,6 +250,7 @@ function og_vim_init()
     let g:airline#extensions#syntastic#enabled = 1
     let g:airline#extensions#whitespace#symbol = '!!!'
 
+    " ale settings
     let g:ale_disable_lsp = 1
   ]])
 
