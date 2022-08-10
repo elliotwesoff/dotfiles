@@ -1,59 +1,10 @@
 #
-# wm independent hotkeys
+# berry hotkeys
 #
-
-# terminal emulator & appies
-super + Return
-  kitty tmux
-
-super + shift + Return
-  kitty
-
-super + control + h
-  kitty htop
-
-super + control + r
-  kitty ranger
-
-super + control + f
-  nautilus
-
-super + control + v
-  vivaldi-stable
-
-# program launcher
-super + z
-  rofi -show run
-
-# make sxhkd reload its configuration files:
-super + Escape
-  pkill -USR1 -x sxhkd
-
-# log out
-super + control + alt + l
-  pkill -KILL -u elliot
 
 # heylp i forgot my key mappings!
 super + F1
   kitty nvim ~/dotfiles/.config/sxhkd/berrywm-sxhkdrc
-
-# volume controls
-super + F2
-  amixer -q sset Master 5%-
-
-super + F3
-  amixer -q sset Master 5%+
-
-# brightness
-super + F8
-  pybright down
-
-super + F9
-  pybright up
-
-#
-# berry hotkeys
-#
 
 super + {h, j, k, l}
     berryc window_move {-50 0, 0 50, 0 -50, 50 0}

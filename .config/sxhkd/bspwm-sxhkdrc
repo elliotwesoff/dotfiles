@@ -1,70 +1,10 @@
 #
-# wm independent hotkeys
+# bspwm hotkeys
 #
-
-# terminal emulator
-super + Return
-  kitty
-
-super + shift + Return
-  kitty tmux
-
-super + control + h
-  kitty htop
-
-super + control + r
-  kitty ranger
-
-super + control + f
-  nautilus
-
-super + control + v
-  vivaldi-stable
-
-# program launcher
-super + z
-  rofi -show run
-
-# make sxhkd reload its configuration files:
-super + Escape
-  pkill -USR1 -x sxhkd
-
-# log out
-super + control + alt + l
-  pkill -KILL -u elliot
-
-# suspend
-super + control + alt + Delete
-  systemctl suspend
 
 # heylp i forgot my key mappings!
 super + F1
   kitty nvim ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc
-
-# volume controls
-super + F2
-  amixer -q sset Master 5%-
-
-super + F3
-  amixer -q sset Master 5%+
-
-# brightness
-super + F8
-  cbright down
-
-super + F9
-  cbright up
-
-# touchpad shenanigans
-super + F10
-  tp off
-
-super + F11
-  tp on
-
-#
-# bspwm hotkeys
-#
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -168,9 +108,3 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
   bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# lemonobar shenanigans
-super + d
-  xdo hide -a lemonbar
-
-super + alt + d
-  xdo show -a lemonbar

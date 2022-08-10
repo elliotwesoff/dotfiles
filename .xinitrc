@@ -1,9 +1,15 @@
 #!/bin/sh
 
+# trying to get external monitor working. wip
+# xrandr --setprovideroutputsource modesetting NVIDIA-0
+# xrandr --auto
+
 # $HOME/.screenlayout/thunderbolt.sh &
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
+sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/.config/sxhkd/bspwm-sxhkdrc &
+# sxhkd -c $HOME/.config/sxhkd/berrywm-sxhkdrc &
 picom &
 dunst &
 

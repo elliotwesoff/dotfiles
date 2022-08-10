@@ -1,0 +1,7 @@
+#!/bin/sh
+
+
+notify-send --expire-time 5500 "logging off!" "user logout in 5 seconds..."
+sleep 5s
+pkill -KILL -u elliot
+

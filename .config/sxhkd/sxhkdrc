@@ -1,0 +1,71 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+  kitty
+
+super + shift + Return
+  kitty tmux
+
+super + control + h
+  kitty htop
+
+super + control + r
+  kitty ranger
+
+super + control + f
+  nautilus
+
+super + control + v
+  vivaldi-stable
+
+# program launcher
+super + z
+  rofi -show run
+
+# make sxhkd reload its configuration files:
+super + Escape
+  sxhkd-reload
+
+# log out
+super + control + alt + l
+  elliot-logout
+
+# suspend
+super + control + alt + Delete
+  systemctl suspend
+
+# kill X server
+super + control + alt + Escape
+  pkill Xorg
+
+# volume controls
+super + F2
+  amixer -q sset Master 5%-
+
+super + F3
+  amixer -q sset Master 5%+
+
+# brightness
+super + F8
+  cbright down
+
+super + F9
+  cbright up
+
+# touchpad shenanigans
+super + F10
+  tp off
+
+super + F11
+  tp on
+
+# lemonobar shenanigans
+super + d
+  xdo hide -a lemonbar
+
+super + alt + d
+  xdo show -a lemonbar
+

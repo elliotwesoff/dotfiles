@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pkill -USR1 -x sxhkd
+notify-send --expire-time 2000 "sxhkd-reload" "restarted successfully"
+
