@@ -49,3 +49,9 @@ require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+
+-- end lsp config.
+
+vim.api.nvim_set_keymap('n', '<Leader>json=', ":%!python3 -m json.tool<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-n>', ':vnew<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-n>', ':new<CR>', { noremap = true, silent = true })
