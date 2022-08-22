@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshc="nvim ~/.zshrc"
-alias ll="ls -lah"
+alias ll="ls -laht"
 alias vim="nvim"
 alias zath="zathura"
 alias vimdiff="nvim -d"
@@ -109,5 +109,7 @@ export PATH=$HOME/.local/bin:$PATH
 export MYVIMRC=$HOME/dotfiles/.config/nvim/init.lua
 
 source ~/.secrets
+
+# node version manager initialization
 source /usr/share/nvm/init-nvm.sh 2> /dev/null
 
