@@ -127,13 +127,13 @@ function og_vim_init()
     xnoremap <c-c> "+y
 
     " colorscheme favs!
-    nnoremap <leader>1 :colorscheme seoul256-light<CR>
-    nnoremap <leader>2 :colorscheme seoul256<CR>
-    nnoremap <leader>3 :colorscheme desert<CR>
+    nnoremap <leader>1 :colorscheme dracula<CR>
+    nnoremap <leader>2 :colorscheme seoul256-light<CR>
+    nnoremap <leader>3 :colorscheme seoul256<CR>
     nnoremap <leader>4 :colorscheme adwaita<CR>
-    nnoremap <leader>5 :colorscheme onehalfdark<CR>
-    nnoremap <leader>6 :colorscheme dracula<CR>
-    nnoremap <leader>7 :colorscheme onehalflight<CR>
+    nnoremap <leader>5 :colorscheme onehalflight<CR>
+    nnoremap <leader>6 :colorscheme onehalfdark<CR>
+    nnoremap <leader>0 :colorscheme desert<CR>
 
     " TODO
     function! BackgroundToggle()

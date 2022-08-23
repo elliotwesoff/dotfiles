@@ -18,10 +18,10 @@ dunst &
 #
 
 # los angeles
-# xflux -z 91016 &
+xflux -z 91016 &
 
 # munich
-xflux -l 48 -g 11 &
+# xflux -l 48 -g 11 &
 
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402

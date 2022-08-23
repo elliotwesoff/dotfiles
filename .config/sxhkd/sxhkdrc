@@ -2,40 +2,32 @@
 # wm independent hotkeys
 #
 
-# terminal emulator
 super + Return
   kitty
 
-super + shift + Return
+super + alt + Return
   kitty tmux
 
-super + control + h
+super + alt + Tab
   kitty htop
 
-super + control + r
-  kitty ranger
-
-super + control + f
+super + alt + f
   nautilus
 
-super + control + v
+super + alt + v
   vivaldi-stable
 
-# program launcher
 super + z
   rofi -show run
 
-# make sxhkd reload its configuration files:
 super + Escape
   sxhkd-reload
 
-# log out
 super + control + alt + l
   elliot-logout
 
-# suspend
 super + control + alt + Delete
-  systemctl suspend
+  elliot-suspend
 
 # kill X server
 super + control + alt + Escape
