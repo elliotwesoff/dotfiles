@@ -24,7 +24,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (400, 1000)
+    width = (500, 800)
 
     # The maximum height of a single notification, excluding the frame.
     height = 300
@@ -68,7 +68,8 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 20
+    # lower is less, higher is more transparent.
+    transparency = 5
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -77,10 +78,10 @@
     separator_height = 2
 
     # Padding between text and separator.
-    padding = 18
+    padding = 12
 
     # Horizontal padding.
-    horizontal_padding = 26
+    horizontal_padding = 12
 
     # Padding between text and icon.
     text_icon_padding = 0
@@ -90,13 +91,13 @@
     frame_width = 4
 
     # Defines color of the frame around the notification window.
-    frame_color = "#000000"
+    frame_color = "#1f1f1f"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 12
+    gap_size = 8
 
     # Define a color for the separator.
     # possible values are:
@@ -206,10 +207,11 @@
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
     # max_icon_size takes precedence over this.
-    min_icon_size = 32
+    # min_icon_size = 32
+    min_icon_size = 64
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 128
+    max_icon_size = 64
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/

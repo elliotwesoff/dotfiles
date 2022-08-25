@@ -5,6 +5,9 @@
 super + Return
   kitty
 
+super + shift + Return
+  kitty --config=$HOME/dotfiles/.config/kitty/light-theme.conf
+
 super + alt + Return
   kitty tmux
 
