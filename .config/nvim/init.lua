@@ -55,3 +55,7 @@ require('lspconfig')['tsserver'].setup{
 vim.api.nvim_set_keymap('n', '<Leader>json=', ":%!python3 -m json.tool<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-n>', ':vnew<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<A-n>', ':new<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F6>', ':reg<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F7>', ':buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', { noremap = true, silent = true })
+
