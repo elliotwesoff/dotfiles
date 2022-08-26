@@ -46,7 +46,7 @@ function og_vim_init()
   ]])
 
   -- default colorscheme
-  vim.cmd("colorscheme dracula")
+  vim.cmd("colorscheme onehalflight")
 
   -- editor settings
   vim.cmd([[
@@ -101,7 +101,7 @@ function og_vim_init()
     " set clipboard+=unnamedplus " does not work on WSL2
 
     " remove background for compositor sexiness
-    hi Normal guibg=NONE ctermbg=NONE
+    " hi Normal guibg=NONE ctermbg=NONE
 
     if has('mouse')
       set mouse=a
