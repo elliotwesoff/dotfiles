@@ -116,11 +116,6 @@ function og_vim_init()
     " general key mappings
     let mapleader = ","
 
-    inoremap jj <Esc>
-    inoremap jk <Esc>:w<CR>
-    nnoremap W :wa<CR>
-    nnoremap Q :q<CR>
-    nnoremap <F5> :e<CR>
     inoremap <A-BS> <ESC>dF<SPACE>a
 
     " yank to system clipboard
@@ -172,7 +167,6 @@ function og_vim_init()
     nnoremap <A-5> :sp<CR>
 
     " NERDTree mappings
-    nnoremap <leader>tt :NERDTreeToggle<CR>
     nnoremap <leader>tf :NERDTreeFocus<CR>
     nnoremap <leader>tr :NERDTreeFind<CR>
 
