@@ -1,6 +1,6 @@
 #!/bin/sh
 
-notify-send --expire-time 4500 "~*~._.~*zzZZZzzz*~._.~*~" "sleeping in 5 seconds..."
-sleep 5s
+notify-send --expire-time 2500 "~*~._.~*zzzZZZzzz*~._.~*~" "sleeping in 3... 2... 1..."
+sleep 3s
 systemctl suspend
 

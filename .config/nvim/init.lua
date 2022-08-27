@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', { noremap = true, silent = tru
 vim.api.nvim_set_keymap('n', '<F6>', ':reg<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F7>', ':buffers!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F12>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F9>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'W', ':wa<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
