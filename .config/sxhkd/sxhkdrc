@@ -43,6 +43,10 @@ super + F2
 super + F3
   amixer -q sset Master 5%+
 
+# heylp! i forgot my other keymappings!
+super + F4
+  kitty nvim ~/dotfiles/.config/sxhkd/sxhkdrc 
+
 # brightness
 super + F8
   cbright down
