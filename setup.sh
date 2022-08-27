@@ -1,6 +1,7 @@
 #!/bin/sh
 
-for item in .config .local .fonts .gitconfig .agignore .tmux.conf .zshrc .xinitrc
+for item in .config .local .fonts .gitconfig .agignore \
+            .tmux.conf .zshrc .xinitrc .screenlayout
 do
   echo "symlinking\t~/$item\t=> ~/dotfiles/$item\n"
   mv -v ~/$item ~/$item.old 2> /dev/null
