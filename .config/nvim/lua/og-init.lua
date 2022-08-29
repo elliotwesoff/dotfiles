@@ -22,6 +22,7 @@ function og_vim_init()
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'neovim/nvim-lspconfig'
     " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'Furkanzmc/zettelkasten.nvim'
 
     " Plug 'kyazdani42/nvim-web-devicons'
     " Plug 'folke/trouble.nvim'

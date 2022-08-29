@@ -4,10 +4,16 @@ og_vim_init()
 
 require'lspconfig'.pyright.setup{}
 
+
+------------------- PLUGINS ------------------------
+------------------- END PLUGINS --------------------
+
+
 ------------------- KEY MAPPINGS -------------------
 vim.api.nvim_set_keymap('n', '<Leader>json=', ":%!python3 -m json.tool<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-n>', ':vnew<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<A-n>', ':new<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w><left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w><down>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w><up>', { noremap = true, silent = true })
@@ -16,12 +22,12 @@ vim.api.nvim_set_keymap('n', '<left>', '<C-w><left>', { noremap = true, silent =
 vim.api.nvim_set_keymap('n', '<down>', '<C-w><down>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<up>', '<C-w><up>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<right>', '<C-w><right>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-[>', ':bprevious<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-]>', ':bnext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-;>', ':bprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-\'>', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F6>', ':reg<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F7>', ':buffers!<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F6>', ':buffers!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F7>', ':messages<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F8>', ':reg<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<F9>', ':NERDTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'W', ':wa<CR>', { noremap = true, silent = true })
