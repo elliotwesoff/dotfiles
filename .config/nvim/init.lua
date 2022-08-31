@@ -1,5 +1,3 @@
-require'lspconfig'.pyright.setup{}
-
 local keymap_opts = { noremap = true, silent = true }
 
 
@@ -7,9 +5,9 @@ local keymap_opts = { noremap = true, silent = true }
 
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'neovim/nvim-lspconfig'
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use 'preservim/nerdtree'
-  use 'preservim/nerdcommenter'
   use 'rking/ag.vim'
   use 'rafi/awesome-vim-colorschemes'
   use 'Mofiqul/adwaita.nvim'
@@ -18,9 +16,15 @@ require('packer').startup(function(use)
   use 'lambdalisue/battery.vim'
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
-  use 'neovim/nvim-lspconfig'
   use 'Furkanzmc/zettelkasten.nvim'
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
 end)
 
 ------------------- END PLUGINS ----------------------
@@ -28,6 +32,8 @@ end)
 
 vim.cmd("colorscheme onehalflight")
 vim.cmd('let mapleader = ","')
+
+require('Comment').setup()
 
 
 ------------------- EDITOR SETTINGS ------------------
@@ -82,9 +88,6 @@ vim.cmd([[
   let g:NERDDefaultAlign='left'
   let g:NERDTreeWinSize=35
 
-  "NERDCommenter settings
-  let g:NERDCommentEmptyLines=1
-
   " nvim difftool configuration
   if &diff
     highlight! link DiffText MatchParen
@@ -124,6 +127,7 @@ vim.api.nvim_set_keymap('n', '<F7>', ':buffers!<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F6>', ':registers<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F9>', ':NERDTreeToggle<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F10>', ':Telescope file_browser<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', 'W', ':wa<CR>', keymap_opts)
@@ -131,7 +135,6 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', keym
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>,', '<plug>NERDCommenterToggle', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>1', ':colorscheme onehalflight<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>2', ':colorscheme seoul256-light<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>3', ':colorscheme seoul256<CR>', { noremap = true, silent = false })
@@ -196,6 +199,10 @@ require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+require'lspconfig'.sumneko_lua.setup {}
+
+local lspconfig = require'lspconfig'
+lspconfig.ccls.setup {}
 
 ------------------- END LSP CONFIG -------------------
 
@@ -276,6 +283,8 @@ require('telescope').setup{
     -- please take a look at the readme of the extension you want to configure
   }
 }
+
+require('telescope').load_extension 'file_browser'
 
 ------------------- END TELESCOPE CONFIG -------------
 
