@@ -8,6 +8,7 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use 'preservim/nerdtree'
+  use 'preservim/nerdcommenter'
   use 'rking/ag.vim'
   use 'rafi/awesome-vim-colorschemes'
   use 'Mofiqul/adwaita.nvim'
@@ -24,7 +25,7 @@ require('packer').startup(function(use)
     config = function()
         require('Comment').setup()
     end
-}
+  }
 end)
 
 ------------------- END PLUGINS ----------------------
@@ -144,11 +145,14 @@ vim.api.nvim_set_keymap('n', '<leader>6', ':colorscheme dracula<CR>', { noremap 
 vim.api.nvim_set_keymap('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>ev', ':edit $MYVIMRC<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', { noremap = true, silent = false })
+-- vim.api.nvim_set_keymap('n', '<leader>,', '<cmd>NERDCommenterToggle<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
+vim.api.nvim_set_keymap('v', '<leader>,', 'gc', { silent = true })
 
 ------------------- END KEY MAPPINGS -----------------
 
@@ -187,22 +191,25 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 50,
-}
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-require'lspconfig'.sumneko_lua.setup {}
+local lspconfig = require('lspconfig')
+local lsp_flags = { debounce_text_changes = 50 }
 
-local lspconfig = require'lspconfig'
-lspconfig.ccls.setup {}
+lspconfig.pyright.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+lspconfig.tsserver.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+lspconfig.sumneko_lua.setup {}
+
+lspconfig.ccls.setup {
+  on_attach = on_attach,
+  flags = lsp_flags
+}
 
 ------------------- END LSP CONFIG -------------------
 
@@ -212,14 +219,14 @@ require('lualine').setup {
   options = {
     icons_enabled = false,
     theme = 'auto',
-    component_separators = { left = '/', right = '/' },
-    section_separators = { left = '/', right = '/' },
+    component_separators = { left = '🍕', right = '🌊' },
+    section_separators = { left = '💥', right = '🍣' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
     },
     ignore_focus = {},
-    always_divide_middle = true,
+    always_divide_middle = false,
     globalstatus = false,
     refresh = {
       statusline = 1000,
@@ -253,7 +260,9 @@ require('lualine').setup {
 
 ------------------- TELESCOPE CONFIG -----------------
 
-require('telescope').setup{
+local telescope = require('telescope')
+
+telescope.setup {
   defaults = {
     -- Default configuration for telescope goes here:
     -- config_key = value,
@@ -284,7 +293,7 @@ require('telescope').setup{
   }
 }
 
-require('telescope').load_extension 'file_browser'
+telescope.load_extension 'file_browser'
 
 ------------------- END TELESCOPE CONFIG -------------
 

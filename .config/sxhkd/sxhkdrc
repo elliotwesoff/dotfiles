@@ -20,7 +20,13 @@ super + alt + f
 super + alt + v
   vivaldi-stable
 
+super + alt + r
+  kitty ranger
+
 super + z
+  rofi -show run
+
+XF86LaunchA
   rofi -show run
 
 super + Escape
@@ -37,6 +43,15 @@ super + control + alt + Escape
   pkill Xorg
 
 # volume controls
+XF86AudioRaiseVolume
+  amixer -q sset Master 5%+
+
+XF86AudioLowerVolume
+  amixer -q sset Master 5%-
+
+XF86AudioMute
+  amixer -q sset Master 1+ toggle
+
 super + F2
   amixer -q sset Master 5%-
 
@@ -52,6 +67,12 @@ super + F8
   cbright down
 
 super + F9
+  cbright up
+
+XF86MonBrightnessDown
+  cbright down
+
+XF86MonBrightnessUp
   cbright up
 
 # touchpad shenanigans

@@ -103,6 +103,7 @@ alias vim="nvim"
 alias zath="zathura"
 alias vimdiff="nvim -d"
 alias dft="git difftool"
+alias vpn="expressvpn"
 
 export EDITOR='nvim'
 export PATH=$HOME/.local/bin:$PATH
