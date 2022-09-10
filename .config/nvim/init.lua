@@ -31,7 +31,7 @@ end)
 ------------------- END PLUGINS ----------------------
 
 
-vim.cmd("colorscheme onehalflight")
+vim.cmd("colorscheme onehalfdark")
 vim.cmd('let mapleader = ","')
 
 require('Comment').setup()
@@ -104,6 +104,12 @@ vim.cmd([[
 
   " ale settings
   let g:ale_disable_lsp = 1
+  let g:ale_linters = {
+    \ 'python': ['pylint'],
+    \ 'vim': ['vint'],
+    \ 'cpp': ['clang'],
+    \ 'c': ['clang']
+\}
 ]])
 ------------------- END EDITOR SETTINGS ------------------
 
@@ -211,6 +217,10 @@ lspconfig.ccls.setup {
   flags = lsp_flags
 }
 
+-- lspconfig.clangd.setup {
+--   on_attach = on_attach,
+--   flags = lsp_flags
+-- }
 ------------------- END LSP CONFIG -------------------
 
 ------------------- LUALINE CONFIG -------------------

@@ -38,6 +38,9 @@ super + control + alt + l
 super + control + alt + Delete
   elliot-suspend
 
+XF86ScreenSaver
+  elliot-suspend
+
 # kill X server
 super + control + alt + Escape
   pkill Xorg
