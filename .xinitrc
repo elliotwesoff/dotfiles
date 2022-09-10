@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$HOME/.screenlayout/razer-hdmi.sh
+$HOME/.screenlayout/x1.sh
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &

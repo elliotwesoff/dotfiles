@@ -2,16 +2,19 @@
 #
 # bspwmrc
 
-if [[ $(xrandr -q | grep -w "HDMI-1-0 connected") ]]
+if [[ $(xrandr -q | grep -w "HDMI1 connected") ]]
 then
-  bspc monitor HDMI-1-0 -d I II III IV V
-  bspc monitor eDP1 -d VI VII VIII IX X
+  bspc monitor HDMI1 -d I II III IV V
+  bspc monitor eDP-1 -d VI VII VIII IX X
+elif [[ $(xrandr -q | grep -w "DP-3 connected") ]]
+then
+  bspc monitor DP-3 -d I II III IV V
 elif [[ $(xrandr -q | grep -w "HDMI-0 connected") ]]
 then
   bspc monitor HDMI-0 -d I II III IV V
-  bspc monitor eDP1 -d VI VII VIII IX X
+  bspc monitor eDP-1 -d VI VII VIII IX X
 else
-  bspc monitor eDP1 -d I II III IV V
+  bspc monitor eDP-1 -d I II III IV V
 fi
 
 bspc config border_width         2
