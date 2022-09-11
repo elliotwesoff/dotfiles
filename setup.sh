@@ -49,7 +49,8 @@ sudo pacman -Sy bspwm \
   ccls \
   libqalculate qalculate-qt \
   vscode \
-  libreoffice-fresh
+  libreoffice-fresh \
+  gnome-control-center
 
 echo installing pacman packages...
 

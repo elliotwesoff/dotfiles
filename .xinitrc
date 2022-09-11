@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$HOME/.screenlayout/x1.sh
+$HOME/.screenlayout/x1-arandr.sh
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
