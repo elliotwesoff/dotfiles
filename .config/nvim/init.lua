@@ -26,9 +26,21 @@ require('packer').startup(function(use)
         require('Comment').setup()
     end
   }
+
+  -- ddc insanity
+  use 'Shougo/ddc.vim'
+  use 'vim-denops/denops.vim'
+  use 'Shougo/ddc-around'
+  use 'Shougo/ddc-matcher_head'
+  use 'Shougo/ddc-sorter_rank'
 end)
 
 ------------------- END PLUGINS ----------------------
+
+--- ddc config ---
+local ddc = require('ddc')
+ddc.ddc_config()
+--- end ddc config
 
 
 vim.cmd("colorscheme onehalfdark")
