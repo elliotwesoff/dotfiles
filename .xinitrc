@@ -1,6 +1,8 @@
 #!/bin/sh
 
 $HOME/.screenlayout/x1-arandr.sh
+xrdb -merge ~/.Xresources
+
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &

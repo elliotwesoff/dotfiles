@@ -22,8 +22,9 @@ import argparse
 
 VERSION = "pybright v0.0.1"
 FILE = "/sys/class/backlight/intel_backlight/brightness"
-MAXVALUE = 120000
-MINVALUE = 5000
+MAXVALUE = 512
+MINVALUE = 24
+STEP = 32
 
 parser = argparse.ArgumentParser(description="is it up or down")
 parser.add_argument("decision", type=str)
@@ -33,9 +34,9 @@ with open(FILE, 'r+') as f:
     try:
         current_b = int(f.read())
         if args.decision == "up":
-            value = current_b + 12000
+            value = current_b + STEP
         elif args.decision == "down":
-            value = current_b - 12000
+            value = current_b - STEP
         else:
             raise Exception("wtf")
 
