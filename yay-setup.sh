@@ -1,5 +1,4 @@
 #!/bin/sh
-echo installing yay packages...
 
 yay -Sy nvim-packer-git \
   noto-fonts-emoji \

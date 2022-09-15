@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo installing pacman packages...
-
 sudo pacman -S bspwm \
   nvim \
   git \
@@ -46,5 +44,4 @@ sudo pacman -S bspwm \
   libreoffice-fresh \
   gnome-control-center \
   plasma-meta kde-applications-meta kwin plasma-wayland-session
-
 
