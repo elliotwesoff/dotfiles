@@ -7,24 +7,28 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
-  use 'preservim/nerdtree'
-  use 'preservim/nerdcommenter'
   use 'rking/ag.vim'
   use 'rafi/awesome-vim-colorschemes'
   use 'Mofiqul/adwaita.nvim'
   use 'dracula/vim'
   use 'Raimondi/delimitMate'
-  use 'lambdalisue/battery.vim'
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
   use 'Furkanzmc/zettelkasten.nvim'
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { "nvim-telescope/telescope-file-browser.nvim" }
+
   use {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
     end
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons'
+    }
   }
 
   -- ddc insanity
@@ -37,6 +41,10 @@ end)
 
 ------------------- END PLUGINS ----------------------
 
+
+local nt_api = require("nvim-tree.api")
+require('Comment').setup()
+
 --- ddc config ---
 local ddc = require('ddc')
 ddc.ddc_config()
@@ -45,8 +53,6 @@ ddc.ddc_config()
 
 vim.cmd("colorscheme onehalfdark")
 vim.cmd('let mapleader = ","')
-
-require('Comment').setup()
 
 
 ------------------- EDITOR SETTINGS ------------------
@@ -145,7 +151,7 @@ vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F7>', ':buffers!<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F6>', ':registers<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F9>', ':NERDTreeToggle<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeToggle<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F10>', ':Telescope file_browser<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', keymap_opts)
@@ -163,7 +169,6 @@ vim.api.nvim_set_keymap('n', '<leader>6', ':colorscheme dracula<CR>', { noremap 
 vim.api.nvim_set_keymap('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>ev', ':edit $MYVIMRC<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', { noremap = true, silent = false })
--- vim.api.nvim_set_keymap('n', '<leader>,', '<cmd>NERDCommenterToggle<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
@@ -319,3 +324,25 @@ telescope.load_extension 'file_browser'
 
 ------------------- END TELESCOPE CONFIG -------------
 
+--- NVIM-TREE CONFIG ---
+--
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      }
+    }
+  },
+  renderer = {
+    group_empty = true
+  },
+  filters = {
+    dotfiles = true
+  }
+})
+--- END NVIM-TREE CONFIG ---
