@@ -67,16 +67,16 @@ super + F4
 
 # brightness
 super + F8
-  cbright down
+  pybright down
 
 super + F9
-  cbright up
+  pybright up
 
 XF86MonBrightnessDown
-  cbright down
+  pybright down
 
 XF86MonBrightnessUp
-  cbright up
+  pybright up
 
 # touchpad shenanigans
 super + F10

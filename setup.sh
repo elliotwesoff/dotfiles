@@ -10,13 +10,20 @@ done
 touch ~/.secrets
 chmod 600 ~/.secrets
 
-echo home dir setup complete. installing programs next
+echo home dir setup complete. installing programs next!
+
+echo 3
+sleep 1
+echo 2
+sleep 1
+echo 1
+
 echo installing pacman packages...
 
 sudo pacman -Sy bspwm \
-  xorg-server \
-  xorg-xinit \
-  mesa \
+  xorg-server xorg-xinit xorg-xev \
+  libxcursor xcursor-themes xdotool \
+  mesa lib32-mesa \
   neovim \
   sxhkd \
   picom \
@@ -27,39 +34,45 @@ sudo pacman -Sy bspwm \
   wget \
   nautilus \
   libnotify \
-  xev \
-  xorg-xev \
   vulkan-intel \
-  pipewire \
-  pipewire-docs \
-  wireplumber \
-  wireplumber-docs \
-  alsa-utils \
-  alsa-firmware \
+  pipewire pipewire-docs \
+  wireplumber wireplumber-docs \
+  alsa-utils alsa-firmware \
   vivaldi-ffmpeg-codecs \
   ffmpeg \
-  pavucontrol \
-  pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack \
-  alsa-utils \
-  lib32-mesa \
+  pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pavucontrol \
   mesa-utils \
   man-db \
-  sway \
   gdb \
   ccls \
   libqalculate qalculate-qt \
   vscode \
   libreoffice-fresh \
-  gnome-control-center
+  gnome-control-center \
+  maim \
+  zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
+  sof-firmware \
+  imagemagick \
+  cmus \
+  unzip \
+  bpytop
 
 echo installing pacman packages...
 
+echo 3
+sleep 1
+echo 2
+sleep 1
+echo 1
+
 yay -Sy nvim-packer-git \
+  nvim-packer-git \
   noto-fonts-emoji \
   pulseaudio-control \
   river \
   nvm \
   1password \
   discord \
-  codelite
+  codelite \
+  spotify
 
