@@ -1,7 +1,15 @@
 #!/bin/sh
 
-$HOME/.screenlayout/x1-arandr.sh
-xrdb -merge ~/.Xresources
+if [[ $(xrandr -q | grep -w "DP-3 connected") ]]
+then
+  $HOME/.screenlayout/x1-ext.sh
+else
+  # only builtin display,
+  # no external monitor.
+  $HOME/.screenlayout/x1.sh
+  xrdb -merge ~/.Xresources
+fi
+
 
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
@@ -16,4 +24,4 @@ xsetroot -cursor_name left_ptr
 
 # exec berry
 exec bspwm
-
+randr
