@@ -9,3 +9,5 @@
 [mergetool "nvim"]
   cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
+[core]
+	autocrlf = input

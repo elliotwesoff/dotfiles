@@ -6,5 +6,7 @@ yay -Sy nvim-packer-git \
   river \
   nvm \
   1password \
-  discord
+  discord \
+  expressvpn \
+  notion
 

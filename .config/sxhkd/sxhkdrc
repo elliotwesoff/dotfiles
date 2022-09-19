@@ -20,8 +20,10 @@ super + alt + f
 super + alt + v
   vivaldi-stable
 
-super + alt + r
-  kitty ranger
+# conflicts with the default
+# binding to restart bspwm.
+# super + alt + r
+#   kitty ranger
 
 super + z
   rofi -show run
