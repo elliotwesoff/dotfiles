@@ -18,11 +18,11 @@ local function ddc_config()
             \ })
   ]])
   vim.cmd([[
-      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'ccls'])
   ]])
   vim.cmd([[
       call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-            \ 'clangd': {'mark': 'C'},
+            \ 'ccls': {'mark': 'C'},
             \ })
   ]])
   vim.cmd([[

@@ -147,13 +147,22 @@ vim.api.nvim_set_keymap('n', '<up>', '<C-w><up>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<right>', '<C-w><right>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-[>', ':bprevious<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-]>', ':bnext<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F1>', '<cmd>Telescope help_tags<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F2>', '<cmd>Telescope buffers<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F3>', '<cmd>Telescope registers<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F4>', '<cmd>Telescope live_grep<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F7>', ':buffers!<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F6>', '<cmd> Telescope file_browser<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F7>', '<cmd>Telescope current_buffer_fuzzy_find<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F6>', ':registers<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeFocus<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F10>', ':Telescope file_browser<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F10>', '<cmd>Telescope git_status<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F11>', '<cmd>Telescope treesitter<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-F1>', '<cmd>Telescope git_status<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-F2>', '<cmd>Telescope git_stash<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-F3>', '<cmd>Telescope git_branches<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-F4>', '<cmd>Telescope git_commits<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', 'W', ':wa<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', keymap_opts)
@@ -168,13 +177,15 @@ vim.api.nvim_set_keymap('n', '<leader>5', ':colorscheme onehalfdark<CR>', { nore
 vim.api.nvim_set_keymap('n', '<leader>6', ':colorscheme dracula<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>ev', ':edit $MYVIMRC<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
+
+-- Comment.nvim
+vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>,', 'gc', { silent = true })
 
 ------------------- END KEY MAPPINGS -----------------
@@ -199,6 +210,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  -- vim.keymap.set('n', '<A-F12>', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -344,7 +356,12 @@ require("nvim-tree").setup({
     }
   },
   renderer = {
-    group_empty = true
+    group_empty = true,
+    highlight_git = true,
+    highlight_opened_files = "icon",
+    indent_markers = {
+      enable = true
+    }
   },
   filters = {
     dotfiles = true
