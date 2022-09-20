@@ -52,4 +52,3 @@ with open(FILE, 'r+') as f:
     finally:
         f.close()
 
-

@@ -125,8 +125,8 @@ vim.cmd([[
   let g:ale_linters = {
     \ 'python': ['pylint'],
     \ 'vim': ['vint'],
-    \ 'cpp': ['clang'],
-    \ 'c': ['clang']
+    \ 'cpp': ['ccls'],
+    \ 'c': ['ccls']
 \}
 ]])
 ------------------- END EDITOR SETTINGS ------------------
@@ -151,7 +151,7 @@ vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F7>', ':buffers!<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F6>', ':registers<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeToggle<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeFocus<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F10>', ':Telescope file_browser<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', keymap_opts)
@@ -324,17 +324,22 @@ telescope.load_extension 'file_browser'
 
 ------------------- END TELESCOPE CONFIG -------------
 
+
 --- NVIM-TREE CONFIG ---
---
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
+
 require("nvim-tree").setup({
-  sort_by = "case_sensitive",
   view = {
-    adaptive_size = true,
+    adaptive_size = false,
     mappings = {
       list = {
         { key = "u", action = "dir_up" },
+        { key = "|", action = "vsplit" },
+        { key = "s", action = "vsplit" },
+        { key = "-", action = "split" },
+        { key = "i", action = "split" },
+        { key = "t", action = "tabnew" }
       }
     }
   },
@@ -345,4 +350,6 @@ require("nvim-tree").setup({
     dotfiles = true
   }
 })
+
 --- END NVIM-TREE CONFIG ---
+

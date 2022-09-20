@@ -40,6 +40,8 @@ sudo pacman -S bspwm \
   sway \
   gdb \
   ccls \
+  lua-language-server \
+  pyright \
   libqalculate qalculate-qt \
   vscode \
   libreoffice-fresh \
@@ -51,5 +53,5 @@ sudo pacman -S bspwm \
   plasma-meta kde-applications-meta kwin plasma-wayland-session \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   ttf-baekmuk \
-  deja-dup
+  deja-dup \
 

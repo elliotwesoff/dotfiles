@@ -7,9 +7,9 @@ else
   # only builtin display,
   # no external monitor.
   $HOME/.screenlayout/x1.sh
-  xrdb -merge ~/.Xresources
 fi
 
+xrdb -merge ~/.Xresources
 
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
