@@ -1,33 +1,28 @@
 local function ddc_config()
-  vim.cmd("call ddc#custom#patch_global('sources', ['around'])")
+  vim.cmd("call ddc#custom#patch_global('sources', ['nvim-lsp', 'treesitter'])")
   vim.cmd([[
       call ddc#custom#patch_global('sourceOptions', {
             \ '_': {
             \   'matchers': ['matcher_head'],
-            \   'sorters': ['sorter_rank']},
-            \ })
-  ]])
-  vim.cmd([[
-      call ddc#custom#patch_global('sourceOptions', {
+            \   'sorters': ['sorter_rank'] },
+            \ 'nvim-lsp': {
+            \   'mark': 'lsp',
+            \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
             \ 'around': {'mark': 'A'},
             \ })
   ]])
   vim.cmd([[
       call ddc#custom#patch_global('sourceParams', {
             \ 'around': {'maxSize': 500},
+						\ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' }, 'maxSize': 50 },
             \ })
   ]])
   vim.cmd([[
-      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'ccls'])
+      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['nvim-lsp', 'treesitter', 'around', 'clangd'])
   ]])
   vim.cmd([[
       call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-            \ 'ccls': {'mark': 'C'},
-            \ })
-  ]])
-  vim.cmd([[
-      call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-            \ 'around': {'maxSize': 100},
+            \ 'clangd': {'mark': 'C'},
             \ })
   ]])
   vim.cmd([[

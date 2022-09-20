@@ -37,12 +37,13 @@ require('packer').startup(function(use)
   use 'Shougo/ddc-around'
   use 'Shougo/ddc-matcher_head'
   use 'Shougo/ddc-sorter_rank'
+  use 'Shougo/ddc-nvim-lsp'
+  use 'delphinus/ddc-treesitter'
 end)
 
 ------------------- END PLUGINS ----------------------
 
 
-local nt_api = require("nvim-tree.api")
 require('Comment').setup()
 
 --- ddc config ---
@@ -148,8 +149,8 @@ vim.api.nvim_set_keymap('n', '<right>', '<C-w><right>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-[>', ':bprevious<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-]>', ':bnext<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F1>', '<cmd>Telescope help_tags<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F2>', '<cmd>Telescope buffers<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F3>', '<cmd>Telescope registers<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F2>', '<cmd>Telescope registers<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<F3>', '<cmd>Telescope buffers<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F4>', '<cmd>Telescope live_grep<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F6>', '<cmd> Telescope file_browser<CR>', keymap_opts)
@@ -246,10 +247,10 @@ lspconfig.ccls.setup {
   flags = lsp_flags
 }
 
--- lspconfig.clangd.setup {
---   on_attach = on_attach,
---   flags = lsp_flags
--- }
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  flags = lsp_flags
+}
 ------------------- END LSP CONFIG -------------------
 
 ------------------- LUALINE CONFIG -------------------
@@ -369,4 +370,43 @@ require("nvim-tree").setup({
 })
 
 --- END NVIM-TREE CONFIG ---
+
+--- TREESITTER ---
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true
+  }
+}
 
