@@ -24,4 +24,3 @@ xsetroot -cursor_name left_ptr
 
 # exec berry
 exec bspwm
-randr

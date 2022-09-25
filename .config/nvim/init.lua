@@ -59,7 +59,6 @@ vim.cmd('let mapleader = ","')
 ------------------- EDITOR SETTINGS ------------------
 
 vim.opt.hidden = true
-vim.opt.hidden = true
 vim.opt.wildmenu = true
 vim.opt.showcmd = true
 vim.opt.hlsearch = true
@@ -81,6 +80,7 @@ vim.opt.writebackup = false
 vim.opt.showmatch = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.showmode = false
 vim.opt.updatetime = 300
 vim.opt.backspace = 'indent,eol,start'
 vim.opt.pastetoggle = '<F3>'
@@ -96,6 +96,11 @@ vim.opt.sts = 2
 vim.opt.ts = 2
 -- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
 vim.opt.mouse = 'a'
+
+-- TODO: keep tabs on this! available in nightly but not 
+-- in the current stable release (0.7.x).
+-- https://www.reddit.com/r/neovim/comments/xb0hs1/is_it_possible_to_hide_command_line_when_it_is/
+-- vim.opt.cmdheight = 0
 
 vim.cmd([[
   " custom commands
@@ -160,6 +165,7 @@ vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeFocus<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F10>', '<cmd>Telescope git_status<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F11>', '<cmd>Telescope treesitter<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
+-- vim.api.nvim_set_keymap('n', '<A-F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-F1>', '<cmd>Telescope git_status<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-F2>', '<cmd>Telescope git_stash<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-F3>', '<cmd>Telescope git_branches<CR>', keymap_opts)
@@ -177,13 +183,14 @@ vim.api.nvim_set_keymap('n', '<leader>4', ':colorscheme adwaita<CR>', { noremap 
 vim.api.nvim_set_keymap('n', '<leader>5', ':colorscheme onehalfdark<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>6', ':colorscheme dracula<CR>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>ev', ':edit $MYVIMRC<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<leader>ev', ':tabnew $MYVIMRC<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
+vim.api.nvim_set_keymap('i', '<A-BS>', '<cmd>:execute "normal! db"<CR>', keymap_opts)
 
 -- Comment.nvim
 vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { noremap = false, silent = true })
@@ -191,14 +198,13 @@ vim.api.nvim_set_keymap('v', '<leader>,', 'gc', { silent = true })
 
 ------------------- END KEY MAPPINGS -----------------
 
-
 ------------------- LSP CONFIG -----------------------
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, keymap_opts)
+vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, keymap_opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, keymap_opts)
+vim.keymap.set('n', '<space>e', vim.diagnostic.setloclist, keymap_opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -211,7 +217,6 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  -- vim.keymap.set('n', '<A-F12>', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
@@ -224,6 +229,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<A-F12>', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
@@ -375,7 +381,7 @@ require("nvim-tree").setup({
 
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql" },
+  ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql", "markdown" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

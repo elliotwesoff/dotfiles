@@ -18,12 +18,10 @@ local function ddc_config()
             \ })
   ]])
   vim.cmd([[
-      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['nvim-lsp', 'treesitter', 'around', 'clangd'])
+      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['nvim-lsp', 'treesitter', 'around'])
   ]])
   vim.cmd([[
-      call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-            \ 'clangd': {'mark': 'C'},
-            \ })
+      call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', { })
   ]])
   vim.cmd([[
       inoremap <silent><expr> <TAB>
