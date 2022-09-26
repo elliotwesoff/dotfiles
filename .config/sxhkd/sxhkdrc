@@ -94,3 +94,6 @@ super + d
 super + alt + d
   xdo show -a lemonbar
 
+# printscreen button
+Print
+  flameshot gui
