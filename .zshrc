@@ -98,14 +98,21 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshc="nvim ~/.zshrc"
+alias l="ls -lah"
 alias ll="ls -laht"
 alias vim="nvim"
 alias zath="zathura"
-alias vimdiff="nvim -d"
+alias nvimd="nvim -d"
 alias dft="git difftool"
 alias vpn="expressvpn"
 
-export EDITOR='nvim'
+if [[ $(which nvim) =~ nvim ]]
+then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
+
 export PATH=$HOME/.local/bin:$PATH
 export MYVIMRC=$HOME/dotfiles/.config/nvim/init.lua
 
@@ -115,5 +122,5 @@ source ~/.secrets
 source /usr/share/nvm/init-nvm.sh 2> /dev/null
 
 # rbenv init
-eval "$(rbenv init -)"
+eval "$(rbenv init - 2> /dev/null)" 
 
