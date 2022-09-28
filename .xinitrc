@@ -2,14 +2,13 @@
 
 if [[ $(xrandr -q | grep -w "DP-3 connected") ]]
 then
+  xrdb -merge ~/dotfiles/.Xresources-ext
   $HOME/.screenlayout/x1-ext.sh
 else
-  # only builtin display,
-  # no external monitor.
+  # only builtin display, no external monitor.
+  xrdb -merge ~/dotfiles/.Xresources-int
   $HOME/.screenlayout/x1.sh
 fi
-
-xrdb -merge ~/.Xresources
 
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &

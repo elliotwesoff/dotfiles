@@ -4,8 +4,10 @@
 
 # xrandr --output eDP-1 --mode 2880x1800 --pos 2560x327 --rotate normal --dpi 192 \
 # --output DP-3 --primary --mode 2560x1440 --pos 0x0 --rotate normal --rate 100 \
+  # --output eDP-1 --mode 2880x1800 --rate 60 --dpi 196 \
+  # --output eDP-1 --mode 1920x1200 \
 xrandr \
-  --output eDP-1 --mode 1920x1200 \
+  --output eDP-1 --mode 2880x1800 \
   --output HDMI-1 --off \
   --output DP-1 --off \
   --output DP-2 --off \
