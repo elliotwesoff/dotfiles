@@ -7,10 +7,13 @@
 # you should see an lts option when booting
 # in addition to the standard linux boot option.
 
+# plasma-meta kde-applications-meta kwin plasma-wayland-session \
+
 sudo pacman -S bspwm \
   linux-lts linux-lts-headers \
   nvim \
   git \
+  base-devel \
   kitty \
   sxhkd \
   neovim \
@@ -50,7 +53,6 @@ sudo pacman -S bspwm \
   wireplumber wireplumber-docs \
   alsa-utils alsa-firmware \
   pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pavucontrol sof-firmware \
-  plasma-meta kde-applications-meta kwin plasma-wayland-session \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   ttf-baekmuk \
   deja-dup \

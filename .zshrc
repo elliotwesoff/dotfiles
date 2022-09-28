@@ -114,3 +114,6 @@ source ~/.secrets
 # node version manager initialization
 source /usr/share/nvm/init-nvm.sh 2> /dev/null
 
+# rbenv init
+eval "$(rbenv init -)"
+

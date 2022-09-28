@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# nerd-fonts-complete \
 yay -Sy nvim-packer-git \
   noto-fonts-emoji \
   pulseaudio-control \
@@ -8,5 +9,5 @@ yay -Sy nvim-packer-git \
   discord \
   expressvpn \
   notion \
-  nerd-fonts-complete
+  rbenv ruby-build
 
