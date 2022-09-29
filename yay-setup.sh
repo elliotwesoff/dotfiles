@@ -1,13 +1,14 @@
 #!/bin/sh
 
 # nerd-fonts-complete \
-yay -Sy nvim-packer-git \
-  noto-fonts-emoji \
-  pulseaudio-control \
-  nvm \
+yay -Sy \
+  nvm nvim-packer-git \
   1password \
   discord \
   expressvpn \
   notion \
-  rbenv ruby-build
+  noto-fonts-emoji \
+  pulseaudio-control \
+  rbenv ruby-build \
+  cava
 

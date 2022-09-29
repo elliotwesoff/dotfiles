@@ -3,9 +3,11 @@
 if [[ $(xrandr -q | grep -w "DP-3 connected") ]]
 then
   xrdb -merge ~/dotfiles/.Xresources-ext
+  export XORG_DPI=96
   $HOME/.screenlayout/x1-ext.sh
 else
   # only builtin display, no external monitor.
+  export XORG_DPI=160
   xrdb -merge ~/dotfiles/.Xresources-int
   $HOME/.screenlayout/x1.sh
 fi

@@ -11,7 +11,7 @@ require('packer').startup(function(use)
   use 'rafi/awesome-vim-colorschemes'
   use 'Mofiqul/adwaita.nvim'
   use 'dracula/vim'
-  use 'Raimondi/delimitMate'
+  use 'jiangmiao/auto-pairs'
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
   use 'Furkanzmc/zettelkasten.nvim'
@@ -188,6 +188,7 @@ vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<Tab>', ':NvimTreeFocus<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', '<A-BS>', '<cmd>:execute "normal! db"<CR>', keymap_opts)

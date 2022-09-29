@@ -29,6 +29,7 @@ sudo pacman -S bspwm \
   nautilus \
   polybar \
   ntfs-3g \
+  cmus \
   libnotify \
   xorg-server \
   xorg-xinit \
