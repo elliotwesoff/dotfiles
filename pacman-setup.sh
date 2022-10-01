@@ -11,7 +11,7 @@
 
 sudo pacman -S bspwm \
   linux-lts linux-lts-headers \
-  nvim \
+  neovim \
   git \
   base-devel \
   kitty \
@@ -58,5 +58,6 @@ sudo pacman -S bspwm \
   ttf-baekmuk \
   deja-dup \
   bluez bluez-utils \
-  cups cups-pdf
+  cups cups-pdf \
+  font-manager
 
