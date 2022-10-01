@@ -12,6 +12,9 @@ else
   $HOME/.screenlayout/x1.sh
 fi
 
+xset -dpms &
+xset s off &
+
 $HOME/.fehbg &
 $HOME/.config/polybar/launch.sh &
 sxhkd -c $HOME/.config/sxhkd/sxhkdrc &

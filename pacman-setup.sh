@@ -57,5 +57,6 @@ sudo pacman -S bspwm \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   ttf-baekmuk \
   deja-dup \
-  bluez bluez-utils
+  bluez bluez-utils \
+  cups cups-pdf
 
