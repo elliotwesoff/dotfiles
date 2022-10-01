@@ -96,11 +96,12 @@ vim.opt.sts = 2
 vim.opt.ts = 2
 -- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
 vim.opt.mouse = 'a'
+vim.opt.colorcolumn = '74' -- TODO: make this for cpp files only.
 
 -- TODO: keep tabs on this! available in nightly but not 
 -- in the current stable release (0.7.x).
 -- https://www.reddit.com/r/neovim/comments/xb0hs1/is_it_possible_to_hide_command_line_when_it_is/
--- vim.opt.cmdheight = 0
+vim.opt.cmdheight = 0 -- WOOOOOOOO!
 
 vim.cmd([[
   " custom commands
@@ -151,8 +152,10 @@ vim.api.nvim_set_keymap('n', '<left>', '<C-w><left>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<down>', '<C-w><down>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<up>', '<C-w><up>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<right>', '<C-w><right>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-[>', ':bprevious<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-]>', ':bnext<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-,>', ':tabprevious<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-.>', ':tabnext<CR>', keymap_opts)
+vim.api.nvim_set_keymap('i', '<A-,>', '<Esc>:tabprevious<CR>', keymap_opts)
+vim.api.nvim_set_keymap('i', '<A-.>', '<Esc>:tabnext<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F1>', '<cmd>Telescope help_tags<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>Telescope registers<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F3>', '<cmd>Telescope buffers<CR>', keymap_opts)
