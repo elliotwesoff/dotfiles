@@ -144,18 +144,17 @@ vim.api.nvim_set_keymap('n', '<Leader>json=', ":%!python3 -m json.tool<CR>", key
 vim.api.nvim_set_keymap('n', '<C-n>', ':vnew<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-n>', ':new<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w><left>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w><down>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w><up>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w><right>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-t>', ':terminal<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-h>', '<C-w><left>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-j>', '<C-w><down>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-k>', '<C-w><up>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<A-l>', '<C-w><right>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<left>', '<C-w><left>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<down>', '<C-w><down>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<up>', '<C-w><up>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<right>', '<C-w><right>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-,>', ':tabprevious<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-.>', ':tabnext<CR>', keymap_opts)
-vim.api.nvim_set_keymap('i', '<A-,>', '<Esc>:tabprevious<CR>', keymap_opts)
-vim.api.nvim_set_keymap('i', '<A-.>', '<Esc>:tabnext<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F1>', '<cmd>Telescope help_tags<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>Telescope registers<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<F3>', '<cmd>Telescope buffers<CR>', keymap_opts)
@@ -195,6 +194,9 @@ vim.api.nvim_set_keymap('n', '<Tab>', ':NvimTreeFocus<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', '<A-BS>', '<cmd>:execute "normal! db"<CR>', keymap_opts)
+vim.api.nvim_set_keymap('i', '<A-,>', '<Esc>:tabprevious<CR>', keymap_opts)
+vim.api.nvim_set_keymap('i', '<A-.>', '<Esc>:tabnext<CR>', keymap_opts)
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
 
 -- Comment.nvim
 vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { noremap = false, silent = true })
@@ -257,10 +259,10 @@ lspconfig.ccls.setup {
   flags = lsp_flags
 }
 
-lspconfig.clangd.setup {
-  on_attach = on_attach,
-  flags = lsp_flags
-}
+-- lspconfig.clangd.setup {
+--   on_attach = on_attach,
+--   flags = lsp_flags
+-- }
 ------------------- END LSP CONFIG -------------------
 
 ------------------- LUALINE CONFIG -------------------
