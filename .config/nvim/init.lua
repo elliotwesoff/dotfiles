@@ -55,6 +55,16 @@ ddc.ddc_config()
 vim.cmd("colorscheme onehalfdark")
 vim.cmd('let mapleader = ","')
 
+local function clearBgColor()
+  vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+  vim.cmd('hi EndOfBuffer guibg=NONE ctermbg=NONE')
+end
+
+local function bufFormatJson()
+  vim.cmd(':%!python3 -m json.tool<CR>')
+end
+
+clearBgColor()
 
 ------------------- EDITOR SETTINGS ------------------
 
@@ -140,7 +150,6 @@ vim.cmd([[
 
 ------------------- KEY MAPPINGS ---------------------
 
-vim.api.nvim_set_keymap('n', '<Leader>json=', ":%!python3 -m json.tool<CR>", keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-n>', ':vnew<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<A-n>', ':new<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', keymap_opts)
@@ -202,6 +211,10 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>,', 'gc', { silent = true })
 
+-- TODO: what's the difference between vim.keymap.set
+--       and vim.api.nvim_set_keymap?
+vim.keymap.set('n', '<Leader>cb', clearBgColor, keymap_opts)
+vim.keymap.set('n', '<Leader>json=', bufFormatJson, keymap_opts)
 ------------------- END KEY MAPPINGS -----------------
 
 ------------------- LSP CONFIG -----------------------
