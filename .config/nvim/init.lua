@@ -106,36 +106,16 @@ vim.opt.sts = 2
 vim.opt.ts = 2
 -- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
 vim.opt.mouse = 'a'
-vim.opt.colorcolumn = '74' -- TODO: make this for cpp files only.
-
--- TODO: keep tabs on this! available in nightly but not 
--- in the current stable release (0.7.x).
--- https://www.reddit.com/r/neovim/comments/xb0hs1/is_it_possible_to_hide_command_line_when_it_is/
-vim.opt.cmdheight = 0 -- WOOOOOOOO!
+vim.opt.cmdheight = 0
 
 vim.cmd([[
   " custom commands
   command! RefreshConfig source $MYVIMRC
 
-  " NERDTree settings
-  let NERDTreeShowHidden=1
-  let g:NERDTreeShowBookmarks=1
-  let g:NERDSpaceDelims=1
-  let g:NERDDefaultAlign='left'
-  let g:NERDTreeWinSize=35
-
   " nvim difftool configuration
   if &diff
     highlight! link DiffText MatchParen
   endif
-
-  " ctrlp settings
-  " let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_max_files=0
-  let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$\|node_modules\|log\|tmp$\|dist',
-    \ 'file': '\.pyc$\|\.d\.ts$'
-    \ }
 
   " ale settings
   let g:ale_disable_lsp = 1
@@ -199,7 +179,7 @@ vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<Tab>', ':NvimTreeFocus<CR>', keymap_opts)
+vim.api.nvim_set_keymap('n', '<Tab>', ':NvimTreeFindFile<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
 vim.api.nvim_set_keymap('i', '<A-BS>', '<cmd>:execute "normal! db"<CR>', keymap_opts)
@@ -211,10 +191,10 @@ vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
 vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { noremap = false, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>,', 'gc', { silent = true })
 
--- TODO: what's the difference between vim.keymap.set
---       and vim.api.nvim_set_keymap?
+-- TODO: what's the difference between vim.keymap.set and vim.api.nvim_set_keymap?
 vim.keymap.set('n', '<Leader>cb', clearBgColor, keymap_opts)
 vim.keymap.set('n', '<Leader>json=', bufFormatJson, keymap_opts)
+
 ------------------- END KEY MAPPINGS -----------------
 
 ------------------- LSP CONFIG -----------------------
