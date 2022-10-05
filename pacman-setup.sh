@@ -59,5 +59,6 @@ sudo pacman -S bspwm \
   deja-dup \
   bluez bluez-utils \
   cups cups-pdf \
-  font-manager
+  font-manager \
+  the_silver_searcher
 

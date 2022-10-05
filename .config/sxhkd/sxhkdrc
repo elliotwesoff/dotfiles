@@ -34,14 +34,17 @@ XF86LaunchA
 super + Escape
   sxhkd-reload
 
-super + control + alt + l
+super + control + alt + d
   elliot-logout
 
-super + control + alt + Delete
+super + control + alt + z
   elliot-suspend
 
 shift + XF86ScreenSaver
   elliot-suspend
+
+super + control + alt + s
+  elliot-shutdown
 
 # kill X server
 super + control + alt + Escape
