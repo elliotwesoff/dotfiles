@@ -1,6 +1,8 @@
 #!/bin/sh
+#
+# .xinitrc
 
-if [[ $(xrandr -q | grep -w "DP-3 connected") ]]
+if [[ $(xrandr -q | grep -w "^DP-[1-9] connected") ]]
 then
   xrdb -merge ~/dotfiles/.Xresources-ext
   export XORG_DPI=96
@@ -9,9 +11,10 @@ else
   # only builtin display, no external monitor.
   export XORG_DPI=160
   xrdb -merge ~/dotfiles/.Xresources-int
-  $HOME/.screenlayout/x1.sh
+  $HOME/.screenlayout/x1-int.sh
 fi
 
+# disable energy star savings (screen timeout)
 xset -dpms &
 xset s off &
 
@@ -26,5 +29,5 @@ dunst &
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
 xsetroot -cursor_name left_ptr
 
-# exec berry
 exec bspwm
+
