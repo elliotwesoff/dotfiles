@@ -1,8 +1,0 @@
-! .Xresources file for internal x1 display.
-! requires higher dpi for default resolution
-!
-! this file should be auto-symlinked to
-! ~/.Xresources via .xinitrc
-
-Xft.dpi: 160
-

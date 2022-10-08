@@ -4,15 +4,18 @@
 
 if [[ $(xrandr -q | grep -w "^DP-[1-9] connected") ]]
 then
-  xrdb -merge ~/dotfiles/.Xresources-ext
   export XORG_DPI=96
   $HOME/.screenlayout/x1-ext.sh
 else
   # only builtin display, no external monitor.
-  export XORG_DPI=160
-  xrdb -merge ~/dotfiles/.Xresources-int
+  export XORG_DPI=120
   $HOME/.screenlayout/x1-int.sh
 fi
+
+# use .Xresources and set DPI via xrdb because
+# setting DPI via xrandr doesn't work.
+xrdb -merge ~/dotfiles/.Xresources
+echo Xft.dpi: $XORG_DPI | xrdb
 
 # disable energy star savings (screen timeout)
 xset -dpms &

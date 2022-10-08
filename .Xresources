@@ -5,5 +5,4 @@
 ! ~/.Xresources via .xinitrc
 
 Xcursor.size: 22
-Xft.dpi: 96
 
