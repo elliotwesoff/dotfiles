@@ -45,14 +45,6 @@ end)
 ------------------- END PLUGINS ----------------------
 
 
-
-
---- ddc config ---
-local ddc = require('ddc')
-ddc.ddc_config()
---- end ddc config
-
-
 vim.cmd("colorscheme onehalfdark")
 vim.cmd('let mapleader = ","')
 
@@ -265,6 +257,15 @@ lspconfig.ccls.setup {
 -- }
 ------------------- END LSP CONFIG -------------------
 
+
+--- DDC ---
+
+local ddc = require('ddc')
+ddc.ddc_config()
+
+--- END DDC ---
+
+
 ------------------- LUALINE CONFIG -------------------
 
 require('lualine').setup {
@@ -470,6 +471,4 @@ require('Comment').setup {
     ---Function to call after (un)comment
     post_hook = nil
 }
--- Comment.nvim
--- vim.keymap.set('n', '<leader>,', 'gcc', { noremap = false, silent = true })
--- vim.keymap.set('v', '<leader>,', 'gc', { silent = true })
+

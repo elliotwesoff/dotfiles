@@ -6,9 +6,10 @@ local function ddc_config()
             \   'matchers': ['matcher_head'],
             \   'sorters': ['sorter_rank'] },
             \ 'nvim-lsp': {
-            \   'mark': 'lsp',
+            \   'mark': 'LSP',
             \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
             \ 'around': {'mark': 'A'},
+            \ 'treesitter': {'mark': 'TREE'}
             \ })
   ]])
   vim.cmd([[
@@ -18,7 +19,11 @@ local function ddc_config()
             \ })
   ]])
   vim.cmd([[
-      call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['nvim-lsp', 'treesitter', 'around'])
+      call ddc#custom#patch_filetype(
+      \ ['c', 'cpp', 'markdown'],
+      \ 'sources',
+      \ ['nvim-lsp', 'treesitter', 'around']
+      \ )
   ]])
   vim.cmd([[
       call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', { })
