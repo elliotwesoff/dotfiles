@@ -30,6 +30,9 @@ sudo pacman -S bspwm \
   polybar \
   ntfs-3g \
   cmus \
+  vlc \
+  baobab \
+  ncdu \
   libnotify \
   xorg-server \
   xorg-xinit \
@@ -60,5 +63,5 @@ sudo pacman -S bspwm \
   bluez bluez-utils \
   cups cups-pdf \
   font-manager \
-  the_silver_searcher
+  the_silver_searcher 
 
