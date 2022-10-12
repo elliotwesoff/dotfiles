@@ -15,6 +15,7 @@ require('packer').startup(function(use)
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
   use 'Furkanzmc/zettelkasten.nvim'
+  use 'wfxr/minimap.vim'
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { "nvim-telescope/telescope-file-browser.nvim" }
 
@@ -44,7 +45,7 @@ end)
 ------------------- END PLUGINS ----------------------
 
 
-require('Comment').setup()
+
 
 --- ddc config ---
 local ddc = require('ddc')
@@ -108,6 +109,9 @@ vim.opt.ts = 2
 vim.opt.mouse = 'a'
 vim.opt.cmdheight = 0
 
+-- GLOBAL SETTINGS
+vim.g.minimap_auto_start = 1
+
 vim.cmd([[
   " custom commands
   command! RefreshConfig source $MYVIMRC
@@ -130,72 +134,67 @@ vim.cmd([[
 
 ------------------- KEY MAPPINGS ---------------------
 
-vim.api.nvim_set_keymap('n', '<C-n>', ':vnew<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-n>', ':new<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<C-t>', ':tabnew<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-t>', ':terminal<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-h>', '<C-w><left>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-j>', '<C-w><down>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-k>', '<C-w><up>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-l>', '<C-w><right>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<left>', '<C-w><left>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<down>', '<C-w><down>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<up>', '<C-w><up>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<right>', '<C-w><right>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-,>', ':tabprevious<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-.>', ':tabnext<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F1>', '<cmd>Telescope help_tags<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F2>', '<cmd>Telescope registers<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F3>', '<cmd>Telescope buffers<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F4>', '<cmd>Telescope live_grep<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F5>', ':edit<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F6>', '<cmd> Telescope file_browser<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F7>', '<cmd>Telescope current_buffer_fuzzy_find<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F8>', ':messages<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeFocus<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F10>', '<cmd>Telescope git_status<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F11>', '<cmd>Telescope treesitter<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
--- vim.api.nvim_set_keymap('n', '<A-F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-F1>', '<cmd>Telescope git_status<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-F2>', '<cmd>Telescope git_stash<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-F3>', '<cmd>Telescope git_branches<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<A-F4>', '<cmd>Telescope git_commits<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', 'Q', ':q<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', 'W', ':wa<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>1', ':colorscheme onehalflight<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>2', ':colorscheme seoul256-light<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>3', ':colorscheme seoul256<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>4', ':colorscheme adwaita<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>5', ':colorscheme onehalfdark<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>6', ':colorscheme dracula<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', '<leader>ev', ':tabnew $MYVIMRC<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader><F5>', ':RefreshConfig<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>h', ':noh<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', keymap_opts)
-vim.api.nvim_set_keymap('n', '<Tab>', ':NvimTreeFindFile<CR>', keymap_opts)
-vim.api.nvim_set_keymap('i', 'jj', '<Esc>', keymap_opts)
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>:w<CR>', keymap_opts)
-vim.api.nvim_set_keymap('i', '<A-BS>', '<cmd>:execute "normal! db"<CR>', keymap_opts)
-vim.api.nvim_set_keymap('i', '<A-,>', '<Esc>:tabprevious<CR>', keymap_opts)
-vim.api.nvim_set_keymap('i', '<A-.>', '<Esc>:tabnext<CR>', keymap_opts)
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
-
--- Comment.nvim
-vim.api.nvim_set_keymap('n', '<leader>,', 'gcc', { noremap = false, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>,', 'gc', { silent = true })
-
--- TODO: what's the difference between vim.keymap.set and vim.api.nvim_set_keymap?
+vim.keymap.set('n', '<C-n>', ':vnew<CR>', keymap_opts)
+vim.keymap.set('n', '<A-n>', ':new<CR>', keymap_opts)
+vim.keymap.set('n', '<C-t>', ':tabnew<CR>', keymap_opts)
+vim.keymap.set('n', '<A-t>', ':terminal<CR>', keymap_opts)
+vim.keymap.set('n', '<A-h>', '<C-w><left>', keymap_opts)
+vim.keymap.set('n', '<A-j>', '<C-w><down>', keymap_opts)
+vim.keymap.set('n', '<A-k>', '<C-w><up>', keymap_opts)
+vim.keymap.set('n', '<A-l>', '<C-w><right>', keymap_opts)
+vim.keymap.set('n', '<left>', '<C-w><left>', keymap_opts)
+vim.keymap.set('n', '<down>', '<C-w><down>', keymap_opts)
+vim.keymap.set('n', '<up>', '<C-w><up>', keymap_opts)
+vim.keymap.set('n', '<right>', '<C-w><right>', keymap_opts)
+vim.keymap.set('n', '<A-,>', ':tabprevious<CR>', keymap_opts)
+vim.keymap.set('n', '<A-.>', ':tabnext<CR>', keymap_opts)
+vim.keymap.set('n', '<F1>', '<cmd>Telescope help_tags<CR>', keymap_opts)
+vim.keymap.set('n', '<F2>', '<cmd>Telescope registers<CR>', keymap_opts)
+vim.keymap.set('n', '<F3>', '<cmd>Telescope buffers<CR>', keymap_opts)
+vim.keymap.set('n', '<F4>', '<cmd>Telescope live_grep<CR>', keymap_opts)
+vim.keymap.set('n', '<F5>', ':edit<CR>', keymap_opts)
+vim.keymap.set('n', '<F6>', '<cmd> Telescope file_browser<CR>', keymap_opts)
+vim.keymap.set('n', '<F7>', '<cmd>Telescope current_buffer_fuzzy_find<CR>', keymap_opts)
+vim.keymap.set('n', '<F8>', ':messages<CR>', keymap_opts)
+vim.keymap.set('n', '<F9>', ':NvimTreeFocus<CR>', keymap_opts)
+vim.keymap.set('n', '<F10>', '<cmd>Telescope git_status<CR>', keymap_opts)
+vim.keymap.set('n', '<F11>', '<cmd>Telescope treesitter<CR>', keymap_opts)
+vim.keymap.set('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
+-- vim.keymap.set('n', '<A-F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
+vim.keymap.set('n', '<A-F1>', '<cmd>Telescope git_status<CR>', keymap_opts)
+vim.keymap.set('n', '<A-F2>', '<cmd>Telescope git_stash<CR>', keymap_opts)
+vim.keymap.set('n', '<A-F3>', '<cmd>Telescope git_branches<CR>', keymap_opts)
+vim.keymap.set('n', '<A-F4>', '<cmd>Telescope git_commits<CR>', keymap_opts)
+vim.keymap.set('n', 'Q', ':q<CR>', keymap_opts)
+vim.keymap.set('n', 'W', ':wa<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>1', ':colorscheme onehalflight<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>2', ':colorscheme seoul256-light<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>3', ':colorscheme seoul256<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>4', ':colorscheme adwaita<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>5', ':colorscheme onehalfdark<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>6', ':colorscheme dracula<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>ev', ':tabnew $MYVIMRC<CR>', keymap_opts)
+vim.keymap.set('n', '<leader><F5>', ':RefreshConfig<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>h', ':noh<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>w', ':w<CR>', keymap_opts)
+vim.keymap.set('n', '<leader>q', ':q<CR>', keymap_opts)
+vim.keymap.set('n', '<Tab>', ':NvimTreeFindFile<CR>', keymap_opts)
+vim.keymap.set('i', 'jj', '<Esc>', keymap_opts)
+vim.keymap.set('i', 'jk', '<Esc>:w<CR>', keymap_opts)
+vim.keymap.set('i', '<A-BS>', '<cmd>:execute "normal! db"<CR>', keymap_opts)
+vim.keymap.set('i', '<A-,>', '<Esc>:tabprevious<CR>', keymap_opts)
+vim.keymap.set('i', '<A-.>', '<Esc>:tabnext<CR>', keymap_opts)
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
 vim.keymap.set('n', '<Leader>cb', clearBgColor, keymap_opts)
 vim.keymap.set('n', '<Leader>json=', bufFormatJson, keymap_opts)
 
 ------------------- END KEY MAPPINGS -----------------
+
 
 ------------------- LSP CONFIG -----------------------
 
@@ -245,7 +244,15 @@ lspconfig.tsserver.setup {
     flags = lsp_flags,
 }
 
-lspconfig.sumneko_lua.setup {}
+lspconfig.sumneko_lua.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {"vim"},
+      },
+    },
+  }
+}
 
 lspconfig.ccls.setup {
   on_attach = on_attach,
@@ -415,3 +422,54 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+--- END TREESITTER ---
+
+
+-- COMMENT.NVIM ---
+
+require('Comment').setup {
+    ---Add a space b/w comment and the line
+    padding = true,
+    ---Whether the cursor should stay at its position
+    sticky = true,
+    ---Lines to be ignored while (un)comment
+    ignore = nil,
+    ---LHS of toggle mappings in NORMAL mode
+    toggler = {
+        ---Line-comment toggle keymap
+        line = '<Leader>,',
+        ---Block-comment toggle keymap
+        block = 'gbc',
+    },
+    ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+    opleader = {
+        ---Line-comment keymap
+        line = '<Leader>,',
+        ---Block-comment keymap
+        block = 'gb',
+    },
+    ---LHS of extra mappings
+    extra = {
+        ---Add comment on the line above
+        above = 'gcO',
+        ---Add comment on the line below
+        below = 'gco',
+        ---Add comment at the end of line
+        eol = 'gcA',
+    },
+    ---Enable keybindings
+    ---NOTE: If given `false` then the plugin won't create any mappings
+    mappings = {
+        ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+        basic = true,
+        ---Extra mapping; `gco`, `gcO`, `gcA`
+        extra = true,
+    },
+    ---Function to call before (un)comment
+    pre_hook = nil,
+    ---Function to call after (un)comment
+    post_hook = nil
+}
+-- Comment.nvim
+-- vim.keymap.set('n', '<leader>,', 'gcc', { noremap = false, silent = true })
+-- vim.keymap.set('v', '<leader>,', 'gc', { silent = true })
