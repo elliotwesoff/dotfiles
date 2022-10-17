@@ -1,5 +1,6 @@
 local function ddc_config()
-  vim.cmd("call ddc#custom#patch_global('sources', ['nvim-lsp', 'treesitter'])")
+  vim.api.nvim_call_function('ddc#custom#patch_global', {'sources', {'nvim-lsp', 'treesitter', 'buffer'}})
+  -- vim.cmd("call ddc#custom#patch_global('sources', ['nvim-lsp', 'treesitter', 'buffer'])")
   vim.cmd([[
       call ddc#custom#patch_global('sourceOptions', {
             \ '_': {
@@ -9,13 +10,20 @@ local function ddc_config()
             \   'mark': 'LSP',
             \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
             \ 'around': {'mark': 'A'},
-            \ 'treesitter': {'mark': 'TREE'}
+            \ 'treesitter': {'mark': 'TREE'},
+            \ 'buffer': {'mark': 'B'}
             \ })
   ]])
   vim.cmd([[
       call ddc#custom#patch_global('sourceParams', {
             \ 'around': {'maxSize': 500},
 						\ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' }, 'maxSize': 50 },
+            \ 'buffer': {
+            \   'requireSameFiletype': v:false,
+            \   'limitBytes': 1000000,
+            \   'fromAltBuf': v:true,
+            \   'forceCollect': v:false,
+            \ },
             \ })
   ]])
   vim.cmd([[
@@ -25,9 +33,9 @@ local function ddc_config()
       \ ['nvim-lsp', 'treesitter', 'around']
       \ )
   ]])
-  vim.cmd([[
-      call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', { })
-  ]])
+  -- vim.cmd([[
+  --     call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', { })
+  -- ]])
   vim.cmd([[
       inoremap <silent><expr> <TAB>
       \ ddc#map#pum_visible() ? '<C-n>' :

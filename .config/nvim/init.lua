@@ -40,6 +40,7 @@ require('packer').startup(function(use)
   use 'Shougo/ddc-sorter_rank'
   use 'Shougo/ddc-nvim-lsp'
   use 'delphinus/ddc-treesitter'
+  use 'matsui54/ddc-buffer'
 end)
 
 ------------------- END PLUGINS ----------------------
@@ -89,7 +90,6 @@ vim.opt.backspace = 'indent,eol,start'
 vim.opt.pastetoggle = '<F3>'
 vim.opt.signcolumn = 'number'
 vim.opt.encoding = 'utf-8'
--- vim.opt.nofoldenable = true
 vim.opt.foldlevel = 99
 vim.opt_local.foldmethod = 'indent'
 vim.opt.ttimeout = true
@@ -97,9 +97,10 @@ vim.opt.ttimeoutlen = 10
 vim.opt.sw = 2
 vim.opt.sts = 2
 vim.opt.ts = 2
--- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
 vim.opt.mouse = 'a'
 vim.opt.cmdheight = 0
+-- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
+-- vim.opt.nofoldenable = true
 
 -- GLOBAL SETTINGS
 vim.g.minimap_auto_start = 1
@@ -126,6 +127,8 @@ vim.cmd([[
 
 ------------------- KEY MAPPINGS ---------------------
 
+vim.keymap.set('n', 'Q', ':q<CR>', keymap_opts)
+vim.keymap.set('n', 'W', ':wa<CR>', keymap_opts)
 vim.keymap.set('n', '<C-n>', ':vnew<CR>', keymap_opts)
 vim.keymap.set('n', '<A-n>', ':new<CR>', keymap_opts)
 vim.keymap.set('n', '<C-t>', ':tabnew<CR>', keymap_opts)
@@ -152,13 +155,10 @@ vim.keymap.set('n', '<F9>', ':NvimTreeFocus<CR>', keymap_opts)
 vim.keymap.set('n', '<F10>', '<cmd>Telescope git_status<CR>', keymap_opts)
 vim.keymap.set('n', '<F11>', '<cmd>Telescope treesitter<CR>', keymap_opts)
 vim.keymap.set('n', '<F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
--- vim.keymap.set('n', '<A-F12>', '<cmd>Telescope lsp_definitions<CR>', keymap_opts)
 vim.keymap.set('n', '<A-F1>', '<cmd>Telescope git_status<CR>', keymap_opts)
 vim.keymap.set('n', '<A-F2>', '<cmd>Telescope git_stash<CR>', keymap_opts)
 vim.keymap.set('n', '<A-F3>', '<cmd>Telescope git_branches<CR>', keymap_opts)
 vim.keymap.set('n', '<A-F4>', '<cmd>Telescope git_commits<CR>', keymap_opts)
-vim.keymap.set('n', 'Q', ':q<CR>', keymap_opts)
-vim.keymap.set('n', 'W', ':wa<CR>', keymap_opts)
 vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<CR>', keymap_opts)
 vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', keymap_opts)
 vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>', keymap_opts)
