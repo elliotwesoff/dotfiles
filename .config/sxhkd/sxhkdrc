@@ -5,9 +5,6 @@
 super + Return
   kitty
 
-# super + shift + Return
-#   kitty --config=$HOME/dotfiles/.config/kitty/onehalf-light.conf
-
 super + alt + Return
   kitty tmux
 
@@ -20,11 +17,6 @@ super + alt + f
 super + alt + v
   vivaldi-stable
 
-# conflicts with the default
-# binding to restart bspwm.
-# super + alt + r
-#   kitty ranger
-
 super + a
   rofi -show run
 
@@ -33,6 +25,10 @@ XF86LaunchA
 
 super + Escape
   sxhkd-reload
+
+# kill X server
+super + control + alt + Escape
+  pkill Xorg
 
 super + control + alt + d
   elliot-logout
@@ -46,9 +42,17 @@ shift + XF86ScreenSaver
 super + control + alt + s
   elliot-shutdown
 
-# kill X server
-super + control + alt + Escape
-  pkill Xorg
+# switch from external display to internal
+super + control + alt + i
+  ~/dotfiles/.screenlayout/x1-int.sh
+
+# switch from internal display to external
+super + control + alt + o
+  ~/dotfiles/.screenlayout/x1-ext.sh
+
+# use both displays
+super + control + alt + p
+  ~/dotfiles/.screenlayout/x1-dual.sh
 
 # volume controls
 XF86AudioRaiseVolume
