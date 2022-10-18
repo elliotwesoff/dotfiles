@@ -16,9 +16,24 @@ require('packer').startup(function(use)
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
   use 'Furkanzmc/zettelkasten.nvim'
-  use 'wfxr/minimap.vim'
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { "nvim-telescope/telescope-file-browser.nvim" }
+
+  use {
+    'gorbit99/codewindow.nvim',
+    config = function()
+      local codewindow = require('codewindow')
+      codewindow.setup({
+        minimap_width = 20,
+        width_multiplier = 4,
+        use_lsp = true,
+        use_treesitter = true,
+        exclude_filetypes = {},
+        z_index = 1
+      })
+      codewindow.apply_default_keybinds()
+    end
+  }
 
   use {
     'numToStr/Comment.nvim',
