@@ -23,8 +23,8 @@ import argparse
 VERSION = "pybright v0.0.1"
 FILE = "/sys/class/backlight/intel_backlight/brightness"
 MAXVALUE = 512
-MINVALUE = 24
-STEP = 32
+MINVALUE = 16
+STEP = 16
 
 parser = argparse.ArgumentParser(description="is it up or down")
 parser.add_argument("decision", type=str)
