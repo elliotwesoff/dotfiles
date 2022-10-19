@@ -315,6 +315,18 @@ local function apply_comment_config()
   }
 end
 
+local function apply_peek_config()
+  -- default config:
+  require('peek').setup({
+    auto_load = true,         -- whether to automatically load preview when
+    close_on_bdelete = true,  -- close preview window on buffer delete
+    syntax = true,            -- enable syntax highlighting, affects performance
+    theme = 'dark',           -- 'dark' or 'light'
+    update_on_change = true,
+    -- relevant if update_on_change is true
+    throttle_at = 200000     -- start throttling when file exceeds this
+  })
+end
 
 return {
   apply_ddc_config = apply_ddc_config,
@@ -323,5 +335,6 @@ return {
   apply_nvim_tree_config = apply_nvim_tree_config,
   apply_telescope_config = apply_telescope_config,
   apply_treesitter_config = apply_treesitter_config,
-  apply_comment_config = apply_comment_config
+  apply_comment_config = apply_comment_config,
+  apply_peek_config = apply_peek_config
 }

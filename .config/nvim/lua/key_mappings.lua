@@ -59,7 +59,17 @@ local function apply_keymaps()
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
   vim.keymap.set('n', '<Leader>cb', custom_fns.clear_bg_color, keymap_opts)
   vim.keymap.set('n', '<Leader>json=', custom_fns.buf_format_json, keymap_opts)
+  vim.keymap.set('n', '<Leader>p', ':PeekOpen<CR>', { noremap = true })
+  vim.keymap.set('n', '<Leader>P', ':PeekClose<CR>', { noremap = true })
 end
 
-return { apply_keymaps = apply_keymaps }
+local function create_user_commands()
+  vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
+  vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+end
+
+return {
+  apply_keymaps = apply_keymaps,
+  create_user_commands = create_user_commands
+}
 

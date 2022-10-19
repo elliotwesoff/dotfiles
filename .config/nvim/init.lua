@@ -41,12 +41,15 @@ require('packer').startup(function(use)
         require('Comment').setup()
     end
   }
+
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons'
     }
   }
+
+  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
 
   -- ddc insanity
   use 'Shougo/ddc.vim'
@@ -61,6 +64,7 @@ end)
 
 
 settings.apply_settings()
+keymaps.create_user_commands()
 keymaps.apply_keymaps()
 custom_fns.clear_bg_color()
 plugins.apply_ddc_config()
@@ -70,4 +74,5 @@ plugins.apply_nvim_tree_config()
 plugins.apply_telescope_config()
 plugins.apply_treesitter_config()
 plugins.apply_comment_config()
+plugins.apply_peek_config()
 
