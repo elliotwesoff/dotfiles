@@ -3,8 +3,7 @@ local keymaps = require('key_mappings')
 local plugins = require('plugin_config')
 local custom_fns = require('custom_functions')
 
-
-require('packer').startup(function(use)
+local function dependencies(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
   use 'rking/ag.vim'
@@ -17,40 +16,13 @@ require('packer').startup(function(use)
   use 'Furkanzmc/zettelkasten.nvim'
   use 'simrat39/symbols-outline.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
+  use { 'stevearc/aerial.nvim', config = plugins.apply_aerial_config }
+  use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
-
-  use {
-    'gorbit99/codewindow.nvim',
-    config = function()
-      local codewindow = require('codewindow')
-      codewindow.setup({
-        minimap_width = 20,
-        width_multiplier = 4,
-        use_lsp = true,
-        use_treesitter = true,
-        exclude_filetypes = {},
-        z_index = 1
-      })
-      codewindow.apply_default_keybinds()
-    end
-  }
-
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
-  }
-
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons'
-    }
-  }
-
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+  use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
+  use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
 
   -- ddc insanity
   use 'Shougo/ddc.vim'
@@ -61,8 +33,9 @@ require('packer').startup(function(use)
   use 'Shougo/ddc-nvim-lsp'
   use 'delphinus/ddc-treesitter'
   use 'matsui54/ddc-buffer'
-end)
+end
 
+require('packer').startup(dependencies)
 
 settings.apply_settings()
 keymaps.create_user_commands()
@@ -76,6 +49,5 @@ plugins.apply_telescope_config()
 plugins.apply_treesitter_config()
 plugins.apply_comment_config()
 plugins.apply_peek_config()
-
-require("symbols-outline").setup()
+plugins.apply_symbolsoutline_config()
 
