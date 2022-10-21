@@ -7,7 +7,6 @@ local custom_fns = require('custom_functions')
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
-  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use 'rking/ag.vim'
   use 'rafi/awesome-vim-colorschemes'
   use 'Mofiqul/adwaita.nvim'
@@ -16,8 +15,11 @@ require('packer').startup(function(use)
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
   use 'Furkanzmc/zettelkasten.nvim'
+  use 'simrat39/symbols-outline.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
 
   use {
     'gorbit99/codewindow.nvim',
@@ -49,7 +51,6 @@ require('packer').startup(function(use)
     }
   }
 
-  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
 
   -- ddc insanity
   use 'Shougo/ddc.vim'
@@ -75,4 +76,6 @@ plugins.apply_telescope_config()
 plugins.apply_treesitter_config()
 plugins.apply_comment_config()
 plugins.apply_peek_config()
+
+require("symbols-outline").setup()
 
