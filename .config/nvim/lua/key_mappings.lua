@@ -2,6 +2,7 @@ local custom_fns = require('custom_functions')
 local keymap_opts = { noremap = true, silent = true }
 
 local function apply_keymaps()
+  vim.keymap.set('n', ';', ':', keymap_opts)
   vim.keymap.set('n', 'Q', ':q<CR>', keymap_opts)
   vim.keymap.set('n', 'W', ':wa<CR>', keymap_opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', keymap_opts)
