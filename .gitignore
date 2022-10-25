@@ -25,4 +25,6 @@ __pycache__
 *.uuid
 
 .config/nvim/plugin/packer_compiled.lua
-
+.config/bspwm/bspwmrc
+.config/kitty/kitty.conf
+.config/polybar/config.ini
