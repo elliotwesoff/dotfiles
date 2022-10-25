@@ -5,11 +5,11 @@
 if [[ $(xrandr -q | grep -w "^DP-[1-9] connected") ]]
 then
   export XORG_DPI=96
-  $HOME/.screenlayout/x1-ext.sh
+  $HOME/dotfiles/.screenlayout/x1-ext.sh
 else
   # only builtin display, no external monitor.
   export XORG_DPI=120
-  $HOME/.screenlayout/x1-int.sh
+  $HOME/dotfiles/.screenlayout/x1-int.sh
 fi
 
 # use .Xresources and set DPI via xrdb because
@@ -17,14 +17,16 @@ fi
 xrdb -merge ~/dotfiles/.Xresources
 echo Xft.dpi: $XORG_DPI | xrdb
 
+export XORG_COLORSCHEME=$(cat ~/.colorscheme)
+
 # disable energy star savings (screen timeout)
 xset -dpms &
 xset s off &
 
-$HOME/.fehbg &
-$HOME/.config/polybar/launch.sh &
-sxhkd -c $HOME/.config/sxhkd/sxhkdrc &
-sxhkd -c $HOME/.config/sxhkd/bspwm-sxhkdrc &
+$HOME/dotfiles/.fehbg &
+$HOME/dotfiles/.config/polybar/launch.sh &
+sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
+sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 picom &
 dunst &
 

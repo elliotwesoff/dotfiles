@@ -1,0 +1,10 @@
+#!/bin/sh
+# 
+# light-theme
+
+ln -sfv ~/dotfiles/.config/kitty/kitty-light.conf ~/dotfiles/.config/kitty/kitty.conf
+ln -sfv ~/dotfiles/.config/polybar/config-light.ini ~/dotfiles/.config/polybar/config.ini
+ln -sfv ~/dotfiles/.config/bspwm/bspwmrc-light ~/dotfiles/.config/bspwm/bspwmrc
+
+echo light > ~/.colorscheme
+

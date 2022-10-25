@@ -1,0 +1,10 @@
+#!/bin/sh
+# 
+# dark-theme
+
+ln -sfv ~/dotfiles/.config/kitty/kitty-dark.conf ~/dotfiles/.config/kitty/kitty.conf
+ln -sfv ~/dotfiles/.config/polybar/config-dark.ini ~/dotfiles/.config/polybar/config.ini
+ln -sfv ~/dotfiles/.config/bspwm/bspwmrc-dark ~/dotfiles/.config/bspwm/bspwmrc
+
+echo dark > ~/.colorscheme
+
