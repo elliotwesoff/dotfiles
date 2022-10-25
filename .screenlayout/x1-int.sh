@@ -2,6 +2,7 @@
 # 
 # x1-int.sh
 
+export XORG_DPI=120
 xrandr \
   --output eDP-1 --mode 2880x1800 \
   --output HDMI-1 --off \
