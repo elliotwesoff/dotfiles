@@ -435,6 +435,16 @@ local function apply_indent_blankline_config()
   }
 end
 
+local function apply_noice_config()
+  require('noice').setup()
+end
+
+local function apply_notify_config()
+  require('notify').setup({
+    background_colour = '#000000'
+  })
+end
+
 return {
   apply_ddc_config = apply_ddc_config,
   apply_lsp_config = apply_lsp_config,
@@ -447,5 +457,7 @@ return {
   apply_aerial_config = apply_aerial_config,
   apply_codewindow_config = apply_codewindow_config,
   apply_symbolsoutline_config = apply_symbolsoutline_config,
-  apply_indent_blankline_config = apply_indent_blankline_config
+  apply_indent_blankline_config = apply_indent_blankline_config,
+  apply_noice_config = apply_noice_config,
+  apply_notify_config = apply_notify_config
 }

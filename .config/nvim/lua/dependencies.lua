@@ -21,6 +21,11 @@ local function use_dependencies(use)
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
+  use({
+    'folke/noice.nvim',
+    config = plugins.apply_noice_config,
+    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' }
+  })
 
   -- ddc insanity
   use 'Shougo/ddc.vim'
@@ -32,14 +37,6 @@ local function use_dependencies(use)
   use 'Shougo/ddc-ui-native'
   use 'delphinus/ddc-treesitter'
   use 'matsui54/ddc-buffer'
-
-  use({
-    'folke/noice.nvim',
-    config = function()
-      require('noice').setup()
-    end,
-    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify', }
-  })
 end
 
 return { use_dependencies = use_dependencies }

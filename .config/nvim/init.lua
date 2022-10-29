@@ -24,5 +24,7 @@ plugins.apply_comment_config()
 plugins.apply_peek_config()
 plugins.apply_symbolsoutline_config()
 plugins.apply_codewindow_config()
+plugins.apply_noice_config()
+plugins.apply_notify_config()
 -- plugins.apply_indent_blankline_config()
 
