@@ -32,6 +32,14 @@ local function use_dependencies(use)
   use 'Shougo/ddc-ui-native'
   use 'delphinus/ddc-treesitter'
   use 'matsui54/ddc-buffer'
+
+  use({
+    'folke/noice.nvim',
+    config = function()
+      require('noice').setup()
+    end,
+    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify', }
+  })
 end
 
 return { use_dependencies = use_dependencies }
