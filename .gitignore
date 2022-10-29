@@ -21,8 +21,12 @@ __pycache__
 .local/*
 !.local/bin
 
+.ccls-cache/*
+
 *.log
 *.uuid
 
 .config/nvim/plugin/packer_compiled.lua
-
+.config/bspwm/bspwmrc
+.config/kitty/kitty.conf
+.config/polybar/config.ini

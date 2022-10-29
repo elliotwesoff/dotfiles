@@ -10,4 +10,8 @@ done
 touch ~/.secrets
 chmod 600 ~/.secrets
 
+echo Applying dark theme as default
+$HOME/dotfiles/.local/bin/dark-theme
+
 echo home dir setup complete.
+

@@ -1,6 +1,8 @@
 local function apply_ddc_config()
+  vim.api.nvim_call_function('ddc#custom#patch_global', {'ui', 'native'})
   vim.api.nvim_call_function('ddc#custom#patch_global', {'sources', {'nvim-lsp', 'treesitter', 'buffer'}})
   -- vim.cmd("call ddc#custom#patch_global('sources', ['nvim-lsp', 'treesitter', 'buffer'])")
+
   vim.cmd([[
       call ddc#custom#patch_global('sourceOptions', {
             \ '_': {
@@ -33,17 +35,15 @@ local function apply_ddc_config()
       \ ['nvim-lsp', 'treesitter', 'around']
       \ )
   ]])
-  -- vim.cmd([[
-  --     call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', { })
-  -- ]])
   vim.cmd([[
-      inoremap <silent><expr> <TAB>
-      \ ddc#map#pum_visible() ? '<C-n>' :
-      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-      \ '<TAB>' : ddc#map#manual_complete()
-  ]])
-  vim.cmd([[
-      inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+    " <TAB>: completion.
+    inoremap <silent><expr> <TAB>
+    \ pumvisible() ? '<C-n>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ '<TAB>' : ddc#map#manual_complete()
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
   ]])
   vim.cmd("call ddc#enable()")
 end

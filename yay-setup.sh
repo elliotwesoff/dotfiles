@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # nerd-fonts-complete \
-yay -Sy \
+yay -S \
   nvm nvim-packer-git \
   1password \
   discord \
@@ -10,5 +10,6 @@ yay -Sy \
   noto-fonts-emoji \
   pulseaudio-control \
   rbenv ruby-build \
-  cava
+  cava \
+  bsp-layout
 

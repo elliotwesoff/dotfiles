@@ -1,5 +1,4 @@
 local function apply_settings()
-  vim.cmd("colorscheme onehalfdark")
   vim.cmd('let mapleader = ","')
 
   vim.opt.hidden = true
