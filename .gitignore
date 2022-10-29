@@ -21,6 +21,8 @@ __pycache__
 .local/*
 !.local/bin
 
+.ccls-cache/*
+
 *.log
 *.uuid
 
