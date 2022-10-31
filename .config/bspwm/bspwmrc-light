@@ -8,7 +8,9 @@ then
   bspc monitor eDP-1 -d VI VII VIII IX X
 elif [[ $(xrandr -q | grep -w "DP-3 connected") ]]
 then
+  # bspc monitor DP-3 -d Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ
   bspc monitor DP-3 -d I II III IV V
+  bspc monitor eDP-1 -d VI VII VIII IX X
 elif [[ $(xrandr -q | grep -w "HDMI-0 connected") ]]
 then
   bspc monitor HDMI-0 -d I II III IV V
