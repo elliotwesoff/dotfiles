@@ -1,38 +1,6 @@
 #! /bin/sh
 #
-# bspwmrc
+# bspwmrc-light
 
-if [[ $(xrandr -q | grep -w "HDMI1 connected") ]]
-then
-  bspc monitor HDMI1 -d I II III IV V
-  bspc monitor eDP-1 -d VI VII VIII IX X
-elif [[ $(xrandr -q | grep -w "DP-3 connected") ]]
-then
-  # bspc monitor DP-3 -d Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ
-  bspc monitor DP-3 -d I II III IV V
-  bspc monitor eDP-1 -d VI VII VIII IX X
-elif [[ $(xrandr -q | grep -w "HDMI-0 connected") ]]
-then
-  bspc monitor HDMI-0 -d I II III IV V
-  bspc monitor eDP-1 -d VI VII VIII IX X
-else
-  bspc monitor eDP-1 -d I II III IV V
-fi
-
-bspc config border_width         3
-bspc config window_gap           12
-bspc config split_ratio          0.5
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
 bspc config focused_border_color "#FF0090"
-
-bspc config automatic_scheme spiral
-
-# RULES
-#
-# a quick hint for finding window names:
-# https://www.reddit.com/r/bspwm/comments/fqpvx0/comment/flrof4s/?utm_source=share&utm_medium=web2x&context=3
-
-bspc rule -a Zathura state=tiled
-bspc rule -a Deno state=tiled
 
