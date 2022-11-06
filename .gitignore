@@ -31,5 +31,5 @@ __pycache__
 
 # ignore symlinks used for colorscheme switching
 .config/bspwm/bspwmrc-theme
-.config/kitty/kitty-theme.conf
+.config/kitty/theme.conf
 .config/polybar/theme.ini
