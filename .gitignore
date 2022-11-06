@@ -17,6 +17,7 @@ __pycache__
 !.config/sxhkd
 !.config/dunst
 !.config/bspwm
+!.config/alacritty
 
 .local/*
 !.local/bin
@@ -27,6 +28,8 @@ __pycache__
 *.uuid
 
 .config/nvim/plugin/packer_compiled.lua
-.config/bspwm/bspwmrc
-.config/kitty/kitty.conf
-.config/polybar/config.ini
+
+# ignore symlinks used for colorscheme switching
+.config/bspwm/bspwmrc-theme
+.config/kitty/theme.conf
+.config/polybar/theme.ini

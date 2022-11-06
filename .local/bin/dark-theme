@@ -2,9 +2,9 @@
 # 
 # dark-theme
 
-ln -sfv ~/dotfiles/.config/kitty/kitty-dark.conf ~/dotfiles/.config/kitty/kitty.conf
-ln -sfv ~/dotfiles/.config/polybar/config-dark.ini ~/dotfiles/.config/polybar/config.ini
-ln -sfv ~/dotfiles/.config/bspwm/bspwmrc-dark ~/dotfiles/.config/bspwm/bspwmrc
+ln -sfv ~/dotfiles/.config/kitty/onehalf-dark.conf ~/dotfiles/.config/kitty/theme.conf
+ln -sfv ~/dotfiles/.config/polybar/dark-theme.ini ~/dotfiles/.config/polybar/theme.ini
+ln -sfv ~/dotfiles/.config/bspwm/bspwmrc-dark ~/dotfiles/.config/bspwm/bspwmrc-theme
 
 echo dark > ~/.colorscheme
 

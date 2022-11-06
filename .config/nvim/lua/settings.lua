@@ -29,8 +29,6 @@ local function apply_settings()
   vim.opt.pastetoggle = '<F3>'
   vim.opt.signcolumn = 'number'
   vim.opt.encoding = 'utf-8'
-  vim.opt.foldlevel = 99
-  vim.opt_local.foldmethod = 'indent'
   vim.opt.ttimeout = true
   vim.opt.ttimeoutlen = 10
   vim.opt.sw = 2
@@ -38,29 +36,23 @@ local function apply_settings()
   vim.opt.ts = 2
   vim.opt.mouse = 'a'
   vim.opt.cmdheight = 0
+  vim.opt.termguicolors = true
   -- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
-  -- vim.opt.nofoldenable = true
 
   -- GLOBAL SETTINGS
   vim.g.minimap_auto_start = 1
+  vim.g.ale_disable_lsp = 1
+  vim.g.ale_linters = {
+    ['python'] = {'pylint'},
+    ['cpp'] = {'ccls'},
+    ['c'] = {'ccls'}
+  }
 
+  -- nvim difftool configuration
   vim.cmd([[
-    " custom commands
-    command! RefreshConfig source $MYVIMRC
-
-    " nvim difftool configuration
     if &diff
       highlight! link DiffText MatchParen
     endif
-
-    " ale settings
-    let g:ale_disable_lsp = 1
-    let g:ale_linters = {
-      \ 'python': ['pylint'],
-      \ 'vim': ['vint'],
-      \ 'cpp': ['ccls'],
-      \ 'c': ['ccls']
-  \}
   ]])
 end
 
