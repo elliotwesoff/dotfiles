@@ -74,7 +74,8 @@ super + {_,shift + }{1-9,0}
 
 # TODO
 super + alt + shift + {1-9,0}
-  bspc node -d '^{1-9,10}'; bspc desktop -f '^{1-9,10}'
+  bspc node -d '^{1-9,10}'; \
+  bspc desktop -f '^{1-9,10}'
 
 #
 # preselect

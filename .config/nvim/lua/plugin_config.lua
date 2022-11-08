@@ -1,4 +1,6 @@
-local function apply_ddc_config()
+local M = {}
+
+function M.apply_ddc_config()
   vim.api.nvim_call_function('ddc#custom#patch_global', {'ui', 'native'})
   vim.api.nvim_call_function('ddc#custom#patch_global', {'sources', {'nvim-lsp', 'treesitter', 'buffer'}})
   -- vim.cmd("call ddc#custom#patch_global('sources', ['nvim-lsp', 'treesitter', 'buffer'])")
@@ -48,7 +50,7 @@ local function apply_ddc_config()
   vim.cmd("call ddc#enable()")
 end
 
-local function apply_lsp_config()
+function M.apply_lsp_config()
   local keymap_opts = { noremap = true, silent = true }
 
 
@@ -60,7 +62,7 @@ local function apply_lsp_config()
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
-  local on_attach = function(client, bufnr)
+  local on_attach = function(_, bufnr) -- unused parameter is "client"
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -129,7 +131,7 @@ local function apply_lsp_config()
   }
 end
 
-local function apply_lualine_config()
+function M.apply_lualine_config()
   require('lualine').setup {
     options = {
       icons_enabled = false,
@@ -172,7 +174,7 @@ local function apply_lualine_config()
   }
 end
 
-local function apply_nvim_tree_config()
+function M.apply_nvim_tree_config()
   vim.g.loaded = 1
   vim.g.loaded_netrwPlugin = 1
 
@@ -204,7 +206,7 @@ local function apply_nvim_tree_config()
   })
 end
 
-local function apply_telescope_config()
+function M.apply_telescope_config()
   local telescope = require('telescope')
 
   telescope.setup {
@@ -241,7 +243,7 @@ local function apply_telescope_config()
   telescope.load_extension 'file_browser'
 end
 
-local function apply_treesitter_config()
+function M.apply_treesitter_config()
   require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
     ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql", "markdown" },
@@ -280,7 +282,7 @@ local function apply_treesitter_config()
   }
 end
 
-local function apply_comment_config()
+function M.apply_comment_config()
   require('Comment').setup {
       ---Add a space b/w comment and the line
       padding = true,
@@ -326,7 +328,7 @@ local function apply_comment_config()
   }
 end
 
-local function apply_peek_config()
+function M.apply_peek_config()
   -- default config:
   require('peek').setup({
     auto_load = true,         -- whether to automatically load preview when
@@ -339,7 +341,7 @@ local function apply_peek_config()
   })
 end
 
-local function apply_aerial_config()
+function M.apply_aerial_config()
   require("aerial").setup({
     on_attach = function(bufnr)
       -- Toggle the aerial window with <leader>a
@@ -354,7 +356,7 @@ local function apply_aerial_config()
   })
 end
 
-local function apply_codewindow_config()
+function M.apply_codewindow_config()
   local codewindow = require('codewindow')
   local opts = {
     active_in_terminals = false, -- Should the minimap activate for terminal buffers
@@ -374,7 +376,7 @@ local function apply_codewindow_config()
   codewindow.apply_default_keybinds()
 end
 
-local function apply_symbolsoutline_config()
+function M.apply_symbolsoutline_config()
   local opts = {
     highlight_hovered_item = true,
     show_guides = true,
@@ -440,24 +442,20 @@ local function apply_symbolsoutline_config()
   require("symbols-outline").setup(opts)
 end
 
-local function apply_indent_blankline_config()
-  require("indent_blankline").setup {
-    space_char_blankline = " "
-  }
-end
-
-local function apply_noice_config()
+function M.apply_noice_config()
   require('noice').setup()
 end
 
-local function apply_notify_config()
+function M.apply_notify_config()
   require('notify').setup({
     background_colour = '#000000'
   })
 end
 
-local function apply_nvim_cmp_config()
+function M.apply_nvim_cmp_config()
   local cmp = require('cmp')
+  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
   vim.cmd("set completeopt=menu,menuone,noselect")
   local cmp_kinds = {
     Text = '  ',
@@ -553,20 +551,54 @@ local function apply_nvim_cmp_config()
   })
 end
 
-return {
-  apply_ddc_config = apply_ddc_config,
-  apply_lsp_config = apply_lsp_config,
-  apply_lualine_config = apply_lualine_config,
-  apply_nvim_tree_config = apply_nvim_tree_config,
-  apply_telescope_config = apply_telescope_config,
-  apply_treesitter_config = apply_treesitter_config,
-  apply_comment_config = apply_comment_config,
-  apply_peek_config = apply_peek_config,
-  apply_aerial_config = apply_aerial_config,
-  apply_codewindow_config = apply_codewindow_config,
-  apply_symbolsoutline_config = apply_symbolsoutline_config,
-  apply_indent_blankline_config = apply_indent_blankline_config,
-  apply_noice_config = apply_noice_config,
-  apply_notify_config = apply_notify_config,
-  apply_nvim_cmp_config = apply_nvim_cmp_config
-}
+function M.apply_onedarkpro_config()
+  require("onedarkpro").setup({
+    dark_theme = "onedark", -- The default dark theme
+    light_theme = "onelight", -- The default light theme
+    caching = false, -- Use caching for the theme?
+    cache_path = vim.fn.expand(vim.fn.stdpath("cache") .. "/onedarkpro/"), -- The path to the cache directory
+    colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
+    highlights = {}, -- Override default highlight and/or filetype groups
+    filetypes = { -- Override which filetype highlight groups are loaded
+      javascript = true,
+      lua = true,
+      markdown = true,
+      php = true,
+      python = true,
+      ruby = true,
+      rust = true,
+      toml = true,
+      vue = true,
+      yaml = true,
+    },
+    plugins = { -- Override which plugin highlight groups are loaded
+      -- See the Supported Plugins section for a list of available plugins
+    },
+    styles = { -- Choose from "bold,italic,underline"
+      types = "NONE", -- Style that is applied to types
+      numbers = "NONE", -- Style that is applied to numbers
+      strings = "NONE", -- Style that is applied to strings
+      comments = "NONE", -- Style that is applied to comments
+      keywords = "NONE", -- Style that is applied to keywords
+      constants = "NONE", -- Style that is applied to constants
+      functions = "NONE", -- Style that is applied to functions
+      operators = "NONE", -- Style that is applied to operators
+      variables = "NONE", -- Style that is applied to variables
+      conditionals = "NONE", -- Style that is applied to conditionals
+      virtual_text = "NONE", -- Style that is applied to virtual text
+    },
+    options = {
+      bold = true, -- Use bold styles?
+      italic = true, -- Use italic styles?
+      underline = true, -- Use underline styles?
+      undercurl = true, -- Use undercurl styles?
+      cursorline = true, -- Use cursorline highlighting?
+      transparency = false, -- Use a transparent background?
+      terminal_colors = false, -- Use the theme's colors for Neovim's :terminal?
+      window_unfocused_color = false, -- When the window is out of focus, change the normal background?
+    }
+  })
+end
+
+return M
+

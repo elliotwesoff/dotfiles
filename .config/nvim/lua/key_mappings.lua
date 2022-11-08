@@ -1,8 +1,9 @@
 local custom_fns = require('custom_functions')
 local keymap_opts = { noremap = true, silent = true }
 
-local function apply_keymaps()
-  vim.keymap.set('n', ';', ':', keymap_opts)
+local M = {}
+
+function M.apply_keymaps()
   vim.keymap.set('n', 'Q', ':q<CR>', keymap_opts)
   vim.keymap.set('n', 'W', ':wa<CR>', keymap_opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', keymap_opts)
@@ -41,13 +42,11 @@ local function apply_keymaps()
   vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', keymap_opts)
   vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>', keymap_opts)
   vim.keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', keymap_opts)
-  vim.keymap.set('n', '<leader>1', ':colorscheme onehalflight<CR>', { noremap = true, silent = false })
-  vim.keymap.set('n', '<leader>2', ':colorscheme seoul256-light<CR>', { noremap = true, silent = false })
-  vim.keymap.set('n', '<leader>3', ':colorscheme seoul256<CR>', { noremap = true, silent = false })
-  vim.keymap.set('n', '<leader>4', ':colorscheme adwaita<CR>', { noremap = true, silent = false })
-  vim.keymap.set('n', '<leader>5', ':colorscheme onehalfdark<CR>', { noremap = true, silent = false })
-  vim.keymap.set('n', '<leader>6', ':colorscheme dracula<CR>', { noremap = true, silent = false })
-  vim.keymap.set('n', '<leader>0', ':colorscheme desert<CR>', { noremap = true, silent = false })
+  vim.keymap.set('n', '<leader>1', ':colorscheme onedarkpro<CR>', keymap_opts)
+  vim.keymap.set('n', '<leader>2', ':colorscheme oh-lucy<CR>', keymap_opts)
+  vim.keymap.set('n', '<leader>3', ':colorscheme oh-lucy-evening<CR>', keymap_opts)
+  vim.keymap.set('n', '<leader>4', ':colorscheme adwaita<CR>', keymap_opts)
+  vim.keymap.set('n', '<leader>5', ':colorscheme seoul256<CR>', keymap_opts)
   vim.keymap.set('n', '<leader>ev', ':tabnew $MYVIMRC<CR>', keymap_opts)
   vim.keymap.set('n', '<leader><F5>', custom_fns.refresh_config, keymap_opts)
   vim.keymap.set('n', '<leader>r', ':edit<CR>', keymap_opts)
@@ -62,6 +61,7 @@ local function apply_keymaps()
   vim.keymap.set('i', '<A-,>', '<Esc>:tabprevious<CR>', keymap_opts)
   vim.keymap.set('i', '<A-.>', '<Esc>:tabnext<CR>', keymap_opts)
   vim.keymap.set('n', '<Leader>cb', custom_fns.clear_bg_color, keymap_opts)
+  vim.keymap.set('n', '<Leader>tt', custom_fns.toggle_theme, keymap_opts)
   vim.keymap.set('n', '<Leader>json=', custom_fns.buf_format_json, keymap_opts)
   vim.keymap.set('n', '<Leader>p', ':PeekOpen<CR>', { noremap = true })
   vim.keymap.set('n', '<Leader>P', ':PeekClose<CR>', { noremap = true })
@@ -70,13 +70,10 @@ local function apply_keymaps()
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', keymap_opts)
 end
 
-local function create_user_commands()
+function M.create_user_commands()
   vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
   vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
 end
 
-return {
-  apply_keymaps = apply_keymaps,
-  create_user_commands = create_user_commands
-}
+return M
 

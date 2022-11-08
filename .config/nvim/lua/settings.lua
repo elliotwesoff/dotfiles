@@ -1,5 +1,7 @@
-local function apply_settings()
-  vim.cmd('let mapleader = ","')
+local M = {}
+
+function M.apply_settings()
+  vim.cmd([[let mapleader = ","]])
 
   vim.opt.hidden = true
   vim.opt.wildmenu = true
@@ -35,9 +37,9 @@ local function apply_settings()
   vim.opt.sts = 2
   vim.opt.ts = 2
   vim.opt.mouse = 'a'
-  vim.opt.cmdheight = 0
+  vim.opt.cmdheight = 1
   vim.opt.termguicolors = true
-  -- vim.opt.wildignore += "*\\tmp\\*,*.swp,*.zip,*.exe,*\\node_modules\\*"
+  vim.opt.background = os.getenv("XORG_COLORSCHEME") -- for onedarkpro theme switching
 
   -- GLOBAL SETTINGS
   vim.g.minimap_auto_start = 1
@@ -48,6 +50,13 @@ local function apply_settings()
     ['c'] = {'ccls'}
   }
 
+  vim.g.oh_lucy_italic_functions = true
+  vim.g.oh_lucy_italic_comments = false
+  vim.g.oh_lucy_evening_italic_functions = true
+  vim.g.oh_lucy_evening_italic_comments = false
+
+  vim.cmd([[colorscheme onedarkpro]])
+
   -- nvim difftool configuration
   vim.cmd([[
     if &diff
@@ -56,4 +65,5 @@ local function apply_settings()
   ]])
 end
 
-return { apply_settings = apply_settings }
+return M
+
