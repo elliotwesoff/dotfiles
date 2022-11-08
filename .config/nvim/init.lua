@@ -6,7 +6,6 @@ local plugins = require('plugin_config')
 require('packer').startup(dependencies.use_dependencies)
 
 settings.apply_settings()
-keymaps.create_user_commands()
 keymaps.apply_keymaps()
 
 plugins.apply_lsp_config()
