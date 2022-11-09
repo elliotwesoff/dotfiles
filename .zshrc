@@ -105,6 +105,7 @@ alias zath="zathura"
 alias nvimd="nvim -d"
 alias dft="git difftool"
 alias vpn="expressvpn"
+alias x="startx"
 
 if [[ $(which nvim) =~ nvim ]]
 then
@@ -114,7 +115,6 @@ else
 fi
 
 export PATH=$HOME/.local/bin:$PATH
-export MYVIMRC=$HOME/dotfiles/.config/nvim/init.lua
 
 source ~/.secrets
 

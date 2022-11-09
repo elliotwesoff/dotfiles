@@ -5,7 +5,6 @@ local M = {}
 function M.use_dependencies(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'rking/ag.vim'
   use 'dense-analysis/ale'
   use 'nvim-treesitter/nvim-treesitter'
   use 'Furkanzmc/zettelkasten.nvim'

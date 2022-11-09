@@ -99,10 +99,10 @@ super + F11
 
 # lemonobar shenanigans
 super + d
-  xdo hide -a lemonbar
+  xdo hide -a polybar
 
 super + alt + d
-  xdo show -a lemonbar
+  xdo show -a polybar
 
 # printscreen button
 Print
