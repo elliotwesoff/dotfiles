@@ -7,7 +7,6 @@ yay -S \
   discord \
   expressvpn \
   notion \
-  noto-fonts-emoji \
   pulseaudio-control \
   rbenv ruby-build \
   cava \

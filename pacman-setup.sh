@@ -63,5 +63,6 @@ sudo pacman -S bspwm \
   bluez bluez-utils \
   cups cups-pdf \
   font-manager \
-  the_silver_searcher 
+  the_silver_searcher \
+  noto-fonts noto-fonts-emoji
 
