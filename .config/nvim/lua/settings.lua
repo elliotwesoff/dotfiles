@@ -2,6 +2,8 @@ local M = {}
 
 function M.apply_settings()
   vim.cmd([[let mapleader = ","]])
+  -- vim.cmd([[let localmapleader = "<Space>"]])
+  vim.cmd([[colorscheme onedarkpro]])
 
   vim.opt.hidden = true
   vim.opt.wildmenu = true
@@ -51,11 +53,11 @@ function M.apply_settings()
   }
 
   vim.g.oh_lucy_italic_functions = true
-  vim.g.oh_lucy_italic_comments = false
+  vim.g.oh_lucy_italic_comments = true
   vim.g.oh_lucy_evening_italic_functions = true
-  vim.g.oh_lucy_evening_italic_comments = false
+  vim.g.oh_lucy_evening_italic_comments = true
 
-  vim.cmd([[colorscheme onedarkpro]])
+  vim.g.vimtex_view_method = 'zathura'
 
   -- nvim difftool configuration
   vim.cmd([[

@@ -64,5 +64,6 @@ sudo pacman -S bspwm \
   cups cups-pdf \
   font-manager \
   the_silver_searcher \
-  noto-fonts noto-fonts-emoji
+  noto-fonts noto-fonts-emoji \
+  texlive-core texlab
 

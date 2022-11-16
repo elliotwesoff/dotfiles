@@ -10,6 +10,7 @@ function M.use_dependencies(use)
   use 'Furkanzmc/zettelkasten.nvim'
   use 'simrat39/symbols-outline.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use 'lervag/vimtex'
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
   use { 'stevearc/aerial.nvim', config = plugins.apply_aerial_config }
   use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }

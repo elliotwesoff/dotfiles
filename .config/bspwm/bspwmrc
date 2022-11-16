@@ -23,9 +23,6 @@ bspc config gapless_monocle      true
 bspc config automatic_scheme longest_side
 # bspc config automatic_scheme spiral
 
-bspc config remove_disabled_monitors true
-bspc config remove_unplugged_monitors true
-
 # RULES
 #
 # a quick hint for finding window names:

@@ -120,14 +120,10 @@ function M.apply_lsp_config()
     capabilities = capabilities
   }
 
-  -- lspconfig.clangd.setup {
-  --   on_attach = on_attach,
-  --   flags = lsp_flags
-  -- }
-
-  -- Set up lspconfig.
-  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  lspconfig.texlab.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
   }
 end
 
@@ -179,6 +175,7 @@ function M.apply_nvim_tree_config()
   vim.g.loaded_netrwPlugin = 1
 
   require("nvim-tree").setup({
+    open_on_setup = true,
     view = {
       adaptive_size = false,
       mappings = {
@@ -246,7 +243,7 @@ end
 function M.apply_treesitter_config()
   require'nvim-treesitter.configs'.setup {
     -- A list of parser names, or "all"
-    ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql", "markdown" },
+    ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql", "markdown", "latex" },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
