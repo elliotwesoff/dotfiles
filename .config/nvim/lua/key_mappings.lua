@@ -26,7 +26,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F2>', '<cmd>Telescope registers<CR>', opts)
   vim.keymap.set('n', '<F3>', '<cmd>Telescope buffers<CR>', opts)
   vim.keymap.set('n', '<F4>', '<cmd>Telescope live_grep<CR>', opts)
-  vim.keymap.set('n', '<F5>', '<cmd>Telescope treesitter<CR>', opts)
+  vim.keymap.set('n', '<F5>', '<cmd>Telescope colorscheme<CR>', opts)
   vim.keymap.set('n', '<S-F5>', ':edit<CR>', opts)
   vim.keymap.set('n', '<F6>', '<cmd>Telescope file_browser<CR>', opts)
   vim.keymap.set('n', '<F7>', '<cmd>Telescope current_buffer_fuzzy_find<CR>', opts)
@@ -74,6 +74,7 @@ function M.apply_keymaps()
 end
 
 function M.create_user_commands()
+  -- found a better way to do this, but keeping them around for later reference.
   -- vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
   -- vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
 end

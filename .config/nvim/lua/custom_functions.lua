@@ -14,7 +14,7 @@ function M.pum_visible()
 end
 
 function M.refresh_config()
-  local config_path = '~/dotfiles/.config/nvim/init.vim'
+  local config_path = '~/dotfiles/.config/nvim/init.lua'
   vim.cmd('source ' .. config_path)
   vim.notify('Reloaded ' .. config_path, 'info', {title = 'Configuration reloaded'})
 end

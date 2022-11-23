@@ -6,11 +6,10 @@ function M.use_dependencies(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
   use 'dense-analysis/ale'
+  use 'lervag/vimtex'
   use 'nvim-treesitter/nvim-treesitter'
-  use 'Furkanzmc/zettelkasten.nvim'
   use 'simrat39/symbols-outline.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'lervag/vimtex'
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
   use { 'stevearc/aerial.nvim', config = plugins.apply_aerial_config }
   use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
@@ -26,14 +25,9 @@ function M.use_dependencies(use)
   })
 
   -- colorschemes
-
-  -- dark themes
-  use 'Mofiqul/adwaita.nvim'
   use 'Yazeed1s/oh-lucy.nvim'
   use 'olimorris/onedarkpro.nvim'
   use 'shaunsingh/seoul256.nvim'
-
-  --light themes
   use 'projekt0n/github-nvim-theme'
   use 'sainnhe/edge'
   use 'yorik1984/newpaper.nvim'
@@ -41,7 +35,7 @@ function M.use_dependencies(use)
   use { 'catppuccin/nvim', as = 'catppuccin' }
   use { 'rose-pine/neovim', as = 'rose-pine' }
 
-  -- nvim-cmp
+  -- nvim-cmp (autocomplete)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'

@@ -1,55 +1,5 @@
 local M = {}
 
-function M.apply_ddc_config()
-  vim.api.nvim_call_function('ddc#custom#patch_global', {'ui', 'native'})
-  vim.api.nvim_call_function('ddc#custom#patch_global', {'sources', {'nvim-lsp', 'treesitter', 'buffer'}})
-  -- vim.cmd("call ddc#custom#patch_global('sources', ['nvim-lsp', 'treesitter', 'buffer'])")
-
-  vim.cmd([[
-      call ddc#custom#patch_global('sourceOptions', {
-            \ '_': {
-            \   'matchers': ['matcher_head'],
-            \   'sorters': ['sorter_rank'] },
-            \ 'nvim-lsp': {
-            \   'mark': 'LSP',
-            \   'forceCompletionPattern': '\.\w*|:\w*|->\w*' },
-            \ 'around': {'mark': 'A'},
-            \ 'treesitter': {'mark': 'TREE'},
-            \ 'buffer': {'mark': 'B'}
-            \ })
-  ]])
-  vim.cmd([[
-      call ddc#custom#patch_global('sourceParams', {
-            \ 'around': {'maxSize': 500},
-						\ 'nvim-lsp': { 'kindLabels': { 'Class': 'c' }, 'maxSize': 50 },
-            \ 'buffer': {
-            \   'requireSameFiletype': v:false,
-            \   'limitBytes': 1000000,
-            \   'fromAltBuf': v:true,
-            \   'forceCollect': v:false,
-            \ },
-            \ })
-  ]])
-  vim.cmd([[
-      call ddc#custom#patch_filetype(
-      \ ['c', 'cpp', 'markdown'],
-      \ 'sources',
-      \ ['nvim-lsp', 'treesitter', 'around']
-      \ )
-  ]])
-  vim.cmd([[
-    " <TAB>: completion.
-    inoremap <silent><expr> <TAB>
-    \ pumvisible() ? '<C-n>' :
-    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-    \ '<TAB>' : ddc#map#manual_complete()
-
-    " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
-  ]])
-  vim.cmd("call ddc#enable()")
-end
-
 function M.apply_lsp_config()
   local keymap_opts = { noremap = true, silent = true }
 

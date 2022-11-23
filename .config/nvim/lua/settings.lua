@@ -45,11 +45,13 @@ function M.apply_settings()
 
   -- GLOBAL SETTINGS
 
-  if vim.opt.background == 'dark' then
-    vim.cmd([[colorscheme oh-lucy-evening]])
-  else
-    vim.cmd([[colorscheme rose-pine]])
-  end
+  -- if vim.opt.background == 'dark' then
+  --   vim.cmd([[colorscheme oh-lucy-evening]])
+  -- else
+  --   vim.cmd([[colorscheme rose-pine]])
+  -- end
+
+  vim.cmd([[colorscheme rose-pine]])
 
   vim.g.ale_disable_lsp = 1
   vim.g.ale_linters = {
