@@ -7,9 +7,8 @@
 # you should see an lts option when booting
 # in addition to the standard linux boot option.
 
-# plasma-meta kde-applications-meta kwin plasma-wayland-session \
-
-sudo pacman -S bspwm \
+sudo pacman -S \
+  bspwm \
   linux-lts linux-lts-headers \
   neovim \
   git \
