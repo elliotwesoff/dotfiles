@@ -26,21 +26,20 @@ function M.use_dependencies(use)
   })
 
   -- colorschemes
+
+  -- dark themes
   use 'Mofiqul/adwaita.nvim'
   use 'Yazeed1s/oh-lucy.nvim'
   use 'olimorris/onedarkpro.nvim'
   use 'shaunsingh/seoul256.nvim'
 
-  -- ddc insanity
-  -- use 'Shougo/ddc.vim'
-  -- use 'vim-denops/denops.vim'
-  -- use 'Shougo/ddc-around'
-  -- use 'Shougo/ddc-matcher_head'
-  -- use 'Shougo/ddc-sorter_rank'
-  -- use 'Shougo/ddc-nvim-lsp'
-  -- use 'Shougo/ddc-ui-native'
-  -- use 'delphinus/ddc-treesitter'
-  -- use 'matsui54/ddc-buffer'
+  --light themes
+  use 'projekt0n/github-nvim-theme'
+  use 'sainnhe/edge'
+  use 'yorik1984/newpaper.nvim'
+  use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
+  use { 'catppuccin/nvim', as = 'catppuccin' }
+  use { 'rose-pine/neovim', as = 'rose-pine' }
 
   -- nvim-cmp
   use 'hrsh7th/cmp-nvim-lsp'

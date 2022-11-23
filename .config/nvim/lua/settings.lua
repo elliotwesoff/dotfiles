@@ -3,7 +3,6 @@ local M = {}
 function M.apply_settings()
   vim.cmd([[let mapleader = ","]])
   -- vim.cmd([[let localmapleader = "<Space>"]])
-  vim.cmd([[colorscheme onedarkpro]])
 
   vim.opt.hidden = true
   vim.opt.wildmenu = true
@@ -41,10 +40,17 @@ function M.apply_settings()
   vim.opt.mouse = 'a'
   vim.opt.cmdheight = 1
   vim.opt.termguicolors = true
-  vim.opt.background = os.getenv("XORG_COLORSCHEME") -- for onedarkpro theme switching
+  vim.opt.background = os.getenv("XORG_COLORSCHEME")
+  vim.opt_local.foldmethod = 'indent'
 
   -- GLOBAL SETTINGS
-  vim.g.minimap_auto_start = 1
+
+  if vim.opt.background == 'dark' then
+    vim.cmd([[colorscheme oh-lucy-evening]])
+  else
+    vim.cmd([[colorscheme rose-pine]])
+  end
+
   vim.g.ale_disable_lsp = 1
   vim.g.ale_linters = {
     ['python'] = {'pylint'},
