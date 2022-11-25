@@ -68,6 +68,10 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<Leader>json=', custom_fns.buf_format_json, opts)
   vim.keymap.set('n', '<Leader>p', peek.open, opts)
   vim.keymap.set('n', '<Leader>P', peek.close, opts)
+  vim.keymap.set('n', 'gD', '<CMD>Glance definitions<CR>')
+  vim.keymap.set('n', 'gR', '<CMD>Glance references<CR>')
+  vim.keymap.set('n', 'gY', '<CMD>Glance type_definitions<CR>')
+  vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
 
   -- terminal mode, switch to normal mode.
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)

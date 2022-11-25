@@ -42,6 +42,7 @@ function M.apply_settings()
   vim.opt.termguicolors = true
   vim.opt.background = os.getenv("XORG_COLORSCHEME")
   vim.opt_local.foldmethod = 'indent'
+  -- vim.opt_local.foldnextmax = 4
 
   -- GLOBAL SETTINGS
 

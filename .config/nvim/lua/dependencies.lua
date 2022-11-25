@@ -10,6 +10,7 @@ function M.use_dependencies(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'simrat39/symbols-outline.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use { 'xorid/swap-split.nvim', config = plugins.apply_swap_split_config }
   use { 'windwp/nvim-autopairs', config = function() require('nvim-autopairs').setup() end }
   use { 'stevearc/aerial.nvim', config = plugins.apply_aerial_config }
   use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
@@ -18,6 +19,7 @@ function M.use_dependencies(use)
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
+  use {'dnlhc/glance.nvim', config = plugins.apply_glance_config }
   use({
     'folke/noice.nvim',
     config = plugins.apply_noice_config,
