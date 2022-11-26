@@ -22,6 +22,7 @@ function M.apply_lsp_config()
     -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts) -- replaced by glance.nvim
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
@@ -131,7 +132,7 @@ function M.apply_nvim_tree_config()
   vim.g.loaded = 1
   vim.g.loaded_netrwPlugin = 1
 
-  require("nvim-tree").setup({
+  require("nvim-tree").setup {
     open_on_setup = true,
     view = {
       adaptive_size = false,
@@ -142,7 +143,8 @@ function M.apply_nvim_tree_config()
           { key = "s", action = "vsplit" },
           { key = "-", action = "split" },
           { key = "i", action = "split" },
-          { key = "t", action = "tabnew" }
+          { key = "t", action = "tabnew" },
+          { key = "<C-i>", action = ""}
         }
       }
     },
@@ -156,8 +158,9 @@ function M.apply_nvim_tree_config()
     },
     filters = {
       dotfiles = true
-    }
-  })
+    },
+    remove_keymaps = { '<Tab>' }
+  }
 end
 
 function M.apply_telescope_config()
