@@ -1,8 +1,28 @@
 local M = {}
 
+local function apply_global_settings()
+  vim.cmd([[colorscheme rose-pine]])
+
+  -- vim.g.mapleader = ","
+  vim.g.mapleader = " "
+
+  vim.g.ale_disable_lsp = 1
+  vim.g.ale_linters = {
+    ['python'] = {'pylint'},
+    ['cpp'] = {'ccls'},
+    ['c'] = {'ccls'}
+  }
+
+  vim.g.oh_lucy_italic_functions = true
+  vim.g.oh_lucy_italic_comments = true
+  vim.g.oh_lucy_evening_italic_functions = true
+  vim.g.oh_lucy_evening_italic_comments = true
+
+  vim.g.vimtex_view_method = 'zathura'
+end
+
 function M.apply_settings()
-  vim.cmd([[let mapleader = ","]])
-  -- vim.cmd([[let localmapleader = "<Space>"]])
+  apply_global_settings()
 
   vim.opt.hidden = true
   vim.opt.wildmenu = true
@@ -42,31 +62,7 @@ function M.apply_settings()
   vim.opt.termguicolors = true
   vim.opt.background = os.getenv("XORG_COLORSCHEME")
   vim.opt_local.foldmethod = 'indent'
-  -- vim.opt_local.foldnextmax = 4
-
-  -- GLOBAL SETTINGS
-
-  -- if vim.opt.background == 'dark' then
-  --   vim.cmd([[colorscheme oh-lucy-evening]])
-  -- else
-  --   vim.cmd([[colorscheme rose-pine]])
-  -- end
-
-  vim.cmd([[colorscheme rose-pine]])
-
-  vim.g.ale_disable_lsp = 1
-  vim.g.ale_linters = {
-    ['python'] = {'pylint'},
-    ['cpp'] = {'ccls'},
-    ['c'] = {'ccls'}
-  }
-
-  vim.g.oh_lucy_italic_functions = true
-  vim.g.oh_lucy_italic_comments = true
-  vim.g.oh_lucy_evening_italic_functions = true
-  vim.g.oh_lucy_evening_italic_comments = true
-
-  vim.g.vimtex_view_method = 'zathura'
+  vim.opt_local.foldnestmax = 4
 
   -- nvim difftool configuration
   vim.cmd([[
