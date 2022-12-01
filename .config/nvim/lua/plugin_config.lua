@@ -250,8 +250,7 @@ function M.apply_comment_config()
       ---LHS of toggle mappings in NORMAL mode
       toggler = {
           ---Line-comment toggle keymap
-          -- line = '<Leader>,',
-          line = '<Leader> ',
+          line = '<Leader>,',
           ---Block-comment toggle keymap
           block = 'gbc',
       },

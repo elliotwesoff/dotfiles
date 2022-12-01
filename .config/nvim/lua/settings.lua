@@ -3,8 +3,8 @@ local M = {}
 local function apply_global_settings()
   vim.cmd([[colorscheme rose-pine]])
 
-  -- vim.g.mapleader = ","
-  vim.g.mapleader = " "
+  vim.g.mapleader = ","
+  -- vim.g.mapleader = " "
 
   vim.g.ale_disable_lsp = 1
   vim.g.ale_linters = {
