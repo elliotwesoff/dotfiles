@@ -2,19 +2,19 @@
 #
 # bspwmrc
 
-if [[ $(xrandr -q | grep -w "DP-3 connected") ]]
+EXT_MON=$(xrandr -q | grep '^DP-[1-9] connected')
+
+if [[ $EXT_MON ]]
 then
-  bspc monitor DP-3 -d I II III IV V
-  bspc monitor eDP-1 -d VI VII VIII IX X
-elif [[ $(xrandr -q | grep -w "HDMI-1 connected") ]]
-then
-  bspc monitor HDMI-0 -d I II III IV V
+  MON=$(echo $EXT_MON | cut -d ' ' -f 1)
+  echo $MON
+  bspc monitor $MON -d I II III IV V
   bspc monitor eDP-1 -d VI VII VIII IX X
 else
   bspc monitor eDP-1 -d I II III IV V
 fi
 
-bspc config border_width         1
+bspc config border_width         2
 bspc config window_gap           4
 bspc config split_ratio          0.6
 bspc config borderless_monocle   true

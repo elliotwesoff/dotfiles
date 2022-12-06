@@ -301,14 +301,11 @@ end
 function M.apply_aerial_config()
   require("aerial").setup({
     on_attach = function(bufnr)
-      -- Toggle the aerial window with <leader>a
+      -- Toggle the aerial window with <leader>
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
-      -- Jump forwards/backwards with '{' and '}'
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
-      -- Jump up the tree with '[[' or ']]'
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
+      -- Jump forwards/backwards with '[[' and ']]'
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrev<CR>', {})
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNext<CR>', {})
     end
   })
 end
@@ -400,7 +397,15 @@ function M.apply_symbolsoutline_config()
 end
 
 function M.apply_noice_config()
-  require('noice').setup()
+  require('noice').setup({
+    cmdline = {
+      view = 'cmdline' -- classic cmdline, no popup
+    },
+    messages = {
+      view_warn = 'cmdline',
+      view_error = 'cmdline'
+    }
+  })
 end
 
 function M.apply_notify_config()
@@ -452,7 +457,7 @@ function M.apply_nvim_cmp_config()
       end,
     },
     window = {
-      completion = cmp.config.window.bordered(),
+      -- completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({

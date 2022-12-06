@@ -97,7 +97,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshc="nvim ~/.zshrc"
+alias zshc="nvim ~/dotfiles/.zshrc"
+alias kittyc="nvim ~/dotfiles/.config/kitty/kitty.conf"
 alias l="ls -lah"
 alias ll="ls -laht"
 alias vim="nvim"

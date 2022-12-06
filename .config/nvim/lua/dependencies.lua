@@ -25,6 +25,7 @@ function M.use_dependencies(use)
     config = plugins.apply_noice_config,
     requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' }
   })
+  -- use 'hood/popui.nvim'
 
   -- colorschemes
   use 'Yazeed1s/oh-lucy.nvim'

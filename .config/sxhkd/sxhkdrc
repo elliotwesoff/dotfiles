@@ -78,10 +78,10 @@ super + F4
   kitty nvim ~/dotfiles/.config/sxhkd/sxhkdrc 
 
 # brightness
-super + F8
+super + F7
   pybright down
 
-super + F9
+super + F8
   pybright up
 
 XF86MonBrightnessDown
