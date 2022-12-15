@@ -71,6 +71,10 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>p', peek.open, opts)
   vim.keymap.set('n', '<leader>P', peek.close, opts)
 
+  -- duck.nvim
+  vim.keymap.set('n', '<leader>dd', function() require("duck").hatch("🦆", 10) end, {}) -- A pretty fast duck
+  vim.keymap.set('n', '<leader>dc', function() require("duck").hatch("🦆", 1) end, {}) -- Quite a mellow cat
+
   -- terminal - switch to normal mode.
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)
 end
@@ -79,6 +83,48 @@ function M.create_user_commands()
   -- found a better way to do this, but keeping them around for later reference.
   -- vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
   -- vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+end
+
+function M.apply_lsp_keymaps()
+  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+  local keymap_opts = { noremap = true, silent = true }
+  vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, keymap_opts)
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
+  vim.keymap.set('n', '<space>e', vim.diagnostic.setloclist, keymap_opts)
+end
+
+function M.apply_lsp_buffer_keymaps(_, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts) -- replaced by glance.nvim
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+
+    -- functionality here is normally covered by NvimTree
+    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    -- vim.keymap.set('n', '<space>wl', function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, bufopts)
+
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+
+    -- covered by glance.nvim
+    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    -- vim.keymap.set('n', '<A-F12>', vim.lsp.buf.references, bufopts)
+
+    -- this produces a deprecated warning. idk i don't use it anyway
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
 return M

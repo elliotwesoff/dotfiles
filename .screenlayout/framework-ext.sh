@@ -1,6 +1,7 @@
 #!/bin/sh
+# --output eDP-1 --mode 2256x1504 --pos 2560x198 --rotate normal \
 xrandr \
-  --output eDP-1 --mode 2256x1504 --pos 2560x198 --rotate normal \
+  --output eDP-1 --off \
   --output DP-1 --off \
   --output DP-2 --off \
   --output DP-3 --off \

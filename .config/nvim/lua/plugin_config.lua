@@ -1,66 +1,20 @@
 local M = {}
 
 function M.apply_lsp_config()
-  local keymap_opts = { noremap = true, silent = true }
+  local keymaps = require('key_mappings')
+  local lspconfig = require('lspconfig')
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local lsp_flags = { debounce_text_changes = 50 }
+  local on_attach = keymaps.apply_lsp_buffer_keymaps
 
-
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, keymap_opts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
-  vim.keymap.set('n', '<space>e', vim.diagnostic.setloclist, keymap_opts)
+  keymaps.apply_lsp_keymaps()
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
-  local on_attach = function(_, bufnr) -- unused parameter is "client"
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts) -- replaced by glance.nvim
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-
-    -- functionality here is normally covered by NvimTree
-    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    -- vim.keymap.set('n', '<space>wl', function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, bufopts)
-
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-
-    -- covered by glance.nvim
-    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    -- vim.keymap.set('n', '<A-F12>', vim.lsp.buf.references, bufopts)
-
-    -- this produces a deprecated warning. idk i don't use it anyway
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-  end
-
-  local lspconfig = require('lspconfig')
-  local lsp_flags = { debounce_text_changes = 50 }
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-  lspconfig.pyright.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities
-  }
-
-  lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities
-  }
-
+  lspconfig.pyright.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.tsserver.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.sumneko_lua.setup {
     settings = {
       Lua = {
@@ -69,18 +23,6 @@ function M.apply_lsp_config()
         },
       },
     },
-    capabilities = capabilities
-  }
-
-  lspconfig.ccls.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities
-  }
-
-  lspconfig.texlab.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = capabilities
   }
 end
@@ -133,7 +75,7 @@ function M.apply_nvim_tree_config()
   vim.g.loaded_netrwPlugin = 1
 
   require("nvim-tree").setup {
-    open_on_setup = true,
+    open_on_setup = false,
     view = {
       adaptive_size = false,
       mappings = {
@@ -402,6 +344,7 @@ function M.apply_noice_config()
       view = 'cmdline' -- classic cmdline, no popup
     },
     messages = {
+      view = 'cmdline',
       view_warn = 'cmdline',
       view_error = 'cmdline'
     }
@@ -517,8 +460,6 @@ end
 
 function M.apply_onedarkpro_config()
   require("onedarkpro").setup({
-    dark_theme = "onedark", -- The default dark theme
-    light_theme = "onelight", -- The default light theme
     caching = false, -- Use caching for the theme?
     cache_path = vim.fn.expand(vim.fn.stdpath("cache") .. "/onedarkpro/"), -- The path to the cache directory
     colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
@@ -628,6 +569,121 @@ end
 
 function M.apply_swap_split_config()
   require("swap-split").setup({ ignore_filetypes = { "NvimTree" } })
+end
+
+function M.apply_sunset_config()
+  require("sunset").setup({
+    latitude = 36, -- north is positive, south is negative
+    longitude = -115, -- east is positive, west is negative
+    sunrise_offset = 0, -- offset the sunrise by this many seconds
+    sunset_offset = 0, -- offset the sunset by this many seconds
+    -- sunrise_override = nil, -- accepts a time in the form "HH:MM" which will override the sunrise time
+    -- sunset_override = nil, -- accepts a time in the form "HH:MM" which will override the sunset time
+    day_callback = function ()
+      vim.opt.background = 'light'
+      vim.cmd([[colorscheme rose-pine]])
+    end, -- function that is called when day begins
+    night_callback = function ()
+      vim.opt.background = 'dark'
+      vim.cmd([[colorscheme oxocarbon]])
+    end, -- function that is called when night begins
+    update_interval = 60000, -- how frequently to check for sunrise/sunset changes in milliseconds
+    time_format = "%H:%M", -- sun time formatting using os.date https://www.lua.org/pil/22.1.html
+  })
+end
+
+function M.apply_dap_config()
+  local dap = require('dap')
+  dap.configurations.cpp = {
+    type = 'cpp',
+    request = 'launch',
+    name = 'Launch file',
+    program = 'main',
+
+  }
+end
+
+function M.apply_dapui_config()
+  require("dapui").setup({
+    icons = { expanded = "", collapsed = "", current_frame = "" },
+    mappings = {
+      -- Use a table to apply multiple mappings
+      expand = { "<CR>", "<2-LeftMouse>" },
+      open = "o",
+      remove = "d",
+      edit = "e",
+      repl = "r",
+      toggle = "t",
+    },
+    -- Use this to override mappings for specific elements
+    element_mappings = {
+      -- Example:
+      -- stacks = {
+      --   open = "<CR>",
+      --   expand = "o",
+      -- }
+    },
+    -- Expand lines larger than the window
+    -- Requires >= 0.7
+    expand_lines = vim.fn.has("nvim-0.7") == 1,
+    -- Layouts define sections of the screen to place windows.
+    -- The position can be "left", "right", "top" or "bottom".
+    -- The size specifies the height/width depending on position. It can be an Int
+    -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
+    -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
+    -- Elements are the elements shown in the layout (in order).
+    -- Layouts are opened in order so that earlier layouts take priority in window sizing.
+    layouts = {
+      {
+        elements = {
+          -- Elements can be strings or table with id and size keys.
+          { id = "scopes", size = 0.25 },
+          "breakpoints",
+          "stacks",
+          "watches",
+        },
+        size = 40, -- 40 columns
+        position = "left",
+      },
+      {
+        elements = {
+          "repl",
+          "console",
+        },
+        size = 0.25, -- 25% of total lines
+        position = "bottom",
+      },
+    },
+    controls = {
+      -- Requires Neovim nightly (or 0.8 when released)
+      enabled = true,
+      -- Display controls in this element
+      element = "repl",
+      icons = {
+        pause = "",
+        play = "",
+        step_into = "",
+        step_over = "",
+        step_out = "",
+        step_back = "",
+        run_last = "",
+        terminate = "",
+      },
+    },
+    floating = {
+      max_height = nil, -- These can be integers or a float between 0 and 1.
+      max_width = nil, -- Floats will be treated as percentage of your screen.
+      border = "single", -- Border style. Can be "single", "double" or "rounded"
+      mappings = {
+        close = { "q", "<Esc>" },
+      },
+    },
+    windows = { indent = 1 },
+    render = {
+      max_type_length = nil, -- Can be integer or nil.
+      max_value_lines = 100, -- Can be integer or nil.
+    }
+  })
 end
 
 return M
