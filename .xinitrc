@@ -6,7 +6,8 @@ if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   export XORG_DPI=96
   # $HOME/dotfiles/.screenlayout/x1-ext.sh
-  $HOME/dotfiles/.screenlayout/framework-ext.sh
+  # $HOME/dotfiles/.screenlayout/framework-ext.sh
+  $HOME/dotfiles/.screenlayout/seo-benq.sh
 else
   # only builtin display, no external monitor.
   export XORG_DPI=120

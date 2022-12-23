@@ -2,7 +2,8 @@
 # 
 # dark-theme
 
-ln -sfv ~/dotfiles/.config/kitty/onehalf-dark.conf ~/dotfiles/.config/kitty/theme.conf
+# ln -sfv ~/dotfiles/.config/kitty/onehalf-dark.conf ~/dotfiles/.config/kitty/theme.conf
+ln -sfv ~/dotfiles/.config/kitty/rose-pine-moon.conf ~/dotfiles/.config/kitty/theme.conf
 ln -sfv ~/dotfiles/.config/polybar/dark-theme.ini ~/dotfiles/.config/polybar/theme.ini
 ln -sfv ~/dotfiles/.config/bspwm/bspwmrc-dark ~/dotfiles/.config/bspwm/bspwmrc-theme
 

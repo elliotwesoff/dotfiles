@@ -2,28 +2,22 @@ local M = {}
 
 local function apply_global_settings()
   vim.cmd([[colorscheme rose-pine]])
-
   vim.g.mapleader = ","
-  -- vim.g.mapleader = " "
-
+  vim.g.vimtex_view_method = 'zathura'
   vim.g.ale_disable_lsp = 1
   vim.g.ale_linters = {
     ['python'] = {'pylint'},
     ['cpp'] = {'ccls'},
     ['c'] = {'ccls'}
   }
-
   vim.g.oh_lucy_italic_functions = true
   vim.g.oh_lucy_italic_comments = true
   vim.g.oh_lucy_evening_italic_functions = true
   vim.g.oh_lucy_evening_italic_comments = true
-
-  vim.g.vimtex_view_method = 'zathura'
 end
 
 function M.apply_settings()
   apply_global_settings()
-
   vim.opt.hidden = true
   vim.opt.wildmenu = true
   vim.opt.showcmd = false
@@ -40,7 +34,7 @@ function M.apply_settings()
   vim.opt.visualbell = true
   vim.opt.laststatus = 2
   vim.opt.number = true
-  vim.opt.numberwidth = 6
+  vim.opt.numberwidth = 4
   vim.opt.expandtab = true
   vim.opt.backup = false
   vim.opt.writebackup = false
@@ -51,7 +45,7 @@ function M.apply_settings()
   vim.opt.updatetime = 300
   vim.opt.backspace = 'indent,eol,start'
   vim.opt.pastetoggle = '<F3>'
-  vim.opt.signcolumn = 'number'
+  vim.opt.signcolumn = 'auto'
   vim.opt.encoding = 'utf-8'
   vim.opt.ttimeout = true
   vim.opt.ttimeoutlen = 10
@@ -63,7 +57,7 @@ function M.apply_settings()
   vim.opt.termguicolors = true
   vim.opt.background = os.getenv("XORG_COLORSCHEME")
   vim.opt_local.foldmethod = 'indent'
-  vim.opt_local.foldnestmax = 3
+  vim.opt_local.foldnestmax = 2
 
   -- nvim difftool configuration
   -- if diffing files gets weird, turn this back on

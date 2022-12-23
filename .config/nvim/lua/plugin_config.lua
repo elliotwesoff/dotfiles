@@ -341,12 +341,17 @@ end
 function M.apply_noice_config()
   require('noice').setup({
     cmdline = {
-      view = 'cmdline' -- classic cmdline, no popup
+      enabled = true,
+      view = 'cmdline', -- classic cmdline, no popup
+      opts = { timeout = 200 },
+      format = { timeout = 200 }
     },
     messages = {
-      view = 'cmdline',
+      enabled = true,
+      view = 'notify',
       view_warn = 'cmdline',
-      view_error = 'cmdline'
+      view_error = 'cmdline',
+      opts = { timeout = 200 }
     }
   })
 end
