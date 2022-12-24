@@ -63,6 +63,10 @@ Use the following options, it will make your life easier:
 `feh --auto-rotate --auto-zoom --keep-zoom-vp --preload
 --recursive *`
 
+Shorter easier version:
+
+`feh --auto-rotate -Z --keep-zoom-vp -p -r *.jpg`
+
 * Up/down increases/decreases zoom
 * Left/right shows previous/next image
 * < rotates CCW, > rotates CW
@@ -70,8 +74,14 @@ Use the following options, it will make your life easier:
 
 Keybinds:
 * k [toggle_keep_vp]
-* ! key makes the image fit the current window size
+* ! key makes the image fit the current window size (fit by
+  height?)
+* / key makes the image fit the current window size, but
+  different (fit by width?)
 * _ vertical flip
 * | horizontal flip
 * o toggle pointer
+* m toggle menu
+* i toggle info display
+* d toggle filenames
 

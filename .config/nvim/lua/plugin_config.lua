@@ -691,5 +691,17 @@ function M.apply_dapui_config()
   })
 end
 
+function M.apply_alpha_nvim_config()
+  local alpha = require('alpha')
+  local theme = require('alpha.themes.dashboard')
+  -- local theme = require('alpha.themes.startify')
+  alpha.setup(theme.config)
+end
+
+function M.apply_autopairs_config()
+  local autopairs = require('nvim-autopairs')
+  autopairs.setup()
+end
+
 return M
 

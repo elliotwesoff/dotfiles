@@ -57,6 +57,9 @@ super + control + alt + o
 super + control + alt + p
   ~/dotfiles/.screenlayout/x1-dual.sh
 
+XF86Search
+  kitty ranger
+
 # volume controls
 XF86AudioRaiseVolume
   amixer -q sset Master 5%+
