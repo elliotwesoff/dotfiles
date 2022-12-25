@@ -3,11 +3,12 @@ local M = {}
 function M.apply_keymaps()
   local peek = require('peek')
   local custom_fns = require('custom_functions')
-  local opts = { noremap = true, silent = true }
   local nvim_tree = require('nvim-tree.api')
   local zen_mode = require('zen-mode')
   local telescope = require('telescope.builtin')
   local symbols_outline = require('symbols-outline')
+  local duck = require('duck')
+  local opts = { noremap = true, silent = true }
 
   -- insert mode mappings
   vim.keymap.set('i', 'jj', '<Esc>', opts)
@@ -18,10 +19,7 @@ function M.apply_keymaps()
   vim.keymap.set('i', '<A-.>', '<Esc>:tabnext<CR>', opts)
 
   -- normal mode mappings
-  vim.keymap.set('n', 'gD', telescope.lsp_definitions)
-  vim.keymap.set('n', 'gR', '<CMD>Glance references<CR>')
-  vim.keymap.set('n', 'gY', '<CMD>Glance type_definitions<CR>')
-  vim.keymap.set('n', 'gM', '<CMD>Glance implementations<CR>')
+  vim.keymap.set('n', 'gd', telescope.lsp_definitions)
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
@@ -71,12 +69,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>json=', custom_fns.buf_format_json, opts)
   vim.keymap.set('n', '<leader>p', peek.open, opts)
   vim.keymap.set('n', '<leader>P', peek.close, opts)
+  vim.keymap.set('n', '<leader>dd', duck.hatch)
 
-  -- duck.nvim
-  vim.keymap.set('n', '<leader>dd', function() require("duck").hatch("🦆", 10) end, {}) -- A pretty fast duck
-  vim.keymap.set('n', '<leader>dc', function() require("duck").hatch("🦆", 1) end, {}) -- Quite a mellow cat
-
-  -- terminal - switch to normal mode.
+  -- terminal mode mappings - switch to normal mode.
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts)
 end
 
@@ -102,8 +97,7 @@ function M.apply_lsp_buffer_keymaps(_, bufnr)
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts) -- replaced by glance.nvim
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)

@@ -340,18 +340,23 @@ end
 
 function M.apply_noice_config()
   require('noice').setup({
+    lsp = {
+      signature = {
+        enabled = false
+      }
+    },
     cmdline = {
       enabled = true,
       view = 'cmdline', -- classic cmdline, no popup
-      opts = { timeout = 200 },
-      format = { timeout = 200 }
+      -- opts = { timeout = 200 },
+      -- format = { timeout = 200 }
     },
     messages = {
       enabled = true,
       view = 'notify',
       view_warn = 'cmdline',
       view_error = 'cmdline',
-      opts = { timeout = 200 }
+      -- opts = { timeout = 200 }
     }
   })
 end
