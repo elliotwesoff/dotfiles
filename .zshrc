@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshc="nvim ~/dotfiles/.zshrc"
 alias kittyc="nvim ~/dotfiles/.config/kitty/kitty.conf"
+alias nvimc="cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~"
 alias l="ls -lah"
 alias ll="ls -laht"
 alias zath="zathura"

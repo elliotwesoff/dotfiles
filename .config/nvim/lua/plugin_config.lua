@@ -703,5 +703,13 @@ function M.apply_autopairs_config()
   autopairs.setup()
 end
 
+function M.apply_lsp_signature_config()
+  require('lsp_signature').setup()
+end
+
+function M.apply_zenmode_config()
+  require('zen-mode').setup()
+end
+
 return M
 
