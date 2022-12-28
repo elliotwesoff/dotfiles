@@ -58,14 +58,6 @@ function M.apply_settings()
   vim.opt.background = os.getenv("XORG_COLORSCHEME")
   vim.opt_local.foldmethod = 'indent'
   vim.opt_local.foldnestmax = 2
-
-  -- nvim difftool configuration
-  -- if diffing files gets weird, turn this back on
-  -- vim.cmd([[
-  --   if &diff
-  --     highlight! link DiffText MatchParen
-  --   endif
-  -- ]])
 end
 
 return M
