@@ -3,6 +3,8 @@ set startup-quietly on
 set auto-load safe-path .
 set auto-load local-gdbinit on
 set logging enabled on
+set disable-randomization on
+set print inferior-events on
 
 # defaults to 200
 set print elements 10

@@ -1,21 +1,23 @@
-#! /bin/sh
+#!/bin/sh
 #
 # bspwmrc
 
 EXT_MON=$(xrandr -q | grep '^DP-[1-9] connected')
+echo $EXT_MON
 
 if [[ $EXT_MON ]]
 then
   MON=$(echo $EXT_MON | cut -d ' ' -f 1)
-  echo $MON
+  echo bspwm setup for eDP-1 and $MON
   bspc monitor $MON -d I II III IV V
-  bspc monitor eDP-1 -d VI VII VIII IX X
+  # bspc monitor eDP-1 -d VI VII VIII IX X
 else
+  echo bspwm setup for eDP-1
   bspc monitor eDP-1 -d I II III IV V
 fi
 
 bspc config border_width         2
-bspc config window_gap           12
+bspc config window_gap           4
 bspc config split_ratio          0.6
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
