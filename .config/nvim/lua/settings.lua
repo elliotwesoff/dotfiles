@@ -4,12 +4,12 @@ local function apply_global_settings()
   vim.cmd([[colorscheme rose-pine]])
   vim.g.mapleader = ","
   vim.g.vimtex_view_method = 'zathura'
-  vim.g.ale_disable_lsp = 1
-  vim.g.ale_linters = {
-    ['python'] = {'pylint'},
-    ['cpp'] = {'ccls'},
-    ['c'] = {'ccls'}
-  }
+  -- vim.g.ale_disable_lsp = 1
+  -- vim.g.ale_linters = {
+  --   ['python'] = {'pylint'},
+  --   ['cpp'] = {'ccls'},
+  --   ['c'] = {'ccls'}
+  -- }
   vim.g.oh_lucy_italic_functions = true
   vim.g.oh_lucy_italic_comments = true
   vim.g.oh_lucy_evening_italic_functions = true
@@ -53,7 +53,7 @@ function M.apply_settings()
   vim.opt.softtabstop = 2
   vim.opt.tabstop = 2
   vim.opt.mouse = 'a'
-  vim.opt.cmdheight = 1
+  vim.opt.cmdheight = 0
   vim.opt.termguicolors = true
   vim.opt.background = os.getenv("XORG_COLORSCHEME")
   vim.opt_local.foldmethod = 'indent'

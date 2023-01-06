@@ -4,7 +4,7 @@ function M.apply_lsp_config()
   local keymaps = require('key_mappings')
   local lspconfig = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  local lsp_flags = { debounce_text_changes = 50 }
+  local lsp_flags = { debounce_text_changes = 0 }
   local on_attach = keymaps.apply_lsp_buffer_keymaps
 
   keymaps.apply_lsp_keymaps()
@@ -340,23 +340,17 @@ end
 
 function M.apply_noice_config()
   require('noice').setup({
-    lsp = {
-      signature = {
-        enabled = false
-      }
-    },
     cmdline = {
       enabled = true,
       view = 'cmdline', -- classic cmdline, no popup
-      -- opts = { timeout = 200 },
-      -- format = { timeout = 200 }
+      opts = { timeout = 200 }
     },
     messages = {
       enabled = true,
-      view = 'notify',
+      view = 'cmdline',
       view_warn = 'cmdline',
       view_error = 'cmdline',
-      -- opts = { timeout = 200 }
+      opts = { timeout = 200 }
     }
   })
 end
@@ -713,7 +707,19 @@ function M.apply_lsp_signature_config()
 end
 
 function M.apply_zenmode_config()
-  require('zen-mode').setup()
+  require('zen-mode').setup({
+    window = {
+      height = 1
+    },
+    on_open = function()
+      local lualine = require('lualine')
+      lualine.hide()
+    end,
+    on_close = function()
+      local lualine = require('lualine')
+      lualine.hide({ unhide = true })
+    end
+  })
 end
 
 return M

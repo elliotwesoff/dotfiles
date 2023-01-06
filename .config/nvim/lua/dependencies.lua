@@ -4,7 +4,6 @@ local M = {}
 function M.use_dependencies(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
-  use 'dense-analysis/ale'
   use 'lervag/vimtex'
   use 'nvim-treesitter/nvim-treesitter'
   use 'simrat39/symbols-outline.nvim'
@@ -12,7 +11,6 @@ function M.use_dependencies(use)
   use 'JManch/sunset.nvim'
   use 'tamton-aquib/duck.nvim'
   use 'ray-x/lsp_signature.nvim'
-  use 'folke/zen-mode.nvim'
   use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
   use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
@@ -25,12 +23,12 @@ function M.use_dependencies(use)
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
   use { 'kosayoda/nvim-lightbulb', requires = 'antoinemadec/FixCursorHold.nvim' }
-
-  -- use({
-  --   'folke/noice.nvim',
-  --   config = plugins.apply_noice_config,
-  --   requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' }
-  -- })
+  use { 'folke/zen-mode.nvim', config = plugins.apply_zenmode_config }
+  use({
+    'folke/noice.nvim',
+    config = plugins.apply_noice_config,
+    requires = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' }
+  })
 
   -- colorschemes
   use 'Yazeed1s/oh-lucy.nvim'
