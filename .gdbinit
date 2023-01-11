@@ -1,3 +1,4 @@
+add-auto-load-safe-path /usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.30-gdb.py
 set debuginfod enabled on
 set startup-quietly on
 set auto-load safe-path .
@@ -6,12 +7,17 @@ set logging enabled on
 set disable-randomization on
 set print inferior-events on
 set debug skip on
+set record full insn-number-max unlimited
 
 # defaults to 200
 set print elements 10
 
+# skip all c++ std lib functions.
+skip -rfu ^std::([a-zA-z0-9_]+)<.*>::~?\1 *\(
+
 # set this in local project's .gdbinit
 # set logging file gdb.log
+
 
 define pll
   set var $n = $arg0

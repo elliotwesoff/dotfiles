@@ -26,13 +26,19 @@ super + a
 XF86LaunchA
   rofi -show run
 
-super + p
-  polybar-msg cmd toggle
-
+# there's an issue with polybar where it won't 
+# lay over the active windows after first being launched.
+# launching it (or trying to launch it) again fixes it.
 super + b
   $HOME/dotfiles/.config/polybar/launch.sh & disown
 
+super + p
+  polybar-msg cmd toggle
+
 super + Escape
+  polybar-msg cmd toggle
+
+super + shift + Escape
   sxhkd-reload
 
 # kill X server

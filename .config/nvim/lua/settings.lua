@@ -4,12 +4,6 @@ local function apply_global_settings()
   vim.cmd([[colorscheme rose-pine]])
   vim.g.mapleader = ","
   vim.g.vimtex_view_method = 'zathura'
-  -- vim.g.ale_disable_lsp = 1
-  -- vim.g.ale_linters = {
-  --   ['python'] = {'pylint'},
-  --   ['cpp'] = {'ccls'},
-  --   ['c'] = {'ccls'}
-  -- }
   vim.g.oh_lucy_italic_functions = true
   vim.g.oh_lucy_italic_comments = true
   vim.g.oh_lucy_evening_italic_functions = true
@@ -45,7 +39,7 @@ function M.apply_settings()
   vim.opt.updatetime = 300
   vim.opt.backspace = 'indent,eol,start'
   vim.opt.pastetoggle = '<F3>'
-  vim.opt.signcolumn = 'auto'
+  vim.opt.signcolumn = 'number'
   vim.opt.encoding = 'utf-8'
   vim.opt.ttimeout = true
   vim.opt.ttimeoutlen = 10
