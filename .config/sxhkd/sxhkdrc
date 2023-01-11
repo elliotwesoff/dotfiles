@@ -26,6 +26,9 @@ super + a
 XF86LaunchA
   rofi -show run
 
+super + p
+  polybar-msg cmd toggle
+
 super + Escape
   sxhkd-reload
 
