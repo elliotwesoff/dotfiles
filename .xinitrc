@@ -26,7 +26,7 @@ xset -dpms &
 xset s off &
 
 $HOME/dotfiles/.fehbg &
-$HOME/dotfiles/.config/polybar/launch.sh &
+# $HOME/dotfiles/.config/polybar/launch.sh &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 picom &

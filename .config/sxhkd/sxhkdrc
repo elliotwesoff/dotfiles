@@ -29,6 +29,9 @@ XF86LaunchA
 super + p
   polybar-msg cmd toggle
 
+super + b
+  $HOME/dotfiles/.config/polybar/launch.sh & disown
+
 super + Escape
   sxhkd-reload
 
