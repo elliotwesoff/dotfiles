@@ -4,6 +4,8 @@
 # If all your bars have ipc enabled, you can use 
 polybar-msg cmd quit
 
-echo "---" >> /tmp/polybar.log
+echo "--- starting polybar ---" >> /tmp/polybar.log
+date >> /tmp/polybar.log
 polybar -r --config=$HOME/.config/polybar/config.ini main >> /tmp/polybar.log
+polybar -r --config=$HOME/.config/polybar/config.ini pcstats >> /tmp/polybar.log
 

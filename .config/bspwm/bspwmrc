@@ -9,11 +9,11 @@ if [[ $EXT_MON ]]
 then
   MON=$(echo $EXT_MON | cut -d ' ' -f 1)
   echo bspwm setup for eDP-1 and $MON
-  bspc monitor $MON -d I II III IV V
-  # bspc monitor eDP-1 -d VI VII VIII IX X
+  bspc monitor $MON -d I II III IV V VI VII
+  bspc monitor eDP-1 -d a b c d e
 else
   echo bspwm setup for eDP-1
-  bspc monitor eDP-1 -d I II III IV V
+  bspc monitor eDP-1 -d I II III IV V VI VII
 fi
 
 bspc config border_width         4

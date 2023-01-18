@@ -5,8 +5,7 @@
 if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   export XORG_DPI=96
-  # $HOME/dotfiles/.screenlayout/framework-ext.sh
-  $HOME/dotfiles/.screenlayout/seo-benq.sh
+  $HOME/dotfiles/.screenlayout/framework-ext.sh
 else
   # only builtin display, no external monitor.
   export XORG_DPI=120
@@ -27,7 +26,8 @@ $HOME/dotfiles/.fehbg &
 # $HOME/dotfiles/.config/polybar/launch.sh &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
-picom &
+# picom &
+# oneko &
 dunst &
 
 # show regular mouse pointer instead of stupid X

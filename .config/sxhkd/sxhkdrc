@@ -32,7 +32,7 @@ XF86LaunchA
 super + b
   $HOME/dotfiles/.config/polybar/launch.sh & disown
 
-super + p
+super + z
   polybar-msg cmd toggle
 
 super + Escape
@@ -49,6 +49,9 @@ super + control + alt + d
   elliot-logout
 
 super + control + alt + z
+  elliot-suspend
+
+super + Delete
   elliot-suspend
 
 shift + XF86ScreenSaver
@@ -111,13 +114,6 @@ super + F10
 
 super + F11
   tp on
-
-# lemonobar shenanigans
-super + d
-  xdo hide -a polybar
-
-super + alt + d
-  xdo show -a polybar
 
 # printscreen button
 Print
