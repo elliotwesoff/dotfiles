@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# switch-external
+
+notify-send --expire-time 2500 "display change" "using internal and external displays in 3... 2... 1..."
+sleep 3s
+
+source ~/.screenlayout/framework-int-ext.sh
+
+export XORG_DPI=96
+echo Xft.dpi: $XORG_DPI | xrdb
+
+bspc monitor eDP-1 -d I II III IV V
+EXT_MON=$(xrandr -q | grep '^DP-[1-9] connected')
+if [ $EXT_MON ]
+then
+  MON=$(echo $EXT_MON | cut -d ' ' -f 1)
+  bspc monitor $MON -d I II III IV V VI VII
+  bspc monitor eDP-1 -d a b c d e
+else
+  bspc monitor eDP-1 -d I II III IV V VI VII
+fi
+

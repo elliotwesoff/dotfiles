@@ -6,6 +6,7 @@ polybar-msg cmd quit
 
 echo "--- starting polybar ---" >> /tmp/polybar.log
 date >> /tmp/polybar.log
-polybar -r --config=$HOME/.config/polybar/config.ini main >> /tmp/polybar.log
-polybar -r --config=$HOME/.config/polybar/config.ini pcstats >> /tmp/polybar.log
+
+polybar -r --config=$HOME/.config/polybar/config.ini main >> /tmp/polybar.log & disown
+polybar -r --config=$HOME/.config/polybar/config.ini pcstats >> /tmp/polybar.log & disown
 

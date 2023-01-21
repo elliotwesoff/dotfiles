@@ -23,7 +23,7 @@ xset -dpms &
 xset s off &
 
 $HOME/dotfiles/.fehbg &
-# $HOME/dotfiles/.config/polybar/launch.sh &
+$HOME/dotfiles/.config/polybar/launch.sh &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 # picom &
@@ -33,6 +33,10 @@ dunst &
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
 xsetroot -cursor_name left_ptr
+
+# why does this sleep work *after* X is launched?
+# sleep 2
+polybar-msg cmd hide
 
 exec bspwm
 

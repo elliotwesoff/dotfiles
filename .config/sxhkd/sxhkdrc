@@ -62,15 +62,15 @@ super + control + alt + s
 
 # switch from external display to internal
 super + control + alt + i
-  ~/dotfiles/.screenlayout/x1-int.sh
+  switch-int
 
 # switch from internal display to external
 super + control + alt + o
-  ~/dotfiles/.screenlayout/x1-ext.sh
+  switch-ext
 
 # use both displays
 super + control + alt + p
-  ~/dotfiles/.screenlayout/x1-dual.sh
+  switch-int-ext
 
 XF86Search
   kitty ranger
