@@ -1,6 +1,9 @@
 __pycache__
 
 .config/*
+.local/*
+.ccls-cache/*
+
 !.config/neofetch
 !.config/polybar
 !.config/lemonbar
@@ -18,14 +21,13 @@ __pycache__
 !.config/dunst
 !.config/bspwm
 !.config/alacritty
-
-.local/*
 !.local/bin
-
-.ccls-cache/*
 
 *.log
 *.uuid
+*.lock
+*.tmp
+*.history
 
 .config/nvim/plugin/packer_compiled.lua
 
