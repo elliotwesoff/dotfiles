@@ -5,8 +5,10 @@
 super + Return
   kitty
 
+# smaller kitty for coding
 super + shift + Return
-  alacritty
+  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+        -c ~/dotfiles/.config/kitty/condensed.conf
 
 super + alt + Return
   kitty tmux
@@ -29,7 +31,7 @@ XF86LaunchA
 # there's an issue with polybar where it won't 
 # lay over the active windows after first being launched.
 # launching it (or trying to launch it) again fixes it.
-super + b
+super + x
   $HOME/dotfiles/.config/polybar/launch.sh & disown
 
 super + z

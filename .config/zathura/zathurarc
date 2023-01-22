@@ -18,13 +18,13 @@ set index-fg "#D6D6D6"
 set index-active-fg "#212121"
 set index-active-bg "#D6D6D6"
 set recolor false
-set recolor-lightcolor "#222222"
-set recolor-darkcolor "#FAFAF7"
+set recolor-lightcolor "#1C1917"
+set recolor-darkcolor "#B4BDC3"
 set statusbar-bg "#141414"
 set statusbar-fg "#D6D6D6"
 set statusbar-h-padding 20
 set statusbar-v-padding 20
 set highlight-transparency 0.35
-set highlight-color "#FFF75C"
-set highlight-active-color "#338BD3"
+set highlight-color "#6BE4FF"
+set highlight-active-color "#FFF420"
 
