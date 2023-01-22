@@ -1,13 +1,9 @@
 local M = {}
 
 local function apply_global_settings()
-  vim.cmd([[colorscheme rose-pine]])
+  vim.cmd([[colorscheme zenbones]])
   vim.g.mapleader = ","
   vim.g.vimtex_view_method = 'zathura'
-  vim.g.oh_lucy_italic_functions = true
-  vim.g.oh_lucy_italic_comments = true
-  vim.g.oh_lucy_evening_italic_functions = true
-  vim.g.oh_lucy_evening_italic_comments = true
 end
 
 function M.apply_settings()
@@ -37,7 +33,6 @@ function M.apply_settings()
   vim.opt.splitbelow = true
   vim.opt.showmode = false
   vim.opt.updatetime = 300
-  vim.opt.backspace = 'indent,eol,start'
   vim.opt.pastetoggle = '<F3>'
   vim.opt.signcolumn = 'number'
   vim.opt.encoding = 'utf-8'
@@ -49,7 +44,6 @@ function M.apply_settings()
   vim.opt.mouse = 'a'
   vim.opt.cmdheight = 0
   vim.opt.termguicolors = true
-  vim.opt.background = os.getenv("XORG_COLORSCHEME")
   vim.opt_local.foldmethod = 'indent'
   vim.opt_local.foldnestmax = 2
 end

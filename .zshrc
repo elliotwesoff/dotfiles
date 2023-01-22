@@ -115,7 +115,7 @@ else
   export EDITOR='vim'
 fi
 
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/home/elliot/.cargo/bin:$PATH
 
 source ~/.secrets
 

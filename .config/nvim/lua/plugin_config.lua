@@ -15,6 +15,7 @@ function M.apply_lsp_config()
   lspconfig.tsserver.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.asm_lsp.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.sumneko_lua.setup {
     settings = {
       Lua = {
@@ -463,50 +464,7 @@ function M.apply_nvim_cmp_config()
 end
 
 function M.apply_onedarkpro_config()
-  require("onedarkpro").setup({
-    caching = false, -- Use caching for the theme?
-    cache_path = vim.fn.expand(vim.fn.stdpath("cache") .. "/onedarkpro/"), -- The path to the cache directory
-    colors = {}, -- Override default colors by specifying colors for 'onelight' or 'onedark' themes
-    highlights = {}, -- Override default highlight and/or filetype groups
-    filetypes = { -- Override which filetype highlight groups are loaded
-      javascript = true,
-      lua = true,
-      markdown = true,
-      php = true,
-      python = true,
-      ruby = true,
-      rust = true,
-      toml = true,
-      vue = true,
-      yaml = true,
-    },
-    plugins = { -- Override which plugin highlight groups are loaded
-      -- See the Supported Plugins section for a list of available plugins
-    },
-    styles = { -- Choose from "bold,italic,underline"
-      types = "NONE", -- Style that is applied to types
-      numbers = "NONE", -- Style that is applied to numbers
-      strings = "NONE", -- Style that is applied to strings
-      comments = "NONE", -- Style that is applied to comments
-      keywords = "NONE", -- Style that is applied to keywords
-      constants = "NONE", -- Style that is applied to constants
-      functions = "NONE", -- Style that is applied to functions
-      operators = "NONE", -- Style that is applied to operators
-      variables = "NONE", -- Style that is applied to variables
-      conditionals = "NONE", -- Style that is applied to conditionals
-      virtual_text = "NONE", -- Style that is applied to virtual text
-    },
-    options = {
-      bold = true, -- Use bold styles?
-      italic = true, -- Use italic styles?
-      underline = true, -- Use underline styles?
-      undercurl = true, -- Use undercurl styles?
-      cursorline = true, -- Use cursorline highlighting?
-      transparency = false, -- Use a transparent background?
-      terminal_colors = false, -- Use the theme's colors for Neovim's :terminal?
-      window_unfocused_color = false, -- When the window is out of focus, change the normal background?
-    }
-  })
+  require("onedarkpro").setup()
 end
 
 function M.apply_glance_config()
@@ -576,118 +534,11 @@ function M.apply_swap_split_config()
 end
 
 function M.apply_sunset_config()
-  require("sunset").setup({
-    latitude = 36, -- north is positive, south is negative
-    longitude = -115, -- east is positive, west is negative
-    sunrise_offset = 0, -- offset the sunrise by this many seconds
-    sunset_offset = 0, -- offset the sunset by this many seconds
-    -- sunrise_override = nil, -- accepts a time in the form "HH:MM" which will override the sunrise time
-    -- sunset_override = nil, -- accepts a time in the form "HH:MM" which will override the sunset time
-    day_callback = function ()
-      vim.opt.background = 'light'
-      vim.cmd([[colorscheme rose-pine]])
-    end, -- function that is called when day begins
-    night_callback = function ()
-      vim.opt.background = 'dark'
-      vim.cmd([[colorscheme oxocarbon]])
-    end, -- function that is called when night begins
-    update_interval = 60000, -- how frequently to check for sunrise/sunset changes in milliseconds
-    time_format = "%H:%M", -- sun time formatting using os.date https://www.lua.org/pil/22.1.html
-  })
-end
-
-function M.apply_dap_config()
-  local dap = require('dap')
-  dap.configurations.cpp = {
-    type = 'cpp',
-    request = 'launch',
-    name = 'Launch file',
-    program = 'main',
-
+  local config = {
+    latitude = 36, longitude = -115, -- las vegas
+    -- latitude = 48, longitude = 11 -- munich
   }
-end
-
-function M.apply_dapui_config()
-  require("dapui").setup({
-    icons = { expanded = "", collapsed = "", current_frame = "" },
-    mappings = {
-      -- Use a table to apply multiple mappings
-      expand = { "<CR>", "<2-LeftMouse>" },
-      open = "o",
-      remove = "d",
-      edit = "e",
-      repl = "r",
-      toggle = "t",
-    },
-    -- Use this to override mappings for specific elements
-    element_mappings = {
-      -- Example:
-      -- stacks = {
-      --   open = "<CR>",
-      --   expand = "o",
-      -- }
-    },
-    -- Expand lines larger than the window
-    -- Requires >= 0.7
-    expand_lines = vim.fn.has("nvim-0.7") == 1,
-    -- Layouts define sections of the screen to place windows.
-    -- The position can be "left", "right", "top" or "bottom".
-    -- The size specifies the height/width depending on position. It can be an Int
-    -- or a Float. Integer specifies height/width directly (i.e. 20 lines/columns) while
-    -- Float value specifies percentage (i.e. 0.3 - 30% of available lines/columns)
-    -- Elements are the elements shown in the layout (in order).
-    -- Layouts are opened in order so that earlier layouts take priority in window sizing.
-    layouts = {
-      {
-        elements = {
-          -- Elements can be strings or table with id and size keys.
-          { id = "scopes", size = 0.25 },
-          "breakpoints",
-          "stacks",
-          "watches",
-        },
-        size = 40, -- 40 columns
-        position = "left",
-      },
-      {
-        elements = {
-          "repl",
-          "console",
-        },
-        size = 0.25, -- 25% of total lines
-        position = "bottom",
-      },
-    },
-    controls = {
-      -- Requires Neovim nightly (or 0.8 when released)
-      enabled = true,
-      -- Display controls in this element
-      element = "repl",
-      icons = {
-        pause = "",
-        play = "",
-        step_into = "",
-        step_over = "",
-        step_out = "",
-        step_back = "",
-        run_last = "",
-        terminate = "",
-      },
-    },
-    floating = {
-      max_height = nil, -- These can be integers or a float between 0 and 1.
-      max_width = nil, -- Floats will be treated as percentage of your screen.
-      border = "single", -- Border style. Can be "single", "double" or "rounded"
-      mappings = {
-        close = { "q", "<Esc>" },
-      },
-    },
-    windows = { indent = 1 },
-    render = {
-      max_type_length = nil, -- Can be integer or nil.
-      max_value_lines = 100, -- Can be integer or nil.
-    }
-  })
+  require("sunset").setup(config)
 end
 
 function M.apply_alpha_nvim_config()
@@ -719,6 +570,17 @@ function M.apply_zenmode_config()
       local lualine = require('lualine')
       lualine.hide({ unhide = true })
     end
+  })
+end
+
+function M.apply_indentblankline_config()
+  local indent_blankline = require('indent_blankline')
+  -- vim.opt.list = true
+  -- vim.opt.listchars:append "space:⋅"
+  -- vim.opt.listchars:append "eol:↴"
+  indent_blankline.setup({
+    use_treesitter = true,
+    show_trailing_blankline_indent = false
   })
 end
 

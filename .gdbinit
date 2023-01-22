@@ -13,7 +13,7 @@ set record full insn-number-max unlimited
 set print elements 10
 
 # skip all c++ std lib functions.
-skip -rfu ^std::([a-zA-z0-9_]+)<.*>::~?\1 *\(
+# skip -rfu ^std::([a-zA-z0-9_]+)<.*>::~?\1 *\(
 
 # set this in local project's .gdbinit
 # set logging file gdb.log

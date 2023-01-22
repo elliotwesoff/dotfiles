@@ -11,18 +11,17 @@ function M.use_dependencies(use)
   use 'JManch/sunset.nvim'
   use 'tamton-aquib/duck.nvim'
   use 'ray-x/lsp_signature.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
   use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
   use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
   use { 'goolord/alpha-nvim', config = plugins.apply_alpha_nvim_config }
   use { 'xorid/swap-split.nvim', config = plugins.apply_swap_split_config }
   use { 'windwp/nvim-autopairs', config = plugins.apply_autopairs_config }
-  use { 'stevearc/aerial.nvim', config = plugins.apply_aerial_config }
   use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
-  use { 'kosayoda/nvim-lightbulb', requires = 'antoinemadec/FixCursorHold.nvim' }
   use { 'folke/zen-mode.nvim', config = plugins.apply_zenmode_config }
   -- use({
   --   'folke/noice.nvim',
