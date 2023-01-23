@@ -534,18 +534,11 @@ function M.apply_swap_split_config()
 end
 
 function M.apply_sunset_config()
-  local config = {
+  local sunset = require("sunset")
+  sunset.setup({
     latitude = 36, longitude = -115, -- las vegas
     -- latitude = 48, longitude = 11 -- munich
-  }
-  require("sunset").setup(config)
-end
-
-function M.apply_alpha_nvim_config()
-  local alpha = require('alpha')
-  local theme = require('alpha.themes.dashboard')
-  -- local theme = require('alpha.themes.startify')
-  alpha.setup(theme.config)
+  })
 end
 
 function M.apply_autopairs_config()
@@ -560,15 +553,17 @@ end
 function M.apply_zenmode_config()
   require('zen-mode').setup({
     window = {
-      height = 1
+      height = 2
     },
     on_open = function()
       local lualine = require('lualine')
       lualine.hide()
+      vim.opt.cmdheight = 1
     end,
     on_close = function()
       local lualine = require('lualine')
       lualine.hide({ unhide = true })
+      vim.opt.cmdheight = 0
     end
   })
 end

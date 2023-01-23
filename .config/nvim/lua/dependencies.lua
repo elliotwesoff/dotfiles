@@ -15,7 +15,6 @@ function M.use_dependencies(use)
   use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
   use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
-  use { 'goolord/alpha-nvim', config = plugins.apply_alpha_nvim_config }
   use { 'xorid/swap-split.nvim', config = plugins.apply_swap_split_config }
   use { 'windwp/nvim-autopairs', config = plugins.apply_autopairs_config }
   use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
