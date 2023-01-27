@@ -5,7 +5,8 @@
 if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   export XORG_DPI=96
-  $HOME/dotfiles/.screenlayout/framework-ext.sh
+  # $HOME/dotfiles/.screenlayout/framework-ext.sh
+  $HOME/dotfiles/.screenlayout/matts-asus.sh
 else
   # only builtin display, no external monitor.
   export XORG_DPI=120
@@ -33,6 +34,11 @@ dunst &
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
 xsetroot -cursor_name left_ptr
+
+# increase repeat speed when key is held,
+# and decrease delay before repeat.
+# xset r rate [delay] [repeat rate]
+xset r rate 200 55
 
 # why does this sleep work *after* X is launched?
 # sleep 2

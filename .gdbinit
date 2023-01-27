@@ -8,6 +8,11 @@ set disable-randomization on
 set print inferior-events on
 set debug skip on
 set record full insn-number-max unlimited
+set tui border-kind acs
+set tui border-mode bold
+
+tui new-layout nice {-horizontal src 1 asm 1 reg 1} 2 status 0 cmd 1
+
 
 # defaults to 200
 set print elements 10

@@ -11,7 +11,9 @@ super + shift + Return
         -c ~/dotfiles/.config/kitty/condensed.conf
 
 super + alt + Return
-  kitty tmux
+  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+        -c ~/dotfiles/.config/kitty/condensed.conf \
+        tmux
 
 super + alt + Tab
   kitty htop

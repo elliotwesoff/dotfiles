@@ -44,8 +44,8 @@ function M.apply_settings()
   vim.opt.mouse = 'a'
   vim.opt.cmdheight = 0
   vim.opt.termguicolors = true
-  vim.opt_local.foldmethod = 'indent'
-  vim.opt_local.foldnestmax = 2
+  vim.opt.foldmethod = 'indent'
+  vim.opt.foldnestmax = 2
 end
 
 return M
