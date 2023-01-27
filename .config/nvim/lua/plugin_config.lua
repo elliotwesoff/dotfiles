@@ -551,17 +551,16 @@ function M.apply_lsp_signature_config()
 end
 
 function M.apply_zenmode_config()
+  local lualine = require('lualine')
   require('zen-mode').setup({
     window = {
-      height = 2
+      height = 1
     },
     on_open = function()
-      local lualine = require('lualine')
       lualine.hide()
       vim.opt.cmdheight = 1
     end,
     on_close = function()
-      local lualine = require('lualine')
       lualine.hide({ unhide = true })
       vim.opt.cmdheight = 0
     end

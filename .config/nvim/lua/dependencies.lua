@@ -21,7 +21,7 @@ function M.use_dependencies(use)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
-  use { 'folke/zen-mode.nvim', config = plugins.apply_zenmode_config }
+  use { 'folke/zen-mode.nvim', config = plugins.apply_zenmode_config, commit = '38a660094dd023176ed4d6ecb1fe028546717f78' }
   -- use({
   --   'folke/noice.nvim',
   --   config = plugins.apply_noice_config,
