@@ -5,8 +5,7 @@
 if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   export XORG_DPI=96
-  # $HOME/dotfiles/.screenlayout/framework-ext.sh
-  $HOME/dotfiles/.screenlayout/matts-asus.sh
+  $HOME/dotfiles/.screenlayout/framework-ext.sh
 else
   # only builtin display, no external monitor.
   export XORG_DPI=120
