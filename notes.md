@@ -85,3 +85,10 @@ Keybinds:
 * i toggle info display
 * d toggle filenames
 
+## ranger
+
+Sorting: `o` (order)
+
+* `oc` - order by creation time
+* `on` - order "natural" (default sorting)
+* `oN` - order reverse "natural"

@@ -339,23 +339,6 @@ function M.apply_symbolsoutline_config()
   require("symbols-outline").setup(opts)
 end
 
-function M.apply_noice_config()
-  require('noice').setup({
-    cmdline = {
-      enabled = true,
-      view = 'cmdline', -- classic cmdline, no popup
-      opts = { timeout = 200 }
-    },
-    messages = {
-      enabled = true,
-      view = 'cmdline',
-      view_warn = 'cmdline',
-      view_error = 'cmdline',
-      opts = { timeout = 200 }
-    }
-  })
-end
-
 function M.apply_notify_config()
   require('notify').setup({
     background_colour = '#000000'
@@ -576,6 +559,12 @@ function M.apply_indentblankline_config()
   indent_blankline.setup({
     use_treesitter = true,
     show_trailing_blankline_indent = false
+  })
+end
+
+function M.apply_illuminate_config()
+  require('illuminate').configure({
+    delay = 10
   })
 end
 
