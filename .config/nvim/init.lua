@@ -3,9 +3,9 @@ local settings = require('settings')
 local keymaps = require('key_mappings')
 local plugins = require('plugin_config')
 
-require('packer').startup(dependencies.use_dependencies)
+vim.cmd([[colorscheme catppuccin]])
 
-vim.cmd([[colorscheme zenbones]])
+require('packer').startup(dependencies.use_dependencies)
 
 settings.apply_settings()
 keymaps.apply_keymaps()
