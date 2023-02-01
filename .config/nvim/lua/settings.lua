@@ -1,7 +1,6 @@
 local M = {}
 
 local function apply_global_settings()
-  vim.cmd([[colorscheme zenbones]])
   vim.g.mapleader = ","
   vim.g.vimtex_view_method = 'zathura'
 end
@@ -32,7 +31,8 @@ function M.apply_settings()
   vim.opt.splitright = true
   vim.opt.splitbelow = true
   vim.opt.showmode = false
-  vim.opt.updatetime = 300
+  -- vim.opt.updatetime = 300
+  vim.opt.updatetime = 0
   vim.opt.pastetoggle = '<F3>'
   vim.opt.signcolumn = 'number'
   vim.opt.encoding = 'utf-8'

@@ -564,7 +564,18 @@ end
 
 function M.apply_illuminate_config()
   require('illuminate').configure({
-    delay = 10
+    delay = 0
+  })
+end
+
+function M.apply_nvim_treesitter_refactor_config()
+  require('nvim-treesitter.configs').setup({
+    refactor = {
+      highlight_definitions = {
+        enable = true,
+        clear_on_cursor_move = true,
+      },
+    },
   })
 end
 

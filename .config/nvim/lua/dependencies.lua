@@ -13,10 +13,11 @@ function M.use_dependencies(use)
   use 'ray-x/lsp_signature.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'RRethy/vim-illuminate'
+  use 'nvim-treesitter/nvim-treesitter-refactor'
   use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
   use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
-  use { 'xorid/swap-split.nvim', config = plugins.apply_swap_split_config }
+  -- use { 'xorid/swap-split.nvim', config = plugins.apply_swap_split_config }
   use { 'windwp/nvim-autopairs', config = plugins.apply_autopairs_config }
   use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
@@ -26,11 +27,8 @@ function M.use_dependencies(use)
 
   -- colorschemes
   use 'Yazeed1s/oh-lucy.nvim'
-  use 'olimorris/onedarkpro.nvim'
   use 'shaunsingh/seoul256.nvim'
   use 'projekt0n/github-nvim-theme'
-  use 'sainnhe/edge'
-  use 'yorik1984/newpaper.nvim'
   use 'nyoom-engineering/oxocarbon.nvim'
   use 'AlexvZyl/nordic.nvim'
   use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
@@ -50,6 +48,7 @@ function M.use_dependencies(use)
 
   -- debuggers
   -- use { 'mfussenegger/nvim-dap-ui', requires = 'mfussenegger/nvim-dap' }
+  --
 end
 
 return M
