@@ -144,7 +144,7 @@ function M.apply_telescope_config()
 end
 
 function M.apply_treesitter_config()
-  require'nvim-treesitter.configs'.setup {
+  require('nvim-treesitter.configs').setup({
     -- A list of parser names, or "all"
     ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql", "markdown", "latex" },
 
@@ -178,8 +178,24 @@ function M.apply_treesitter_config()
     },
     indent = {
       enable = true
+    },
+    refactor = {
+      highlight_definitions = {
+        enable = true,
+        clear_on_cursor_move = true,
+      },
+      navigation = {
+        enable = true,
+        keymaps = {
+          goto_definition = "gnd",
+          list_definitions = "gnD",
+          list_definitions_toc = "gO",
+          goto_next_usage = "<a-n>",
+          goto_previous_usage = "<a-p>",
+        }
+      }
     }
-  }
+  })
 end
 
 function M.apply_comment_config()
@@ -446,10 +462,6 @@ function M.apply_nvim_cmp_config()
   })
 end
 
-function M.apply_onedarkpro_config()
-  require("onedarkpro").setup()
-end
-
 function M.apply_glance_config()
   -- Lua configuration
   local glance = require('glance')
@@ -559,23 +571,6 @@ function M.apply_indentblankline_config()
   indent_blankline.setup({
     use_treesitter = true,
     show_trailing_blankline_indent = false
-  })
-end
-
-function M.apply_illuminate_config()
-  require('illuminate').configure({
-    delay = 0
-  })
-end
-
-function M.apply_nvim_treesitter_refactor_config()
-  require('nvim-treesitter.configs').setup({
-    refactor = {
-      highlight_definitions = {
-        enable = true,
-        clear_on_cursor_move = true,
-      },
-    },
   })
 end
 
