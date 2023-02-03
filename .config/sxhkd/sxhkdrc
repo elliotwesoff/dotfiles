@@ -32,7 +32,7 @@ XF86LaunchA
 
 # there's an issue with polybar where it won't 
 # lay over the active windows after first being launched.
-# launching it (or trying to launch it) again fixes it.
+# launching it (or trying to launch it) again fixes this.
 super + x
   $HOME/dotfiles/.config/polybar/launch.sh & disown
 
@@ -49,7 +49,10 @@ super + shift + Escape
 super + control + alt + Escape
   pkill Xorg
 
-super + control + alt + d
+super + control + alt + Delete
+  pkill Xorg
+
+super + control + alt + l
   elliot-logout
 
 super + control + alt + z
