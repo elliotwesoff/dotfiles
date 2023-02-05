@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# theme.sh
+
+CONFIG_DIR=~/dotfiles/.config
+
+case "$1" in
+  "light")
+    export XORG_COLORSCHEME=light
+    ln -sfv $CONFIG_DIR/kitty/catppuccin-latte.conf $CONFIG_DIR/kitty/theme.conf
+    ln -sfv $CONFIG_DIR/polybar/light-theme.ini $CONFIG_DIR/polybar/theme.ini
+    ln -sfv $CONFIG_DIR/bspwm/bspwmrc-light $CONFIG_DIR/bspwm/bspwmrc-theme
+  ;;
+  "dark")
+    export XORG_COLORSCHEME=dark
+    ln -sfv $CONFIG_DIR/kitty/black-metal.conf $CONFIG_DIR/kitty/theme.conf
+    ln -sfv $CONFIG_DIR/polybar/dark-theme.ini $CONFIG_DIR/polybar/theme.ini
+    ln -sfv $CONFIG_DIR/bspwm/bspwmrc-dark $CONFIG_DIR/bspwm/bspwmrc-theme
+  ;;
+esac
+
+# restart polybar
+polybar-msg cmd restart
+
+# set new background image
+$HOME/dotfiles/.fehbg &
+
+# restart bspwm
+bspc wm -r
+
+# change kitty colors
+kitty @ set-colors -a $CONFIG_DIR/kitty/theme.conf
+

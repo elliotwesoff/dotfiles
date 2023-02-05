@@ -24,6 +24,9 @@ super + alt + f
 super + alt + v
   vivaldi-stable
 
+super + alt + d
+  discord
+
 super + a
   rofi -show run
 
@@ -57,6 +60,9 @@ super + control + alt + l
 
 super + control + alt + z
   elliot-suspend
+
+# super + control + alt + t
+#   ([[ $XORG_COLORSCHEME =~ "light" ]] && theme dark) || theme light
 
 super + Delete
   elliot-suspend

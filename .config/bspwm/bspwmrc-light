@@ -2,7 +2,8 @@
 #
 # bspwmrc-light
 
-bspc config focused_border_color "#FF0090"
+# bspc config focused_border_color "#FF0090"
+bspc config focused_border_color "#7287fd"
 # bspc config border_width         2
 # bspc config window_gap           8
 
