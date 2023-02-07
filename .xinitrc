@@ -16,7 +16,7 @@ fi
 xrdb -merge ~/dotfiles/.Xresources
 echo Xft.dpi: $XORG_DPI | xrdb
 
-export XORG_COLORSCHEME=$(cat ~/.colorscheme)
+export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 
 # disable energy star savings (screen timeout)
 xset -dpms &
