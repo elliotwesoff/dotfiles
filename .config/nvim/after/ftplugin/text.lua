@@ -1,3 +1,3 @@
-vim.o.colorcolumn = '65'
-vim.o.textwidth = 65
+vim.o.colorcolumn = '0'
+vim.o.textwidth = 0
 
