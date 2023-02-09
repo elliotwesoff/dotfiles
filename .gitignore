@@ -35,3 +35,6 @@ __pycache__
 .config/bspwm/bspwmrc-theme
 .config/kitty/theme.conf
 .config/polybar/theme.ini
+
+.local/bin/diary
+
