@@ -8,16 +8,33 @@
 # in addition to the standard linux boot option.
 
 sudo pacman -S \
+  linux-lts \
+  linux-lts-headers \
+  base-devel \
+  libnotify \
+  xorg-server \
+  xorg-xinit \
+  mesa \
+  mesa-utils \
+  pipewire pipewire-docs \
+  wireplumber wireplumber-docs \
+  alsa-utils alsa-firmware \
+  pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pavucontrol sof-firmware \
+  bluez bluez-utils \
+  cups cups-pdf \
+  noto-fonts noto-fonts-emoji \
   bspwm \
-  linux-lts linux-lts-headers \
+  xorg-xev \
+  vulkan-intel \
+  vim \
   neovim \
   git \
-  base-devel \
   kitty \
   sxhkd \
-  neovim \
   picom \
   vivaldi \
+  vivaldi-ffmpeg-codecs \
+  zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   tmux \
   rofi \
   zsh \
@@ -25,25 +42,15 @@ sudo pacman -S \
   arandr \
   wget \
   deno \
-  nautilus \
+  thunar \
   polybar \
   ntfs-3g \
   cmus \
   vlc \
   baobab \
   ncdu \
-  libnotify \
-  xorg-server \
-  xorg-xinit \
-  mesa \
-  xorg-xev \
-  vulkan-intel \
-  vivaldi-ffmpeg-codecs \
   ffmpeg \
-  alsa-utils \
-  mesa-utils \
   man-db \
-  sway \
   gdb \
   ccls \
   lua-language-server \
@@ -51,18 +58,8 @@ sudo pacman -S \
   libqalculate qalculate-qt \
   vscode \
   libreoffice-fresh \
-  gnome-control-center \
-  pipewire pipewire-docs \
-  wireplumber wireplumber-docs \
-  alsa-utils alsa-firmware \
-  pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pavucontrol sof-firmware \
-  zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   ttf-baekmuk \
   deja-dup \
-  bluez bluez-utils \
-  cups cups-pdf \
   font-manager \
-  the_silver_searcher \
-  noto-fonts noto-fonts-emoji \
   texlive-core texlab
 
