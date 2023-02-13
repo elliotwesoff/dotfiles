@@ -6,6 +6,9 @@
 
 ## Connect to wifi
 
+`nmtui` exists as a ncurses based UI! just for adding and
+editing connections.
+
 1. `nmcli d wifi list`
 2. `nmcli d wifi connect [SSID] password [password]`
 
