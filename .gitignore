@@ -37,4 +37,5 @@ __pycache__
 .config/polybar/theme.ini
 
 .local/bin/diary
+.local/bin/eww
 

@@ -29,6 +29,7 @@ sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 # picom &
 # oneko &
 dunst &
+eww daemon
 
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
