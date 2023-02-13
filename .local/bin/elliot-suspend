@@ -1,6 +1,0 @@
-#!/bin/sh
-
-notify-send --expire-time 2500 "~*~._.~*zzzZZZzzz*~._.~*~" "sleeping in 3... 2... 1..."
-sleep 3s
-systemctl suspend
-

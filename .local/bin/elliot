@@ -1,0 +1,20 @@
+#!/bin/sh
+
+case $1 in
+  "logout")
+    notify-send --expire-time 2500 "logging off!" "user logout in 3, 2, 1!"
+    sleep 3s
+    pkill -KILL -u elliot
+  ;;
+  "shutdown")
+    notify-send --expire-time 2500 "powering down!" "in 3, 2, 1!"
+    sleep 3s
+    systemctl poweroff
+  ;;
+  "suspend")
+    notify-send --expire-time 2500 "~*~._.~*zZzZzzZZZzzZzZz*~._.~*~" "sleeping in 3, 2, 1!"
+    sleep 3s
+    systemctl suspend
+  ;;
+esac
+

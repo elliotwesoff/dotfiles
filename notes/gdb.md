@@ -33,7 +33,7 @@ Disable breakpoint: `disable [bnum]` or `dis [bnum]`
 
 Delete breakpoint: `d [breakpoint number]`
 
-Display expression every time gdb stops:
+Display expression every time gdb stops at a breakpoint:
 
 `display [expr]`
 

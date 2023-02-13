@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# elliot-shutdown
-
-notify-send --expire-time 5500 "powering down!" "in 3... 2... 1..."
-sleep 3s
-systemctl poweroff
-

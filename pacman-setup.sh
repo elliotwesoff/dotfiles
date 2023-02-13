@@ -61,5 +61,6 @@ sudo pacman -S \
   ttf-baekmuk \
   deja-dup \
   font-manager \
-  texlive-core texlab
+  texlive-core texlab \
+  pinta
 
