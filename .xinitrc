@@ -40,8 +40,6 @@ xsetroot -cursor_name left_ptr
 # xset r rate [delay] [repeat rate]
 xset r rate 200 55
 
-# why does this sleep work *after* X is launched?
-# sleep 2
 polybar-msg cmd hide
 
 exec bspwm

@@ -16,7 +16,7 @@ function M.apply_lsp_config()
   lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.asm_lsp.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.sumneko_lua.setup {
+  lspconfig.lua_ls.setup {
     settings = {
       Lua = {
         diagnostics = {
