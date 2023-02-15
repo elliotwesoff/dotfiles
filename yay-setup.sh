@@ -1,13 +1,17 @@
 #!/bin/sh
 
 yay -S \
-  nvm nvim-packer-git \
+  nvm \
+  nvim-packer-git \
   1password \
   discord \
   expressvpn \
   notion \
   pulseaudio-control \
-  rbenv ruby-build \
+  rbenv \
+  ruby-build \
   cava \
-  bsp-layout
+  bsp-layout \
+  ly \
+  xinit-xsession
 
