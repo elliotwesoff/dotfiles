@@ -38,7 +38,9 @@ xsetroot -cursor_name left_ptr
 # increase repeat speed when key is held,
 # and decrease delay before repeat.
 # xset r rate [delay] [repeat rate]
-xset r rate 200 55
+# xset r rate 200 55
+# wwwwwwwwwweeeeeeeeeeeeeeeeeeeeeee!!!!!
+xset r rate 200 100
 
 polybar-msg cmd hide
 
