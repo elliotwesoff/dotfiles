@@ -62,5 +62,6 @@ sudo pacman -S \
   deja-dup \
   font-manager \
   texlive-core texlab \
-  pinta
+  pinta \
+  playerctl
 
