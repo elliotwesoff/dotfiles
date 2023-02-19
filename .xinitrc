@@ -40,7 +40,7 @@ xsetroot -cursor_name left_ptr
 # xset r rate [delay] [repeat rate]
 # xset r rate 200 55
 # wwwwwwwwwweeeeeeeeeeeeeeeeeeeeeee!!!!!
-xset r rate 200 100
+xset r rate 225 100
 
 polybar-msg cmd hide
 

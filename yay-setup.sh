@@ -13,5 +13,6 @@ yay -S \
   cava \
   bsp-layout \
   ly \
-  xinit-xsession
+  xinit-xsession \
+  qmk
 
