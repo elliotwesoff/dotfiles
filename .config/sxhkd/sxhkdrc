@@ -75,6 +75,7 @@ super + control + alt + l
 super + control + alt + z
   elliot suspend
 
+
 # super + control + alt + t
 #   ([[ $XORG_COLORSCHEME =~ "light" ]] && theme dark) || theme light
 

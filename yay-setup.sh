@@ -14,5 +14,6 @@ yay -S \
   bsp-layout \
   ly \
   xinit-xsession \
-  qmk
+  qmk \
+  soulseekqt
 
