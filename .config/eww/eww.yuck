@@ -1,0 +1,25 @@
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+
+(defwidget date []
+  (box :orientation "h" 
+       :halign "center" 
+       default_dt))
+
+(defpoll hour :interval "1s" "date +%H")
+(defpoll min  :interval "1s" "date +%M")
+(defpoll sec  :interval "1s" "date +%S")
+(defpoll default_dt :interval "1s" "date")
+
+(defpoll day_word :interval "10m" "date +%a | tr [:upper:] [:lower:]")
+(defpoll day      :interval "10m" "date +%d")
+(defpoll month    :interval "1h"  "date +%m")
+(defpoll year     :interval "1h"  "date +%y")
+
+(defwindow datetime
+  :geometry (geometry :x 150 :y 100 :height "40px" :width "400px")
+  (date))

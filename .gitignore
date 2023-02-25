@@ -21,6 +21,7 @@ __pycache__
 !.config/dunst
 !.config/bspwm
 !.config/alacritty
+!.config/eww
 !.local/bin
 
 *.log
