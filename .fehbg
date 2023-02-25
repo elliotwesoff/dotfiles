@@ -4,9 +4,9 @@
 
 if [[ $XORG_COLORSCHEME =~ light ]]
 then
-  feh --no-fehbg --bg-scale '/home/elliot/Pictures/wallpapers/bg-light.jpg' 
+  feh --no-fehbg --bg-fill '/home/elliot/Pictures/wallpapers/bg-light' 
 elif [[ $XORG_COLORSCHEME =~ dark ]]
 then
-  feh --no-fehbg --bg-fill '/home/elliot/Pictures/wallpapers/bg-dark.jpg' 
+  feh --no-fehbg --bg-fill '/home/elliot/Pictures/wallpapers/bg-dark' 
 fi
 
