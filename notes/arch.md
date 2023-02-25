@@ -95,3 +95,29 @@ Sorting: `o` (order)
 * `oc` - order by creation time
 * `on` - order "natural" (default sorting)
 * `oN` - order reverse "natural"
+
+## gpg
+
+To encrypt a file (assuming you already have your own pair of GPG
+keys generated and installed on your machine):
+
+```
+gpg --encrypt --output {output_filename} --recipient {email
+address associated with the GPG key of the recipient. this must
+also be present on your machine. idk how gpg links it. you just
+have to add it somehow. do a google ffs.} {filename}
+```
+
+After encrypting a file, be sure to remove the original filename.
+If you use a .gpg extension on top of the original filename, then
+it should be obvious which file to remove. Don't be a dumb idiot
+and overwrite the original file with the encrypted file. Don't be
+a dumb idiot and remove the original file!!!
+
+To decrypt a file encrypted with gpg:
+
+```
+gpg --decrypt --output {output_filename} {input_filename
+(probably has a .gpg extension)}
+```
+
