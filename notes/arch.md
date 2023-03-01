@@ -121,3 +121,45 @@ gpg --decrypt --output {output_filename} {input_filename
 (probably has a .gpg extension)}
 ```
 
+## pdftk
+
+To combine pdf files that contain *text*, use pdftk:
+
+```
+pdftk *.pdf cat output file.pdf
+```
+
+or, without a glob:
+
+```
+pdftk 1.pdf 2.pdf 3.pdf cat output file.pdf
+```
+
+To combine images into a pdf, use imagemagick's convert:
+
+```
+convert -density [150? 600? idk but it's supposed to make it
+better] *.jpg output.pdf 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

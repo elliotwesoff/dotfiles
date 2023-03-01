@@ -35,6 +35,7 @@ sudo pacman -S \
   vivaldi \
   vivaldi-ffmpeg-codecs \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
+  pdftk \
   tmux \
   rofi \
   zsh \
