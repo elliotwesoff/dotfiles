@@ -115,7 +115,7 @@ else
   export EDITOR='vim'
 fi
 
-export PATH=$HOME/.local/bin:/home/elliot/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:/home/elliot/.cargo/bin:$HOME/.local/share/gem/ruby/3.1.0/bin:$PATH
 
 source ~/.secrets
 
