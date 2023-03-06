@@ -64,5 +64,6 @@ sudo pacman -S \
   font-manager \
   texlive-core texlab \
   pinta \
-  playerctl
+  playerctl \
+  unrar
 

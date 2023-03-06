@@ -12,6 +12,7 @@ set tui border-kind acs
 set tui border-mode bold
 
 tui new-layout nice {-horizontal asm 1 src 1 regs 1} 2 status 0 cmd 1
+tui new-layout vnice {-horizontal src 1 regs 1 cmd 1} 1 status 0
 tui new-layout vert -horizontal cmd 3 src 2
 
 
