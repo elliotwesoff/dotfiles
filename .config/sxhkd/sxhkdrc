@@ -35,8 +35,10 @@ super + alt + b
 super + alt + d
   discord
 
+# super + alt + m
+#   pavucontrol
 super + alt + m
-  pavucontrol
+  kitty pulsemixer
 
 super + alt + w
   whatsdesk
