@@ -15,7 +15,7 @@ function M.apply_lsp_config()
   lspconfig.tsserver.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.asm_lsp.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  -- lspconfig.asm_lsp.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.solargraph.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.lua_ls.setup {
     settings = {
