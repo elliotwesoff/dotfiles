@@ -102,7 +102,7 @@ alias kittyc="nvim ~/dotfiles/.config/kitty/kitty.conf"
 alias nvimc="cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~"
 alias l="ls -lah"
 alias ll="ls -laht"
-alias dft="git difftool"
+alias dft="git difftool --no-symlinks --dir-diff"
 alias vpn="expressvpn"
 alias x="startx"
 

@@ -30,6 +30,8 @@ sudo pacman -S \
   neovim \
   git \
   kitty \
+  zsh \
+  fish \
   sxhkd \
   picom \
   vivaldi \
@@ -38,7 +40,6 @@ sudo pacman -S \
   pdftk \
   tmux \
   rofi \
-  zsh \
   feh \
   arandr \
   wget \
@@ -65,5 +66,6 @@ sudo pacman -S \
   texlive-core texlab \
   pinta \
   playerctl \
-  unrar
+  unrar \
+  qmk
 

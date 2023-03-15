@@ -3,11 +3,22 @@
   email = ewesoff@gmail.com
 
 [diff]
-  tool = nvim
-[difftool "nvim"]
-  cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE
-[mergetool "nvim"]
-  cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+
+; [diff]
+;   tool = nvim
+; [difftool "nvim"]
+;   cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE
+; [mergetool "nvim"]
+;   cmd = nvim -d -u ~/dotfiles/.config/nvim/init.vim $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [core]
 	autocrlf = input
