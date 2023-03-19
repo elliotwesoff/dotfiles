@@ -7,7 +7,8 @@
 #
 
 super + Return
-  kitty
+  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+        -c ~/dotfiles/.config/kitty/cozy.conf
 
 # smaller kitty for coding
 super + shift + Return

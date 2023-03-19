@@ -31,7 +31,6 @@ function M.apply_settings()
   vim.opt.splitright = true
   vim.opt.splitbelow = true
   vim.opt.showmode = false
-  -- vim.opt.updatetime = 300
   vim.opt.updatetime = 0
   vim.opt.pastetoggle = '<F3>'
   vim.opt.signcolumn = 'number'
@@ -45,7 +44,7 @@ function M.apply_settings()
   vim.opt.cmdheight = 0
   vim.opt.termguicolors = true
   vim.opt.foldmethod = 'indent'
-  vim.opt.foldnestmax = 1
+  vim.opt.foldnestmax = 3
   vim.opt.scrolloff = 2
 end
 
