@@ -22,6 +22,7 @@ __pycache__
 !.config/bspwm
 !.config/alacritty
 !.config/eww
+!.config/fish
 !.local/bin
 
 *.log
