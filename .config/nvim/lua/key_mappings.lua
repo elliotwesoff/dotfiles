@@ -1,6 +1,6 @@
 local M = {}
 
--- look!!!
+-- look!!! 
 -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
 -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
 -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
@@ -19,9 +19,9 @@ function M.apply_keymaps()
   vim.keymap.set('i', 'jj', '<Esc>', opts)
   vim.keymap.set('i', 'jk', '<Esc>:w<CR>', opts)
   vim.keymap.set('i', '<C-s>', ':w<CR>', opts)
-  vim.keymap.set('i', '<A-BS>', '<cmd>:execute "normal! db"<cr>', opts)
-  vim.keymap.set('i', '<A-,>', '<Esc>:tabprevious<CR>', opts)
-  vim.keymap.set('i', '<A-.>', '<Esc>:tabnext<CR>', opts)
+  vim.keymap.set('i', '<C-BS>', '<cmd>:execute "normal! db"<cr>', opts)
+  vim.keymap.set('i', '<C-,>', '<Esc>:tabprevious<CR>', opts)
+  vim.keymap.set('i', '<C-.>', '<Esc>:tabnext<CR>', opts)
 
   -- normal mode mappings
   vim.keymap.set('n', 'gd', telescope.lsp_definitions)
