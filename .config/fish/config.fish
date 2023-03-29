@@ -15,6 +15,7 @@ abbr --add x 'startx'
 abbr --add l 'ls -lah'
 abbr --add dft 'git difftool --no-symlinks --dir-diff'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
+abbr --add rgr 'ranger'
 
 # TODO: how to translate these to fish?
 # source ~/.secrets
