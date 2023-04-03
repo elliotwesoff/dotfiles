@@ -2,7 +2,7 @@ local settings = require('settings')
 local keymaps = require('key_mappings')
 local plugins = require('plugin_config')
 
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme rose-pine]])
 
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
