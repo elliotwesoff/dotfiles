@@ -44,7 +44,7 @@ function M.apply_settings()
   vim.opt.cmdheight = 0
   vim.opt.termguicolors = true
   vim.opt.foldmethod = 'indent'
-  vim.opt.foldnestmax = 3
+  vim.opt.foldnestmax = 5
   vim.opt.scrolloff = 2
 end
 
