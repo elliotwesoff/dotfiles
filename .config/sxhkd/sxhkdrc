@@ -8,12 +8,11 @@
 
 super + Return
   kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/cozy.conf
+        -c ~/dotfiles/.config/kitty/condensed.conf
 
-# smaller kitty for coding
 super + shift + Return
   kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/condensed.conf
+        -c ~/dotfiles/.config/kitty/cozy.conf
 
 super + alt + Return
   kitty -c ~/dotfiles/.config/kitty/kitty.conf \

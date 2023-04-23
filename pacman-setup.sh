@@ -14,6 +14,7 @@ sudo pacman -S \
   libnotify \
   xorg-server \
   xorg-xinit \
+  xdg-utils \
   mesa \
   mesa-utils \
   pipewire pipewire-docs \
