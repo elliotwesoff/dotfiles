@@ -14,7 +14,6 @@ function M.apply_settings()
   vim.opt.ignorecase = true
   vim.opt.smartcase = true
   vim.opt.ruler = true
-  vim.opt.autoindent = true
   vim.opt.startofline = false
   vim.opt.cursorline = true
   vim.opt.swapfile = false
@@ -25,6 +24,7 @@ function M.apply_settings()
   vim.opt.number = true
   vim.opt.numberwidth = 4
   vim.opt.expandtab = true
+  vim.opt.autoindent = true
   vim.opt.backup = false
   vim.opt.writebackup = false
   vim.opt.showmatch = true

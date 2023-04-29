@@ -2,7 +2,6 @@ local settings = require('settings')
 local keymaps = require('key_mappings')
 local plugins = require('plugin_config')
 
-vim.cmd([[colorscheme rose-pine]])
 
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
@@ -27,14 +26,13 @@ require('packer').startup(function(use)
   use { 'folke/zen-mode.nvim', config = plugins.apply_zenmode_config, commit = '38a660094dd023176ed4d6ecb1fe028546717f78' }
 
   -- colorschemes
-  use 'Yazeed1s/oh-lucy.nvim'
   use 'shaunsingh/seoul256.nvim'
   use 'projekt0n/github-nvim-theme'
-  use 'nyoom-engineering/oxocarbon.nvim'
   use 'AlexvZyl/nordic.nvim'
   use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
   use { 'catppuccin/nvim', as = 'catppuccin' }
   use { 'rose-pine/neovim', as = 'rose-pine' }
+  use { 'EdenEast/nightfox.nvim' }
 
   -- nvim-cmp (autocomplete)
   use 'hrsh7th/cmp-nvim-lsp'
@@ -51,6 +49,7 @@ settings.apply_settings()
 keymaps.apply_keymaps()
 
 plugins.apply_lsp_config()
+plugins.apply_lsp_signature_config()
 plugins.apply_nvim_cmp_config()
 plugins.apply_lualine_config()
 plugins.apply_nvim_tree_config()
@@ -60,4 +59,7 @@ plugins.apply_peek_config()
 plugins.apply_symbolsoutline_config()
 plugins.apply_indentblankline_config()
 plugins.apply_sunset_config()
+plugins.apply_catppuccin_config()
+
+vim.cmd.colorscheme("dayfox")
 

@@ -13,10 +13,11 @@ function M.apply_lsp_config()
   -- after the language server attaches to the current buffer
   lspconfig.pyright.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.tsserver.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  -- lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   -- lspconfig.asm_lsp.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.solargraph.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.csharp_ls.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities, AutomaticWorkspaceInit = true }
   lspconfig.lua_ls.setup {
     settings = {
       Lua = {
@@ -27,6 +28,13 @@ function M.apply_lsp_config()
     },
     capabilities = capabilities
   }
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = true,
+      virtual_text = false
+    }
+  )
 end
 
 function M.apply_lualine_config()
@@ -77,7 +85,6 @@ function M.apply_nvim_tree_config()
   vim.g.loaded_netrwPlugin = 1
 
   require("nvim-tree").setup {
-    open_on_setup = false,
     view = {
       adaptive_size = false,
       mappings = {
@@ -147,7 +154,16 @@ end
 function M.apply_treesitter_config()
   require('nvim-treesitter.configs').setup({
     -- A list of parser names, or "all"
-    ensure_installed = { "c", "lua", "cpp", "python", "typescript", "c_sharp", "cmake", "ruby", "sql", "markdown", "latex" },
+    ensure_installed = {
+      "lua",
+      "python",
+      "typescript",
+      "c_sharp",
+      "ruby",
+      "sql",
+      "markdown",
+      "latex"
+    },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -294,14 +310,14 @@ function M.apply_symbolsoutline_config()
   local opts = {
     highlight_hovered_item = true,
     show_guides = true,
-    auto_preview = false,
+    auto_preview = true,
     position = 'right',
     relative_width = true,
-    width = 25,
+    width = 15,
     auto_close = false,
     show_numbers = false,
     show_relative_numbers = false,
-    show_symbol_details = true,
+    show_symbol_details = false,
     preview_bg_highlight = 'Pmenu',
     autofold_depth = nil,
     auto_unfold_hover = true,
@@ -573,6 +589,52 @@ function M.apply_indentblankline_config()
     use_treesitter = true,
     show_trailing_blankline_indent = false
   })
+end
+
+function M.apply_catppuccin_config()
+  local catppuccin = require('catppuccin')
+  catppuccin.setup({
+    -- flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+      light = "latte",
+      dark = "mocha",
+    },
+    transparent_background = false,
+    show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+    term_colors = false,
+    dim_inactive = {
+      enabled = false,
+      shade = "dark",
+      percentage = 0.15,
+    },
+    no_italic = true, -- Force no italic
+    no_bold = false, -- Force no bold
+    styles = {
+      comments = { "italic" },
+      conditionals = { "italic" },
+      loops = {},
+      functions = {},
+      keywords = {},
+      strings = {},
+      variables = {},
+      numbers = {},
+      booleans = {},
+      properties = {},
+      types = {},
+      operators = {},
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+      cmp = true,
+      gitsigns = true,
+      nvimtree = true,
+      telescope = true,
+      notify = false,
+      mini = false,
+      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+    },
+})
 end
 
 return M

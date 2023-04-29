@@ -56,9 +56,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F18>', telescope.marks, opts)
   vim.keymap.set('n', '<F19>', ':messages<CR>', opts)
   vim.keymap.set('n', '<F23>', telescope.treesitter, opts)
-  vim.keymap.set('n', '<F24>', symbols_outline.open_outline, opts)
-  vim.keymap.set('n', '<leader>so', symbols_outline.open_outline, opts)
-  vim.keymap.set('n', '<leader>r', ':edit<CR>', opts)
+  vim.keymap.set('n', '<S-F11>', telescope.treesitter, opts)
+  vim.keymap.set('n', '<F24>', symbols_outline.toggle_outline, opts)
+  vim.keymap.set('n', '<S-F12>', symbols_outline.toggle_outline, opts)
   vim.keymap.set('n', '<leader>h', ':noh<CR>', opts)
   vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
@@ -75,14 +75,7 @@ function M.apply_keymaps()
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
 end
 
-function M.create_user_commands()
-  -- found a better way to do this, but keeping them around for later reference.
-  -- vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-  -- vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-end
-
 function M.apply_lsp_keymaps()
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   local keymap_opts = { noremap = true, silent = true }
   vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, keymap_opts)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
@@ -91,35 +84,20 @@ function M.apply_lsp_keymaps()
 end
 
 function M.apply_lsp_buffer_keymaps(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-
-  -- functionality here is normally covered by NvimTree
-  -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  -- vim.keymap.set('n', '<space>wl', function()
-  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, bufopts)
-
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-
-  -- covered by glance.nvim
-  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  -- vim.keymap.set('n', '<A-F12>', vim.lsp.buf.references, bufopts)
-
-  -- this produces a deprecated warning. idk i don't use it anyway
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>.', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>f', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<leader>s', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>h', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>o', vim.lsp.buf.formatting, bufopts)
 end
 
 return M
