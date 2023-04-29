@@ -2,7 +2,6 @@ local settings = require('settings')
 local keymaps = require('key_mappings')
 local plugins = require('plugin_config')
 
-
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'

@@ -10,11 +10,11 @@ set recolor-keephue true
 set statusbar-home-tilde true
 set statusbar-page-percent true
 set incremental-search false
-set page-cache-size 100
+set page-cache-size 1000
 set selection-clipboard clipboard
 set default-bg "#141414"
-set index-bg "#141414"
-set index-fg "#D6D6D6"
+set index-bg "#777777"
+set index-fg "#000098"
 set index-active-fg "#212121"
 set index-active-bg "#D6D6D6"
 set recolor false
@@ -27,4 +27,4 @@ set statusbar-v-padding 20
 set highlight-transparency 0.35
 set highlight-color "#6BE4FF"
 set highlight-active-color "#FFF420"
-
+set font "monospace normal 12"
