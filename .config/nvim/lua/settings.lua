@@ -45,6 +45,7 @@ function M.apply_settings()
   vim.opt.termguicolors = true
   vim.opt.foldmethod = 'indent'
   vim.opt.foldnestmax = 5
+  vim.opt.foldlevelstart = 2
   vim.opt.scrolloff = 2
 end
 

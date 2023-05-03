@@ -13,7 +13,7 @@ function M.apply_lsp_config()
   -- after the language server attaches to the current buffer
   lspconfig.pyright.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.tsserver.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  -- lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   -- lspconfig.asm_lsp.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
   lspconfig.solargraph.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
@@ -50,7 +50,7 @@ function M.apply_lualine_config()
       },
       ignore_focus = {},
       always_divide_middle = false,
-      globalstatus = true,
+      globalstatus = false,
       refresh = {
         statusline = 1000,
         tabline = 1000,
@@ -155,6 +155,8 @@ function M.apply_treesitter_config()
   require('nvim-treesitter.configs').setup({
     -- A list of parser names, or "all"
     ensure_installed = {
+      "c",
+      "cpp",
       "lua",
       "python",
       "typescript",
