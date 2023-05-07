@@ -1,10 +1,5 @@
 local M = {}
 
--- look!!! 
--- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
--- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
--- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
-
 function M.apply_keymaps()
   local peek = require('peek')
   local custom_fns = require('custom_functions')
@@ -23,6 +18,11 @@ function M.apply_keymaps()
   vim.keymap.set('i', '<C-,>', '<Esc>:tabprevious<CR>', opts)
   vim.keymap.set('i', '<C-.>', '<Esc>:tabnext<CR>', opts)
 
+  -- look!!! 
+  -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
+  -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
+  -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
+
   -- normal mode mappings
   vim.keymap.set('n', 'gd', telescope.lsp_definitions)
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
@@ -40,7 +40,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F2>', telescope.registers, opts)
   vim.keymap.set('n', '<F3>', telescope.buffers, opts)
   vim.keymap.set('n', '<F4>', telescope.current_buffer_fuzzy_find, opts)
-  vim.keymap.set('n', '<F5>', telescope.live_grep, opts)
+  vim.keymap.set('n', '<F5>', ':edit<CR>', opts)
   vim.keymap.set('n', '<F6>', telescope.find_files, opts)
   vim.keymap.set('n', '<F7>', telescope.colorscheme, opts)
   vim.keymap.set('n', '<F8>', zen_mode.toggle, opts)
@@ -48,17 +48,21 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F10>', '<cmd>Glance type_definitions<cr>', opts)
   vim.keymap.set('n', '<F11>', '<cmd>Glance definitions<cr>', opts)
   vim.keymap.set('n', '<F12>', '<cmd>Glance references<cr>', opts)
-  vim.keymap.set('n', '<F13>', telescope.git_status, opts)
-  vim.keymap.set('n', '<F14>', telescope.git_stash, opts)
-  vim.keymap.set('n', '<F15>', telescope.git_branches, opts)
-  vim.keymap.set('n', '<F16>', telescope.git_commits, opts)
+  vim.keymap.set('n', '<F13>', '', opts)
+  vim.keymap.set('n', '<F14>', '', opts)
+  vim.keymap.set('n', '<F15>', '', opts)
+  vim.keymap.set('n', '<F16>', telescope.live_grep, opts)
   vim.keymap.set('n', '<F17>', custom_fns.refresh_config, opts)
   vim.keymap.set('n', '<F18>', telescope.marks, opts)
   vim.keymap.set('n', '<F19>', ':messages<CR>', opts)
   vim.keymap.set('n', '<F23>', telescope.treesitter, opts)
-  vim.keymap.set('n', '<S-F11>', telescope.treesitter, opts)
+  vim.keymap.set('n', '<S-F11>', telescope.treesitter, opts) -- windows garbage
   vim.keymap.set('n', '<F24>', symbols_outline.toggle_outline, opts)
-  vim.keymap.set('n', '<S-F12>', symbols_outline.toggle_outline, opts)
+  vim.keymap.set('n', '<S-F12>', symbols_outline.toggle_outline, opts) -- windows garbage
+  vim.keymap.set('n', '<F25>', telescope.git_status, opts)
+  vim.keymap.set('n', '<F26>', telescope.git_stash, opts)
+  vim.keymap.set('n', '<F27>', telescope.git_branches, opts)
+  vim.keymap.set('n', '<F28>', telescope.git_commits, opts)
   vim.keymap.set('n', '<leader>h', ':noh<CR>', opts)
   vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
