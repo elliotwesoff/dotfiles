@@ -7,7 +7,7 @@ CONFIG_DIR=~/dotfiles/.config
 case "$1" in
   "light")
     echo light > ~/.local/state/colorscheme
-    ln -sfv $CONFIG_DIR/kitty/themes/catppuccin-latte.conf $CONFIG_DIR/kitty/theme.conf
+    ln -sfv $CONFIG_DIR/kitty/themes/neobones_light.conf $CONFIG_DIR/kitty/theme.conf
     ln -sfv $CONFIG_DIR/polybar/light-theme.ini $CONFIG_DIR/polybar/theme.ini
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-light $CONFIG_DIR/bspwm/bspwmrc-theme
   ;;

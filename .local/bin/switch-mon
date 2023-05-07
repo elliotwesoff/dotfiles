@@ -2,8 +2,8 @@
 #
 # switch-mon
 
-notify-send --expire-time 1500 "display change" "using $1 display in 3, 2, 1!"
-sleep 2s
+# notify-send --expire-time 1500 "display change" "using $1 display in 3, 2, 1!"
+# sleep 2s
 
 case $1 in
   "internal")
@@ -18,15 +18,14 @@ case $1 in
     EXT_MON=$(xrandr -q | grep '^DP-[1-9] connected')
     MON=$(echo $EXT_MON | cut -d ' ' -f 1)
     bspc monitor $MON -d I II III IV V VI VII
-    # source ~/.screenlayout/framework-ext.sh
-    source ~/.screenlayout/razer-core-x.sh
+    source ~/.screenlayout/framework-ext.sh
+    # source ~/.screenlayout/razer-core-x.sh
   ;;
   "dual")
     echo nothing yet!
     notify-send \
       --urgency=critical \
       --expire-time 2000 \
-      "display change" \
       "no dual monitor config yet!"
   ;;
 esac

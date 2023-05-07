@@ -29,10 +29,10 @@ $HOME/dotfiles/.fehbg &
 $HOME/dotfiles/.config/polybar/launch.sh &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
+dunst &
 # picom &
 # oneko &
-dunst &
-eww daemon
+# eww daemon
 
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402

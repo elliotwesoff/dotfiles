@@ -142,6 +142,15 @@ convert -density [150? 600? idk but it's supposed to make it
 better] *.jpg output.pdf 
 ```
 
+## System
+
+### Devices
+
+* `/sys/class` contains information about all classes of devices
+  known (connected?, detected?) to the system
+* `/sys/class/drm` contains all of the various video "cards"
+  detected on the system
+
 
 
 
