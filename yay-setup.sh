@@ -15,5 +15,6 @@ yay -S \
   ly \
   xinit-xsession \
   qmk \
-  soulseekqt
+  soulseekqt \
+  blight
 

@@ -123,20 +123,17 @@ super + F4
   kitty nvim ~/dotfiles/.config/sxhkd/sxhkdrc 
 
 # brightness
-super + F7
-  pybright down
-
 super + shift + F1
-  pybright down
-
-super + shift + F2
-  pybright up
+  blight set -5%
 
 XF86MonBrightnessDown
-  pybright down
+  blight set -5%
+
+super + shift + F2
+  blight set +5%
 
 XF86MonBrightnessUp
-  pybright up
+  blight set +5%
 
 # touchpad shenanigans
 super + F10
