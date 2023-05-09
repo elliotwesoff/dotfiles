@@ -142,6 +142,32 @@ convert -density [150? 600? idk but it's supposed to make it
 better] *.jpg output.pdf 
 ```
 
+## rclone
+
+Use this command to back up your documents folder to google drive
+after you've already configured rclone:
+
+```
+rclone sync --progress ~/Documents ewesoff-google-drive:X1/Documents
+```
+
+(rough) contents of rclone.conf:
+
+```
+[ewesoff-google-drive]
+type = drive
+client_id = <client id here>
+client_secret = <client secret here>
+scope = drive.file
+service_account_file = 
+team_drive = 
+token = {"access_token":"<token>","token_type":"Bearer","refresh_token":"<refresh token>","expiry":"2023-05-07T12:58:51.99556164-07:00"}
+```
+
+I don't remember where to get the token from, but it's likely
+from Google's apps API platform thing. RClone's docs should tell
+you how to get it.
+
 ## System
 
 ### Devices

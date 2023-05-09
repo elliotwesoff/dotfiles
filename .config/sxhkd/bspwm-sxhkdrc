@@ -47,8 +47,17 @@ super + {_,shift + }{h,j,k,l}
   bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
+#
+# note: you really need to NOT forget this:
+# these commands select groups of windows
+# if you want to snap a split to a ratio,
+# select the parent with super + p, then
+# resize with bspc node -f -r [ratio]
 super + {p,b,comma,period}
   bspc node -f @{parent,brother,first,second}
+
+super + alt + {1-9}
+  bspc node -f -r 0.{1-9}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
@@ -72,10 +81,6 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
-# TODO
-super + alt + shift + {1-9,0}
-  bspc node -d '^{1-9,10}'; \
-  bspc desktop -f '^{1-9,10}'
 
 #
 # preselect

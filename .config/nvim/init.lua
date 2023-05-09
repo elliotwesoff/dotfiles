@@ -31,7 +31,7 @@ require('packer').startup(function(use)
   use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
   use { 'catppuccin/nvim', as = 'catppuccin' }
   use { 'rose-pine/neovim', as = 'rose-pine' }
-  use { 'EdenEast/nightfox.nvim' }
+  use { 'EdenEast/nightfox.nvim', as = 'nightfox' }
 
   -- nvim-cmp (autocomplete)
   use 'hrsh7th/cmp-nvim-lsp'

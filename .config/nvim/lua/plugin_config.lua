@@ -385,7 +385,7 @@ function M.apply_symbolsoutline_config()
   local opts = {
     highlight_hovered_item = true,
     show_guides = true,
-    auto_preview = true,
+    auto_preview = false,
     position = 'right',
     relative_width = true,
     width = 15,
@@ -394,7 +394,7 @@ function M.apply_symbolsoutline_config()
     show_relative_numbers = false,
     show_symbol_details = false,
     preview_bg_highlight = 'Pmenu',
-    autofold_depth = nil,
+    autofold_depth = 1,
     auto_unfold_hover = true,
     fold_markers = { '', '' },
     wrap = false,

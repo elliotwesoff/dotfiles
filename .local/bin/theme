@@ -13,7 +13,7 @@ case "$1" in
   ;;
   "dark")
     echo dark > ~/.local/state/colorscheme
-    ln -sfv $CONFIG_DIR/kitty/themes/harper.conf $CONFIG_DIR/kitty/theme.conf
+    ln -sfv $CONFIG_DIR/kitty/themes/afterglow.conf $CONFIG_DIR/kitty/theme.conf
     ln -sfv $CONFIG_DIR/polybar/dark-theme.ini $CONFIG_DIR/polybar/theme.ini
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-dark $CONFIG_DIR/bspwm/bspwmrc-theme
   ;;
