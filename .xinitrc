@@ -5,7 +5,8 @@
 if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   export XORG_DPI=96
-  $HOME/dotfiles/.screenlayout/framework-ext.sh
+  # $HOME/dotfiles/.screenlayout/framework-ext.sh
+  $HOME/dotfiles/.screenlayout/dads-samsung.sh
 # elif [[ $(xrandr -q | grep '^HDMI-[0-9]-[0-9] connected') ]]
 #   export XORG_DPI=96
 #   $HOME/dotfiles/.screenlayout/razer-core-x.sh

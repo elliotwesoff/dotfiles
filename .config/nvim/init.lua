@@ -42,6 +42,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'ray-x/cmp-treesitter'
+  -- use 'OmniSharp/omnisharp-vim'
 end)
 
 settings.apply_settings()
@@ -60,5 +61,5 @@ plugins.apply_indentblankline_config()
 plugins.apply_sunset_config()
 plugins.apply_catppuccin_config()
 
-vim.cmd.colorscheme("dayfox")
+vim.cmd.colorscheme("rose-pine")
 
