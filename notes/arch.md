@@ -20,6 +20,10 @@ To enable/disable a device:
 
 `nmcli radio wifi [on|off]`
 
+To show the password of a known wifi network:
+
+`nmcli --show-secrets connection show TeamBanana3.0 | grep psk`
+
 ## Change time and timezone
 
 * `timedatectl set-time [yyyy-mm-dd HH:MM:SS]`

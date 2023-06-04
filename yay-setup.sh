@@ -17,5 +17,6 @@ yay -S \
   blight \
   nordvpn-bin \
   unityhub \
-  omnisharp-roslyn
+  omnisharp-roslyn \
+  otf-intel-one-mono
 

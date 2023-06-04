@@ -23,6 +23,7 @@ function M.apply_lsp_config()
   lspconfig.omnisharp.setup {
     -- cmd = { "mono", "/usr/lib/omnisharp-roslyn/OmniSharp" },
     -- cmd = { "mono", "/sbin/omnisharp" },
+    cmd = { "omnisharp" },
     root_dir = lspconfig.util.root_pattern('*.sln'),
     on_attach = function(client)
       if client.name == "omnisharp" then
