@@ -15,6 +15,7 @@ sudo pacman -S \
   xorg-server \
   xorg-xinit \
   xdg-utils \
+  xscreensaver \
   mesa \
   mesa-utils \
   pipewire pipewire-docs \

@@ -27,6 +27,7 @@ $HOME/dotfiles/.config/polybar/launch.sh &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
+xscreensaver --no-splash &
 # picom &
 # oneko &
 # eww daemon

@@ -43,6 +43,9 @@ super + alt + m
 super + alt + w
   whatsdesk
 
+super + alt + l
+  xscreensaver-command --lock
+
 super + a
   rofi -show run
 

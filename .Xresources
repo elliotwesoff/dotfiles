@@ -5,4 +5,8 @@
 ! ~/.Xresources via .xinitrc
 
 Xcursor.size: 22
+Xft.dpi: 120
+
+Sxiv.background: #000000
+Sxiv.foreground: #FFFFFF
 
