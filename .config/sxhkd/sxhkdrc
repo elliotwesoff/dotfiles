@@ -43,7 +43,7 @@ super + alt + m
 super + alt + w
   whatsdesk
 
-super + alt + l
+super + control + alt + l
   xscreensaver-command --lock
 
 super + a
@@ -74,8 +74,8 @@ super + control + alt + Escape
 super + control + alt + Delete
   pkill Xorg
 
-super + control + alt + l
-  elliot logout
+# super + control + alt + l
+#   elliot logout
 
 super + control + alt + z
   elliot suspend
