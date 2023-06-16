@@ -790,5 +790,16 @@ function M.apply_catppuccin_config()
 })
 end
 
+function M.apply_mellifluous_config()
+  local mellifluous = require('mellifluous')
+  local config = {
+    mellifluous = {
+      neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+      bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+    }
+  }
+  mellifluous.setup(config)
+end
+
 return M
 

@@ -14,7 +14,7 @@ function M.apply_settings()
   vim.opt.ignorecase = true
   vim.opt.smartcase = true
   vim.opt.ruler = true
-  vim.opt.startofline = false
+  vim.opt.startofline = true
   vim.opt.cursorline = true
   vim.opt.swapfile = false
   vim.opt.wrap = false
@@ -47,7 +47,7 @@ function M.apply_settings()
   vim.opt.foldnestmax = 5
   vim.opt.foldlevelstart = 2
   vim.opt.scrolloff = 2
-  
+
   vim.cmd([[
     let g:OmniSharp_server_use_mono = 1
   ]])

@@ -26,8 +26,8 @@ require('packer').startup(function(use)
 
   -- colorschemes
   use 'shaunsingh/seoul256.nvim'
-  use 'projekt0n/github-nvim-theme'
-  use 'AlexvZyl/nordic.nvim'
+  -- use 'lunacookies/sema' -- no vim whyyeeeeeee
+  use { 'ramojus/mellifluous.nvim', config = plugins.apply_mellifluous_config }
   use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
   use { 'catppuccin/nvim', as = 'catppuccin' }
   use { 'rose-pine/neovim', as = 'rose-pine' }
@@ -61,5 +61,5 @@ plugins.apply_indentblankline_config()
 plugins.apply_sunset_config()
 plugins.apply_catppuccin_config()
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme('mellifluous')
 
