@@ -19,8 +19,14 @@ super + alt + Return
         -c ~/dotfiles/.config/kitty/condensed.conf \
         tmux
 
-super + alt + Tab
-  kitty htop
+# heylp! i forgot my keymappings!
+super + F1
+  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+        -c ~/dotfiles/.config/kitty/condensed.conf \
+        nvim -O \
+          ~/dotfiles/.config/sxhkd/sxhkdrc \
+          ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
+          ~/Documents/Notes/arch-notes.md
 
 # don't do this! it's taken by bspc restart
 # super + alt + r
@@ -35,8 +41,6 @@ super + alt + b
 super + alt + d
   discord
 
-# super + alt + m
-#   pavucontrol
 super + alt + m
   kitty pulsemixer
 
@@ -74,15 +78,8 @@ super + control + alt + Escape
 super + control + alt + Delete
   pkill Xorg
 
-# super + control + alt + l
-#   elliot logout
-
 super + control + alt + z
   elliot suspend
-
-
-# super + control + alt + t
-#   ([[ $XORG_COLORSCHEME =~ "light" ]] && theme dark) || theme light
 
 super + Delete
   elliot suspend
@@ -120,10 +117,6 @@ super + F2
 
 super + F3
   amixer -q sset Master 5%+
-
-# heylp! i forgot my other keymappings!
-super + F4
-  kitty nvim ~/dotfiles/.config/sxhkd/sxhkdrc 
 
 # brightness
 super + shift + F1

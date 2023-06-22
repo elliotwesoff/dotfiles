@@ -69,5 +69,7 @@ sudo pacman -S \
   pinta \
   playerctl \
   unrar \
-  qmk
+  qmk \
+  wine \
+  wine-mono
 

@@ -2,10 +2,6 @@
 # bspwm hotkeys
 #
 
-# heylp i forgot my key mappings!
-super + F1
-  kitty nvim ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc
-
 # quit/restart bspwm
 super + alt + {q,r}
   bspc {quit,wm -r}
@@ -31,7 +27,7 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,shift + f,f}
   bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags

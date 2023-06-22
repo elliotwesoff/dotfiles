@@ -25,7 +25,7 @@ export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 polybar-msg cmd restart
 
 # set new background image
-$HOME/dotfiles/.fehbg &
+sh -c $HOME/dotfiles/.fehbg &
 
 # restart bspwm
 bspc wm -r

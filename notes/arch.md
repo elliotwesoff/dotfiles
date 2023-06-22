@@ -1,13 +1,15 @@
 # Elliot's arch notes!
 
-## Adding a printer
+## Maintenance/general tasks and usage
 
-* use `system-config-printer` in terminal to add a printer.
+### Adding a printer
 
-## Connect to wifi
+use `system-config-printer` in terminal to add a printer.
 
-`nmtui` exists as a ncurses based UI! just for adding and
-editing connections.
+but really print from another computer or phone, if possible.
+adding a printer is fucking agonizing.
+
+### Connect to wifi
 
 1. `nmcli d wifi list`
 2. `nmcli d wifi connect [SSID] password [password]`
@@ -24,33 +26,45 @@ To show the password of a known wifi network:
 
 `nmcli --show-secrets connection show TeamBanana3.0 | grep psk`
 
-## Change time and timezone
+P.S.:
+
+`nmtui` exists as a ncurses based UI! just for adding and
+editing connections.
+
+### Change time and timezone
 
 * `timedatectl set-time [yyyy-mm-dd HH:MM:SS]`
 * `timedatectl set-timezone [timezone]`
 ** timezone -> Europe/Berlin or America/Los_Angeles
 
-### Sync system clock (user, local) to hardware clock (BIOS/UEFI)
+#### Sync system clock (user, local) to hardware clock (BIOS/UEFI)
 
 * `sudo hwclock --systohc`
 
-## Color temperature
+### Color temperature
+
+#### HEY! don't use xflux, it's super buggy
 
 * using xflux (aur), set commands in .xinitrc
 * `xflux -z 91016 &` # => los angeles
 * `xflux -l 48 -g 11 &` # => munich
 
-## CPU Underclocking
+redshift is supposed to work well, but it wouldn't work on my pc
+for whatever reason.
+
+### CPU Underclocking
 
 * `sudo cpupower frequency-set -u 800MHz`
 * `sudo cpupower frequency-info`
 * GUI version is cpupower-gui
 
-## Install a package from an archive file
+### Install a package from an archive file
 
 * `sudo pacman -U <archive filename>`
 
-## Formatting a drive
+how to find the archive filename?
+
+### Formatting a drive
 
 1. switch to root user
 2. use `lsblk` to identify the device number
@@ -59,7 +73,9 @@ To show the password of a known wifi network:
 5. create the filesystem using `mkfs.[fs-type] /dev/sdb[num]`
 6. victory!
 
-## feh
+## Applications
+
+### feh
 
 View all images in a folder:
 
@@ -92,7 +108,16 @@ Keybinds:
 * i toggle info display
 * d toggle filenames
 
-## ranger
+### sxiv
+
+* `f - fullscreen`
+* `b - infobar`
+* `= - zoom to 100%`
+* `W - fit`
+* `e - fit to window width`
+* `E - fit to window height`
+
+### ranger
 
 Sorting: `o` (order)
 
@@ -100,7 +125,7 @@ Sorting: `o` (order)
 * `on` - order "natural" (default sorting)
 * `oN` - order reverse "natural"
 
-## gpg
+### gpg
 
 To encrypt a file (assuming you already have your own pair of GPG
 keys generated and installed on your machine):
@@ -125,7 +150,7 @@ gpg --decrypt --output {output_filename} {input_filename
 (probably has a .gpg extension)}
 ```
 
-## pdftk
+### pdftk
 
 To combine pdf files that contain *text*, use pdftk:
 
@@ -146,7 +171,7 @@ convert -density [150? 600? idk but it's supposed to make it
 better] *.jpg output.pdf 
 ```
 
-## rclone
+### rclone
 
 Use this command to back up your documents folder to google drive
 after you've already configured rclone:
