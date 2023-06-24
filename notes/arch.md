@@ -197,6 +197,11 @@ I don't remember where to get the token from, but it's likely
 from Google's apps API platform thing. RClone's docs should tell
 you how to get it.
 
+### foliate
+
+Use foliate for epub files. The zathura-mupdf extension works but
+the rendering is weird.
+
 ## System
 
 ### Devices
