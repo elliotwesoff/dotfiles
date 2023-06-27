@@ -14,6 +14,7 @@ require('packer').startup(function(use)
   use 'tamton-aquib/duck.nvim'
   use 'ray-x/lsp_signature.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'stevearc/oil.nvim'
   -- use 'Bekaboo/dropbar.nvim'
   use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
   use { 'gorbit99/codewindow.nvim', config = plugins.apply_codewindow_config }
@@ -40,8 +41,6 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
-  -- use 'hrsh7th/cmp-vsnip'
-  -- use 'hrsh7th/vim-vsnip'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
   use 'ray-x/cmp-treesitter'
@@ -63,6 +62,7 @@ plugins.apply_symbolsoutline_config()
 plugins.apply_indentblankline_config()
 plugins.apply_sunset_config()
 plugins.apply_catppuccin_config()
+plugins.apply_oil_config()
 
 vim.cmd.colorscheme('mellifluous')
 

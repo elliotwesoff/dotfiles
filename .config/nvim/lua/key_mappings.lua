@@ -8,7 +8,14 @@ function M.apply_keymaps()
   local telescope = require('telescope.builtin')
   local symbols_outline = require('symbols-outline')
   local duck = require('duck')
+  local oil = require('oil')
   local opts = { noremap = true, silent = true }
+
+  -- look!!! 
+  -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
+  -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
+  -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
+  -- (this is only on linux, windows sends different keys '-____________-)
 
   -- insert mode mappings
   vim.keymap.set('i', 'jj', '<Esc>', opts)
@@ -18,14 +25,9 @@ function M.apply_keymaps()
   vim.keymap.set('i', '<C-,>', '<Esc>:tabprevious<CR>', opts)
   vim.keymap.set('i', '<C-.>', '<Esc>:tabnext<CR>', opts)
 
-  -- look!!! 
-  -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
-  -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
-  -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
-  -- (this is only on linux, windows sends different keys '-____________-)
-
   -- normal mode mappings
   vim.keymap.set('n', 'gd', telescope.lsp_definitions)
+  vim.keymap.set("n", "-", oil.open, { desc = "Open parent directory" })
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
