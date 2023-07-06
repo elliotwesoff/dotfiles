@@ -102,13 +102,13 @@
   :stacking "fg"
   (bar :screen 0))
 
-(defpoll bspwm_desktop_1 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/I`)
-(defpoll bspwm_desktop_2 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/II`)
-(defpoll bspwm_desktop_3 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/III`)
-(defpoll bspwm_desktop_4 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/IV`)
-(defpoll bspwm_desktop_5 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/V`)
-(defpoll bspwm_desktop_6 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/VI`)
-(defpoll bspwm_desktop_7 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/VII`)
+(defpoll bspwm_desktop_1 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/I`)
+(defpoll bspwm_desktop_2 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/II`)
+(defpoll bspwm_desktop_3 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/III`)
+(defpoll bspwm_desktop_4 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/IV`)
+(defpoll bspwm_desktop_5 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/V`)
+(defpoll bspwm_desktop_6 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/VI`)
+(defpoll bspwm_desktop_7 :interval "1s" :initial "-" `curl http://localhost:3100/desktop/VII`)
 
 (defwidget bspwm-widget []
   (box

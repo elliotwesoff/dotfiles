@@ -34,8 +34,7 @@ xscreensaver --no-splash &
 # eww daemon
 
 # start bspwm widget server and mini listener service.
-$HOME/dotfiles/.local/bin/bspwm-subscribe-nodes &
-ruby $HOME/code/bspeww/server.rb &
+$HOME/code/bspeww/scripts/bspeww.sh &
 
 # 34.6831139:-120.6232676 => surf beach, ca
 redshift -l 34.6831139:-120.6232676 -t 6500:3500 &
