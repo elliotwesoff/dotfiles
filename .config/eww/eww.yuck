@@ -102,59 +102,36 @@
   :stacking "fg"
   (bar :screen 0))
 
-(defvar ids "[0,1,2,3,4,5,6]")
-(defvar bspwm_desktop_1 "")
-(defvar bspwm_desktop_2 "")
-(defvar bspwm_desktop_3 "")
-(defvar bspwm_desktop_4 "")
-(defvar bspwm_desktop_5 "")
-(defvar bspwm_desktop_6 "")
-(defvar bspwm_desktop_7 "")
+(defpoll bspwm_desktop_1 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/I`)
+(defpoll bspwm_desktop_2 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/II`)
+(defpoll bspwm_desktop_3 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/III`)
+(defpoll bspwm_desktop_4 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/IV`)
+(defpoll bspwm_desktop_5 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/V`)
+(defpoll bspwm_desktop_6 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/VI`)
+(defpoll bspwm_desktop_7 :interval "1m" :initial "-" `curl http://localhost:4567/desktop/VII`)
+
+(defwidget bspwm-widget []
+  (box
+    :class "bspwm-widget"
+    (box :orientation "v"
+      (bspwm-win-state :name "I" :win bspwm_desktop_1)
+      (bspwm-win-state :name "II" :win bspwm_desktop_2)
+      (bspwm-win-state :name "III" :win bspwm_desktop_3)
+      (bspwm-win-state :name "IV" :win bspwm_desktop_4)
+      (bspwm-win-state :name "V" :win bspwm_desktop_5)
+      (bspwm-win-state :name "VI" :win bspwm_desktop_6)
+      (bspwm-win-state :name "VII" :win bspwm_desktop_7))))
+
+(defwidget bspwm-win-state [name win]
+  (box :space-evenly true
+    (label :text name)
+    (label :text win)))
 
 (defwindow bspwm-info
   :monitor 0
   :geometry (geometry :anchor "center" :width "50%" :height "50%")
-  :wm-ignore false
+  :wm-ignore true
   :windowtype "normal"
   :stacking "fg"
   (bspwm-widget))
-
-(defwidget bspwm-widget [] 
-  (box :orientation "h"
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 1)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_1)
-    )
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 2)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_2)
-    )
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 3)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_3)
-    )
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 4)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_4)
-    )
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 5)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_5)
-    )
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 6)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_6)
-    )
-    (box :orientation "v" :space-evenly false :spacing 24
-      (label :xalign 0.5 :yalign 0 :text 7)
-      (label :xalign 0 :yalign 0 :text bspwm_desktop_7)
-    )
-  )
-)
-
-(defwidget bspwm-win-state [win]
-  (box :orientation "v" :space-evenly false :spacing 24
-    (label :xalign 0.5 :yalign 0.5 :text win)
-  )
-)
 
