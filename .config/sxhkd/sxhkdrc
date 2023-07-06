@@ -19,15 +19,6 @@ super + alt + Return
         -c ~/dotfiles/.config/kitty/condensed.conf \
         tmux
 
-# heylp! i forgot my keymappings!
-super + F1
-  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/condensed.conf \
-        nvim -O \
-          ~/dotfiles/.config/sxhkd/sxhkdrc \
-          ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
-          ~/Documents/Notes/arch-notes.md
-
 # don't do this! it's taken by bspc restart
 # super + alt + r
 #   kitty ranger
@@ -62,8 +53,10 @@ XF86LaunchA
 super + x
   $HOME/dotfiles/.config/polybar/launch.sh & disown
 
+# super + z
+#   polybar-msg cmd toggle
 super + z
-  polybar-msg cmd toggle
+  eww-toggle
 
 super + Escape
   polybar-msg cmd toggle
@@ -78,8 +71,9 @@ super + control + alt + Escape
 super + control + alt + Delete
   pkill Xorg
 
-super + control + alt + z
-  elliot suspend
+# not for a little bit, while we're running that.
+# super + control + alt + z
+#   elliot suspend
 
 super + Delete
   elliot suspend
@@ -112,12 +106,6 @@ XF86AudioLowerVolume
 XF86AudioMute
   amixer -q sset Master 1+ toggle
 
-super + F2
-  amixer -q sset Master 5%-
-
-super + F3
-  amixer -q sset Master 5%+
-
 # brightness
 super + shift + F1
   blight set -5%
@@ -131,11 +119,23 @@ super + shift + F2
 XF86MonBrightnessUp
   blight set +5%
 
-# touchpad shenanigans
+# heylp! i forgot my keymappings!
+super + F1
+  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+        -c ~/dotfiles/.config/kitty/condensed.conf \
+        nvim -O \
+          ~/dotfiles/.config/sxhkd/sxhkdrc \
+          ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
+          ~/Documents/Notes/arch-notes.md
+
 super + F10
+  flameshot gui
+
+# touchpad shenanigans
+super + F11
   tp off
 
-super + F11
+super + F12
   tp on
 
 # printscreen button

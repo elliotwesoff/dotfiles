@@ -1,24 +1,106 @@
-(defwidget greeter [?text name]
-  (box :orientation "horizontal"
-       :halign "center"
-    text
-    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
-      "Greet")))
-
-(defwidget date []
-  (box :orientation "h" 
-       :halign "center" 
-       sec))
-
 (defpoll hour :interval "1s" "date +%H")
 (defpoll min  :interval "1s" "date +%M")
 (defpoll sec  :interval "1s" "date +%S")
 (defpoll default_dt :interval "1s" "date")
-
 (defpoll day_word :interval "10m" "date +%a | tr [:upper:] [:lower:]")
 (defpoll day      :interval "10m" "date +%d")
 (defpoll month    :interval "1h"  "date +%m")
 (defpoll year     :interval "1h"  "date +%y")
+(defpoll date_poll :interval "1m" "date +%m/%d/%Y")
+(defpoll time_poll :interval "1s" "date +%H:%M:%S")
+(defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
+(defpoll bright :interval "1s" `blight get`)
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "center"
+       :spacing 2
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)))
+
+(defwidget icon-module [icon ?class ?visible]
+  (box :class "${class} icon-module"
+       :orientation "h"
+       :space-evenly true
+       :visible {visible ?: true} ; because the argument is optional
+    (label :halign "start" :class "icon-module__icon" :text "${icon}")
+    (children)))
+
+(defwidget date []
+  (icon-module :class "stat" :icon ""
+    (label :halign "end" :text date_poll)))
+
+(defwidget time []
+  (icon-module :class "stat" :icon ""
+    (label :halign "end" :text time_poll)))
+
+(defwidget disk []
+  (icon-module :class "stat" :icon "" 
+    (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
+
+(defwidget ram []
+  (icon-module :class "stat" :icon "💾"
+    (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
+
+(defwidget cpu []
+  (icon-module :class "stat" :icon ""
+    (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%")))
+
+(defwidget battery []
+  (icon-module :class "stat" :icon "󰁹"
+    (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
+
+(defwidget temperature []
+  (icon-module :class "stat" :icon ""
+    (label :halign "end" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
+
+(defwidget wifi []
+  (box :orientation "v"
+        (icon-module :class "stat" :icon "⬈"
+          (label :text "${round(EWW_NET.wlp166s0.NET_UP / 1048576, 2)} MB/s"))
+        (icon-module :class "stat" :icon "⬊"
+          (label :text "${round(EWW_NET.wlp166s0.NET_DOWN / 1048576, 2)} MB/s"))))
+
+(defwidget volume []
+  (box :orientation "v"
+        (icon-module :class "stat" :icon "🕪"
+          (label :text "${vol}%"))))
+
+(defwidget brightness []
+  (box :orientation "v"
+        (icon-module :class "stat" :icon "☀"
+          (label :text "${bright}%"))))
+
+(defwidget bar [screen]
+  (box :orientation "v"
+       :space-evenly false
+       :class "bar"
+          (date)
+          (time)
+          (battery)
+          (disk)
+          (cpu)
+          (ram)
+          (temperature)
+          (wifi)
+          (volume)
+          (brightness)
+  ))
+
+(defwindow right-dock
+  :monitor 0
+  :geometry (geometry :anchor "top right")
+  :wm-ignore true
+  :windowtype "dock"
+  :stacking "fg"
+  (bar :screen 0))
 
 (defvar ids "[0,1,2,3,4,5,6]")
 (defvar bspwm_desktop_1 "")

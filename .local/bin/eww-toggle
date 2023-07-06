@@ -1,0 +1,7 @@
+#!/bin/fish
+
+if eww windows | grep "^*" > /dev/null;
+  eww close-all
+else;
+  eww open right-dock
+end

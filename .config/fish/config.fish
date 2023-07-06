@@ -13,10 +13,11 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 
 abbr --add x 'startx'
+abbr --add r 'ranger'
+abbr --add z 'zathura'
 abbr --add l 'ls -lah'
 abbr --add dft 'git difftool --no-symlinks --dir-diff'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
-abbr --add r 'ranger'
 
 source ~/.secrets
 
