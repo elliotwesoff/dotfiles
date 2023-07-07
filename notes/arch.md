@@ -49,8 +49,20 @@ editing connections.
 * `xflux -z 91016 &` # => los angeles
 * `xflux -l 48 -g 11 &` # => munich
 
-redshift is supposed to work well, but it wouldn't work on my pc
-for whatever reason.
+~~redshift is supposed to work well, but it wouldn't work on my pc
+for whatever reason.~~
+
+`redshift` seems to work now, so to set a one-time temperature:
+
+```
+redshift -P -O [temp]
+```
+
+To run as a background task (e.g. from `.xinitrc`):
+
+```
+redshift -P -l [lat]:[long] -t [day temp]:[night temp] &
+```
 
 ### CPU Underclocking
 

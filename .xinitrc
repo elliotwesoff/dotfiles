@@ -9,7 +9,7 @@ then
   $HOME/dotfiles/.screenlayout/dads-samsung.sh
 else
   # only builtin display, no external monitor.
-  export XORG_DPI=120
+  export XORG_DPI=140
 fi
 
 # use .Xresources and set DPI via xrdb because
@@ -24,20 +24,14 @@ xset -dpms &
 xset s off &
 
 $HOME/dotfiles/.fehbg &
-$HOME/dotfiles/.config/polybar/launch.sh &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
 xscreensaver --no-splash &
-# picom &
 # oneko &
-# eww daemon
-
-# start bspwm widget server and mini listener service.
-$HOME/code/bspeww/scripts/bspeww.sh &
 
 # 34.6831139:-120.6232676 => surf beach, ca
-redshift -l 34.6831139:-120.6232676 -t 6500:3500 &
+redshift -P -l 34.6831139:-120.6232676 -t 6500:4750 &
 
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
