@@ -95,10 +95,10 @@
       (disk)
       (cpu)
       (ram)
-      (temperature)
       (wifi)
       (volume)
-      (brightness)))
+      (brightness)
+      (temperature)))
 
 (deflisten bspwm_desktop_1 :initial "-" `tail -F ~/.bspeww/desktops/I`)
 (deflisten bspwm_desktop_2 :initial "-" `tail -F ~/.bspeww/desktops/II`)
