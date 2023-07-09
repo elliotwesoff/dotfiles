@@ -3,5 +3,5 @@
 if eww windows | grep "^*" > /dev/null;
   eww close-all
 else;
-  eww open-many right-dock bspwm-info
+  eww open main
 end

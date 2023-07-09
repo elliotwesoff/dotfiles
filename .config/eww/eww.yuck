@@ -34,13 +34,11 @@
     (label :halign "start" :class "icon-module__icon" :text "${icon}")
     (children)))
 
-(defwidget date []
-  (icon-module :class "stat" :icon ""
-    (label :halign "end" :text date_poll)))
+(defwidget date [ha]
+    (label :halign ha :text date_poll))
 
-(defwidget time []
-  (icon-module :class "stat" :icon ""
-    (label :halign "end" :text time_poll)))
+(defwidget time [ha]
+    (label :halign ha :text time_poll))
 
 (defwidget disk []
   (icon-module :class "stat" :icon "" 
@@ -64,36 +62,43 @@
 
 (defwidget wifi []
   (box :orientation "v"
-        (icon-module :class "stat" :icon "⬈"
-          (label :text "${round(EWW_NET.wlp166s0.NET_UP / 1048576, 2)} MB/s"))
-        (icon-module :class "stat" :icon "⬊"
-          (label :text "${round(EWW_NET.wlp166s0.NET_DOWN / 1048576, 2)} MB/s"))))
+        (icon-module
+          :class "stat"
+          :icon "⬈"
+          (label
+            :halign "start"
+            :text "${round(EWW_NET.wlp166s0.NET_UP / 1048576, 2)} MB/s"))
+        (icon-module
+          :class "stat"
+          :icon "⬊"
+          (label
+            :halign "end"
+            :hexpand true
+            :text "${round(EWW_NET.wlp166s0.NET_DOWN / 1048576, 2)} MB/s"))))
 
 (defwidget volume []
-  (box :orientation "v"
-        (icon-module :class "stat" :icon "🕪"
-          (label :text "${vol}%"))))
+  (icon-module :class "stat" :icon "🕪"
+    (label :halign "end" :text "${vol}%")))
 
 (defwidget brightness []
-  (box :orientation "v"
-        (icon-module :class "stat" :icon "☀"
-          (label :text "${bright}%"))))
+  (icon-module :class "stat" :icon "☀"
+    (label
+      :halign "end"
+      :text "${round(bright / 96000, 2) * 100}%")))
 
-(defwidget bar [screen]
-  (box :orientation "v"
-       :space-evenly false
-       :class "bar"
-          (date)
-          (time)
-          (battery)
-          (disk)
-          (cpu)
-          (ram)
-          (temperature)
-          (wifi)
-          (volume)
-          (brightness)
-  ))
+(defwidget bar []
+  (box
+    :orientation "v"
+    :space-evenly false
+    :class "bar"
+      (battery)
+      (disk)
+      (cpu)
+      (ram)
+      (temperature)
+      (wifi)
+      (volume)
+      (brightness)))
 
 (deflisten bspwm_desktop_1 :initial "-" `tail -F ~/.bspeww/desktops/I`)
 (deflisten bspwm_desktop_2 :initial "-" `tail -F ~/.bspeww/desktops/II`)
@@ -116,16 +121,18 @@
       (bspwm-win-state :name "VII" :windows bspwm_desktop_7))))
 
 (defwidget bspwm-win-state [name windows]
-  (box :space-evenly true
-       :hexpand true
+  (box :space-evenly false
+       :hexpand false
     (label :halign "start"
            :text name)
     (label :halign "end"
+           :hexpand true
+           :class "bspwm-win-state-windows"
            :text "${windows}")))
 
 (defwindow bspwm-info
   :monitor 0
-  :geometry (geometry :anchor "top left"); :width "50%" :height "50%")
+  :geometry (geometry :anchor "top left")
   :wm-ignore true
   :windowtype "normal"
   :stacking "fg"
@@ -137,5 +144,24 @@
   :wm-ignore true
   :windowtype "dock"
   :stacking "fg"
-  (bar :screen 0))
+  (bar))
+
+(defwindow main
+  :monitor 0
+  :geometry (geometry :anchor "top center")
+  :wm-ignore true
+  ; why does :windowtype "normal" make the horizontal
+  ; alignment slightly off to the right?
+  :windowtype "dock"
+  :stacking "fg"
+  (box :orientation "h" :space-evenly false
+    (box :orientation "v" :space-evenly false
+      (box :vexpand true (label))
+      (box :orientation "v"
+        (label :text "hello")
+        (date :ha "center")
+        (time :ha "center"))
+      (box :vexpand true (label)))
+    (box (bspwm-widget))
+    (box (bar :screen 0))))
 
