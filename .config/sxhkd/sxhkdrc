@@ -50,16 +50,16 @@ XF86LaunchA
 # there's an issue with polybar where it won't 
 # lay over the active windows after first being launched.
 # launching it (or trying to launch it) again fixes this.
-super + x
-  $HOME/dotfiles/.config/polybar/launch.sh & disown
+# super + x
+#   $HOME/dotfiles/.config/polybar/launch.sh & disown
 
 # super + z
 #   polybar-msg cmd toggle
 super + z
   eww-toggle
 
-super + Escape
-  polybar-msg cmd toggle
+# super + Escape
+#   polybar-msg cmd toggle
 
 super + shift + Escape
   sxhkd-reload
@@ -128,14 +128,14 @@ super + F1
           ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
           ~/Documents/Notes/arch-notes.md
 
-super + F10
+super + shift + F10
   flameshot gui
 
 # touchpad shenanigans
-super + F11
+super + shift + F11
   tp off
 
-super + F12
+super + shift + F12
   tp on
 
 # printscreen button

@@ -87,6 +87,20 @@ how to find the archive filename?
 
 ## Applications
 
+### (n)vim
+
+To perform a multiline edit:
+
+1. Press ctrl + v (for visual block and not visual line)
+2. Make your edits
+3. Press escape
+
+Or use a `normal` command:
+
+`:10,20 normal I* `
+
+This inserts a `* ` at the beginning of lines 10-20.
+
 ### feh
 
 View all images in a folder:
