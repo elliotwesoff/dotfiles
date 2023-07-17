@@ -8,6 +8,7 @@
 (defpoll year     :interval "1h"  "date +%y")
 (defpoll date_poll :interval "1m" "date +%m/%d/%Y")
 (defpoll time_poll :interval "1s" "date +%H:%M:%S")
+(defpoll ampm_poll :interval "1h" "date +%p")
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
 (defpoll bright :interval "1s" `blight get`)
 ;; (deflisten vol :initial "0" `tail -F ~/tmp/current-volume`)
@@ -80,6 +81,7 @@
   (icon-module :class "stat" :icon "🕪"
     (label :halign "end" :text "${vol}%")))
 
+;; TODO: how to convert bright result to float (f64)?
 (defwidget brightness []
   (icon-module :class "stat" :icon "☀"
     (label
@@ -142,7 +144,8 @@
     (box :orientation "v" :space-evenly false
       (box :vexpand true (label))
       (box :orientation "v"
-        (label :text "hello")
+        ;; TODO: how to convert hour result to float (f64)?
+        (label :text "${hour > 22 || hour < 6 ? 'good night' : hour < 12 ? 'good morning' : 'hello'}")
         (date :ha "center")
         (time :ha "center"))
       (box :vexpand true (label)))

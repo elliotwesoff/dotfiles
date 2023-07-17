@@ -2,6 +2,7 @@
 
 .main {
   font-family: "Noto Sans Mono";
+  font-size: 1.2em;
   & > box {
     color: white;
     margin: 1em;
@@ -23,7 +24,7 @@
 
 .icon-module {
   & > label:first-child {
-    font-size: 1.1em;
+    // font-size: 1.3em;
   }
 }
 

@@ -58,9 +58,6 @@ XF86LaunchA
 super + z
   eww-toggle
 
-# super + Escape
-#   polybar-msg cmd toggle
-
 super + shift + Escape
   sxhkd-reload
 
@@ -71,18 +68,11 @@ super + control + alt + Escape
 super + control + alt + Delete
   pkill Xorg
 
-# not for a little bit, while we're running that.
-# super + control + alt + z
-#   elliot suspend
-
 super + Delete
   elliot suspend
 
 shift + XF86ScreenSaver
   elliot suspend
-
-super + control + alt + s
-  elliot shutdown
 
 super + control + alt + i
   switch-mon internal
@@ -90,13 +80,11 @@ super + control + alt + i
 super + control + alt + o
   switch-mon external
 
-super + control + alt + p
-  switch-mon dual
-
 XF86Search
   kitty ranger
 
 # volume controls
+
 XF86AudioRaiseVolume
   amixer -q sset Master 5%+
 

@@ -8,21 +8,16 @@ case "$1" in
   "light")
     echo light > ~/.local/state/colorscheme
     ln -sfv $CONFIG_DIR/kitty/themes/neobones_light.conf $CONFIG_DIR/kitty/theme.conf
-    ln -sfv $CONFIG_DIR/polybar/light-theme.ini $CONFIG_DIR/polybar/theme.ini
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-light $CONFIG_DIR/bspwm/bspwmrc-theme
   ;;
   "dark")
     echo dark > ~/.local/state/colorscheme
     ln -sfv $CONFIG_DIR/kitty/themes/afterglow.conf $CONFIG_DIR/kitty/theme.conf
-    ln -sfv $CONFIG_DIR/polybar/dark-theme.ini $CONFIG_DIR/polybar/theme.ini
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-dark $CONFIG_DIR/bspwm/bspwmrc-theme
   ;;
 esac
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
-
-# restart polybar
-polybar-msg cmd restart
 
 # set new background image
 sh -c $HOME/dotfiles/.fehbg &

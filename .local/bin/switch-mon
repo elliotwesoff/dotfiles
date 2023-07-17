@@ -7,7 +7,7 @@
 
 case $1 in
   "internal")
-    export XORG_DPI=120
+    export XORG_DPI=140
     echo Xft.dpi: $XORG_DPI | xrdb
     bspc monitor eDP-1 -d I II III IV V VI VII
     source ~/.screenlayout/framework-int.sh

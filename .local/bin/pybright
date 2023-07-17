@@ -17,6 +17,8 @@
 # the file /sys/class/backlight/intel_backlight/max_brightness
 # contains a static integer representing the maximum number
 # one can write to the brightness file.
+#
+# written by seo kim and sasha khan in summer of 2022.
 
 import argparse
 
