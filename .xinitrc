@@ -2,19 +2,20 @@
 #
 # .xinitrc
 
-if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
-then
-  export XORG_DPI=96
-  $HOME/dotfiles/.screenlayout/framework-ext.sh
-else
-  # only builtin display, no external monitor.
-  export XORG_DPI=140
-fi
+# if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
+# then
+#   export XORG_DPI=96
+#   $HOME/dotfiles/.screenlayout/framework-ext.sh
+# else
+#   # only builtin display, no external monitor.
+#   export XORG_DPI=140
+# fi
 
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
 xrdb -merge ~/dotfiles/.Xresources
-echo Xft.dpi: $XORG_DPI | xrdb
+$HOME/dotfiles/scripts/hdmi-hotplug.sh
+# echo Xft.dpi: $XORG_DPI | xrdb
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 

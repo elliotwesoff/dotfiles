@@ -86,10 +86,12 @@ XF86Search
 # volume controls
 
 XF86AudioRaiseVolume
-  amixer -q sset Master 5%+
+  elliot volup
+  # amixer -q sset Master 5%+
 
 XF86AudioLowerVolume
-  amixer -q sset Master 5%-
+  elliot voldown
+  # amixer -q sset Master 5%-
 
 XF86AudioMute
   amixer -q sset Master 1+ toggle

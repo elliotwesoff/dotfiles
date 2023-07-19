@@ -15,12 +15,15 @@ echo HDMI hotplugged @ $(date) >> /home/elliot/tmp/hdmi-hotplug.log
 if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   echo switching to external display >> /home/elliot/tmp/hdmi-hotplug.log
+  export XORG_DPI=96
   sh /home/elliot/dotfiles/.screenlayout/framework-ext.sh &>> /home/elliot/tmp/hdmi-hotplug.log 
 else
   echo switching to internal display >> /home/elliot/tmp/hdmi-hotplug.log
+  export XORG_DPI=140
   sh /home/elliot/dotfiles/.screenlayout/framework-int.sh &>> /home/elliot/tmp/hdmi-hotplug.log
 fi
 
-# why this no worky?
 sh /home/elliot/dotfiles/.fehbg
-wmctrl -s 0
+# why this no worky?
+# wmctrl -s 0
+echo Xft.dpi: $XORG_DPI | xrdb

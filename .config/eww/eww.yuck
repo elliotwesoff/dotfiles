@@ -11,7 +11,7 @@
 (defpoll ampm_poll :interval "1h" "date +%p")
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
 (defpoll bright :interval "1s" `blight get`)
-;; (deflisten vol :initial "0" `tail -F ~/tmp/current-volume`)
+(deflisten vollisten :initial "0" `tail -F ~/.local/state/eww/volumes.json`)
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -58,7 +58,7 @@
     (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
 
 (defwidget temperature []
-  (icon-module :class "stat" :icon ""
+  (icon-module :class "stat" :icon ""
     (label :halign "end" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
 
 (defwidget wifi []
@@ -79,11 +79,11 @@
 
 (defwidget volume []
   (icon-module :class "stat" :icon "🕪"
-    (label :halign "end" :text "${vol}%")))
+    (label :halign "end" :text "${vollisten["volume_left"]}")))
 
 ;; TODO: how to convert bright result to float (f64)?
 (defwidget brightness []
-  (icon-module :class "stat" :icon "☀"
+  (icon-module :class "stat" :icon "😎"
     (label
       :halign "end"
       :text "${round(bright / 96000, 2) * 100}%")))
