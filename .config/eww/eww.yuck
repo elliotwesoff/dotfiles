@@ -6,6 +6,7 @@
 (defpoll day      :interval "10m" "date +%d")
 (defpoll month    :interval "1h"  "date +%m")
 (defpoll year     :interval "1h"  "date +%y")
+(defpoll timezone :interval "1h"  "timedatectl show | head -n 1 | cut -d '=' -f 2 | tr '[:upper:]' '[:lower:]'")
 (defpoll date_poll :interval "1m" "date +%m/%d/%Y")
 (defpoll time_poll :interval "1s" "date +%H:%M:%S")
 (defpoll ampm_poll :interval "1h" "date +%p")
@@ -40,6 +41,9 @@
 
 (defwidget time [ha]
     (label :halign ha :text time_poll))
+
+(defwidget timezone [ha]
+    (label :halign ha :text timezone))
 
 (defwidget disk []
   (icon-module :class "stat" :icon "" 
@@ -109,6 +113,7 @@
 (deflisten bspwm_desktop_5 :initial "-" `tail -F ~/.bspeww/desktops/V`)
 (deflisten bspwm_desktop_6 :initial "-" `tail -F ~/.bspeww/desktops/VI`)
 (deflisten bspwm_desktop_7 :initial "-" `tail -F ~/.bspeww/desktops/VII`)
+(deflisten bspwm_desktop_current :initial "-" `tail -F ~/.bspeww/desktops/selected`)
 
 (defwidget bspwm-widget []
   (box
@@ -125,7 +130,9 @@
 (defwidget bspwm-win-state [name windows]
   (box :space-evenly false
        :hexpand false
+       :class "bspwm-win-state"
     (label :halign "start"
+           :class "desktop-name ${name == bspwm_desktop_current ? 'selected' : ''}"
            :text name)
     (label :halign "end"
            :hexpand true
@@ -146,8 +153,11 @@
       (box :orientation "v"
         ;; TODO: how to convert hour result to float (f64)?
         (label :text "${hour > 22 || hour < 6 ? 'good night' : hour < 12 ? 'good morning' : 'hello'}")
+        (label)
         (date :ha "center")
-        (time :ha "center"))
+        (time :ha "center")
+        (label)
+        (timezone :ha "center"))
       (box :vexpand true (label)))
     (box (bspwm-widget))
     (box (bar :screen 0))))

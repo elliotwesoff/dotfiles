@@ -16,6 +16,15 @@
   }
 
   .bspwm-widget {
+    .bspwm-win-state {
+      label.desktop-name {
+        padding: 0 0.5em;
+
+        &.selected {
+          border: 1px solid white;
+        }
+      }
+    }
     .bspwm-win-state-windows {
       margin-left: 3em;
     }
