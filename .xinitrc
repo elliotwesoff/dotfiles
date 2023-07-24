@@ -44,7 +44,5 @@ xsetroot -cursor_name left_ptr
 # wwwwwwwwwweeeeeeeeeeeeeeeeeeeeeee!!!!!
 xset r rate 250 75
 
-# clean up bspeww files
-$HOME/code/bspeww/scripts/bspeww-cleanup.sh > /dev/null
 exec bspwm
 

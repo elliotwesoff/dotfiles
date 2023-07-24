@@ -237,8 +237,23 @@ the rendering is weird.
 * `/sys/class/drm` contains all of the various video "cards"
   detected on the system
 
+### ramfs and tmpfs
 
+An in-memory filesystem is automatically made available by linux. It is
+called tmpfs.
 
+https://www.kernel.org/doc/html/latest/filesystems/tmpfs.html
+
+tmpfs is always available at `/dev/shm`.
+
+Alternatively, there is also ramfs:
+
+https://wiki.debian.org/ramfs
+
+The main difference between the two is:
+
+* with ramfs, you must create the fs and mount it yourself
+* ramfs will never swap, making it ideal for storing secrets
 
 
 

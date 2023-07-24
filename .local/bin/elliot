@@ -20,13 +20,13 @@ case $1 in
     amixer -q sset Master 5%+
     pactl -f json list \
       | jq -c '.sinks[0] | .volume | { volume_left: .["front-left"].value_percent, volume_right: .["front-right"].value_percent }' \
-      >> ~/.local/state/eww/volumes.json
+      >> ~/tmp/volumes.json
   ;;
   ("voldown")
     amixer -q sset Master 5%-
     pactl -f json list \
       | jq -c '.sinks[0] | .volume | { volume_left: .["front-left"].value_percent, volume_right: .["front-right"].value_percent }' \
-      >> ~/.local/state/eww/volumes.json
+      >> ~/tmp/volumes.json
   ;;
 esac
 

@@ -12,7 +12,7 @@
 (defpoll ampm_poll :interval "1h" "date +%p")
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
 (defpoll bright :interval "1s" `blight get`)
-(deflisten vollisten :initial "0" `tail -F ~/.local/state/eww/volumes.json`)
+(deflisten vollisten :initial "0" `tail -F ~/tmp/volumes.json`)
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -106,14 +106,14 @@
       (brightness)
       (temperature)))
 
-(deflisten bspwm_desktop_1 :initial "-" `tail -F ~/.bspeww/desktops/I`)
-(deflisten bspwm_desktop_2 :initial "-" `tail -F ~/.bspeww/desktops/II`)
-(deflisten bspwm_desktop_3 :initial "-" `tail -F ~/.bspeww/desktops/III`)
-(deflisten bspwm_desktop_4 :initial "-" `tail -F ~/.bspeww/desktops/IV`)
-(deflisten bspwm_desktop_5 :initial "-" `tail -F ~/.bspeww/desktops/V`)
-(deflisten bspwm_desktop_6 :initial "-" `tail -F ~/.bspeww/desktops/VI`)
-(deflisten bspwm_desktop_7 :initial "-" `tail -F ~/.bspeww/desktops/VII`)
-(deflisten bspwm_desktop_current :initial "-" `tail -F ~/.bspeww/desktops/selected`)
+(deflisten bspwm_desktop_1 :initial "-" `tail -F ~/tmp/bspeww/desktops/I`)
+(deflisten bspwm_desktop_2 :initial "-" `tail -F ~/tmp/bspeww/desktops/II`)
+(deflisten bspwm_desktop_3 :initial "-" `tail -F ~/tmp/bspeww/desktops/III`)
+(deflisten bspwm_desktop_4 :initial "-" `tail -F ~/tmp/bspeww/desktops/IV`)
+(deflisten bspwm_desktop_5 :initial "-" `tail -F ~/tmp/bspeww/desktops/V`)
+(deflisten bspwm_desktop_6 :initial "-" `tail -F ~/tmp/bspeww/desktops/VI`)
+(deflisten bspwm_desktop_7 :initial "-" `tail -F ~/tmp/bspeww/desktops/VII`)
+(deflisten bspwm_desktop_current :initial "-" `tail -F ~/tmp/bspeww/desktops/selected`)
 
 (defwidget bspwm-widget []
   (box

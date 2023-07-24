@@ -19,9 +19,10 @@
     .bspwm-win-state {
       label.desktop-name {
         padding: 0 0.5em;
+        border: 1px solid #000000;
 
         &.selected {
-          border: 1px solid white;
+          border: 1px solid #FFFFFF;
         }
       }
     }
