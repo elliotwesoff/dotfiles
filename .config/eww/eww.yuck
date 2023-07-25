@@ -152,7 +152,8 @@
       (box :vexpand true (label))
       (box :orientation "v"
         ;; TODO: how to convert hour result to float (f64)?
-        (label :text "${hour > 22 || hour < 6 ? 'good night' : hour < 12 ? 'good morning' : 'hello'}")
+        ;; (label :text "${hour > 22 || hour < 6 ? 'good night' : hour < 12 ? 'good morning' : 'hello'}")
+        (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
         (label)
         (date :ha "center")
         (time :ha "center")

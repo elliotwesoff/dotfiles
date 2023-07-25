@@ -2,20 +2,10 @@
 #
 # .xinitrc
 
-# if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
-# then
-#   export XORG_DPI=96
-#   $HOME/dotfiles/.screenlayout/framework-ext.sh
-# else
-#   # only builtin display, no external monitor.
-#   export XORG_DPI=140
-# fi
-
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
 xrdb -merge ~/dotfiles/.Xresources
 $HOME/dotfiles/scripts/hdmi-hotplug.sh
-# echo Xft.dpi: $XORG_DPI | xrdb
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 
@@ -23,15 +13,21 @@ export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 xset -dpms &
 xset s off &
 
+# linux (arch definitely, but maybe all distros?) provides
+# an in-memory filesystem (tmpfs) at /dev/shm. link ~/tmp
+# to /dev/shm to save disk writes and keep the disk clean.
+ln -sf /dev/shm ~/tmp
+
 $HOME/dotfiles/.fehbg &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
-xscreensaver --no-splash &
+# xscreensaver --no-splash &
 # oneko &
 
 # 34.6831139:-120.6232676 => surf beach, ca
-redshift -P -l 34.6831139:-120.6232676 -t 6500:4750 &
+# 48.14803580815556:11.588875333597782 => munich, de
+redshift -P -l 48.14803580815556:11.588875333597782 -t 6500:4750 &
 
 # show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
