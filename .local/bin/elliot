@@ -1,5 +1,9 @@
 #!/bin/sh
 
+record_volume() {
+  pactl -f json list | jq -c '.sinks[0] | { mute, volume: .volume["front-left"].value_percent }' >> ~/tmp/volume.json
+}
+
 case $1 in
   "logout")
     notify-send --expire-time 2500 "logging off!" "user logout in 3, 2, 1!"
@@ -18,15 +22,15 @@ case $1 in
   ;;
   ("volup")
     amixer -q sset Master 5%+
-    pactl -f json list \
-      | jq -c '.sinks[0] | .volume | { volume_left: .["front-left"].value_percent, volume_right: .["front-right"].value_percent }' \
-      >> ~/tmp/volumes.json
+    record_volume
   ;;
   ("voldown")
     amixer -q sset Master 5%-
-    pactl -f json list \
-      | jq -c '.sinks[0] | .volume | { volume_left: .["front-left"].value_percent, volume_right: .["front-right"].value_percent }' \
-      >> ~/tmp/volumes.json
+    record_volume
+  ;;
+  ("mute")
+    amixer -q sset Master 1+ toggle
+    record_volume
   ;;
 esac
 

@@ -94,7 +94,7 @@ XF86AudioLowerVolume
   # amixer -q sset Master 5%-
 
 XF86AudioMute
-  amixer -q sset Master 1+ toggle
+  elliot mute
 
 # brightness
 super + shift + F1

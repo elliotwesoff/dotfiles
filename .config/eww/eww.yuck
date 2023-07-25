@@ -12,7 +12,7 @@
 (defpoll ampm_poll :interval "1h" "date +%p")
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
 (defpoll bright :interval "1s" `blight get`)
-(deflisten vollisten :initial "0" `tail -F ~/tmp/volumes.json`)
+(deflisten vollisten :initial "{}" `tail -F ~/tmp/volume.json`)
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -83,7 +83,10 @@
 
 (defwidget volume []
   (icon-module :class "stat" :icon "🕪"
-    (label :halign "end" :text "${vollisten["volume_left"]}")))
+    (label
+      :halign "end"
+      :class "volume ${vollisten["mute"] ? 'muted' : ''}"
+      :text "${vollisten["volume"]}")))
 
 ;; TODO: how to convert bright result to float (f64)?
 (defwidget brightness []

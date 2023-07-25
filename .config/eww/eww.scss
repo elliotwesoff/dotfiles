@@ -30,6 +30,12 @@
       margin-left: 3em;
     }
   }
+  label.volume {
+    &.muted {
+      color: grey;
+      text-decoration-line: line-through;
+    }
+  }
 }
 
 .icon-module {
