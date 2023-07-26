@@ -15,8 +15,10 @@ if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   echo switching to external display >> /home/elliot/tmp/hdmi-hotplug.log
   export XORG_DPI=96
-  # sh /home/elliot/dotfiles/.screenlayout/framework-ext.sh &>> /home/elliot/tmp/hdmi-hotplug.log 
-  sh /home/elliot/dotfiles/.screenlayout/seo-benq.sh &>> /home/elliot/tmp/hdmi-hotplug.log 
+  CONNECTED_DISPLAY="$(xrandr -q | grep '^DP-[1-9] connected' | cut -d ' ' -f 1)"
+
+  # i think &>> redirects stderr to stdout, and appends to the file. i don't remember :(
+  sh /home/elliot/dotfiles/.screenlayout/seo-benq.sh $CONNECTED_DISPLAY &>> /home/elliot/tmp/hdmi-hotplug.log 
 else
   echo switching to internal display >> /home/elliot/tmp/hdmi-hotplug.log
   export XORG_DPI=140
