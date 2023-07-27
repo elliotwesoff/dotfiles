@@ -248,23 +248,6 @@ local function nvim_tree_on_attach(bufnr)
   vim.keymap.set('n', 't', api.node.open.tab, opts('Open: New Tab'))
 end
 
-function M.apply_nvim_tree_config()
-  vim.g.loaded = 1
-  vim.g.loaded_netrwPlugin = 1
-
-  require("nvim-tree").setup {
-    -- view = { adaptive_size = false, },
-    on_attach = nvim_tree_on_attach,
-    renderer = {
-      group_empty = true,
-      highlight_git = true,
-      highlight_opened_files = "icon",
-      indent_markers = { enable = true }
-    },
-    filters = { dotfiles = true }
-  }
-end
-
 function M.apply_telescope_config()
   local telescope = require('telescope')
 
@@ -298,8 +281,6 @@ function M.apply_telescope_config()
       -- please take a look at the readme of the extension you want to configure
     }
   }
-
-  telescope.load_extension 'file_browser'
 end
 
 function M.apply_treesitter_config()
@@ -347,7 +328,7 @@ function M.apply_treesitter_config()
       additional_vim_regex_highlighting = false,
     },
     indent = {
-      enable = true
+      enable = false
     },
     refactor = {
       highlight_definitions = {
@@ -746,6 +727,11 @@ function M.apply_indentblankline_config()
     use_treesitter = true,
     show_trailing_blankline_indent = false
   })
+
+  -- https://github.com/lukas-reineke/indent-blankline.nvim/issues/449
+  for _, keymap in pairs({ 'zo', 'zO', 'zc', 'zC', 'za', 'zA', 'zv', 'zx', 'zX', 'zm', 'zM', 'zr', 'zR', }) do
+    vim.api.nvim_set_keymap('n', keymap,  keymap .. '<CMD>IndentBlanklineRefresh<CR>', { noremap=true, silent=true })
+  end
 end
 
 function M.apply_catppuccin_config()

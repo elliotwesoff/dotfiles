@@ -22,7 +22,7 @@ $HOME/dotfiles/.fehbg &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
-# xscreensaver --no-splash &
+xscreensaver --no-splash &
 # oneko &
 
 # 34.6831139:-120.6232676 => surf beach, ca
