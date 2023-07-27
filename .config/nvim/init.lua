@@ -3,23 +3,24 @@ local keymaps = require('key_mappings')
 local plugins = require('plugin_config')
 
 require('packer').startup(function(use)
+  -- core
   use 'wbthomason/packer.nvim'
   use 'stevearc/oil.nvim'
   use 'neovim/nvim-lspconfig'
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-refactor' -- for hover highlighting
-  use 'simrat39/symbols-outline.nvim'
-  use 'JManch/sunset.nvim'
-  use 'tamton-aquib/duck.nvim'
-  use 'ray-x/lsp_signature.nvim'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
-  use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
-  use { 'windwp/nvim-autopairs', config = plugins.apply_autopairs_config }
-  use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use { 'folke/zen-mode.nvim', config = plugins.apply_zenmode_config }
+
+  -- general
+  use 'JManch/sunset.nvim'
+  use 'simrat39/symbols-outline.nvim'
+  use 'ray-x/lsp_signature.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
+  use { 'numToStr/Comment.nvim', config = plugins.apply_comment_config }
+  use { 'windwp/nvim-autopairs', config = plugins.apply_autopairs_config }
 
   -- colorschemes
   use 'shaunsingh/seoul256.nvim'
@@ -41,6 +42,12 @@ require('packer').startup(function(use)
 
   -- latex
   use 'lervag/vimtex'
+
+  -- markdown
+  use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
+
+  -- duck
+  use 'tamton-aquib/duck.nvim'
 end)
 
 plugins.apply_lsp_config()
