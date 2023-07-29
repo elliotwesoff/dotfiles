@@ -8,4 +8,4 @@ xrandr \
   --output DP-2 --off \
   --output DP-3 --off \
   --output DP-4 --off \
-  --output DP-4 --mode 1920x1080 --rate "74.97" --rotate normal
+  --output $1 --mode 1920x1080 --rate "74.97" --rotate normal

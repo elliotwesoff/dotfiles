@@ -59,7 +59,7 @@
 
 (defwidget battery []
   (icon-module :class "stat" :icon "󰁹"
-    (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
+    (label :halign "end" :text "${EWW_BATTERY.BAT1.status == 'Charging' ? '🗲' : ''} ${round(EWW_BATTERY.total_avg, 0)}%")))
 
 (defwidget temperature []
   (icon-module :class "stat" :icon ""
@@ -93,7 +93,7 @@
   (icon-module :class "stat" :icon "😎"
     (label
       :halign "end"
-      :text "${round(bright / 96000, 2) * 100}%")))
+      :text "${round((bright / 96000) * 100, 0)}%")))
 
 (defwidget bar []
   (box
