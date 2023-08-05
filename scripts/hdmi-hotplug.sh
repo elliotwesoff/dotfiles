@@ -16,6 +16,7 @@ then
   echo switching to external display >> /home/elliot/tmp/hdmi-hotplug.log
   export XORG_DPI=96
   CONNECTED_DISPLAY="$(xrandr -q | grep '^DP-[1-9] connected' | cut -d ' ' -f 1)"
+  echo connected display: $CONNECTED_DISPLAY
 
   # i think &>> redirects stderr to stdout, and appends to the file. i don't remember :(
   sh /home/elliot/dotfiles/.screenlayout/seo-benq.sh $CONNECTED_DISPLAY &>> /home/elliot/tmp/hdmi-hotplug.log 

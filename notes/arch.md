@@ -95,6 +95,8 @@ To perform a multiline edit:
 2. Make your edits
 3. Press escape
 
+* note: does not work for insert mode. use the method below.
+
 Or use a `normal` command:
 
 `:10,20 normal I* `
