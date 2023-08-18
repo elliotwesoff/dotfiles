@@ -28,6 +28,14 @@ case $1 in
       --expire-time 2000 \
       "no dual monitor config yet!"
   ;;
+  "off")
+    xrandr \
+      --output eDP-1 --off \
+      --output DP-1 --off \
+      --output DP-2 --off \
+      --output DP-3 --off \
+      --output DP-4 --off
+  ;;
 esac
 
 polybar-msg cmd quit

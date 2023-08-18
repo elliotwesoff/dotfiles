@@ -109,33 +109,26 @@
       (brightness)
       (temperature)))
 
-(deflisten bspwm_desktop_1 :initial "-" `tail -F ~/tmp/bspeww/desktops/I`)
-(deflisten bspwm_desktop_2 :initial "-" `tail -F ~/tmp/bspeww/desktops/II`)
-(deflisten bspwm_desktop_3 :initial "-" `tail -F ~/tmp/bspeww/desktops/III`)
-(deflisten bspwm_desktop_4 :initial "-" `tail -F ~/tmp/bspeww/desktops/IV`)
-(deflisten bspwm_desktop_5 :initial "-" `tail -F ~/tmp/bspeww/desktops/V`)
-(deflisten bspwm_desktop_6 :initial "-" `tail -F ~/tmp/bspeww/desktops/VI`)
-(deflisten bspwm_desktop_7 :initial "-" `tail -F ~/tmp/bspeww/desktops/VII`)
-(deflisten bspwm_desktop_current :initial "-" `tail -F ~/tmp/bspeww/desktops/selected`)
+(deflisten bspwm_data :initial "{}" `tail -F ~/tmp/bspeww/desktops/data`)
 
 (defwidget bspwm-widget []
   (box
     :class "bspwm-widget"
     (box :orientation "v"
-      (bspwm-win-state :name "I" :windows bspwm_desktop_1)
-      (bspwm-win-state :name "II" :windows bspwm_desktop_2)
-      (bspwm-win-state :name "III" :windows bspwm_desktop_3)
-      (bspwm-win-state :name "IV" :windows bspwm_desktop_4)
-      (bspwm-win-state :name "V" :windows bspwm_desktop_5)
-      (bspwm-win-state :name "VI" :windows bspwm_desktop_6)
-      (bspwm-win-state :name "VII" :windows bspwm_desktop_7))))
+      (bspwm-win-state :name "I" :windows "${bspwm_data.I}")
+      (bspwm-win-state :name "II" :windows "${bspwm_data.II}")
+      (bspwm-win-state :name "III" :windows "${bspwm_data.III}")
+      (bspwm-win-state :name "IV" :windows "${bspwm_data.IV}")
+      (bspwm-win-state :name "V" :windows "${bspwm_data.V}")
+      (bspwm-win-state :name "VI" :windows "${bspwm_data.VI}")
+      (bspwm-win-state :name "VII" :windows "${bspwm_data.VII}"))))
 
 (defwidget bspwm-win-state [name windows]
   (box :space-evenly false
        :hexpand false
        :class "bspwm-win-state"
     (label :halign "start"
-           :class "desktop-name ${name == bspwm_desktop_current ? 'selected' : ''}"
+           :class "desktop-name ${name == bspwm_data.selected ? 'selected' : ''}"
            :text name)
     (label :halign "end"
            :hexpand true

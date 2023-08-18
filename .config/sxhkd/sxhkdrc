@@ -65,19 +65,22 @@ super + shift + Escape
 super + control + alt + Escape
   pkill Xorg
 
-super + control + alt + Delete
+super + alt + shift + Delete
   pkill Xorg
 
 super + Delete
   elliot suspend
 
-shift + XF86ScreenSaver
+super + XF86ScreenSaver
   elliot suspend
 
-super + control + alt + i
+super + alt + shift + 0
+  switch-mon off
+
+super + alt + shift + 1
   switch-mon internal
 
-super + control + alt + o
+super + alt + shift + 2
   switch-mon external
 
 XF86Search
