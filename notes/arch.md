@@ -34,8 +34,9 @@ editing connections.
 ### Change time and timezone
 
 * `timedatectl set-time [yyyy-mm-dd HH:MM:SS]`
+* `timedatectl list-timezones`
 * `timedatectl set-timezone [timezone]`
-** timezone -> Europe/Berlin or America/Los_Angeles
+** timezone -> ex. Europe/Berlin, America/Los_Angeles
 
 #### Sync system clock (user, local) to hardware clock (BIOS/UEFI)
 

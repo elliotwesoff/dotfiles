@@ -13,11 +13,6 @@ export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 xset -dpms &
 xset s off &
 
-# linux (arch definitely, but maybe all distros?) provides
-# an in-memory filesystem (tmpfs) at /dev/shm. link ~/tmp
-# to /dev/shm to save disk writes and keep the disk clean.
-ln -sf /dev/shm ~/tmp
-
 $HOME/dotfiles/.fehbg &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
