@@ -11,7 +11,7 @@
 (defpoll time_poll :interval "1s" "date +%H:%M:%S")
 (defpoll ampm_poll :interval "1h" "date +%p")
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
-(defpoll bright :interval "1s" `blight get`)
+(defpoll bright :interval "5s" `blight get`)
 (deflisten vollisten :initial "{}" `tail -F ~/tmp/volume.json`)
 
 (defwidget workspaces []
@@ -46,43 +46,39 @@
     (label :halign ha :text timezone))
 
 (defwidget disk []
-  (icon-module :class "stat" :icon "" 
+  (icon-module :class "stat" :icon "💿" 
     (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
 
 (defwidget ram []
-  (icon-module :class "stat" :icon "💾"
+  (icon-module :class "stat" :icon "📝"
     (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
 
 (defwidget cpu []
-  (icon-module :class "stat" :icon ""
-    (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%")))
+  (icon-module :class "stat" :icon "🧠"
+    (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%, ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
 
 (defwidget battery []
-  (icon-module :class "stat" :icon "󰁹"
-    (label :halign "end" :text "${EWW_BATTERY.BAT1.status == 'Charging' ? '🗲' : ''} ${round(EWW_BATTERY.total_avg, 0)}%")))
+  (icon-module :class "stat" :icon "🔋"
+    (label :halign "center" :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''}")
+    (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
 
 (defwidget temperature []
-  (icon-module :class "stat" :icon ""
+  (icon-module :class "stat" :icon "🤒"
     (label :halign "end" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
 
 (defwidget wifi []
-  (box :orientation "v"
-        (icon-module
-          :class "stat"
-          :icon "⬈"
-          (label
-            :halign "start"
-            :text "${round(EWW_NET.wlp166s0.NET_UP / 1048576, 2)} MB/s"))
-        (icon-module
-          :class "stat"
-          :icon "⬊"
-          (label
-            :halign "end"
-            :hexpand true
-            :text "${round(EWW_NET.wlp166s0.NET_DOWN / 1048576, 2)} MB/s"))))
+  (icon-module
+    :class "stat"
+    :icon "📡"
+    (label
+      :halign "end"
+      :text "${EWW_NET.wlp166s0.NET_UP}")
+    (label
+      :halign "end"
+      :text "${EWW_NET.wlp166s0.NET_DOWN}")))
 
 (defwidget volume []
-  (icon-module :class "stat" :icon "🕪"
+  (icon-module :class "stat" :icon "🙉"
     (label
       :halign "end"
       :class "volume ${vollisten["mute"] ? 'muted' : ''}"
@@ -95,19 +91,19 @@
       :halign "end"
       :text "${round((bright / 96000) * 100, 0)}%")))
 
-(defwidget bar []
+(defwidget vbar []
   (box
     :orientation "v"
-    :space-evenly false
-    :class "bar"
+    :space-evenly true
+    :width "250"
+    :class "vbar"
       (battery)
       (disk)
       (cpu)
       (ram)
       (wifi)
       (volume)
-      (brightness)
-      (temperature)))
+      (brightness)))
 
 (deflisten bspwm_data :initial "{}" `tail -F ~/tmp/bspeww/desktops/data`)
 
@@ -115,13 +111,13 @@
   (box
     :class "bspwm-widget"
     (box :orientation "v"
-      (bspwm-win-state :name "I" :windows "${bspwm_data.I}")
-      (bspwm-win-state :name "II" :windows "${bspwm_data.II}")
-      (bspwm-win-state :name "III" :windows "${bspwm_data.III}")
-      (bspwm-win-state :name "IV" :windows "${bspwm_data.IV}")
-      (bspwm-win-state :name "V" :windows "${bspwm_data.V}")
-      (bspwm-win-state :name "VI" :windows "${bspwm_data.VI}")
-      (bspwm-win-state :name "VII" :windows "${bspwm_data.VII}"))))
+      (bspwm-win-state :name "I" :windows "${bspwm_data.I ?: ''}")
+      (bspwm-win-state :name "II" :windows "${bspwm_data.II ?: ''}")
+      (bspwm-win-state :name "III" :windows "${bspwm_data.III ?: ''}")
+      (bspwm-win-state :name "IV" :windows "${bspwm_data.IV ?: ''}")
+      (bspwm-win-state :name "V" :windows "${bspwm_data.V ?: ''}")
+      (bspwm-win-state :name "VI" :windows "${bspwm_data.VI ?: ''}")
+      (bspwm-win-state :name "VII" :windows "${bspwm_data.VII ?: ''}"))))
 
 (defwidget bspwm-win-state [name windows]
   (box :space-evenly false
@@ -147,8 +143,6 @@
     (box :orientation "v" :space-evenly false
       (box :vexpand true (label))
       (box :orientation "v"
-        ;; TODO: how to convert hour result to float (f64)?
-        ;; (label :text "${hour > 22 || hour < 6 ? 'good night' : hour < 12 ? 'good morning' : 'hello'}")
         (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
         (label)
         (date :ha "center")
@@ -157,5 +151,5 @@
         (timezone :ha "center"))
       (box :vexpand true (label)))
     (box (bspwm-widget))
-    (box (bar :screen 0))))
+    (box (vbar :screen 0))))
 

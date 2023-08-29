@@ -7,8 +7,6 @@ yay -S \
   discord \
   notion \
   pulseaudio-control \
-  rbenv \
-  ruby-build \
   cava \
   ly \
   xinit-xsession \
@@ -16,7 +14,5 @@ yay -S \
   soulseekqt \
   blight \
   nordvpn-bin \
-  unityhub \
-  omnisharp-roslyn \
-  otf-intel-one-mono
-
+  otf-intel-one-mono \
+  asdf-vm

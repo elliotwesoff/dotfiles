@@ -14,20 +14,11 @@ super + shift + Return
   kitty -c ~/dotfiles/.config/kitty/kitty.conf \
         -c ~/dotfiles/.config/kitty/cozy.conf
 
-super + alt + Return
-  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/condensed.conf \
-        tmux
-
-# don't do this! it's taken by bspc restart
-# super + alt + r
-#   kitty ranger
-
 super + alt + f
   thunar
 
 super + alt + b
-  vivaldi-stable
+  firefox
 
 super + alt + d
   discord
@@ -38,23 +29,15 @@ super + alt + m
 super + alt + w
   whatsdesk
 
-super + control + alt + l
+super + shift + alt + l
   xscreensaver-command --lock
 
 super + a
-  rofi -show run
+  rofi -show drun
 
 XF86LaunchA
-  rofi -show run
+  rofi -show drun
 
-# there's an issue with polybar where it won't 
-# lay over the active windows after first being launched.
-# launching it (or trying to launch it) again fixes this.
-# super + x
-#   $HOME/dotfiles/.config/polybar/launch.sh & disown
-
-# super + z
-#   polybar-msg cmd toggle
 super + z
   eww-toggle
 
@@ -90,11 +73,9 @@ XF86Search
 
 XF86AudioRaiseVolume
   elliot volup
-  # amixer -q sset Master 5%+
 
 XF86AudioLowerVolume
   elliot voldown
-  # amixer -q sset Master 5%-
 
 XF86AudioMute
   elliot mute

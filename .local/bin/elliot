@@ -32,5 +32,8 @@ case $1 in
     amixer -q sset Master 1+ toggle
     record_volume
   ;;
+  ("setvol")
+    record_volume
+  ;;
 esac
 

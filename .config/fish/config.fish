@@ -20,8 +20,4 @@ abbr --add dft 'git difftool --no-symlinks --dir-diff'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
 
 source ~/.secrets
-
-eval "$(rbenv init - 2> /dev/null)"
-
-# node version manager initialization
-# source /usr/share/nvm/init-nvm.sh 2> /dev/null
+source /opt/asdf-vm/asdf.fish

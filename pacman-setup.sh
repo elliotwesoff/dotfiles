@@ -14,6 +14,7 @@ sudo pacman -S \
   libnotify \
   xorg-server \
   xorg-xinit \
+  xorg-xinput \
   xdg-utils \
   xscreensaver \
   mesa \
@@ -47,7 +48,6 @@ sudo pacman -S \
   wget \
   deno \
   thunar \
-  polybar \
   ntfs-3g \
   cmus \
   vlc \
@@ -62,14 +62,27 @@ sudo pacman -S \
   libqalculate qalculate-qt \
   vscode \
   libreoffice-fresh \
-  ttf-baekmuk \
-  deja-dup \
   font-manager \
   texlive-core texlab \
   pinta \
   playerctl \
   unrar \
   qmk \
-  wine \
-  wine-mono
-
+  htop \
+  bpytop \
+  firefox \
+  rustup \
+  unzip \
+  rclone \
+  pulsemixer \
+  xclip \
+  xorg-xsetroot \
+  redshift \
+  dunst \
+  sxiv \
+  ruby \
+  ruby-irb \
+  wmctrl \
+  dunst \
+  flameshot \
+  jq
