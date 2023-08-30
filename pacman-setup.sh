@@ -1,24 +1,13 @@
 #!/bin/sh
 
-# remember to recreate your grub config
-# after installing linux-lts with:
-# $ sudo grub-mkconfig -o /boot/grub/grub.cfg
-#
-# you should see an lts option when booting
-# in addition to the standard linux boot option.
-
 sudo pacman -S \
-  linux-lts \
-  linux-lts-headers \
   base-devel \
+  linux-lts linux-lts-headers \
+  xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
   libnotify \
-  xorg-server \
-  xorg-xinit \
-  xorg-xinput \
   xdg-utils \
   xscreensaver \
-  mesa \
-  mesa-utils \
+  mesa mesa-utils \
   pipewire pipewire-docs \
   wireplumber wireplumber-docs \
   alsa-utils alsa-firmware \
@@ -27,7 +16,6 @@ sudo pacman -S \
   cups cups-pdf \
   noto-fonts noto-fonts-emoji \
   bspwm \
-  xorg-xev \
   vulkan-intel \
   vim \
   neovim \
@@ -76,7 +64,6 @@ sudo pacman -S \
   rclone \
   pulsemixer \
   xclip \
-  xorg-xsetroot \
   redshift \
   dunst \
   sxiv \
