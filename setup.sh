@@ -2,7 +2,7 @@
 
 for item in .config .local .fonts .gitconfig .agignore \
             .tmux.conf .zshrc .xinitrc .screenlayout \
-            .mime.types .fehbg
+            .mime.types .fehbg .tool-versions
 do
   mv -v ~/$item ~/$item.old 2> /dev/null
   ln -sfv ~/dotfiles/$item ~/$item

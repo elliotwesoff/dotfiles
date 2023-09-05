@@ -17,7 +17,8 @@ $HOME/dotfiles/.fehbg &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
-xscreensaver --no-splash &
+eww daemon &
+# xscreensaver --no-splash &
 # oneko &
 
 # surf beach, ca

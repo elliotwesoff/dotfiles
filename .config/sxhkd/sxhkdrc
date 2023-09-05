@@ -44,13 +44,6 @@ super + z
 super + shift + Escape
   sxhkd-reload
 
-# kill X server
-super + control + alt + Escape
-  pkill Xorg
-
-super + alt + shift + Delete
-  pkill Xorg
-
 super + Delete
   elliot suspend
 
