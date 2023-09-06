@@ -12,4 +12,5 @@ yay -S \
   nordvpn-bin \
   otf-intel-one-mono \
   asdf-vm \
-  vscode-codicons-git
+  vscode-codicons-git \
+  spotify

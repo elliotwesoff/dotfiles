@@ -45,7 +45,7 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 #
 # note: you really need to NOT forget this:
-# these commands select groups of windows
+# these commands select groups of windows.
 # if you want to snap a split to a ratio,
 # select the parent with super + p, then
 # resize with bspc node -f -r [ratio]

@@ -65,5 +65,7 @@ plugins.apply_oil_config()
 
 settings.apply_settings()
 keymaps.apply_keymaps()
-vim.cmd.colorscheme('mellifluous')
+
+-- vim.cmd.colorscheme('mellifluous')
+vim.cmd.colorscheme('carbonfox')
 
