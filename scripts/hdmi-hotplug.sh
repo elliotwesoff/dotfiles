@@ -19,14 +19,13 @@ then
   echo connected display: $CONNECTED_DISPLAY
 
   # i think &>> redirects stderr to stdout, and appends to the file. i don't remember :(
-  sh /home/elliot/dotfiles/.screenlayout/asus-27in.sh $CONNECTED_DISPLAY &>> /home/elliot/tmp/hdmi-hotplug.log 
+  sh /home/elliot/dotfiles/.screenlayout/current $CONNECTED_DISPLAY &>> /home/elliot/tmp/hdmi-hotplug.log 
 else
   echo switching to internal display >> /home/elliot/tmp/hdmi-hotplug.log
   export XORG_DPI=140
   sh /home/elliot/dotfiles/.screenlayout/framework-int.sh &>> /home/elliot/tmp/hdmi-hotplug.log
 fi
 
-sh /home/elliot/dotfiles/.fehbg
-# why this no worky?
-# wmctrl -s 0
 echo Xft.dpi: $XORG_DPI | xrdb
+
+sh /home/elliot/dotfiles/.fehbg

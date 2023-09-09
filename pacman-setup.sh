@@ -72,4 +72,7 @@ sudo pacman -S \
   wmctrl \
   dunst \
   flameshot \
-  jq
+  jq \
+  traceroute \
+  whois \
+  bind

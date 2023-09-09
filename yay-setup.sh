@@ -13,4 +13,5 @@ yay -S \
   otf-intel-one-mono \
   asdf-vm \
   vscode-codicons-git \
-  spotify
+  spotify \
+  postman-bin
