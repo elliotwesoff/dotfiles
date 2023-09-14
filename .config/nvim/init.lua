@@ -16,6 +16,8 @@ require('packer').startup(function(use)
   -- general
   use 'JManch/sunset.nvim'
   use 'simrat39/symbols-outline.nvim'
+  use 'stevearc/aerial.nvim'
+  use 'onsails/lspkind.nvim'
   use 'ray-x/lsp_signature.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'dnlhc/glance.nvim', config = plugins.apply_glance_config }
@@ -62,6 +64,7 @@ plugins.apply_indentblankline_config()
 plugins.apply_sunset_config()
 plugins.apply_catppuccin_config()
 plugins.apply_oil_config()
+plugins.apply_aerial_config()
 
 settings.apply_settings()
 keymaps.apply_keymaps()

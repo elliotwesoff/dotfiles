@@ -6,7 +6,6 @@ sudo pacman -S \
   xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
   libnotify \
   xdg-utils \
-  xscreensaver \
   mesa mesa-utils \
   pipewire pipewire-docs \
   wireplumber wireplumber-docs \
@@ -75,4 +74,8 @@ sudo pacman -S \
   jq \
   traceroute \
   whois \
-  bind
+  bind \
+  usbutils \
+  usbview \
+  xsecurelock \
+  xss-lock

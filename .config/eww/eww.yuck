@@ -13,6 +13,7 @@
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
 (defpoll bright :interval "5s" `blight get`)
 (deflisten vollisten :initial "{}" `tail -F ~/tmp/volume.json`)
+(deflisten bspwm_selected :initial "" `tail -F ~/tmp/bspeww/desktops/selected`)
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -111,20 +112,20 @@
   (box
     :class "bspwm-widget"
     (box :orientation "v"
-      (bspwm-win-state :name "I" :windows "${bspwm_data.I ?: ''}")
-      (bspwm-win-state :name "II" :windows "${bspwm_data.II ?: ''}")
-      (bspwm-win-state :name "III" :windows "${bspwm_data.III ?: ''}")
-      (bspwm-win-state :name "IV" :windows "${bspwm_data.IV ?: ''}")
-      (bspwm-win-state :name "V" :windows "${bspwm_data.V ?: ''}")
-      (bspwm-win-state :name "VI" :windows "${bspwm_data.VI ?: ''}")
-      (bspwm-win-state :name "VII" :windows "${bspwm_data.VII ?: ''}"))))
+      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}")
+      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}")
+      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}")
+      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: ''}")
+      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: ''}")
+      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: ''}")
+      (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: ''}"))))
 
 (defwidget bspwm-win-state [name windows]
   (box :space-evenly false
        :hexpand false
        :class "bspwm-win-state"
     (label :halign "start"
-           :class "desktop-name ${name == bspwm_data.selected ? 'selected' : ''}"
+           :class "desktop-name ${name == bspwm_selected ? 'selected' : ''}"
            :text name)
     (label :halign "end"
            :hexpand true

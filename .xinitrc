@@ -12,13 +12,13 @@ export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 # disable energy star savings (screen timeout)
 xset -dpms &
 xset s off &
+xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
 
 $HOME/dotfiles/.fehbg &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
 eww daemon &
-# xscreensaver --no-splash &
 # oneko &
 
 # surf beach, ca

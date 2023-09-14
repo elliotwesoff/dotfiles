@@ -45,12 +45,12 @@ function M.apply_settings()
   vim.opt.termguicolors = true
   vim.opt.foldmethod = 'indent'
   vim.opt.foldnestmax = 5
-  vim.opt.foldlevelstart = 2
+  vim.opt.foldlevelstart = 0
   vim.opt.scrolloff = 2
 
-  vim.cmd([[
-    let g:OmniSharp_server_use_mono = 1
-  ]])
+  -- vim.cmd([[
+  --   let g:OmniSharp_server_use_mono = 1
+  -- ]])
 end
 
 return M

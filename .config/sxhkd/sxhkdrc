@@ -30,7 +30,7 @@ super + alt + w
   whatsdesk
 
 super + shift + alt + l
-  xscreensaver-command --lock
+  xset s activate
 
 super + a
   rofi -show drun
