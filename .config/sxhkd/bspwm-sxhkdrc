@@ -63,9 +63,13 @@ super + {_,shift + }c
 super + bracket{left,right}
   bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + {grave,Tab}
-  bspc {node,desktop} -f last
+# prev/next desktop with super + mouse left/right click
+super + {button1,button3}
+  bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop (desktop also with mouse wheel click)
+super + {grave,Tab,button2}
+  bspc {node,desktop,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
