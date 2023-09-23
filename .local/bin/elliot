@@ -18,8 +18,8 @@ case $1 in
     systemctl poweroff
   ;;
   "suspend")
-    notify-send --expire-time 2500 "~*~._.~*zZzZzzZZZzzZzZz*~._.~*~" "sleeping in 3, 2, 1!"
-    sleep 3s
+    notify-send --expire-time 1100 "~*~._.~*zZzZzzZZZzzZzZz*~._.~*~"
+    sleep 1s
     systemctl suspend
   ;;
   ("volup")

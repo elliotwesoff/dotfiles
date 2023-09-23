@@ -14,4 +14,5 @@ yay -S \
   asdf-vm \
   vscode-codicons-git \
   spotify \
-  postman-bin
+  postman-bin \
+  intel-opencl-runtime

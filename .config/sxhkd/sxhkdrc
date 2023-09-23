@@ -7,27 +7,30 @@
 #
 
 super + Return
-  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/condensed.conf
+  exec kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+             -c ~/dotfiles/.config/kitty/condensed.conf
 
 super + shift + Return
-  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/cozy.conf
+  exec kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+             -c ~/dotfiles/.config/kitty/cozy.conf
 
 super + alt + f
-  thunar
+  exec thunar
 
 super + alt + b
-  firefox
+  exec firefox
+
+super + alt + x
+  exec firefox
 
 super + alt + d
-  discord
+  exec discord
 
 super + alt + m
-  kitty pulsemixer
+  exec kitty pulsemixer
 
 super + alt + w
-  whatsdesk
+  exec whatsdesk
 
 super + shift + alt + l
   xset s activate

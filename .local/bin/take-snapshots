@@ -1,0 +1,14 @@
+#!/bin/fish
+
+set year $(date +%Y)
+set month $(date +%m)
+set iso_date $(date -I)
+set backup_path "/@snapshots/$year/$month"
+
+mkdir --parents --verbose $backup_path
+
+for subvol in @home @log @pkg @tmp @shared
+  set dest "$backup_path/$iso_date-$subvol.snapshot"
+  sudo btrfs subvolume snapshot -r /$subvol $dest
+end
+

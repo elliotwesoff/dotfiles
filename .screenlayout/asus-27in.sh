@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# framework-ext.sh
+# asus-27in.sh
+
 xrandr \
   --output eDP-1 --off \
   --output DP-1 --off \

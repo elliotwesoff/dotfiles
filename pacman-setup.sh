@@ -56,10 +56,9 @@ sudo pacman -S \
   unrar \
   qmk \
   htop \
-  bpytop \
+  btop \
   firefox \
   rustup \
-  unzip \
   rclone \
   pulsemixer \
   xclip \
@@ -78,4 +77,5 @@ sudo pacman -S \
   usbutils \
   usbview \
   xsecurelock \
-  xss-lock
+  xss-lock \
+  p7zip

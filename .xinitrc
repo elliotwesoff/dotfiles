@@ -5,7 +5,7 @@
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
 xrdb -merge ~/dotfiles/.Xresources
-$HOME/dotfiles/scripts/hdmi-hotplug.sh
+sh $HOME/dotfiles/scripts/set-display.sh
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 
