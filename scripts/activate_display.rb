@@ -8,57 +8,53 @@
 FRAMEWORK = "09e55f09"
 EDID_REGEX = /^edid/i
 SCREENLAYOUT_DIR = "/home/elliot/dotfiles/.screenlayout"
-XRANDR_EXTERNAL_AUTO_SL = "#{SCREENLAYOUT_DIR}/external-auto.sh"
+EXTERNAL_AUTO = "#{SCREENLAYOUT_DIR}/external-auto.sh"
 
 # this is our bread and butter. map EDID manufacturer & product codes
 # to known screenlayout files. this effectively runs a screenlayout
 # file if one exists for the hotplugged monitor. i'm lazy!
 DISPLAYS = {
   FRAMEWORK => "#{SCREENLAYOUT_DIR}/framework-int.sh", # framework internal display - eDP-1
-  "06b30427" => "#{SCREENLAYOUT_DIR}/asus-27in.sh" # asus VG27AQL1A
-  "xxxxxxxx" => "#{SCREENLAYOUT_DIR}/unlv-dell.sh" # TODO
+  "06b30427" => "#{SCREENLAYOUT_DIR}/asus-27in.sh", # asus VG27AQL1A
+  "xxxxxxxx" => "#{SCREENLAYOUT_DIR}/unlv-dell.sh", # TODO
 }
 
 def log(s)
   puts "#{Time.now} - #{s}" 
 end
 
-raw = `xrandr --prop`
-clean = raw.split("\n").map(&:strip)
-edid_preindices = clean.each_index.select { |i| EDID_REGEX.match(clean[i]) }
-edids = edid_preindices.map { |i| i + 1 }.map { |i| clean[i] }
+xrandr = `xrandr --prop`
+        .split("\n")        # 1. process linewise
+        .map(&:strip)       # 2. remove all excess whitespace
+edids = xrandr.each_index    # 3. iterate via indexes
+             .select { |i| EDID_REGEX.match(xrandr[i]) } # 4. take indexes only for lines with "EDID:"
+             .map { |i| i + 1 } # 5. EDID header is the next line, add 1 to the selected indexes
+             .map { |i| xrandr[i] } # 6. grab the EDIDs
 
-log("#{edids.count} displays found, EDID headers: #{edids}")
-
-mfg_prod = ""
-if edids.count == 2
-  edids.each do |edid|
-    # throw away the first 8 bytes of the EDID header,
-    # the next two bytes are manufacturer ID, and the
-    # next two are mfg's product ID. we'll use those
-    # two together to identify a display.
-    mfg_prod = edid[16..23]
-    if mfg_prod == FRAMEWORK
-      mfg_prod = ""
-    else
-      log("selecting edid manufacturer & product id: #{mfg_prod}")
-      break
-    end
-  end
-elsif edids.count == 1
-  mfg_prod = FRAMEWORK
+if [1, 2].include?(edids.count)
+  log("#{edids.count} displays found, EDID headers: #{edids}")
 else
   log("activate_display.rb #{edids.count} monitors found. not sure what to do... ABORT!")
   exit(1)
 end
 
-screenlayout = DISPLAYS[mfg_prod]
-if screenlayout
-  command = "sh #{screenlayout}"
-else
-  log("something went wrong. no known screenlayout file. letting xrandr decide our fate...")
-  command = "sh #{XRANDR_EXTERNAL_AUTO_SL}"
+# throw away the first 8 bytes of the EDID header, the next two bytes are
+# manufacturer ID, and the next two are mfg's product ID. we'll use those two
+# together to identify a display.
+mfg_prod = edids.map { |edid| edid[16..23] }
+                .reject { |edid| edid == FRAMEWORK }
+                .first || FRAMEWORK
+log("selecting edid manufacturer & product id: #{mfg_prod}")
+
+# build shell command
+commands = ['sh', DISPLAYS[mfg_prod]]
+unless commands[1]
+  log("WARN: no known screenlayout file for " \
+        "manufacturer & product id: #{mfg_prod}. " \
+        "letting xrandr decide our fate...")
+  commands[1] = EXTERNAL_AUTO
 end
 
+command = commands.join(' ')
 log("applying screenlayout: #{command}")
 exit(system(command))
