@@ -2,6 +2,11 @@
 #
 # set-display.sh
 
+echo '~/dotfiles/scripts/set-display.sh is DEPRECATED. bye' > /tmp/hdmi-hotplug.log
+exit 1
+
+echo 'printing from set-display.sh' > /tmp/hdmi-hotplug.log
+
 if [[ $(xrandr -q | grep '^DP-[1-9] connected') ]]
 then
   echo $(date) - switching to $(xrandr -q | grep '^DP-[1-9] connected' | cut -d ' ' -f 1) >> /tmp/hdmi-hotplug.log

@@ -23,6 +23,7 @@ eww daemon &
 
 # surf beach, ca
 redshift -P -l 34.6831139:-120.6232676 -t 6500:4750 &
+
 # munich, de
 # redshift -P -l 48.14803580815556:11.588875333597782 -t 6500:4750 &
 
