@@ -7,8 +7,6 @@ end
 set -U fish_greeting
 set -gx EDITOR 'nvim'
 
-fish_add_path ~/.local/share/gem/ruby/3.0.0/bin
-fish_add_path ~/.local/share/gem/ruby/3.1.0/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 
@@ -18,6 +16,7 @@ abbr --add z 'zathura'
 abbr --add l 'ls -lah'
 abbr --add dft 'git difftool --no-symlinks --dir-diff'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
+abbr --add sus 'systemctl suspend'
 
 source ~/.secrets
 source /opt/asdf-vm/asdf.fish
