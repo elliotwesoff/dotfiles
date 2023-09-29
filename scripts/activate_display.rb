@@ -13,10 +13,11 @@ EXTERNAL_AUTO = "#{SCREENLAYOUT_DIR}/external-auto.sh"
 # this is our bread and butter. map EDID manufacturer & product codes
 # to known screenlayout files. this effectively runs a screenlayout
 # file if one exists for the hotplugged monitor. i'm lazy!
+# 00 ff ff ff ff ff ff 00 10 ac 32 a1 4c 31 47 30
 DISPLAYS = {
   FRAMEWORK => "#{SCREENLAYOUT_DIR}/framework-int.sh", # framework internal display - eDP-1
   "06b30427" => "#{SCREENLAYOUT_DIR}/asus-27in.sh", # asus VG27AQL1A
-  "xxxxxxxx" => "#{SCREENLAYOUT_DIR}/unlv-dell.sh", # TODO
+  "10ac32a1" => "#{SCREENLAYOUT_DIR}/unlv-dell.sh",
 }
 
 def log(s)

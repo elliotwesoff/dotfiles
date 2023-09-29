@@ -41,4 +41,5 @@ __pycache__
 .local/bin/diary
 .local/bin/eww
 .local/bin/pyserial*
+.local/bin/bspeww
 

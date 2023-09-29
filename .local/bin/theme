@@ -1,18 +1,18 @@
 #!/bin/bash
 #
-# theme.sh
+# theme
 
 CONFIG_DIR=~/dotfiles/.config
 
 case "$1" in
   "light")
     echo light > ~/.local/state/colorscheme
-    ln -sfv $CONFIG_DIR/kitty/themes/neobones_light.conf $CONFIG_DIR/kitty/theme.conf
+    ln -sfv $CONFIG_DIR/kitty/theme-light.conf $CONFIG_DIR/kitty/theme.conf
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-light $CONFIG_DIR/bspwm/bspwmrc-theme
   ;;
   "dark")
     echo dark > ~/.local/state/colorscheme
-    ln -sfv $CONFIG_DIR/kitty/themes/afterglow.conf $CONFIG_DIR/kitty/theme.conf
+    ln -sfv $CONFIG_DIR/kitty/theme-dark.conf $CONFIG_DIR/kitty/theme.conf
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-dark $CONFIG_DIR/bspwm/bspwmrc-theme
   ;;
 esac

@@ -86,7 +86,8 @@ sudo pacman -S \
   usbview \
   xsecurelock \
   xss-lock \
-  p7zip
+  p7zip \
+  blueman
 
 # install yay
 sudo pacman -S --needed git base-devel \
