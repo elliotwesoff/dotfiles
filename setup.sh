@@ -1,6 +1,11 @@
 #!/bin/sh
 
-for item in .config .local .fonts .gitconfig .agignore \
+mkdir -p ~/code
+mkdir -p ~/.local/{bin,share,state}
+
+# backup the loop items and create symlinks to files
+# in this repository.
+for item in .config .fonts .gitconfig .agignore \
             .tmux.conf .zshrc .xinitrc .screenlayout \
             .mime.types .fehbg .tool-versions
 do
@@ -8,11 +13,16 @@ do
   ln -sfv ~/dotfiles/$item ~/$item
 done
 
+# symlink scripts that need to be in PATH
+for item in bspeww elliot eww-toggle hostname \
+            switch-mon sxhkd-reload take-snapshots \
+            theme tp
+do
+  ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
+done
+
 # symlink ~/tmp to the linux-provided in-memory filesystem.
 ln -sfv /dev/shm ~/tmp
-
-mkdir -p ~/code
-mkdir -p ~/.local/state
 
 # install all the things!
 sudo pacman -S \
