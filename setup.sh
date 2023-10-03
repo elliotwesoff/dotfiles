@@ -87,7 +87,8 @@ sudo pacman -S \
   xsecurelock \
   xss-lock \
   p7zip \
-  blueman
+  blueman \
+  ripgrep
 
 # install yay
 sudo pacman -S --needed git base-devel \

@@ -411,7 +411,7 @@ end
 function M.apply_aerial_config()
   require("aerial").setup({
     layout = {
-      placement = 'edge'
+      placement = 'window'
     },
     on_attach = function(bufnr)
       -- Toggle the aerial window with <leader>
@@ -655,10 +655,6 @@ function M.apply_glance_config()
   })
 end
 
-function M.apply_swap_split_config()
-  require("swap-split").setup({ ignore_filetypes = { "NvimTree" } })
-end
-
 function M.apply_sunset_config()
   local sunset = require("sunset")
   sunset.setup({
@@ -693,20 +689,11 @@ function M.apply_zenmode_config()
   })
 end
 
-function M.apply_indentblankline_config()
-  local indent_blankline = require('indent_blankline')
-  -- vim.opt.list = true
-  -- vim.opt.listchars:append "space:⋅"
-  -- vim.opt.listchars:append "eol:↴"
+function M.apply_ibl_config()
+  local indent_blankline = require('ibl')
   indent_blankline.setup({
-    use_treesitter = true,
-    show_trailing_blankline_indent = false
+    scope = { enabled = false }
   })
-
-  -- https://github.com/lukas-reineke/indent-blankline.nvim/issues/449
-  for _, keymap in pairs({ 'zo', 'zO', 'zc', 'zC', 'za', 'zA', 'zv', 'zx', 'zX', 'zm', 'zM', 'zr', 'zR', }) do
-    vim.api.nvim_set_keymap('n', keymap,  keymap .. '<CMD>IndentBlanklineRefresh<CR>', { noremap=true, silent=true })
-  end
 end
 
 function M.apply_catppuccin_config()

@@ -1,24 +1,26 @@
+local peek = require('peek')
+local custom_fns = require('custom_functions')
+local zen_mode = require('zen-mode')
+local telescope = require('telescope.builtin')
+local symbols_outline = require('symbols-outline')
+local duck = require('duck')
+local oil = require('oil')
+local ibl = require('ibl')
+local opts = { noremap = true, silent = true }
 local M = {}
 
-function M.apply_keymaps()
-  local peek = require('peek')
-  local custom_fns = require('custom_functions')
-  local zen_mode = require('zen-mode')
-  local telescope = require('telescope.builtin')
-  local symbols_outline = require('symbols-outline')
-  local duck = require('duck')
-  local oil = require('oil')
-  local opts = { noremap = true, silent = true }
 
+function M.apply_keymaps()
   -- look!!! 
   -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
   -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
   -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
-  -- (this is only on linux, windows sends different keys '-____________-)
+  -- but this is only on linux, windows sends different keys -____________-'
 
   -- insert mode mappings
   vim.keymap.set('i', 'jj', '<Esc>', opts)
   vim.keymap.set('i', 'jk', '<Esc>', opts)
+  vim.keymap.set('i', 'jq', '<Esc>:wq<CR>', opts)
   vim.keymap.set('i', '<C-s>', ':update<CR>', opts)
   vim.keymap.set('i', '<C-BS>', '<C-W>', opts)
   vim.keymap.set('i', '<C-,>', '<Esc>:tabprevious<CR>', opts)
@@ -52,11 +54,11 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F8>', zen_mode.toggle, opts)
   vim.keymap.set('n', '<F9>', '<cmd>Glance implementations<cr>', opts)
   vim.keymap.set('n', '<F10>', '<cmd>Glance type_definitions<cr>', opts)
-  vim.keymap.set('n', '<F11>', '<cmd>Glance definitions<cr>', opts)
-  vim.keymap.set('n', '<F12>', '<cmd>Glance references<cr>', opts)
-  vim.keymap.set('n', '<F13>', ':echo "F13"', opts)
-  vim.keymap.set('n', '<F14>', ':echo "F14"', opts)
-  vim.keymap.set('n', '<F15>', ':echo "F15"', opts)
+  vim.keymap.set('n', '<F11>', '<cmd>Glance references<cr>', opts)
+  vim.keymap.set('n', '<F12>', '<cmd>Glance definitions<cr>', opts)
+  vim.keymap.set('n', '<F13>', ':echo "F13 unset"', opts)
+  vim.keymap.set('n', '<F14>', ':echo "F14 unset"', opts)
+  vim.keymap.set('n', '<F15>', ':echo "F15 unset"', opts)
   vim.keymap.set('n', '<F16>', telescope.live_grep, opts)
   vim.keymap.set('n', '<F17>', custom_fns.refresh_config, opts)
   vim.keymap.set('n', '<F18>', telescope.marks, opts)
@@ -69,6 +71,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F26>', telescope.git_stash, opts)
   vim.keymap.set('n', '<F27>', telescope.git_branches, opts)
   vim.keymap.set('n', '<F28>', telescope.git_commits, opts)
+  vim.keymap.set('n', '<F29>', ibl.debounced_refresh, opts) -- ctrl + f5
+  vim.keymap.set('n', '<F36>', '<cmd>AerialToggle!<cr>', opts) -- ctrl + f12
+  vim.keymap.set('n', '<F60>', '<cmd>Glance references<cr>', opts) -- alt + f12
   vim.keymap.set('n', '<leader>h', ':noh<CR>', opts)
   vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)

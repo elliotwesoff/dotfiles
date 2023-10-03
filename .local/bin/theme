@@ -19,12 +19,11 @@ esac
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 
-# set new background image
-sh -c $HOME/dotfiles/.fehbg &
-
 # restart bspwm
 bspc wm -r
 
 # change kitty colors
 kitty @ set-colors -a $CONFIG_DIR/kitty/theme.conf
 
+# set new background image
+sh -c $HOME/dotfiles/.fehbg &

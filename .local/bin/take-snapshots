@@ -5,7 +5,7 @@ set month $(date +%m)
 set iso_date $(date -I)
 set backup_path "/@snapshots/$year/$month"
 
-mkdir --parents --verbose $backup_path
+sudo mkdir --parents --verbose $backup_path
 
 for subvol in @home @log @pkg @tmp @shared
   set dest "$backup_path/$iso_date-$subvol.snapshot"
