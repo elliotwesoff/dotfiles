@@ -9,4 +9,3 @@ xrandr \
   --output DP-2 --off \
   --output DP-3 --off \
   --output DP-4 --off
-

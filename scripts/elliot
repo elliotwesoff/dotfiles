@@ -3,7 +3,7 @@
 record_volume() {
   pactl -f json list \
     | jq -c '.sinks[0] | { mute, volume: .volume["front-left"].value_percent }' \
-    >> ~/tmp/volume.json
+    >> /dev/shm/volume.json
 }
 
 case $1 in

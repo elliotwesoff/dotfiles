@@ -6,18 +6,16 @@ CONFIG_DIR=~/dotfiles/.config
 
 case "$1" in
   "light")
-    echo light > ~/.local/state/colorscheme
     ln -sfv $CONFIG_DIR/kitty/theme-light.conf $CONFIG_DIR/kitty/theme.conf
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-light $CONFIG_DIR/bspwm/bspwmrc-theme
+    ln -sfv ~/Pictures/wallpapers/bg-light ~/Pictures/wallpapers/bg
   ;;
   "dark")
-    echo dark > ~/.local/state/colorscheme
     ln -sfv $CONFIG_DIR/kitty/theme-dark.conf $CONFIG_DIR/kitty/theme.conf
     ln -sfv $CONFIG_DIR/bspwm/bspwmrc-dark $CONFIG_DIR/bspwm/bspwmrc-theme
+    ln -sfv ~/Pictures/wallpapers/bg-dark ~/Pictures/wallpapers/bg
   ;;
 esac
-
-export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 
 # restart bspwm
 bspc wm -r

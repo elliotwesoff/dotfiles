@@ -2,8 +2,10 @@
 #
 # bspeww.sh
 
+BSPEWW_DIR=/dev/shm/bspeww
+
 function node_callback() {
-  echo $1 >> ~/tmp/bspeww/node-change.log
+  echo $1 >> $BSPEWW_DIR/bspeww.log
  
   # dump the bspwm world state and pipe it to jq.
   # recursively grab all node names (open programs)
@@ -13,21 +15,21 @@ function node_callback() {
   bspc wm -d \
     | jq -c '.monitors[0].desktops[] | .root // {} | [.[] | recurse | select(.instanceName?) | .instanceName] | join("; ")' \
     | jq -c -s . \
-    >> ~/tmp/bspeww/desktops/data
+    >> $BSPEWW_DIR/data
 }
 
 function desktop_callback() {
-  echo $1 >> ~/tmp/bspeww/node-change.log
+  echo $1 >> $BSPEWW_DIR/bspeww.log
 
   # parse the currently selected desktop node from wmtrl -d and write to disk.
-  wmctrl -d | grep -F '*' | rev | cut -d ' ' -f 1 | rev >> ~/tmp/bspeww/desktops/selected
+  wmctrl -d | grep -F '*' | rev | cut -d ' ' -f 1 | rev >> $BSPEWW_DIR/selected
 }
 
 # kill any prior running services
 pkill --echo --full "^bspc\s+subscribe(\s+node_(add|remove|transfer)){3,}"
 pkill --echo --full "^bspc\s+subscribe\s+desktop_focus"
 
-mkdir -p ~/tmp/bspeww/desktops
+mkdir -p $BSPEWW_DIR
 
 # wait for bspwm to start
 sleep 3

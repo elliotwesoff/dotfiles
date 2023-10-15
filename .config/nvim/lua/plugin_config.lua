@@ -411,11 +411,12 @@ end
 function M.apply_aerial_config()
   require("aerial").setup({
     layout = {
-      placement = 'window'
+      placement = 'window',
+      default_direction = 'right',
     },
     on_attach = function(bufnr)
       -- Toggle the aerial window with <leader>
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+      -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
       -- Jump forwards/backwards with '[[' and ']]'
       vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrev<CR>', {})
       vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNext<CR>', {})

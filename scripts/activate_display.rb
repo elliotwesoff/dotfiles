@@ -21,21 +21,21 @@ DISPLAYS = {
 }
 
 def log(s)
-  puts "#{Time.now} - #{s}" 
+  puts "#{Time.now} - activate_display.rb : #{s}" 
 end
 
-xrandr = `xrandr --prop`
-        .split("\n")        # 1. process linewise
-        .map(&:strip)       # 2. remove all excess whitespace
-edids = xrandr.each_index    # 3. iterate via indexes
-             .select { |i| EDID_REGEX.match(xrandr[i]) } # 4. take indexes only for lines with "EDID:"
-             .map { |i| i + 1 } # 5. EDID header is the next line, add 1 to the selected indexes
-             .map { |i| xrandr[i] } # 6. grab the EDIDs
+xrandr_prop = `xrandr --prop`
+                .split("\n")              # 1. process linewise
+                .map(&:strip)             # 2. remove all excess whitespace
+edids = xrandr_prop.each_index            # 3. iterate via indexes
+             .select { |i| EDID_REGEX.match(xrandr_prop[i]) } # 4. take indexes only for lines with "EDID:"
+             .map { |i| i + 1 }           # 5. EDID header is the next line, add 1 to the selected indexes
+             .map { |i| xrandr_prop[i] }  # 6. grab the EDIDs
 
 if [1, 2].include?(edids.count)
   log("#{edids.count} displays found, EDID headers: #{edids}")
 else
-  log("activate_display.rb #{edids.count} monitors found. not sure what to do... ABORT!")
+  log("#{edids.count} displays found. not sure what to do... ABORT!")
   exit(1)
 end
 
@@ -50,9 +50,8 @@ log("selecting edid manufacturer & product id: #{mfg_prod}")
 # build shell command
 commands = ['sh', DISPLAYS[mfg_prod]]
 unless commands[1]
-  log("WARN: no known screenlayout file for " \
-        "manufacturer & product id: #{mfg_prod}. " \
-        "letting xrandr decide our fate...")
+  log("WARN: no known screenlayout file for manufacturer and " \
+      "product id: #{mfg_prod}... jesus take the wheel!")
   commands[1] = EXTERNAL_AUTO
 end
 
