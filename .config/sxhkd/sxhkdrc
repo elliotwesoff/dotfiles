@@ -80,6 +80,9 @@ XF86AudioMute
 super + shift + F1
   blight set -5%
 
+super + shift + alt + Down
+  blight set -5%
+
 XF86MonBrightnessDown
   blight set -5%
 
@@ -87,6 +90,9 @@ super + shift + F2
   blight set +5%
 
 XF86MonBrightnessUp
+  blight set +5%
+
+super + shift + alt + Up
   blight set +5%
 
 # heylp! i forgot my keymappings!

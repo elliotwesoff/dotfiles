@@ -69,6 +69,7 @@ plugins.apply_aerial_config()
 settings.apply_settings()
 keymaps.apply_keymaps()
 
-vim.cmd.colorscheme('mellifluous')
+-- vim.cmd.colorscheme('mellifluous')
 -- vim.cmd.colorscheme('carbonfox')
+vim.cmd.colorscheme('neobones')
 

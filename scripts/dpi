@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# dpi(.sh)
+
+echo Xft.dpi: $1 | xrdb

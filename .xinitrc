@@ -22,6 +22,7 @@ sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
 sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
 eww daemon &
+picom &
 # oneko &
 
 # surf beach, ca

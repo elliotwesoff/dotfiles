@@ -7,7 +7,9 @@
 
 FRAMEWORK = "09e55f09"
 EDID_REGEX = /^edid/i
-SCREENLAYOUT_DIR = "/home/elliot/dotfiles/.screenlayout"
+DOTS_DIR = "/home/elliot/dotfiles"
+SCRIPTS_DIR = "#{DOTS_DIR}/scripts"
+SCREENLAYOUT_DIR = "#{DOTS_DIR}/.screenlayout"
 EXTERNAL_AUTO = "#{SCREENLAYOUT_DIR}/external-auto.sh"
 
 # this is our bread and butter. map EDID manufacturer & product codes
@@ -23,6 +25,8 @@ DISPLAYS = {
 def log(s)
   puts "#{Time.now} - activate_display.rb : #{s}" 
 end
+
+dpi = 96
 
 xrandr_prop = `xrandr --prop`
                 .split("\n")              # 1. process linewise
@@ -48,13 +52,15 @@ mfg_prod = edids.map { |edid| edid[16..23] }
 log("selecting edid manufacturer & product id: #{mfg_prod}")
 
 # build shell command
-commands = ['sh', DISPLAYS[mfg_prod]]
-unless commands[1]
+commands = ['sh', '', '&&', 'sh', "#{SCRIPTS_DIR}/dpi", dpi.to_s]
+if DISPLAYS[mfg_prod]
+  commands[1] = DISPLAYS[mfg_prod]
+else
   log("WARN: no known screenlayout file for manufacturer and " \
       "product id: #{mfg_prod}... jesus take the wheel!")
   commands[1] = EXTERNAL_AUTO
 end
 
 command = commands.join(' ')
-log("applying screenlayout: #{command}")
+log("applying screenlayout with dpi: #{command}")
 exit(system(command))

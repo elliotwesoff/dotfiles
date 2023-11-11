@@ -4,9 +4,11 @@ set year $(date +%Y)
 set month $(date +%m)
 set iso_date $(date -I)
 set dt_full $(date "+%Y-%m-%d-%H_%M_%S")
-set backup_path "/@snapshots/$year/$month"
+set backup_path_year "/@snapshots/$USER/$year"
+set backup_path "$backup_path_year/$month"
 
-sudo mkdir --parents --verbose $backup_path
+mkdir --mode 770 --parents --verbose $backup_path
+chgrp --changes btrfs $backup_path_year $backup_path
 
 for subvol in @home @log @pkg @tmp @shared
   set dest "$backup_path/$dt_full-$subvol.snapshot"

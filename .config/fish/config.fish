@@ -17,6 +17,8 @@ abbr --add l 'ls -lah'
 abbr --add dft 'git difftool --no-symlinks --dir-diff'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
 abbr --add sus 'systemctl suspend'
+abbr --add intellij '~/Applications/idea-IC-232.9559.62/bin/idea.sh'
+abbr --add notes 'nvim ~/Documents/UNLV/2023/Fall/Fall\ 2023\ Class\ Notes.md'
 
 source ~/.secrets
 source /opt/asdf-vm/asdf.fish
