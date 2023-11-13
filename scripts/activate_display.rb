@@ -26,7 +26,6 @@ def log(s)
   puts "#{Time.now} - activate_display.rb : #{s}" 
 end
 
-dpi = 96
 
 xrandr_prop = `xrandr --prop`
                 .split("\n")              # 1. process linewise
@@ -36,7 +35,7 @@ edids = xrandr_prop.each_index            # 3. iterate via indexes
              .map { |i| i + 1 }           # 5. EDID header is the next line, add 1 to the selected indexes
              .map { |i| xrandr_prop[i] }  # 6. grab the EDIDs
 
-if [1, 2].include?(edids.count)
+if edids.count == 1 || edids.count == 2
   log("#{edids.count} displays found, EDID headers: #{edids}")
 else
   log("#{edids.count} displays found. not sure what to do... ABORT!")
@@ -51,6 +50,8 @@ mfg_prod = edids.map { |edid| edid[16..23] }
                 .first || FRAMEWORK
 log("selecting edid manufacturer & product id: #{mfg_prod}")
 
+dpi = mfg_prod == FRAMEWORK ? 140 : 96
+
 # build shell command
 commands = ['sh', '', '&&', 'sh', "#{SCRIPTS_DIR}/dpi", dpi.to_s]
 if DISPLAYS[mfg_prod]
@@ -62,5 +63,5 @@ else
 end
 
 command = commands.join(' ')
-log("applying screenlayout with dpi: #{command}")
+log("applying screenlayout commands: #{command}")
 exit(system(command))
