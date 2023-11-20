@@ -37,7 +37,7 @@ bspc rule -a Zathura state=tiled
 bspc rule -a Deno state=tiled
 bspc rule -a Pavucontrol state=tiled
 bspc rule -a firefox desktop="I" follow=off focus=off
-bspc rule -a whatsdesk desktop="VI" follow=off focus=off
+bspc rule -a whatsdesk desktop="VII" follow=off focus=off
 bspc rule -a discord desktop="VII" follow=off focus=off
 
 source $HOME/dotfiles/.config/bspwm/bspwmrc-theme

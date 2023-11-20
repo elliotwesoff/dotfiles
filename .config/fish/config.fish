@@ -4,7 +4,7 @@ end
 if status is-interactive
 end
 
-set -U fish_greeting
+# set -U fish_greeting
 set -gx EDITOR 'nvim'
 
 fish_add_path ~/.cargo/bin
@@ -19,6 +19,8 @@ abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
 abbr --add sus 'systemctl suspend'
 abbr --add intellij '~/Applications/idea-IC-232.9559.62/bin/idea.sh'
 abbr --add notes 'nvim ~/Documents/UNLV/2023/Fall/Fall\ 2023\ Class\ Notes.md'
+abbr --add safe 'mkdir /dev/shm/Safe.mount && gocryptfs ~/Documents/Safe.cipher/ /dev/shm/Safe.mount'
+abbr --add umsafe 'fusermount -u /dev/shm/Safe.mount && rmdir /dev/shm/Safe.mount'
 
 source ~/.secrets
 source /opt/asdf-vm/asdf.fish

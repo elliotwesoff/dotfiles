@@ -69,7 +69,4 @@ plugins.apply_aerial_config()
 settings.apply_settings()
 keymaps.apply_keymaps()
 
--- vim.cmd.colorscheme('mellifluous')
--- vim.cmd.colorscheme('carbonfox')
-vim.cmd.colorscheme('neobones')
-
+-- hey! go to plugins.apply_sunset_config() for selected colorschemes!

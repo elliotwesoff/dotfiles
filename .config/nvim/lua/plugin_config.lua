@@ -661,6 +661,14 @@ function M.apply_sunset_config()
   sunset.setup({
     latitude = 36, longitude = -115, -- las vegas
     -- latitude = 48, longitude = 11 -- munich
+    day_callback = function()
+      vim.cmd.colorscheme("catppuccin-latte")
+      vim.o.background = "light"
+    end,
+    night_callback = function()
+      vim.cmd.colorscheme("neobones")
+      vim.o.background = "dark"
+    end
   })
 end
 
@@ -693,7 +701,7 @@ end
 function M.apply_ibl_config()
   local indent_blankline = require('ibl')
   indent_blankline.setup({
-    scope = { enabled = false }
+    -- scope = { enabled = false }
   })
 end
 
