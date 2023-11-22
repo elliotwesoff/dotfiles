@@ -59,11 +59,23 @@ super + alt + {1-9}
 super + {_,shift + }c
   bspc node -f {next,prev}.local.!hidden.window
 
+# focus the next/previous window in the current desktop
+super + alt + bracket{left,right}
+  bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous window in the current desktop
+super + {Down,Up}
+  bspc node -f {next,prev}.local.!hidden.window
+
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
   bspc desktop -f {prev,next}.local
 
-# prev/next desktop with super + mouse left/right click
+# focus the next/previous desktop in the current monitor
+super + {Left,Right}
+  bspc desktop -f {prev,next}.local
+
+# focus the next/previous desktop in the current monitor
 super + {button1,button3}
   bspc desktop -f {prev,next}.local
 
