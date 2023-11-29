@@ -16,28 +16,29 @@ DPI_SCRIPT_PATH = "#{SCRIPTS_DIR}/dpi"
 
 
 class Display
-  attr_reader :edid, :screenlayout_file_path, :dpi
+  attr_reader :edid, :screenlayout_file_path, :dpi, :name
 
-  def initialize(edid, screenlayout_file_path, dpi)
+  def initialize(edid, screenlayout_file_path, dpi, name)
     @edid = edid
     @screenlayout_file_path = screenlayout_file_path
     @dpi = dpi
+    @name = name
   end
 
   def apply!
     cmd = "sh #{screenlayout_file_path} && #{DPI_SCRIPT_PATH} #{dpi}"
-    log("applying screenlayout commands: #{cmd}")
+    log("running shell command: `#{cmd}`")
     system(cmd)
   end
 end
 
 DISPLAYS = [
-  Display.new(FRAMEWORK, "#{SCREENLAYOUT_DIR}/framework-int.sh", 140),
-  Display.new("06b30427", "#{SCREENLAYOUT_DIR}/asus-27in.sh", 96), # asus VG27AQL1A
-  Display.new("10ac32a1", "#{SCREENLAYOUT_DIR}/unlv-dell.sh", 96) # dell widescreen in TBE B
+  Display.new(FRAMEWORK, "#{SCREENLAYOUT_DIR}/framework-int.sh", 140, "framework internal"),
+  Display.new("06b30427", "#{SCREENLAYOUT_DIR}/asus-27in.sh", 96, "asus VG27AQL1A"), 
+  Display.new("10ac32a1", "#{SCREENLAYOUT_DIR}/unlv-dell.sh", 96, "dell widescreen in TBE B")
 ]
 
-EXTERNAL_AUTO = Display.new(nil, "#{SCREENLAYOUT_DIR}/external-auto.sh", 96)
+EXTERNAL_AUTO = Display.new(nil, "#{SCREENLAYOUT_DIR}/external-auto.sh", 96, "external (xrandr --auto)")
 
 def log(s)
   puts "#{Time.now} - activate_display.rb : #{s}" 
@@ -69,11 +70,12 @@ mfg_prod = edids.map { |edid| edid[16..23] }
                 .reject { |edid| edid == FRAMEWORK }
                 .first || FRAMEWORK # default to internal framework display
 
-log("selecting edid manufacturer & product id: #{mfg_prod}")
 
-display = DISPLAYS.filter { |d| d.edid == mfg_prod }.first
+display = DISPLAYS.filter { |display| display.edid == mfg_prod }.first
 
-unless display
+if display
+  log("selecting known edid manufacturer & product id: #{display.edid} (#{display.name})")
+else
   log("WARN: no known screenlayout file for manufacturer/" \
       "product id: #{mfg_prod}... jesus take the wheel!")
   display = EXTERNAL_AUTO

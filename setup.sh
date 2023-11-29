@@ -95,7 +95,8 @@ sudo pacman -S \
   xss-lock \
   p7zip \
   blueman \
-  ripgrep
+  ripgrep \
+  fisher
 
 # install yay
 sudo pacman -S --needed git base-devel \
@@ -128,3 +129,7 @@ cd ~/code \
   && cargo build --release --no-default-features --features x11 \
   && chmod +x target/release/eww \
   && ln -sf ~/code/eww/target/release/eww ~/.local/bin/eww
+
+# install nvm
+fisher install jorgebucaran/nvm.fish
+nvm install lts
