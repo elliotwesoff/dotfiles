@@ -145,6 +145,9 @@ Keybinds:
 * `W - fit`
 * `e - fit to window width`
 * `E - fit to window height`
+* `n/p - next/previous image`
+
+Open multiple images (ex.): `sxiv *.jpg`
 
 ### ranger
 
@@ -196,9 +199,11 @@ pdftk 1.pdf 2.pdf 3.pdf cat output file.pdf
 To combine images into a pdf, use imagemagick's convert:
 
 ```
-convert -density [150? 600? idk but it's supposed to make it
-better] *.jpg output.pdf 
+convert -density [150? 600? idk but it's supposed to make it better] *.jpg output.pdf 
 ```
+
+* NOTE: convert is bad at preserving pdf quality when concatenating
+  pdfs. USE PDFTK!
 
 ### rclone
 
@@ -231,6 +236,18 @@ you how to get it.
 Use foliate for epub files. The zathura-mupdf extension works but
 the rendering is weird.
 
+### kitty
+
+Kitty has some pretty sweet keybinds. Hold ctrl + shift [letter] to
+get a pretty sweet kitty feature:
+
+* `F1` - kitty help
+* `t` - new tab
+* `w` - close tab
+* `h` - history
+* `g` - last command output
+* `=` - font size up
+* `-` - font size down:wqa
 ## System
 
 ### Devices
@@ -258,21 +275,60 @@ The main difference between the two is:
 * with ramfs, you must create the fs and mount it yourself
 * ramfs will never swap, making it ideal for storing secrets
 
+### Mounting a flash drive
 
+Normally, you would use `mount [device] [mountpoint]`, but since
+`mount` requires su privileges, you won't be able to modify anything
+on the drive without using `sudo`. This mount command will allow any
+user to modify files on the drive:
 
+`mount -o gid=users,fmask=113,dmask=002 [device] [mountpoint]`
 
+### File allocation
 
+You can allocate a specified amount of space on disk with `fallocate`:
 
+`sudo fallocate -l 5G /data/test1.img`
 
+### Switching to another tty
 
+The default tty (terminal) is set to tty1. Switch to another tty
+using:
 
+```
+ctrl + alt + F[2-6]
+```
 
+### Keebs and flashing nonsense
 
+When putting a keeb using QMK into bootloader (DFU) mode, it won't
+mount automatically like on Windows or Mac. It *should* show up in a
+GUI like Thunar, then clicking on it will mount it. Running the `qmk
+flash` command will then flash the keymap to the keeb.
 
+If, however, you don't want to use the GUI, the CLI commands are:
 
+```
+# 1. put the keeb into DFU mode (done on hardware)
+# 2. verify the keeb is showing up as a block device with `lsblk`
+(optional)
+# 3. mount the keeb to the removable media section of the file
+system:
+    
+    $ sudo mount /dev/sda1 /run/media/elliot/RPI-RP2 --mkdir -o umask=0
 
+# 4. run the qmk flash command:
 
+    $ qmk flash -kb keebio/sinc/rev4 -km elliot
 
+    the flash command should (hopefully) return successfully,
+    indicating the keymap was successfully flashed to the keeb.
 
+# 5. unmount the folder created by mount:
 
+    $ sudo umount -f /run/media/elliot/RPI-RP2
 
+# 6. remove the mount folder: 
+
+    $ sudo rmdir /run/media/elliot/RPI-RP2
+```
