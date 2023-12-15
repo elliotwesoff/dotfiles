@@ -2,16 +2,16 @@
 
 set year $(date +%Y)
 set month $(date +%m)
-set iso_date $(date -I)
 set dt_full $(date "+%Y-%m-%d-%H_%M_%S")
-set backup_path_year "/@snapshots/$USER/$year"
-set backup_path "$backup_path_year/$month"
+set backup_dir "/@snapshots/$USER/$year/$month"
+set path "$backup_dir/$dt_full"
 
-mkdir --mode 770 --parents --verbose $backup_path
-chgrp --changes btrfs $backup_path_year $backup_path
+sudo mkdir --parents --verbose $backup_dir
 
-for subvol in @home @log @pkg @tmp @shared
-  set dest "$backup_path/$dt_full-$subvol.snapshot"
-  sudo btrfs subvolume snapshot -r /$subvol $dest
-end
+sudo btrfs subvolume snapshot -r / "$path-@.snapshot"
+sudo btrfs subvolume snapshot -r /home "$path-@home.snapshot"
+sudo btrfs subvolume snapshot -r /shared "$path-@shared.snapshot"
+sudo btrfs subvolume snapshot -r /tmp "$path-@tmp.snapshot"
+sudo btrfs subvolume snapshot -r /var/log "$path-@log.snapshot"
+sudo btrfs subvolume snapshot -r /var/cache/pacman/pkg "$path-@pkg.snapshot"
 

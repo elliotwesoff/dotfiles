@@ -1,8 +1,9 @@
 #!/bin/sh
 
 record_volume() {
+    # | jq -c '.sinks[] | select(.state == "RUNNING") | { mute, volume: .volume["front-left"].value_percent }' \
   pactl -f json list \
-    | jq -c '.sinks[] | select(.state == "RUNNING") | { mute, volume: .volume["front-left"].value_percent }' \
+    | jq -c '.sinks[] | { mute, volume: .volume["front-left"].value_percent }' \
     >> /dev/shm/volume.json
 }
 

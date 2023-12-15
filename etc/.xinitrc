@@ -4,7 +4,7 @@
 
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
-xrdb -merge ~/dotfiles/.Xresources
+xrdb -merge ~/dotfiles/etc/.Xresources
 ruby $HOME/dotfiles/scripts/activate_display.rb
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
@@ -15,7 +15,7 @@ xset s off &
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
 
 # set background image
-$HOME/dotfiles/.fehbg &
+$HOME/dotfiles/scripts/fehbg &
 
 # start background services
 sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &

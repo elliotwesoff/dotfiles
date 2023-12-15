@@ -1,16 +1,17 @@
 #!/bin/sh
 
+# setup dots
 mkdir -p ~/code
 mkdir -p ~/.local/{bin,share,state}
+ln -sfv ~/dotfiles/.config ~/.config
+ln -sfv ~/dotfiles/.screenlayout ~/.screenlayout
 
-# backup the old items and create symlinks to files
-# in this repository.
-for item in .config .fonts .gitconfig .agignore \
-            .tmux.conf .zshrc .xinitrc .screenlayout \
-            .mime.types .fehbg .tool-versions
+# files in etc
+for item in .fehbg .gdbinit .gitconfig .mime.types \
+            .tool-versions .xinitrc
 do
   mv -v ~/$item ~/$item.old 2> /dev/null
-  ln -sfv ~/dotfiles/$item ~/$item
+  ln -sfv ~/dotfiles/etc/$item ~/$item
 done
 
 # symlink scripts that need to be in PATH
@@ -54,7 +55,7 @@ sudo pacman -S \
   arandr \
   wget \
   deno \
-  thunar \
+  thunar gvfs \
   ntfs-3g \
   cmus \
   vlc \
@@ -129,7 +130,3 @@ cd ~/code \
   && cargo build --release --no-default-features --features x11 \
   && chmod +x target/release/eww \
   && ln -sf ~/code/eww/target/release/eww ~/.local/bin/eww
-
-# install nvm
-fisher install jorgebucaran/nvm.fish
-nvm install lts

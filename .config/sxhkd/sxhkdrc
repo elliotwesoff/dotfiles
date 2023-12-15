@@ -6,40 +6,24 @@
 # program shortcuts
 #
 
-super + Return
+# my notes! i can't computer without my notes!
+super + F1
+  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
+        -c ~/dotfiles/.config/kitty/condensed.conf \
+        nvim -O \
+          ~/dotfiles/.config/sxhkd/sxhkdrc \
+          ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
+          ~/Documents/Notes/arch-notes.md
+
+super + {_,shift} + Return
   exec kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-             -c ~/dotfiles/.config/kitty/condensed.conf
+             -c ~/dotfiles/.config/kitty/{condensed,cozy}.conf
 
-super + shift + Return
-  exec kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-             -c ~/dotfiles/.config/kitty/cozy.conf
-
-super + alt + f
-  exec thunar
-
-super + alt + b
-  exec firefox
-
-super + alt + x
-  exec firefox
-
-super + alt + d
-  exec discord
-
-super + alt + m
-  exec kitty pulsemixer
-
-super + alt + w
-  exec whatsdesk
+super + alt + {f,b,x,d,m,w,space}
+  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,rofi -show drun}
 
 super + shift + alt + l
   xset s activate
-
-super + a
-  rofi -show drun
-
-XF86LaunchA
-  rofi -show drun
 
 super + z
   eww-toggle
@@ -47,20 +31,14 @@ super + z
 super + shift + Escape
   sxhkd-reload
 
-super + Delete
-  elliot suspend
+super + {Delete,XF86ScreenSaver}
+  elliot {suspend,suspend}
 
-super + XF86ScreenSaver
-  elliot suspend
+super + alt + shift + {0,1,2}
+  switch-mon {off,internal,external}
 
-super + alt + shift + 0
-  switch-mon off
-
-super + alt + shift + 1
-  switch-mon internal
-
-super + alt + shift + 2
-  switch-mon external
+XF86LaunchA
+  rofi -show drun
 
 XF86Search
   kitty ranger
@@ -95,25 +73,7 @@ XF86MonBrightnessUp
 super + shift + alt + Up
   blight set +5%
 
-# heylp! i forgot my keymappings!
-super + F1
-  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/condensed.conf \
-        nvim -O \
-          ~/dotfiles/.config/sxhkd/sxhkdrc \
-          ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
-          ~/Documents/Notes/arch-notes.md
-
-super + shift + F10
-  flameshot gui
-
-# touchpad shenanigans
-super + shift + F11
-  tp off
-
-super + shift + F12
-  tp on
-
 # printscreen button
 Print
   flameshot gui
+

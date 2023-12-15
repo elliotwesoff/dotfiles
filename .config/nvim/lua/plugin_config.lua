@@ -666,7 +666,8 @@ function M.apply_sunset_config()
       vim.o.background = "light"
     end,
     night_callback = function()
-      vim.cmd.colorscheme("neobones")
+      -- vim.cmd.colorscheme("neobones")
+      vim.cmd.colorscheme("kanagawabones")
       vim.o.background = "dark"
     end
   })

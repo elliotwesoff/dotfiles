@@ -24,4 +24,4 @@ bspc wm -r
 kitty @ set-colors -a $CONFIG_DIR/kitty/theme.conf
 
 # set new background image
-sh -c $HOME/dotfiles/.fehbg &
+sh -c $HOME/dotfiles/scripts/fehbg &
