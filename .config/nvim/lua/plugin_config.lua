@@ -887,5 +887,19 @@ function M.apply_oil_config()
   })
 end
 
+function M.apply_zenbones_config()
+  local bg_contrast = { lightness = 'bright', darkness = 'stark'}
+  vim.g.kanagawabones = bg_contrast
+  vim.g.zenbones = bg_contrast
+  vim.g.vimbones = bg_contrast
+  vim.g.neobones = bg_contrast
+  vim.g.seoulbones = bg_contrast
+  vim.g.tokyobones = bg_contrast
+  vim.g.rosebones = bg_contrast
+  vim.g.nordbones = bg_contrast
+  vim.g.duckbones = bg_contrast
+  vim.g.forestbones = bg_contrast
+end
+
 return M
 

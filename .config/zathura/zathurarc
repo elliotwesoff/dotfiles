@@ -13,8 +13,8 @@ set incremental-search false
 set page-cache-size 1000
 set selection-clipboard clipboard
 set default-bg "#141414"
-set index-bg "#BBBBBB"
-set index-fg "#0000B0"
+set index-bg "#666666"
+set index-fg "#111199"
 set index-active-fg "#212121"
 set index-active-bg "#D6D6D6"
 set recolor false

@@ -8,72 +8,41 @@
 
 # my notes! i can't computer without my notes!
 super + F1
-  kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-        -c ~/dotfiles/.config/kitty/condensed.conf \
-        nvim -O \
+  kitty nvim -O \
           ~/dotfiles/.config/sxhkd/sxhkdrc \
           ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
           ~/Documents/Notes/arch-notes.md
 
-super + {_,shift} + Return
-  exec kitty -c ~/dotfiles/.config/kitty/kitty.conf \
-             -c ~/dotfiles/.config/kitty/{condensed,cozy}.conf
+super + {Return,space,z,BackSpace}
+  exec {kitty,rofi -show drun,eww-toggle,xset s activate}
 
-super + alt + {f,b,x,d,m,w,space}
-  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,rofi -show drun}
+super + alt + {f,b,x,d,m,w,Escape}
+  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,sxhkd-reload}
 
-super + shift + alt + l
-  xset s activate
-
-super + z
-  eww-toggle
-
-super + shift + Escape
-  sxhkd-reload
-
-super + {Delete,XF86ScreenSaver}
-  elliot {suspend,suspend}
-
-super + alt + shift + {0,1,2}
+super + alt + {0,1,2}
   switch-mon {off,internal,external}
 
+super + control + alt + shift + q
+  pkill Xorg
+
 XF86LaunchA
-  rofi -show drun
+  exec rofi -show drun
 
 XF86Search
-  kitty ranger
+  exec kitty ranger
 
-# volume controls
+XF86ScreenSaver
+  xset s activate
 
-XF86AudioRaiseVolume
-  elliot volup
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+  elliot {volup,voldown,mute}
 
-XF86AudioLowerVolume
-  elliot voldown
+super + shift + alt + {Up,Down}
+  blight set {+5%,-5%}
 
-XF86AudioMute
-  elliot mute
+XF86MonBrightness{Up,Down}
+  blight set {+5%,-5%}
 
-# brightness
-super + shift + F1
-  blight set -5%
-
-super + shift + alt + Down
-  blight set -5%
-
-XF86MonBrightnessDown
-  blight set -5%
-
-super + shift + F2
-  blight set +5%
-
-XF86MonBrightnessUp
-  blight set +5%
-
-super + shift + alt + Up
-  blight set +5%
-
-# printscreen button
 Print
   flameshot gui
 

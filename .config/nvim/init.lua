@@ -52,6 +52,7 @@ require('packer').startup(function(use)
   use 'tamton-aquib/duck.nvim'
 end)
 
+plugins.apply_zenbones_config()
 plugins.apply_lsp_config()
 plugins.apply_lsp_signature_config()
 plugins.apply_nvim_cmp_config()

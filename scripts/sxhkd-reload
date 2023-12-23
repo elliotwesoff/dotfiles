@@ -1,5 +1,5 @@
 #!/bin/sh
 
-pkill -USR1 -x sxhkd
-notify-send --expire-time 2000 "sxhkd-reload" "restarted successfully"
+pkill --signal SIGUSR1 --exact sxhkd && \
+  notify-send --expire-time 2000 "sxhkd-reload" "reloaded keybinds"
 
