@@ -9,10 +9,6 @@ function M.buf_format_json()
   vim.cmd(':%!python3 -m json.tool<CR>')
 end
 
-function M.pum_visible()
-  return false
-end
-
 function M.refresh_config()
   local config_path = '~/dotfiles/.config/nvim/init.lua'
   vim.cmd('source ' .. config_path)

@@ -1,7 +1,9 @@
 local M = {}
 
+COLORSCHEME_LIGHT = 'catppuccin-latte'
+COLORSCHEME_DARK = 'kanagawabones'
+
 local function apply_global_settings()
-  vim.g.mapleader = ","
   vim.g.vimtex_view_method = 'zathura'
 end
 
@@ -47,10 +49,6 @@ function M.apply_settings()
   vim.opt.foldnestmax = 99
   vim.opt.foldlevelstart = 99
   vim.opt.scrolloff = 2
-
-  -- vim.cmd([[
-  --   let g:OmniSharp_server_use_mono = 1
-  -- ]])
 end
 
 return M

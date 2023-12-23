@@ -1,14 +1,4 @@
-local peek = require('peek')
-local custom_fns = require('custom_functions')
-local zen_mode = require('zen-mode')
-local telescope = require('telescope.builtin')
-local symbols_outline = require('symbols-outline')
-local duck = require('duck')
-local oil = require('oil')
-local ibl = require('ibl')
-local opts = { noremap = true, silent = true }
 local M = {}
-
 
 function M.apply_keymaps()
   -- look!!! 
@@ -16,6 +6,13 @@ function M.apply_keymaps()
   -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
   -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
   -- but this is only on linux, windows sends different keys -____________-'
+  local custom_fns = require('helpers')
+  local zen_mode = require('zen-mode')
+  local telescope = require('telescope.builtin')
+  local symbols_outline = require('symbols-outline')
+  local oil = require('oil')
+  local ibl = require('ibl')
+  local opts = { noremap = true, silent = true }
 
   -- insert mode mappings
   vim.keymap.set('i', 'jj', '<Esc>', opts)
@@ -80,9 +77,6 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>cb', custom_fns.clear_bg_color, opts)
   vim.keymap.set('n', '<leader>bg', custom_fns.toggle_theme, opts)
   vim.keymap.set('n', '<leader>json=', custom_fns.buf_format_json, opts)
-  vim.keymap.set('n', '<leader>p', peek.open, opts)
-  vim.keymap.set('n', '<leader>P', peek.close, opts)
-  vim.keymap.set('n', '<leader>dd', duck.hatch)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode

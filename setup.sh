@@ -94,6 +94,7 @@ sudo pacman -S \
   usbview \
   xsecurelock \
   xss-lock \
+  xscreensaver \
   p7zip \
   blueman \
   ripgrep \

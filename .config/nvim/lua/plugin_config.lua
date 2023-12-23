@@ -1,7 +1,7 @@
 local M = {}
 
 function M.apply_lsp_config()
-  local keymaps = require('key_mappings')
+  local keymaps = require('keymaps')
   local lspconfig = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lsp_flags = { debounce_text_changes = 0 }
@@ -289,7 +289,7 @@ function M.apply_treesitter_config()
     ensure_installed = {
       "c",
       "cpp",
-      "lua",
+      -- "lua",
       "python",
       "typescript",
       "c_sharp",
@@ -657,18 +657,19 @@ function M.apply_glance_config()
 end
 
 function M.apply_sunset_config()
-  local sunset = require("sunset")
+  local sunset = require('sunset')
+  local settings = require('settings')
+
   sunset.setup({
-    latitude = 36, longitude = -115, -- las vegas
-    -- latitude = 48, longitude = 11 -- munich
+    -- latitude = 36, longitude = -115, -- las vegas
+    latitude = 48, longitude = 11, -- munich
     day_callback = function()
-      vim.cmd.colorscheme("catppuccin-latte")
-      vim.o.background = "light"
+      vim.cmd.colorscheme(COLORSCHEME_LIGHT)
+      vim.o.background = 'light'
     end,
     night_callback = function()
-      -- vim.cmd.colorscheme("neobones")
-      vim.cmd.colorscheme("kanagawabones")
-      vim.o.background = "dark"
+      vim.cmd.colorscheme(COLORSCHEME_DARK)
+      vim.o.background = 'dark'
     end
   })
 end
