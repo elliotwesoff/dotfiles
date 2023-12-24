@@ -9,7 +9,7 @@ function M.init()
     { 'stevearc/oil.nvim', config = pc.apply_oil_config },
     { 'neovim/nvim-lspconfig', config = pc.apply_lsp_config },
     { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, config = pc.apply_telescope_config },
-    { 'nvim-lualine/lualine.nvim', dependencies = { 'kyazdani42/nvim-web-devicons' }, config = pc.apply_lualine_config },
+    { 'nvim-lualine/lualine.nvim', enabled = true, dependencies = { 'kyazdani42/nvim-web-devicons' }, config = pc.apply_lualine_config },
     { 'folke/zen-mode.nvim', config = pc.apply_zenmode_config },
 
     -- general

@@ -90,7 +90,7 @@ how to find the archive filename?
 
 ### (n)vim
 
-To perform a multiline edit:
+#### Multi-line edit
 
 1. Press ctrl + v (for visual block and not visual line)
 2. Make your edits
@@ -103,6 +103,31 @@ Or use a `normal` command:
 `:10,20 normal I* `
 
 This inserts a `* ` at the beginning of lines 10-20.
+
+#### Search and replace with regex
+
+Let's say you have the example text:
+
+```
+apply_test1_config
+apply_test2_config
+apply_test3_config
+```
+
+And you wanted to quickly remove the apply_ and _config on both sides
+of each line. The following search and replace command:
+
+```
+:%s/apply_\(\w\+\)_config/\1
+```
+
+Would transform the text to:
+
+```
+test1
+test2
+test3
+```
 
 ### feh
 
