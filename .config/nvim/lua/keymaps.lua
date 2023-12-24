@@ -1,5 +1,13 @@
 local M = {}
 
+M.ext_keymaps = {
+  comment = {
+    toggler = { line = '<C-/>', block = 'gbc' },
+    opleader = { line = '<C-/>', block = 'gb' },
+    extra = { above = 'gcO', below = 'gco', eol = 'gcA' }
+  }
+}
+
 function M.apply_keymaps()
   -- look!!! 
   -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
@@ -16,7 +24,7 @@ function M.apply_keymaps()
 
   -- insert mode mappings
   vim.keymap.set('i', 'jj', '<Esc>', opts)
-  vim.keymap.set('i', 'jk', '<Esc>', opts)
+  vim.keymap.set('i', 'jk', '<Esc>:w<CR>', opts)
   vim.keymap.set('i', 'jq', '<Esc>:wq<CR>', opts)
   vim.keymap.set('i', '<C-BS>', '<C-W>', opts)
   vim.keymap.set('i', '<C-,>', '<Esc>:tabprevious<CR>', opts)

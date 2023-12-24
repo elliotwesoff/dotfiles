@@ -1,6 +1,6 @@
 local M = {}
 
-COLORSCHEME_LIGHT = 'catppuccin-latte'
+COLORSCHEME_LIGHT = 'zenbones'
 COLORSCHEME_DARK = 'kanagawabones'
 
 local function apply_global_settings()
