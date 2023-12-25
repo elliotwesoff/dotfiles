@@ -1,5 +1,5 @@
-local M = {}
 local pc = require('plugin_config')
+local M = {}
 
 function M.init()
   local plugins = {

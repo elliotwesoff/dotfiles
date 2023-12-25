@@ -1,14 +1,6 @@
 local M = {}
 
-COLORSCHEME_LIGHT = 'zenbones'
-COLORSCHEME_DARK = 'kanagawabones'
-
-local function apply_global_settings()
-  vim.g.vimtex_view_method = 'zathura'
-end
-
 function M.apply_settings()
-  apply_global_settings()
   vim.opt.hidden = true
   vim.opt.wildmenu = true
   vim.opt.showcmd = false

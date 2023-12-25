@@ -13,11 +13,11 @@ super + F1
           ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
           ~/Documents/Notes/arch-notes.md
 
-super + {Return,space,z,BackSpace}
-  exec {kitty,rofi -show drun,eww-toggle,xset s activate}
+super + {Return,space,z,BackSpace,Delete}
+  exec {kitty,eww-toggle,eww-toggle,xset s activate,systemctl suspend}
 
-super + alt + {f,b,x,d,m,w,Escape}
-  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,sxhkd-reload}
+super + alt + {f,b,x,d,m,w,Escape,space}
+  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,sxhkd-reload,rofi -show drun}
 
 super + alt + {0,1,2}
   switch-mon {off,internal,external}

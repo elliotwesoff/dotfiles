@@ -5,18 +5,25 @@ function M.apply_lsp_config()
   local lspconfig = require('lspconfig')
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lsp_flags = { debounce_text_changes = 0 }
-  local on_attach = keymaps.apply_lsp_buffer_keymaps
+  local attach_fn = keymaps.apply_lsp_buffer_keymaps
 
   keymaps.apply_lsp_keymaps()
 
-  lspconfig.pyright.setup  { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.tsserver.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.ccls.setup     { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.texlab.setup   { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
-  lspconfig.solargraph.setup { on_attach = on_attach, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.pyright.setup  { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.tsserver.setup { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.ccls.setup     { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.texlab.setup   { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
+  lspconfig.solargraph.setup { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
   lspconfig.lua_ls.setup {
-    settings = { Lua = { diagnostics = { globals = { "vim" } } } },
-    capabilities = capabilities
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" }
+        }
+      }
+    },
+    capabilities = capabilities,
+    on_attach = attach_fn
   }
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -203,18 +210,10 @@ function M.apply_comment_config()
 end
 
 function M.apply_aerial_config()
+  local keymaps = require('keymaps')
   require("aerial").setup({
-    layout = {
-      placement = 'window',
-      default_direction = 'right',
-    },
-    on_attach = function(bufnr)
-      -- Toggle the aerial window with <leader>
-      -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
-      -- Jump forwards/backwards with '[[' and ']]'
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrev<CR>', {})
-      vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNext<CR>', {})
-    end
+    layout = { placement = 'window', default_direction = 'right' },
+    on_attach = keymaps.apply_aerial_keymaps
   })
 end
 
@@ -458,11 +457,11 @@ function M.apply_sunset_config()
     -- latitude = 36, longitude = -115, -- las vegas
     latitude = 48, longitude = 11, -- munich
     day_callback = function()
-      vim.cmd.colorscheme(COLORSCHEME_LIGHT)
+      vim.cmd.colorscheme(settings.COLORSCHEME_LIGHT)
       vim.o.background = 'light'
     end,
     night_callback = function()
-      vim.cmd.colorscheme(COLORSCHEME_DARK)
+      vim.cmd.colorscheme(settings.COLORSCHEME_DARK)
       vim.o.background = 'dark'
     end
   })
