@@ -16,18 +16,18 @@ DPI_SCRIPT_PATH = "#{SCRIPTS_DIR}/dpi"
 
 
 class Display
-  attr_reader :edid, :screenlayout_file_path, :dpi, :name
+  attr_reader :edid, :xrandr_script, :dpi, :name
 
-  def initialize(edid, screenlayout_file_path, dpi, name)
+  def initialize(edid, xrandr_script, dpi, name)
     @edid = edid
-    @screenlayout_file_path = screenlayout_file_path
+    @xrandr_script = xrandr_script
     @dpi = dpi
     @name = name
   end
 
   def apply!
-    cmd = "sh #{screenlayout_file_path} && #{DPI_SCRIPT_PATH} #{dpi}"
-    log("running shell command: `#{cmd}`")
+    cmd = "sh #{xrandr_script} && #{DPI_SCRIPT_PATH} #{dpi}"
+    log("applying with shell cmd: `#{cmd}`")
     system(cmd)
   end
 end
@@ -35,7 +35,8 @@ end
 DISPLAYS = [
   Display.new(FRAMEWORK, "#{SCREENLAYOUT_DIR}/framework-int.sh", 140, "framework internal"),
   Display.new("06b30427", "#{SCREENLAYOUT_DIR}/asus-27in.sh", 96, "asus VG27AQL1A"), 
-  Display.new("10ac32a1", "#{SCREENLAYOUT_DIR}/unlv-dell.sh", 96, "dell widescreen in TBE B")
+  Display.new("10ac32a1", "#{SCREENLAYOUT_DIR}/unlv-dell.sh", 96, "dell widescreen in TBE B"),
+  Display.new("09d1ed78", "#{SCREENLAYOUT_DIR}/seo-benq.sh", 96, "seo's crappy BenQ monitor")
 ]
 
 EXTERNAL_AUTO = Display.new(nil, "#{SCREENLAYOUT_DIR}/external-auto.sh", 96, "external (xrandr --auto)")
@@ -64,20 +65,20 @@ else
 end
 
 # throw away the first 8 bytes of the EDID header, the next two bytes are
-# manufacturer ID, and the next two are mfg's product ID. we'll use those two
-# together to identify a display.
-mfg_prod = edids.map { |edid| edid[16..23] }
+# manufacturer ID, and the next two are the manufacturer's product ID. we'll
+# use those two together to identify a display.
+mp_id = edids.map { |edid| edid[16..23] }
                 .reject { |edid| edid == FRAMEWORK }
                 .first || FRAMEWORK # default to internal framework display
 
 
-display = DISPLAYS.filter { |display| display.edid == mfg_prod }.first
+display = DISPLAYS.filter { |display| display.edid == mp_id }.first
 
 if display
   log("selecting known edid manufacturer & product id: #{display.edid} (#{display.name})")
 else
-  log("WARN: no known screenlayout file for manufacturer/" \
-      "product id: #{mfg_prod}... jesus take the wheel!")
+  log("WARN: no known screenlayout file for manufacturer & " \
+      "product id: #{mp_id}... jesus take the wheel!")
   display = EXTERNAL_AUTO
 end
 

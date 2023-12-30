@@ -7,7 +7,7 @@ settings.COLORSCHEME_DARK = 'nightfox'
 
 vim.g.mapleader = ' '
 
-lazy.bootstrap(vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
+lazy.bootstrap()
 lazy.init()
 
 settings.apply_settings()

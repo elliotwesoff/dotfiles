@@ -190,14 +190,14 @@ function M.apply_treesitter_config()
 end
 
 function M.apply_comment_config()
-  local km = require('keymaps').ext_keymaps
+  local km = require('keymaps').ext_keymaps.comment
   require('Comment').setup {
     padding = true,
     sticky = true,
     ignore = nil,
-    toggler = km.comment.toggler,
-    opleader = km.comment.opleader,
-    extra = km.comment.extra,
+    toggler = km.toggler,
+    opleader = km.opleader,
+    extra = km.extra,
     mappings = {
       ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
       basic = true,
@@ -286,33 +286,33 @@ function M.apply_nvim_cmp_config()
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
   cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
   vim.cmd("set completeopt=menu,menuone,noselect")
-  local cmp_kinds = {
-    Text = '  ',
-    Method = '  ',
-    Function = '  ',
-    Constructor = '  ',
-    Field = '  ',
-    Variable = '  ',
-    Class = '  ',
-    Interface = '  ',
-    Module = '  ',
-    Property = '  ',
-    Unit = '  ',
-    Value = '  ',
-    Enum = '  ',
-    Keyword = '  ',
-    Snippet = '  ',
-    Color = '  ',
-    File = '  ',
-    Reference = '  ',
-    Folder = '  ',
-    EnumMember = '  ',
-    Constant = '  ',
-    Struct = '  ',
-    Event = '  ',
-    Operator = '  ',
-    TypeParameter = '  ',
-  }
+  -- local cmp_kinds = {
+  --   Text = '  ',
+  --   Method = '  ',
+  --   Function = '  ',
+  --   Constructor = '  ',
+  --   Field = '  ',
+  --   Variable = '  ',
+  --   Class = '  ',
+  --   Interface = '  ',
+  --   Module = '  ',
+  --   Property = '  ',
+  --   Unit = '  ',
+  --   Value = '  ',
+  --   Enum = '  ',
+  --   Keyword = '  ',
+  --   Snippet = '  ',
+  --   Color = '  ',
+  --   File = '  ',
+  --   Reference = '  ',
+  --   Folder = '  ',
+  --   EnumMember = '  ',
+  --   Constant = '  ',
+  --   Struct = '  ',
+  --   Event = '  ',
+  --   Operator = '  ',
+  --   TypeParameter = '  ',
+  -- }
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -341,13 +341,13 @@ function M.apply_nvim_cmp_config()
     }, {
       { name = 'buffer' },
     }),
-    formatting = {
-      format = function(_, vim_item)
-        -- vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
-        vim_item.kind = (cmp_kinds[vim_item.kind] or '')
-        return vim_item
-      end,
-    }
+    -- formatting = {
+    --   format = function(_, vim_item)
+    --     -- vim_item.kind = (cmp_kinds[vim_item.kind] or '') .. vim_item.kind
+    --     vim_item.kind = (cmp_kinds[vim_item.kind] or '')
+    --     return vim_item
+    --   end,
+    -- }
   })
 
   -- Set configuration for specific filetype.
