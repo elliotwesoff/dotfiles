@@ -16,10 +16,10 @@ function M.refresh_config()
 end
 
 function M.toggle_theme()
-  if vim.o.background == "dark" then
-    vim.o.background = "light"
+  if vim.o.background == 'dark' then
+    vim.o.background = 'light'
   else
-    vim.o.background = "dark"
+    vim.o.background = 'dark'
   end
 end
 
