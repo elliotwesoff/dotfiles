@@ -2,8 +2,9 @@
 
 set year $(date +%Y)
 set month $(date +%m)
+set day $(date +%d)
 set dt_full $(date "+%Y-%m-%d-%H_%M_%S")
-set backup_dir "/@snapshots/$USER/$year/$month"
+set backup_dir "/@snapshots/$USER/$year/$month/$day"
 set path "$backup_dir/$dt_full"
 
 sudo mkdir --parents --verbose $backup_dir
