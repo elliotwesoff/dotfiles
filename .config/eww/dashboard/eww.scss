@@ -1,0 +1,42 @@
+$border-width: 0px; // for layout debugging
+
+window.dashboard {
+  font-family: "Noto Sans Mono";
+  font-size: 1em;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+
+  & > box.dashboard-container {
+    background: rgba(0, 0, 0, 0.00);
+    border: $border-width solid red;
+
+    & > box { // widgets and bspeww containers
+      margin: 0em;
+
+      & > box {
+        border: $border-width solid green;
+
+        & > * { // actual widget blocks, labels, bspwm-widget, etc
+          margin: 0.5em;
+          padding: 0.5em;
+          background: rgba(0, 0, 0, 1.00);
+          border: $border-width solid blue;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .bspwm-widget {
+    .bspwm-win-state {
+      label.desktop-name {
+        padding: 0 0.5em;
+        border: 1px solid #000000;
+
+        &.selected {
+          border: 1px solid #FFFFFF;
+        }
+      }
+    }
+  }
+}

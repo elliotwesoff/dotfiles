@@ -1,0 +1,48 @@
+(defwindow dashboard
+  :monitor 0
+  :geometry (geometry :x "0%" :y "0%" :anchor "center")
+  :wm-ignore true
+  :windowtype "dock"
+  :stacking "fg"
+  ;; main container - contains two vertical boxes:
+  ;; the various widgets above, bspeww below
+  (box
+    :orientation "v"
+    :class "dashboard-container"
+    ;; widgets container
+    (box
+      :orientation "v"
+      :class "widget-container"
+      ;; upper widget container
+      (box
+        :orientation "h"
+        :class "upper"
+        (label :text "cpu")
+        (label :text "mem")
+        (label :text "disk")
+        (label :text "date, time, tz")
+        (label :text "vol")
+        (label :text "lock")
+        (label :text "logoff")
+      )
+      ;; lower widget container
+      (box
+        :orientation "h"
+        :class "lower"
+        (label :text "temp")
+        (label :text "net")
+        (label :text "brightness")
+        (label :text "buttons")
+        (label :text "vol/bright up/down")
+        (label :text "seo :)")
+      )
+    )
+    ;; bspeww container
+    (box
+      :class "bspeww"
+      (box
+        (bspwm-widget)
+      )
+    )
+  )
+)

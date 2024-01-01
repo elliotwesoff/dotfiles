@@ -16,7 +16,7 @@ super + F1
 super + {Return,space,z,Delete}
   exec {kitty,eww-toggle,eww-toggle,xset s activate}
 
-super + alt + {f,b,x,d,m,w,Escape,space,BackSpace}
+super + alt + {f,z,x,d,m,w,Escape,space,BackSpace}
   exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,sxhkd-reload,rofi -show drun,systemctl suspend}
 
 super + alt + {0,1,2}

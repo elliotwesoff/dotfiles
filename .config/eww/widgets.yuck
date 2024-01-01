@@ -1,0 +1,115 @@
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "center"
+       :spacing 2
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)))
+
+(defwidget icon-module [icon ?class ?visible]
+  (box :class "${class} icon-module"
+       :orientation "h"
+       :space-evenly true
+       :visible {visible ?: true} ; because the argument is optional
+    (label :halign "start" :class "icon-module__icon" :text "${icon}")
+    (children)))
+
+(defwidget date [ha]
+  (label :halign ha :text date_poll))
+
+(defwidget time [ha]
+  (label :halign ha :text time_poll))
+
+(defwidget timezone [ha]
+  (label :halign ha :text timezone))
+
+(defwidget disk []
+  (icon-module :class "stat" :icon "💿" 
+    (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
+
+(defwidget ram []
+  (icon-module :class "stat" :icon "📝"
+    (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
+
+(defwidget cpu []
+  (icon-module :class "stat" :icon "🧠"
+    (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%, ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
+
+(defwidget battery []
+  (icon-module :class "stat" :icon "🔋"
+    (label :halign "center" :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''}")
+    (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
+
+(defwidget temperature []
+  (icon-module :class "stat" :icon "🤒"
+    (label :halign "end" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
+
+(defwidget wifi []
+  (icon-module
+    :class "stat"
+    :icon "📡"
+    (label
+      :halign "end"
+      :text "${EWW_NET.wlp166s0.NET_UP}")
+    (label
+      :halign "end"
+      :text "${EWW_NET.wlp166s0.NET_DOWN}")))
+
+(defwidget volume []
+  (icon-module :class "stat" :icon "🙉"
+    (label
+      :halign "end"
+      :class "volume ${vollisten["mute"] ? 'muted' : ''}"
+      :text "${vollisten["volume"]}")))
+
+;; TODO: how to convert bright result to float (f64)?
+(defwidget brightness []
+  (icon-module :class "stat" :icon "😎"
+    (label
+      :halign "end"
+      :text "${round((bright / 96000) * 100, 0)}%")))
+
+(defwidget vbar []
+  (box
+    :orientation "v"
+    :space-evenly true
+    :width "250"
+    :class "vbar"
+      (battery)
+      (disk)
+      (cpu)
+      (ram)
+      (wifi)
+      (volume)
+      (brightness)))
+
+(defwidget bspwm-widget []
+  (box
+    :class "bspwm-widget"
+    (box :orientation "v"
+      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}")
+      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}")
+      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}")
+      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: ''}")
+      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: ''}")
+      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: ''}")
+      (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: ''}"))))
+
+(defwidget bspwm-win-state [name windows]
+  (box :space-evenly false
+       :hexpand false
+       :class "bspwm-win-state"
+    (label :halign "start"
+           :class "desktop-name ${name == bspwm_selected ? 'selected' : ''}"
+           :text name)
+    (label :halign "end"
+           :hexpand true
+           :class "bspwm-win-state-windows"
+           :text "${windows}")))
+
