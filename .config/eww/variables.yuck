@@ -1,3 +1,4 @@
+(defvar gib 1073741824)
 (defpoll hour :interval "1s" "date +%H")
 (defpoll min  :interval "1s" "date +%M")
 (defpoll sec  :interval "1s" "date +%S")

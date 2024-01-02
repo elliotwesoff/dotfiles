@@ -1,6 +1,25 @@
 @import "./dashboard/eww.scss";
 * { all: unset }
 
+.m1 {
+  margin: 0.25em;
+}
+.m2 {
+  margin: 0.5em;
+}
+.m3 {
+  margin: 1em;
+}
+.p1 {
+  padding: 0.25em;
+}
+.p2 {
+  padding: 0.5em;
+}
+.p3 {
+  padding: 1em;
+}
+
 .main {
   font-family: "Noto Sans Mono";
   font-size: 1.2em;

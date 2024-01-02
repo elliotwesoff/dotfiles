@@ -34,14 +34,14 @@
 ;;     (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
 
 (defwidget disk []
-    (label :text "${round(EWW_DISK["/"].used_perc, 0)}%"))
+    (label :text "${round(EWW_DISK["/"].used / gib, 0)} GiB"))
 
 ;; (defwidget ram []
 ;;   (icon-module :class "stat" :icon "📝"
 ;;     (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
 
 (defwidget ram []
-  (label :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB"))
+  (label :text "${round(EWW_RAM.used_mem / gib, 2)} GiB"))
 
 ;; (defwidget cpu []
 ;;   (icon-module :class "stat" :icon "🧠"
@@ -78,13 +78,6 @@
 
 (defwidget wifidown [] 
   (label :text "${EWW_NET.wlp166s0.NET_DOWN}"))
-
-(defwidget wifistack []
-  (box
-    :orientation "v"
-      (label :text "wlp166s0")
-      (label :text "${EWW_NET.wlp166s0.NET_UP}")
-      (label :text "${EWW_NET.wlp166s0.NET_DOWN}")))
 
 ;; (defwidget volume []
 ;;   (icon-module :class "stat" :icon "🙉"
@@ -148,28 +141,100 @@
            :class "bspwm-win-state-windows"
            :text "${windows}")))
 
+(defwidget spacer []
+  (box))
+
 (defwidget greeter []
   (box
     :orientation "v"
-    :space-evenly false
+    ;; :space-evenly false
     (box :orientation "v"
       (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
-      (label)
+      (spacer)
       (date :ha "center")
       (time :ha "center")
-      (label)
+      (spacer)
       (timezone :ha "center"))))
 
 (defwidget lock []
   (box
-    :class "btn-container"
+    :class "btn-container p3"
     (button :onclick "xset s activate" "")))
 
 (defwidget logout []
   (box
-    :class "btn-container"
-    (button :onclick "notify-send logout" "")))
+    :class "btn-container p3"
+    (button :onclick "elliot logout" "")))
+
+(defwidget close []
+  (box
+    :class "btn-container p3"
+    (button :onclick "eww-toggle" "")))
+
+(defwidget airplanemode []
+  (box
+    :class "btn-container p3"
+    (button :onclick "elliot wifitoggle" "")))
 
 (defwidget seo [iw]
   (image :class "image" :path './images/seo.jpg' :image-width iw))
 
+(defwidget wifistack []
+  (box
+    :orientation "v"
+      (label :text "wlp166s0")
+      (label :text "${EWW_NET.wlp166s0.NET_UP}")
+      (label :text "${EWW_NET.wlp166s0.NET_DOWN}")))
+
+(defwidget lostack []
+  (box
+    :orientation "v"
+      (label :text "lo")
+      (label :text "${EWW_NET.lo.NET_UP}")
+      (label :text "${EWW_NET.lo.NET_DOWN}")))
+
+(defwidget statsstack []
+  (box
+    :orientation "v"
+    (spacer)
+    (cpu)
+    (ram)
+    (disk)
+    (cputemp)
+    (spacer)))
+
+(defwidget brightval []
+  (label :text "${round((bright / 96000) * 100, 0)}%"))
+
+(defwidget peripheralsstack []
+  (box
+    :orientation "v"
+    (box
+      (label :text "")
+      (brightval)
+      (spacer)
+      (spacer)
+      (button :onclick "blight set -5%" "")
+      (button :onclick "blight set +5%" "+")) ;; TODO: the + is too small, svg!
+    (box
+      (label :text "")
+      (volume)
+      (spacer)
+      (button :class "m1" :onclick "elliot mute" "")
+      (button :onclick "elliot voldown" "")
+      (button :onclick "elliot volup" "+"))))
+
+(defwidget applauncher []
+  (box
+    :class "applauncher"
+    (button :onclick "kitty & disown" "") ;; TODO: get svgs for all of these icons
+    (button :onclick "firefox & disown" "")
+    (button :onclick "discord & disown" "")
+    (button
+      :onclick
+      "whatsdesk & disown"
+      (image :path "./images/whatsapp.svg" :image-width 30))
+    (button
+      :onclick
+      "spotify & disown"
+      (image :path "./images/spotify.svg" :image-width 30))))

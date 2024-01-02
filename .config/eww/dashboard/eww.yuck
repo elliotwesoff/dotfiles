@@ -21,31 +21,37 @@
       (box
         :orientation "h"
         :class "upper"
-        (cpu)
-        (ram)
-        (disk)
+        (statsstack)
+        (spacer)
         (greeter)
-        (lock)
-        (logout)
         (seo :iw 200)
+        (box
+          :orientation "v"
+          (box 
+            (lock)
+            (close)
+          )
+          (box
+            (airplanemode)
+            (logout)
+          )
+        )
       )
 
       ;; lower widget container
       (box
         :orientation "h"
-        :class "lower"
-        (cputemp)
-        (wifistack)
-        (brightness)
-        (label :text "buttons")
-        (volume)
+        (box
+          (wifistack)
+          (lostack))
+        (applauncher)
+        (peripheralsstack)
       )
     )
 
     ;; bspeww container
     (box
-      :class "bspeww"
-      (box
+      (box ;; nested boxes for easy css. fix later!
         (bspwm-widget)
       )
     )
