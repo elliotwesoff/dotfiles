@@ -29,17 +29,29 @@
 (defwidget timezone [ha]
   (label :halign ha :text timezone))
 
+;; (defwidget disk []
+;;   (icon-module :class "stat" :icon "💿" 
+;;     (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
+
 (defwidget disk []
-  (icon-module :class "stat" :icon "💿" 
-    (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
+    (label :text "${round(EWW_DISK["/"].used_perc, 0)}%"))
+
+;; (defwidget ram []
+;;   (icon-module :class "stat" :icon "📝"
+;;     (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
 
 (defwidget ram []
-  (icon-module :class "stat" :icon "📝"
-    (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
+  (label :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB"))
+
+;; (defwidget cpu []
+;;   (icon-module :class "stat" :icon "🧠"
+;;     (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%, ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
 
 (defwidget cpu []
-  (icon-module :class "stat" :icon "🧠"
-    (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%, ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
+  (label :class "stat" :text "${round(EWW_CPU.avg, 0)}%"))
+
+(defwidget cputemp []
+  (label :class "stat" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°"))
 
 (defwidget battery []
   (icon-module :class "stat" :icon "🔋"
@@ -61,19 +73,42 @@
       :halign "end"
       :text "${EWW_NET.wlp166s0.NET_DOWN}")))
 
+(defwidget wifiup [] 
+  (label :text "${EWW_NET.wlp166s0.NET_UP}"))
+
+(defwidget wifidown [] 
+  (label :text "${EWW_NET.wlp166s0.NET_DOWN}"))
+
+(defwidget wifistack []
+  (box
+    :orientation "v"
+      (label :text "wlp166s0")
+      (label :text "${EWW_NET.wlp166s0.NET_UP}")
+      (label :text "${EWW_NET.wlp166s0.NET_DOWN}")))
+
+;; (defwidget volume []
+;;   (icon-module :class "stat" :icon "🙉"
+;;     (label
+;;       :halign "end"
+;;       :class "volume ${vollisten["mute"] ? 'muted' : ''}"
+;;       :text "${vollisten["volume"]}")))
+
 (defwidget volume []
-  (icon-module :class "stat" :icon "🙉"
-    (label
-      :halign "end"
-      :class "volume ${vollisten["mute"] ? 'muted' : ''}"
-      :text "${vollisten["volume"]}")))
+  (label
+    :class "volume ${vollisten["mute"] ? 'muted' : ''}"
+    :text "${vollisten["volume"]}"))
+
 
 ;; TODO: how to convert bright result to float (f64)?
+;; (defwidget brightness []
+;;   (icon-module :class "stat" :icon "😎"
+;;     (label :text "${round((bright / 96000) * 100, 0)}%")))
+
 (defwidget brightness []
-  (icon-module :class "stat" :icon "😎"
-    (label
-      :halign "end"
-      :text "${round((bright / 96000) * 100, 0)}%")))
+  (box
+    :orientation "v"
+    (label :text "brightness")
+    (label :text "${round((bright / 96000) * 100, 0)}%")))
 
 (defwidget vbar []
   (box
@@ -112,4 +147,29 @@
            :hexpand true
            :class "bspwm-win-state-windows"
            :text "${windows}")))
+
+(defwidget greeter []
+  (box
+    :orientation "v"
+    :space-evenly false
+    (box :orientation "v"
+      (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
+      (label)
+      (date :ha "center")
+      (time :ha "center")
+      (label)
+      (timezone :ha "center"))))
+
+(defwidget lock []
+  (box
+    :class "btn-container"
+    (button :onclick "xset s activate" "")))
+
+(defwidget logout []
+  (box
+    :class "btn-container"
+    (button :onclick "notify-send logout" "")))
+
+(defwidget seo [iw]
+  (image :class "image" :path './images/seo.jpg' :image-width iw))
 

@@ -45,3 +45,4 @@ __pycache__
 .local/bin/pyserial*
 .local/bin/bspeww
 
+.config/eww/images

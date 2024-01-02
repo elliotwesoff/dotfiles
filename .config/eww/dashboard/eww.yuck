@@ -9,34 +9,39 @@
   (box
     :orientation "v"
     :class "dashboard-container"
+    :space-evenly false
+
     ;; widgets container
     (box
       :orientation "v"
       :class "widget-container"
+      :space-evenly false
+
       ;; upper widget container
       (box
         :orientation "h"
         :class "upper"
-        (label :text "cpu")
-        (label :text "mem")
-        (label :text "disk")
-        (label :text "date, time, tz")
-        (label :text "vol")
-        (label :text "lock")
-        (label :text "logoff")
+        (cpu)
+        (ram)
+        (disk)
+        (greeter)
+        (lock)
+        (logout)
+        (seo :iw 200)
       )
+
       ;; lower widget container
       (box
         :orientation "h"
         :class "lower"
-        (label :text "temp")
-        (label :text "net")
-        (label :text "brightness")
+        (cputemp)
+        (wifistack)
+        (brightness)
         (label :text "buttons")
-        (label :text "vol/bright up/down")
-        (label :text "seo :)")
+        (volume)
       )
     )
+
     ;; bspeww container
     (box
       :class "bspeww"
