@@ -1,9 +1,9 @@
 (defwindow dashboard
   :monitor 0
-  :geometry (geometry :x "0%" :y "0%" :anchor "center")
+  :geometry (geometry :anchor "center")
   :wm-ignore true
   :windowtype "dock"
-  :stacking "fg"
+  ;; :stacking "bg"
   ;; main container - contains two vertical boxes:
   ;; the various widgets above, bspeww below
   (box
@@ -22,21 +22,17 @@
         :orientation "h"
         :class "upper"
         (statsstack)
-        (spacer)
+        (battery-circle)
         (greeter)
         (seo :iw 200)
         (box
           :orientation "v"
           (box 
             (lock)
-            (close)
-          )
+            (close))
           (box
-            (airplanemode)
-            (logout)
-          )
-        )
-      )
+            (flugmodus)
+            (logout))))
 
       ;; lower widget container
       (box
@@ -45,15 +41,9 @@
           (wifistack)
           (lostack))
         (applauncher)
-        (peripheralsstack)
-      )
-    )
+        (peripheralsstack)))
 
     ;; bspeww container
     (box
-      (box ;; nested boxes for easy css. fix later!
-        (bspwm-widget)
-      )
-    )
-  )
-)
+      (box ;; nested boxes for easy css. fix later! TODO
+        (bspwm-widget)))))

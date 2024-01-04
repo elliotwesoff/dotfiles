@@ -53,10 +53,13 @@
 (defwidget cputemp []
   (label :class "stat" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°"))
 
+;; (defwidget battery []
+;;   (icon-module :class "stat" :icon "🔋"
+;;     (label :halign "center" :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''}")
+;;     (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
+
 (defwidget battery []
-  (icon-module :class "stat" :icon "🔋"
-    (label :halign "center" :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''}")
-    (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
+    (label :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''} ${round(EWW_BATTERY.total_avg, 0)}%"))
 
 (defwidget temperature []
   (icon-module :class "stat" :icon "🤒"
@@ -171,7 +174,7 @@
     :class "btn-container p3"
     (button :onclick "eww-toggle" "")))
 
-(defwidget airplanemode []
+(defwidget flugmodus []
   (box
     :class "btn-container p3"
     (button :onclick "elliot wifitoggle" "")))
@@ -197,7 +200,7 @@
   (box
     :orientation "v"
     (spacer)
-    (cpu)
+    (cpubar)
     (ram)
     (disk)
     (cputemp)
@@ -238,3 +241,22 @@
       :onclick
       "spotify & disown"
       (image :path "./images/spotify.svg" :image-width 30))))
+
+(defwidget battery-circle []
+  (box
+    (box
+      :orientation "v"
+      (spacer)
+      (image :path "./images/carbat.svg" :image-width 30)
+      (label :text "${round(EWW_BATTERY.total_avg, 2)}%")
+      (spacer))
+    (circular-progress
+    :value "${EWW_BATTERY.total_avg}"
+    :start-at 75.0
+    :thickness 12.0
+    :clockwise true)))
+
+(defwidget cpubar []
+  (progress
+    :value "${round(EWW_CPU.avg, 0)}"
+    :orientation "h"))

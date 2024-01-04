@@ -25,7 +25,7 @@ case $1 in
   ("volup")
     amixer -q sset Master 5%+
     record_volume
-  ;;n
+  ;;
   ("voldown")
     amixer -q sset Master 5%-
     record_volume

@@ -16,13 +16,13 @@ super + F1
 super + {Return,space,z,Delete}
   exec {kitty,eww-toggle,eww-toggle,xset s activate}
 
-super + alt + {f,z,x,d,m,w,Escape,space,BackSpace}
-  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,sxhkd-reload,rofi -show drun,systemctl suspend}
+super + alt + {f,z,x,d,m,w,Escape,space}
+  exec {thunar,firefox,firefox,discord,kitty pulsemixer,whatsdesk,sxhkd-reload,rofi -show drun}
 
 super + alt + {0,1,2}
   switch-mon {off,internal,external}
 
-super + control + alt + shift + q
+super + control + alt + shift + Escape
   pkill Xorg
 
 XF86LaunchA

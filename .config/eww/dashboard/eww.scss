@@ -8,7 +8,7 @@ box.applauncher {
 window.dashboard {
   font-family: "Noto Sans Mono";
   color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.6); // semi-transparent bg
+  background: rgba(200, 200, 200, 0.5); // semi-transparent bg
   border-radius: $border-radius;
 
   & > box.dashboard-container {
@@ -39,7 +39,7 @@ window.dashboard {
   box.btn-container {
     button {
       font-family: "Font Awesome 6 Free";
-      font-size: 24px;
+      font-size: 1em;
       background: rgba(30, 30, 30, 1.0);
       border: 2px solid rgba(80, 80, 80, 1.0);
       border-radius: $border-radius;
@@ -65,5 +65,15 @@ window.dashboard {
       font-weight: 600;
       text-decoration-line: line-through;
     }
+  }
+
+  trough, progress, highlight {
+    min-height: 1em;
+  }
+  progressbar trough, scale trough {
+    background-color: rgba(255,255,255,0.3);
+  }
+  progressbar trough progress, scale trough highlight {
+    background-color: rgba(255,255,255,1.0);
   }
 }
