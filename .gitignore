@@ -46,3 +46,5 @@ __pycache__
 .local/bin/bspeww
 
 .config/eww/images
+
+services/ellimon
