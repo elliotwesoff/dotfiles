@@ -217,15 +217,19 @@
       (brightval)
       (spacer)
       (spacer)
-      (button :onclick "blight set -5%" "")
-      (button :onclick "blight set +5%" "+")) ;; TODO: the + is too small, svg!
+      (button :onclick "blight set -5%"
+        (image :path "./images/minus-solid.svg" :image-width 17))
+      (button :onclick "blight set +5%" 
+        (image :path "./images/plus-solid.svg" :image-width 17)))
     (box
       (label :text "")
       (volume)
       (spacer)
       (button :class "m1" :onclick "elliot mute" "")
-      (button :onclick "elliot voldown" "")
-      (button :onclick "elliot volup" "+"))))
+      (button :onclick "elliot voldown"
+       (image :path "./images/minus-solid.svg" :image-width 17))
+      (button :onclick "elliot volup" 
+        (image :path "./images/plus-solid.svg" :image-width 17)))))
 
 (defwidget applauncher []
   (box

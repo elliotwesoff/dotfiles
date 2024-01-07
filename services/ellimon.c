@@ -5,6 +5,7 @@
 #include <string.h>
 #include <sys/stat.h>
 
+
 int main(int argc, char* argv[]) {
   char* fpath = "/sys/class/power_supply/BAT1/capacity";
   const int alert_lvl = 20;

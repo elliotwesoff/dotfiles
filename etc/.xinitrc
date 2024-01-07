@@ -41,6 +41,7 @@ sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
 eww daemon &
 picom &
+~/dotfiles/services/ellimon &
 # oneko &
 
 # write the current volume values for eww
