@@ -29,34 +29,17 @@
 (defwidget timezone [ha]
   (label :halign ha :text timezone))
 
-;; (defwidget disk []
-;;   (icon-module :class "stat" :icon "💿" 
-;;     (label :halign "end" :text "${round(EWW_DISK["/"].used_perc, 0)}%")))
-
 (defwidget disk []
     (label :text "${round(EWW_DISK["/"].used / gib, 0)} GiB"))
 
-;; (defwidget ram []
-;;   (icon-module :class "stat" :icon "📝"
-;;     (label :halign "end" :text "${round(EWW_RAM.used_mem / 1073741824, 2)} GiB")))
-
 (defwidget ram []
   (label :text "${round(EWW_RAM.used_mem / gib, 2)} GiB"))
-
-;; (defwidget cpu []
-;;   (icon-module :class "stat" :icon "🧠"
-;;     (label :halign "end" :class "stat" :text "${round(EWW_CPU.avg, 0)}%, ${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
 
 (defwidget cpu []
   (label :class "stat" :text "${round(EWW_CPU.avg, 0)}%"))
 
 (defwidget cputemp []
   (label :class "stat" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°"))
-
-;; (defwidget battery []
-;;   (icon-module :class "stat" :icon "🔋"
-;;     (label :halign "center" :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''}")
-;;     (label :halign "end" :text "${round(EWW_BATTERY.total_avg, 0)}%")))
 
 (defwidget battery []
     (label :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''} ${round(EWW_BATTERY.total_avg, 0)}%"))
@@ -82,23 +65,10 @@
 (defwidget wifidown [] 
   (label :text "${EWW_NET.wlp166s0.NET_DOWN}"))
 
-;; (defwidget volume []
-;;   (icon-module :class "stat" :icon "🙉"
-;;     (label
-;;       :halign "end"
-;;       :class "volume ${vollisten["mute"] ? 'muted' : ''}"
-;;       :text "${vollisten["volume"]}")))
-
 (defwidget volume []
   (label
     :class "volume ${vollisten["mute"] ? 'muted' : ''}"
     :text "${vollisten["volume"]}"))
-
-
-;; TODO: how to convert bright result to float (f64)?
-;; (defwidget brightness []
-;;   (icon-module :class "stat" :icon "😎"
-;;     (label :text "${round((bright / 96000) * 100, 0)}%")))
 
 (defwidget brightness []
   (box
@@ -150,7 +120,6 @@
 (defwidget greeter []
   (box
     :orientation "v"
-    ;; :space-evenly false
     (box :orientation "v"
       (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
       (spacer)
@@ -229,9 +198,9 @@
       (volume)
       (spacer)
       (button :class "m1" :onclick "elliot mute" "")
-      (button :onclick "elliot voldown"
-       (image :path "./images/minus-solid.svg" :image-width 17))
-      (button :onclick "elliot volup" 
+      (button :onclick "elliot voldown && cvlc --play-and-exit ./sounds/uwu.mp3 &"
+        (image :path "./images/minus-solid.svg" :image-width 17))
+      (button :onclick "elliot volup && cvlc --play-and-exit ./sounds/uwu.mp3 &" 
         (image :path "./images/plus-solid.svg" :image-width 17)))))
 
 (defwidget applauncher []
