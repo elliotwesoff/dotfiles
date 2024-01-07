@@ -12,7 +12,7 @@
 (defpoll time_poll :interval "1s" "date +%H:%M:%S")
 (defpoll ampm_poll :interval "1h" "date +%p")
 (defpoll vol :interval "1s" `pulsemixer --get-volume | cut -d ' ' -f 1`)
-(defpoll bright :interval "5s" `blight get`)
+(defpoll bright :interval "1s" `blight get`)
 (deflisten vollisten :initial "{}" `tail -F /dev/shm/volume.json`)
 (deflisten bspwm_selected :initial "" `tail -F /dev/shm/bspeww/selected`)
 (deflisten bspwm_data :initial "{}" `tail -F /dev/shm/bspeww/data`)

@@ -67,7 +67,7 @@
 
 (defwidget volume []
   (label
-    :class "volume ${vollisten["mute"] ? 'muted' : ''}"
+    :class "volume ${vollisten?.mute ? 'muted' : ''}"
     :text "${vollisten["volume"]}"))
 
 (defwidget brightness []
@@ -94,6 +94,7 @@
   (box
     :class "bspwm-widget"
     (box :orientation "v"
+      (label :text "bspwm")
       (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}")
       (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}")
       (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}")
@@ -131,22 +132,22 @@
 (defwidget lock []
   (box
     :class "btn-container p3"
-    (button :onclick "xset s activate" "")))
+    (button :onclick "xset s activate" ""))) ;; TODO: svg
 
 (defwidget logout []
   (box
     :class "btn-container p3"
-    (button :onclick "elliot logout" "")))
+    (button :onclick "elliot logout" ""))) ;; TODO: svg
 
 (defwidget close []
   (box
     :class "btn-container p3"
-    (button :onclick "eww-toggle" "")))
+    (button :onclick "eww-toggle" ""))) ;; TODO: svg
 
 (defwidget flugmodus []
   (box
     :class "btn-container p3"
-    (button :onclick "elliot wifitoggle" "")))
+    (button :onclick "elliot wifitoggle" ""))) ;; TODO: svg
 
 (defwidget seo [iw]
   (box
@@ -197,7 +198,7 @@
       (label :text "")
       (volume)
       (spacer)
-      (button :class "m1" :onclick "elliot mute" "")
+      (button :class "m1" :onclick "elliot mute" "") ;; TODO: svg
       (button :onclick "elliot voldown && cvlc --play-and-exit ./sounds/uwu.mp3 &"
         (image :path "./images/minus-solid.svg" :image-width 17))
       (button :onclick "elliot volup && cvlc --play-and-exit ./sounds/uwu.mp3 &" 
@@ -206,9 +207,9 @@
 (defwidget applauncher []
   (box
     :class "applauncher"
-    (button :onclick "kitty & disown" "") ;; TODO: get svgs for all of these icons
-    (button :onclick "firefox & disown" "")
-    (button :onclick "discord & disown" "")
+    (button :onclick "kitty & disown" "") ;; TODO: svg
+    (button :onclick "firefox & disown" "") ;; TODO: svg
+    (button :onclick "discord & disown" "") ;; TODO: svg
     (button
       :onclick
       "whatsdesk & disown"
