@@ -180,7 +180,10 @@
     (button :onclick "elliot wifitoggle" "")))
 
 (defwidget seo [iw]
-  (image :class "image" :path './images/seo.jpg' :image-width iw))
+  (box
+    (eventbox
+      :onclick "cvlc --play-and-exit ~/dotfiles/.config/eww/sounds/quack.mp3 &"
+      (image :class "image" :path './images/seo.jpg' :image-width iw))))
 
 (defwidget wifistack []
   (box
