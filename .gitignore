@@ -45,6 +45,6 @@ __pycache__
 .local/bin/pyserial*
 .local/bin/bspeww
 
-.config/eww/images
+.config/eww/images/seo.jpg
 
 services/ellimon

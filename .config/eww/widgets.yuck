@@ -104,15 +104,16 @@
       (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: ''}"))))
 
 (defwidget bspwm-win-state [name windows]
-  (box :space-evenly false
-       :hexpand false
-       :class "bspwm-win-state"
+  (box
+    :space-evenly false
+    :hexpand false
+    :class "bspwm-win-state ${name == bspwm_selected ? 'selected' : ''}"
     (label :halign "start"
            :class "desktop-name ${name == bspwm_selected ? 'selected' : ''}"
            :text name)
     (label :halign "end"
            :hexpand true
-           :class "bspwm-win-state-windows"
+           :class "bspwm-win-state-windows ${name == bspwm_selected ? 'selected' : ''}"
            :text "${windows}")))
 
 (defwidget spacer []
@@ -159,8 +160,8 @@
   (box
     :orientation "v"
       (label :text "wlp166s0")
-      (label :text "${EWW_NET.wlp166s0.NET_UP}")
-      (label :text "${EWW_NET.wlp166s0.NET_DOWN}")))
+      (wifiup)
+      (wifidown)))
 
 (defwidget lostack []
   (box
@@ -187,22 +188,25 @@
     :orientation "v"
     (box
       (label :text "")
+      (spacer)
       (brightval)
       (spacer)
-      (spacer)
       (button :onclick "blight set -5%"
-        (image :path "./images/minus-solid.svg" :image-width 17))
+        (image :path "./images/minus-solid.svg" :image-width 20))
       (button :onclick "blight set +5%" 
-        (image :path "./images/plus-solid.svg" :image-width 17)))
+        (image :path "./images/plus-solid.svg" :image-width 20)))
     (box
-      (label :text "")
+      (button :onclick "elliot mute"
+        (image
+          :image-width 25
+          :path "./images/volume-${vollisten?.mute ? 'xmark' : 'high'}.svg"))
+      (spacer)
       (volume)
       (spacer)
-      (button :class "m1" :onclick "elliot mute" "") ;; TODO: svg
       (button :onclick "elliot voldown && cvlc --play-and-exit ./sounds/uwu.mp3 &"
-        (image :path "./images/minus-solid.svg" :image-width 17))
+        (image :path "./images/minus-solid.svg" :image-width 20))
       (button :onclick "elliot volup && cvlc --play-and-exit ./sounds/uwu.mp3 &" 
-        (image :path "./images/plus-solid.svg" :image-width 17)))))
+        (image :path "./images/plus-solid.svg" :image-width 20)))))
 
 (defwidget applauncher []
   (box
