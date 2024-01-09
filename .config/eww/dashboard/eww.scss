@@ -48,6 +48,7 @@ window.dashboard {
 
   .bspwm-widget {
     .bspwm-win-state {
+      border: 1px solid #000000;
       &.selected {
         border: 1px solid #FFFFFF;
       }

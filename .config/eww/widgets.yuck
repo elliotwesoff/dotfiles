@@ -143,7 +143,14 @@
 (defwidget close []
   (box
     :class "btn-container p3"
-    (button :onclick "eww-toggle" ""))) ;; TODO: svg
+    (button :onclick "eww-toggle"
+      (image :path "./images/x.svg" :image-width 20))))
+
+(defwidget sleep []
+  (box
+    :class "btn-container p3"
+    (button :onclick "systemctl suspend"
+      (image :path "./images/moon.svg" :image-width 20))))
 
 (defwidget flugmodus []
   (box
