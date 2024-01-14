@@ -26,8 +26,8 @@
 (defwidget time [ha]
   (label :halign ha :text time_poll))
 
-(defwidget timezone [ha]
-  (label :halign ha :text timezone))
+(defwidget cet_time [ha]
+  (label :halign ha :text cet_time_poll))
 
 (defwidget disk []
     (label :text "${round(EWW_DISK["/"].used / gib, 0)} GiB"))
@@ -115,9 +115,9 @@
       (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
       (spacer)
       (date :ha "center")
-      (time :ha "center")
       (spacer)
-      (timezone :ha "center"))))
+      (time :ha "center")
+      (cet_time :ha "center"))))
 
 (defwidget lock []
   (box
