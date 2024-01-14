@@ -1,0 +1,233 @@
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "center"
+       :spacing 2
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)))
+
+(defwidget icon-module [icon ?class ?visible]
+  (box :class "${class} icon-module"
+       :orientation "h"
+       :space-evenly true
+       :visible {visible ?: true} ; because the argument is optional
+    (label :halign "start" :class "icon-module__icon" :text "${icon}")
+    (children)))
+
+(defwidget date [ha]
+  (label :halign ha :text date_poll))
+
+(defwidget time [ha]
+  (label :halign ha :text time_poll))
+
+(defwidget timezone [ha]
+  (label :halign ha :text timezone))
+
+(defwidget disk []
+    (label :text "${round(EWW_DISK["/"].used / gib, 0)} GiB"))
+
+(defwidget ram []
+  (label :text "${round(EWW_RAM.used_mem / gib, 2)} GiB"))
+
+(defwidget cpu []
+  (label :class "stat" :text "${round(EWW_CPU.avg, 0)}%"))
+
+(defwidget cputemp []
+  (label :class "stat" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°"))
+
+(defwidget battery []
+    (label :text "${EWW_BATTERY.BAT1.status == 'Charging' || EWW_BATTERY.total_avg >= 100 ?  '⚡' : ''} ${round(EWW_BATTERY.total_avg, 0)}%"))
+
+(defwidget temperature []
+  (icon-module :class "stat" :icon "🤒"
+    (label :halign "end" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
+
+(defwidget wifiup [] 
+  (label :text "${EWW_NET.wlp166s0.NET_UP}"))
+
+(defwidget wifidown [] 
+  (label :text "${EWW_NET.wlp166s0.NET_DOWN}"))
+
+(defwidget volume []
+  (label
+    :class "volume ${vollisten.mute ? 'muted' : ''}"
+    :text "${vollisten["volume"]}"))
+
+(defwidget brightness []
+  (box
+    :orientation "v"
+    (label :text "brightness")
+    (label :text "${round((bright / 96000) * 100, 0)}%")))
+
+(defwidget vbar []
+  (box
+    :orientation "v"
+    :space-evenly true
+    :width "250"
+    :class "vbar"
+      (battery)
+      (disk)
+      (cpu)
+      (ram)
+      (wifi)
+      (volume)
+      (brightness)))
+
+(defwidget bspwm-widget []
+  (box
+    :class "bspwm-widget"
+    (box :orientation "v"
+      (label :text "bspwm")
+      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}")
+      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}")
+      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}")
+      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: ''}")
+      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: ''}")
+      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: ''}")
+      (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: ''}"))))
+
+(defwidget bspwm-win-state [name windows]
+  (box
+    :space-evenly false
+    :hexpand false
+    :class "bspwm-win-state ${name == bspwm_selected ? 'selected' : ''}"
+    (label :halign "start"
+           :class "desktop-name ${name == bspwm_selected ? 'selected' : ''}"
+           :text name)
+    (label :halign "end"
+           :hexpand true
+           :class "bspwm-win-state-windows ${name == bspwm_selected ? 'selected' : ''}"
+           :text "${windows}")))
+
+(defwidget spacer []
+  (box))
+
+(defwidget greeter []
+  (box
+    :orientation "v"
+    (box :orientation "v"
+      (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
+      (spacer)
+      (date :ha "center")
+      (time :ha "center")
+      (spacer)
+      (timezone :ha "center"))))
+
+(defwidget lock []
+  (box
+    :class "btn-container p3"
+    (button :onclick "xset s activate"
+      (image :path "./images/lock.svg" :image-width 20))))
+
+(defwidget close []
+  (box
+    :class "btn-container p3"
+    (button :onclick "eww-toggle"
+      (image :path "./images/x.svg" :image-width 20))))
+
+(defwidget sleep []
+  (box
+    :class "btn-container p3"
+    (button :onclick "systemctl suspend"
+      (image :path "./images/moon.svg" :image-width 20))))
+
+(defwidget flugmodus []
+  (box
+    :class "btn-container p3"
+    (button :onclick "eww update wifi_on=false; eww update wifi_off=true; elliot wifioff" :visible wifi_on (image :path "./images/wifi.svg" :image-width 25))
+    (button :onclick "eww update wifi_on=true; eww update wifi_off=false; elliot wifion"  :visible wifi_off (image :path "./images/jet-fighter.svg" :image-width 25))))
+
+(defwidget seo [iw]
+  (box
+    (eventbox
+      :onclick "cvlc --play-and-exit ~/dotfiles/.config/eww/sounds/quack.mp3 &"
+      (image :class "image" :path './images/seo.jpg' :image-width iw))))
+
+(defwidget wifistack []
+  (box
+    :orientation "v"
+      (label :text "wlp166s0")
+      (wifiup)
+      (wifidown)))
+
+(defwidget lostack []
+  (box
+    :orientation "v"
+      (label :text "lo")
+      (label :text "${EWW_NET.lo.NET_UP}")
+      (label :text "${EWW_NET.lo.NET_DOWN}")))
+
+(defwidget statsstack []
+  (box
+    :orientation "v"
+    (spacer)
+    (cpubar)
+    (ram)
+    (disk)
+    (cputemp)
+    (spacer)))
+
+(defwidget brightval []
+  (label :text "${round((bright / 96000) * 100, 0)}%"))
+
+(defwidget peripheralsstack []
+  (box
+    :orientation "v"
+    (box
+      (image :path "./images/sun.svg")
+      (spacer)
+      (brightval)
+      (spacer)
+      (button :onclick "blight set -5%"
+        (image :path "./images/minus.svg"))
+      (button :onclick "blight set +5%" 
+        (image :path "./images/plus.svg")))
+    (box
+      (button :onclick "elliot mute"
+        (image :path "./images/volume-${vollisten.mute ? 'xmark' : 'high'}.svg"))
+      (spacer)
+      (volume)
+      (spacer)
+      (button :onclick "elliot voldown && cvlc --play-and-exit ./sounds/uwu.mp3 &"
+        (image :path "./images/minus.svg"))
+      (button :onclick "elliot volup && cvlc --play-and-exit ./sounds/uwu.mp3 &" 
+        (image :path "./images/plus.svg")))))
+
+(defwidget applauncher []
+  (box
+    :class "applauncher"
+    (button :onclick "kitty & disown"
+      (image :path "./images/terminal.svg" :image-width 30))
+    (button :onclick "firefox & disown"
+      (image :path "./images/firefox.svg" :image-width 30))
+    (button :onclick "discord & disown"
+      (image :path "./images/discord.svg" :image-width 30))
+    (button :onclick "whatsdesk & disown"
+      (image :path "./images/whatsapp.svg" :image-width 30))
+    (button :onclick "spotify & disown"
+      (image :path "./images/spotify.svg" :image-width 30))))
+
+(defwidget battery-circle []
+  (box
+    (box
+      :orientation "v"
+      (spacer)
+      (image :path "./images/battery.svg" :image-width 30)
+      (label :text "${round(EWW_BATTERY.total_avg, 2)}%")
+      (spacer))
+    (circular-progress
+    :value "${EWW_BATTERY.total_avg}"
+    :start-at 75.0
+    :thickness 12.0
+    :clockwise true)))
+
+(defwidget cpubar []
+  (progress
+    :value "${round(EWW_CPU.avg, 0)}"
+    :orientation "h"))

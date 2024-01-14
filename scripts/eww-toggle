@@ -3,5 +3,6 @@
 if eww windows | grep "^*" > /dev/null;
   eww close-all
 else;
-  eww open main
+  # eww open main
+  eww open dashboard
 end

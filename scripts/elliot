@@ -1,9 +1,7 @@
 #!/bin/sh
 
 record_volume() {
-    # | jq -c '.sinks[] | select(.state == "RUNNING") | { mute, volume: .volume["front-left"].value_percent }' \
-  pactl -f json list \
-    | jq -c '.sinks[] | { mute, volume: .volume["front-left"].value_percent }' \
+  pactl -f json list | jq -c '.sinks[0] | { mute, volume: .volume["front-left"].value_percent }' \
     >> /dev/shm/volume.json
 }
 
@@ -37,6 +35,14 @@ case $1 in
   ;;
   ("setvol")
     record_volume
+  ;;
+  "wifion")
+    notify-send "wifi on"
+    nmcli radio wifi on
+  ;;
+  "wifioff")
+    notify-send "wifi off"
+    nmcli radio wifi off
   ;;
 esac
 

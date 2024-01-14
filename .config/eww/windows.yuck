@@ -1,0 +1,35 @@
+(defwindow main
+  :monitor 0
+  :geometry (geometry :y "2%" :anchor "top center")
+  :wm-ignore true
+  ; why does :windowtype "normal" make the horizontal
+  ; alignment slightly off to the right?
+  :windowtype "dock"
+  :stacking "fg"
+  (box :orientation "h" :space-evenly false
+    (box :orientation "v" :space-evenly false
+      (box :vexpand true (label))
+      (box :orientation "v"
+        (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
+        (label)
+        (date :ha "center")
+        (time :ha "center")
+        (label)
+        (timezone :ha "center"))
+      (box :vexpand true (label)))
+    (box (bspwm-widget))
+    (box (vbar :screen 0))))
+
+(defwindow progresswindow
+  :monitor 0
+  :geometry (geometry :anchor "center")
+  :wm-ignore true
+  ; why does :windowtype "normal" make the horizontal
+  ; alignment slightly off to the right?
+  :windowtype "dock"
+  :stacking "fg"
+  (box
+    :orientation "v"
+    (cpubar)
+  )
+)

@@ -98,7 +98,8 @@ sudo pacman -S \
   p7zip \
   blueman \
   ripgrep \
-  fisher
+  fisher \
+  vala
 
 # install yay
 sudo pacman -S --needed git base-devel \
@@ -122,12 +123,6 @@ yay -S \
   vscode-codicons-git \
   spotify \
   postman-bin \
-  intel-opencl-runtime
-
-# install eww
-cd ~/code \
-  && git clone https://github.com/elkowar/eww \
-  && cd eww \
-  && cargo build --release --no-default-features --features x11 \
-  && chmod +x target/release/eww \
-  && ln -sf ~/code/eww/target/release/eww ~/.local/bin/eww
+  intel-opencl-runtime \
+  gtk-layer-shell-git \
+  eww-x11

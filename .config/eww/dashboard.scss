@@ -1,0 +1,79 @@
+$border-width: 0px; // for layout debugging
+$border-radius: 6px;
+
+box.applauncher {
+  font-size: 1.5em;
+}
+
+window.dashboard {
+  font-family: "Noto Sans Mono";
+  color: #FFFFFF;
+  background: rgba(200, 200, 200, 0.5); // semi-transparent bg
+  border-radius: $border-radius;
+
+  & > box.dashboard-container {
+    background: rgba(0, 0, 0, 0);
+    border: $border-width solid red;
+    margin: 0.3em;
+
+    & > box { // widgets and bspeww containers
+
+      & > box {
+        border: $border-width solid green;
+
+        // actual widget blocks, labels, bspwm-widget, etc
+        & > * {
+          // don't use em units because containers with icons get funky
+          // margin: 0.5em;
+          // padding: 1em;
+          margin: 12px;
+          padding: 24px;
+          background: rgba(0, 0, 0, 1.00);
+          border: $border-width solid blue;
+          border-radius: $border-radius; 
+        }
+      }
+    }
+  }
+
+  box.btn-container {
+    button {
+      font-family: "Font Awesome 6 Free";
+      font-size: 1em;
+      background: rgba(30, 30, 30, 1.0);
+      border: 2px solid rgba(80, 80, 80, 1.0);
+      border-radius: $border-radius;
+    }
+  }
+
+  .bspwm-widget {
+    .bspwm-win-state {
+      border: 1px solid #000000;
+      &.selected {
+        border: 1px solid #FFFFFF;
+      }
+      label.desktop-name, label.bspwm-win-state-windows {
+        padding: 0 0.5em;
+        border: 1px solid #000000;
+      }
+    }
+  }
+
+  label.volume {
+    &.muted {
+      color: grey;
+      font-weight: 600;
+      text-decoration-line: line-through;
+    }
+  }
+
+  trough, progress, highlight {
+    min-height: 1em;
+  }
+  progressbar trough, scale trough {
+    background-color: rgba(255,255,255,0.3);
+  }
+  progressbar trough progress, scale trough highlight {
+    background-color: rgba(255,255,255,1.0);
+  }
+}
