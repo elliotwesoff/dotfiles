@@ -1,4 +1,6 @@
 (defvar gib 1073741824)
+(defvar wifi_on true)
+(defvar wifi_off false)
 (defpoll hour :interval "1s" "date +%H")
 (defpoll min  :interval "1s" "date +%M")
 (defpoll sec  :interval "1s" "date +%S")

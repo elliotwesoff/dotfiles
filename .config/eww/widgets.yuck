@@ -48,17 +48,6 @@
   (icon-module :class "stat" :icon "🤒"
     (label :halign "end" :text "${EWW_TEMPS.CORETEMP_PACKAGE_ID_0}°")))
 
-(defwidget wifi []
-  (icon-module
-    :class "stat"
-    :icon "📡"
-    (label
-      :halign "end"
-      :text "${EWW_NET.wlp166s0.NET_UP}")
-    (label
-      :halign "end"
-      :text "${EWW_NET.wlp166s0.NET_DOWN}")))
-
 (defwidget wifiup [] 
   (label :text "${EWW_NET.wlp166s0.NET_UP}"))
 
@@ -133,12 +122,8 @@
 (defwidget lock []
   (box
     :class "btn-container p3"
-    (button :onclick "xset s activate" ""))) ;; TODO: svg
-
-(defwidget logout []
-  (box
-    :class "btn-container p3"
-    (button :onclick "elliot logout" ""))) ;; TODO: svg
+    (button :onclick "xset s activate"
+      (image :path "./images/lock.svg" :image-width 20))))
 
 (defwidget close []
   (box
@@ -155,7 +140,8 @@
 (defwidget flugmodus []
   (box
     :class "btn-container p3"
-    (button :onclick "elliot wifitoggle" ""))) ;; TODO: svg
+    (button :onclick "eww update wifi_on=false; eww update wifi_off=true; elliot wifioff" :visible wifi_on (image :path "./images/wifi.svg" :image-width 25))
+    (button :onclick "eww update wifi_on=true; eww update wifi_off=false; elliot wifion"  :visible wifi_off (image :path "./images/jet-fighter.svg" :image-width 25))))
 
 (defwidget seo [iw]
   (box
@@ -194,40 +180,37 @@
   (box
     :orientation "v"
     (box
-      (label :text "")
+      (image :path "./images/sun.svg")
       (spacer)
       (brightval)
       (spacer)
       (button :onclick "blight set -5%"
-        (image :path "./images/minus-solid.svg" :image-width 20))
+        (image :path "./images/minus.svg"))
       (button :onclick "blight set +5%" 
-        (image :path "./images/plus-solid.svg" :image-width 20)))
+        (image :path "./images/plus.svg")))
     (box
       (button :onclick "elliot mute"
-        (image
-          :image-width 25
-          :path "./images/volume-${vollisten.mute ? 'xmark' : 'high'}.svg"))
+        (image :path "./images/volume-${vollisten.mute ? 'xmark' : 'high'}.svg"))
       (spacer)
       (volume)
       (spacer)
       (button :onclick "elliot voldown && cvlc --play-and-exit ./sounds/uwu.mp3 &"
-        (image :path "./images/minus-solid.svg" :image-width 20))
+        (image :path "./images/minus.svg"))
       (button :onclick "elliot volup && cvlc --play-and-exit ./sounds/uwu.mp3 &" 
-        (image :path "./images/plus-solid.svg" :image-width 20)))))
+        (image :path "./images/plus.svg")))))
 
 (defwidget applauncher []
   (box
     :class "applauncher"
-    (button :onclick "kitty & disown" "") ;; TODO: svg
-    (button :onclick "firefox & disown" "") ;; TODO: svg
-    (button :onclick "discord & disown" "") ;; TODO: svg
-    (button
-      :onclick
-      "whatsdesk & disown"
+    (button :onclick "kitty & disown"
+      (image :path "./images/terminal.svg" :image-width 30))
+    (button :onclick "firefox & disown"
+      (image :path "./images/firefox.svg" :image-width 30))
+    (button :onclick "discord & disown"
+      (image :path "./images/discord.svg" :image-width 30))
+    (button :onclick "whatsdesk & disown"
       (image :path "./images/whatsapp.svg" :image-width 30))
-    (button
-      :onclick
-      "spotify & disown"
+    (button :onclick "spotify & disown"
       (image :path "./images/spotify.svg" :image-width 30))))
 
 (defwidget battery-circle []
@@ -235,7 +218,7 @@
     (box
       :orientation "v"
       (spacer)
-      (image :path "./images/carbat.svg" :image-width 30)
+      (image :path "./images/battery.svg" :image-width 30)
       (label :text "${round(EWW_BATTERY.total_avg, 2)}%")
       (spacer))
     (circular-progress
