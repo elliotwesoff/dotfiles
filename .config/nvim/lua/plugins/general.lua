@@ -167,9 +167,11 @@ return {
     config = function()
       local sunset = require('sunset')
       local settings = require('settings')
+      local lat = os.getenv("LOC_LAT")
+      local long = os.getenv("LOC_LONG")
       sunset.setup({
-        -- latitude = 36, longitude = -115, -- las vegas
-        latitude = 48, longitude = 11, -- munich
+        latitude = tonumber(lat),
+        longitude = tonumber(long),
         day_callback = function()
           vim.cmd.colorscheme(settings.COLORSCHEME_LIGHT)
           vim.o.background = 'light'

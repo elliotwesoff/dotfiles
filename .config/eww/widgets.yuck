@@ -67,7 +67,7 @@
 
 (defwidget volume []
   (label
-    :class "volume ${vollisten?.mute ? 'muted' : ''}"
+    :class "volume ${vollisten.mute ? 'muted' : ''}"
     :text "${vollisten["volume"]}"))
 
 (defwidget brightness []
@@ -206,7 +206,7 @@
       (button :onclick "elliot mute"
         (image
           :image-width 25
-          :path "./images/volume-${vollisten?.mute ? 'xmark' : 'high'}.svg"))
+          :path "./images/volume-${vollisten.mute ? 'xmark' : 'high'}.svg"))
       (spacer)
       (volume)
       (spacer)
