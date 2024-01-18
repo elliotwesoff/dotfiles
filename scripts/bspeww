@@ -13,7 +13,7 @@ function node_callback() {
   # them to an array. honestly i don't know how the
   # jq functions work. chatgpt is the real hero here.
   bspc wm -d \
-    | jq -c '.monitors[0].desktops[] | .root // {} | [.[] | recurse | select(.instanceName?) | .instanceName] | join("; ")' \
+    | jq -c '.monitors[].desktops[] | .root // {} | [.[] | recurse | select(.instanceName?) | .instanceName] | join("; ")' \
     | jq -c -s . \
     >> $BSPEWW_DIR/data
 }

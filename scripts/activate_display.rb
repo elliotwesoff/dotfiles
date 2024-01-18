@@ -57,10 +57,10 @@ edids = xrandr_prop.each_index            # 4. iterate via indexes
              .map { |i| i + 1 }           # 6. EDID header is the next line, add 1 to the selected indexes
              .map { |i| xrandr_prop[i] }  # 7. map indexes to actual EDIDs
 
-if edids.count == 1 || edids.count == 2
-  log("#{edids.count} displays found, EDID headers: #{edids}")
-else
-  log("#{edids.count} displays found. not sure what to do... ABORT!")
+log("#{edids.count} displays found, EDID headers: #{edids}")
+
+if edids.count > 2
+  log("#{edids.count} displays found! not sure what to do... ABORT!")
   exit(1)
 end
 
@@ -70,7 +70,6 @@ end
 mp_id = edids.map { |edid| edid[16..23] }
                 .reject { |edid| edid == FRAMEWORK }
                 .first || FRAMEWORK # default to internal framework display
-
 
 display = DISPLAYS.filter { |display| display.edid == mp_id }.first
 
