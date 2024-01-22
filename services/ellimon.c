@@ -5,6 +5,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+const int alert_lvl = 20;
+
 void alert(char* bat, int fsize, int bat_i) {
   int order = bat_i < 10 ? 1 : 2;
   char* cmd_base = "notify-send --urgency=critical \"battery low\" \"";
@@ -17,8 +19,7 @@ void alert(char* bat, int fsize, int bat_i) {
 }
 
 int main(int argc, char* argv[]) {
-  char* fpath = "/sys/class/power_supply/BAT1/capacity";
-  const int alert_lvl = 55;
+  const char* fpath = "/sys/class/power_supply/BAT1/capacity";
   bool initial_alert = false;
   int bat_i = 0, last_bat_i = 100, last_alert_lvl = 100;
   struct stat fstat;

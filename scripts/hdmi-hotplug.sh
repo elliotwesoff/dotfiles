@@ -11,4 +11,5 @@
 
 echo ----- HDMI hotplugged @ $(date) ----- >> /tmp/hdmi-hotplug.log
 # sh /home/elliot/dotfiles/scripts/set-display.sh &>> /tmp/hdmi-hotplug.log
-ruby /home/elliot/dotfiles/scripts/activate_display.rb &>> /tmp/hdmi-hotplug.log
+# ruby /home/elliot/dotfiles/scripts/activate_display.rb &>> /tmp/hdmi-hotplug.log
+/home/elliot/dotfiles/scripts/bin/auto_display &>> /tmp/hdmi-hotplug.log

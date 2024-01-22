@@ -49,3 +49,6 @@ __pycache__
 
 services/bin/*
 !services/bin/.keep
+
+scripts/bin/*
+!scripts/bin/.keep

@@ -45,8 +45,8 @@ sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 dunst &
 eww daemon &
-picom &
 ~/dotfiles/services/bin/ellimon &
+# picom &
 # oneko &
 
 $HOME/.fehbg &
