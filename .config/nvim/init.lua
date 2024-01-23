@@ -5,7 +5,7 @@ local keymaps = require('keymaps')
 settings.COLORSCHEME_LIGHT = 'dayfox'
 settings.COLORSCHEME_DARK = 'carbonfox'
 
-vim.g.mapleader = ' '
+vim.g.mapleader = '\\'
 
 lazy.bootstrap()
 lazy.init()
