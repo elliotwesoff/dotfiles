@@ -1,5 +1,4 @@
 #!/bin/sh
-#
 # .xinitrc
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
@@ -19,8 +18,9 @@ fi
 # setting DPI via xrandr doesn't work.
 xrdb -merge ~/dotfiles/etc/.Xresources
 
-# select monitor to use based on our super smart ruby script
-ruby $HOME/dotfiles/scripts/activate_display.rb
+# select monitor to use based on our super smart ---ruby--- c script
+# ruby $HOME/dotfiles/scripts/activate_display.rb
+$HOME/dotfiles/scripts/bin/auto_display
 
 # disable energy star savings (screen timeout)
 xset -dpms &
