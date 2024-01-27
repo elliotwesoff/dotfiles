@@ -46,12 +46,12 @@ redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 dunst &
 eww daemon &
 ~/dotfiles/services/bin/ellimon &
-# picom &
-# oneko &
-
-$HOME/.fehbg &
 elliot setvol &
 bspeww &
+picom &
+oneko &
+
+$HOME/dotfiles/etc/.fehbg &
 
 exec bspwm
 
