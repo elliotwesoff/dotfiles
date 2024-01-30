@@ -222,10 +222,10 @@
       (label :text "${round(EWW_BATTERY.total_avg, 2)}%")
       (spacer))
     (circular-progress
-    :value "${EWW_BATTERY.total_avg}"
-    :start-at 75.0
-    :thickness 12.0
-    :clockwise true)))
+      :value "${round(EWW_BATTERY.total_avg > 100.0 ? 100.0 : EWW_BATTERY.total_avg, 2)}"
+      :start-at 75.0
+      :thickness 12.0
+      :clockwise true)))
 
 (defwidget cpubar []
   (progress

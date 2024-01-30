@@ -7,7 +7,7 @@ set dt_full $(date "+%Y-%m-%d-%H_%M_%S")
 set backup_dir "/@snapshots/$USER/$year/$month/$day"
 set path "$backup_dir/$dt_full"
 
-sudo mkdir --parents --verbose $backup_dir
+mkdir --parents --verbose --mode=775 $backup_dir
 
 sudo btrfs subvolume snapshot -r / "$path-@.snapshot"
 sudo btrfs subvolume snapshot -r /home "$path-@home.snapshot"
