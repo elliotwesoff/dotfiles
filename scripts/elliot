@@ -44,5 +44,12 @@ case $1 in
     notify-send "wifi off"
     nmcli radio wifi off
   ;;
+  "focus")
+    dunstctl set-paused true
+  ;;
+  "unfocus")
+    notify-send "notifications on"
+    dunstctl set-paused false
+  ;;
 esac
 

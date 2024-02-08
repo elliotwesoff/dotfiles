@@ -26,8 +26,9 @@ function M.apply_keymaps()
   vim.keymap.set('i', '<C-.>', '<Esc>:tabnext<CR>', opts)
 
   -- normal mode mappings
-  vim.keymap.set('n', ';', ':', opts)
-  vim.keymap.set('n', ':', ';', opts)
+  -- vim.keymap.set('n', ';', ':', opts)
+  -- vim.keymap.set('n', ':', ';', opts)
+  vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
@@ -40,10 +41,6 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
   vim.keymap.set('n', '<C-,>', ':tabprevious<CR>', opts)
   vim.keymap.set('n', '<C-.>', ':tabnext<CR>', opts)
-  vim.keymap.set('n', '<leader>h', ':wincmd h<CR>', opts)
-  vim.keymap.set('n', '<leader>j', ':wincmd j<CR>', opts)
-  vim.keymap.set('n', '<leader>k', ':wincmd k<CR>', opts)
-  vim.keymap.set('n', '<leader>l', ':wincmd l<CR>', opts)
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
   vim.keymap.set('n', '<A-h>', 'zM', opts)
   vim.keymap.set('n', '<A-j>', 'zr', opts)
@@ -79,11 +76,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F29>', "<cmd>lua require('ibl').debounced_refresh()<cr>", opts) -- ctrl + f5
   vim.keymap.set('n', '<F36>', "<cmd>lua require('aerial').toggle()<cr>", opts) -- ctrl + f12
   vim.keymap.set('n', '<F60>', "<cmd>lua require('glance').actions.open('references')<cr>", opts) -- alt + f12
-  vim.keymap.set('n', '<leader>w', ':w<CR>', opts)
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
   vim.keymap.set('n', '<leader>cb', helpers.clear_bg_color, opts)
-  vim.keymap.set('n', '<leader>bg', helpers.toggle_theme, opts)
-  vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
+  vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode

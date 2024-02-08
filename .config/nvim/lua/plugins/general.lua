@@ -15,7 +15,8 @@ return {
           "ruby",
           "sql",
           "markdown",
-          "latex"
+          "latex",
+          "cup"
         },
         sync_install = false,
         auto_install = true,
@@ -188,4 +189,7 @@ return {
     event = 'InsertEnter',
     opts = {}
   },
+  {
+    'vim-scripts/cup.vim'
+  }
 }
