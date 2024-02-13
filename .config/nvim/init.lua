@@ -10,5 +10,3 @@ lazy.init()
 
 settings.apply_settings()
 keymaps.apply_keymaps()
-
-vim.cmd([[autocmd BufNewFile,BufRead *.cup setf cup]])

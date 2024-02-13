@@ -15,8 +15,7 @@ return {
           "ruby",
           "sql",
           "markdown",
-          "latex",
-          "cup"
+          "latex"
         },
         sync_install = false,
         auto_install = true,
