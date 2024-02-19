@@ -24,9 +24,12 @@ abbr --add umsafe 'fusermount -u /dev/shm/Safe.mount && rmdir /dev/shm/Safe.moun
 abbr --add fishc 'nvim ~/dotfiles/.config/fish/config.fish'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
 abbr --add notes 'nvim ~/Documents/UNLV/2023/Fall/Fall\ 2023\ Class\ Notes.md'
+abbr --add diary 'nvim /dev/shm/Safe.mount/etc/diaries/2024/diary-2024.md'
 abbr --add intellij '~/Applications/idea-IC-232.9559.62/bin/idea.sh'
 abbr --add gnome 'XDG_SESSION_TYPE=wayland dbus-run-session gnome-session'
 abbr --add bsp 'XINITRC=~/dotfiles/etc/.bspwm-xinitrc startx'
+abbr --add berrywm 'XINITRC=~/dotfiles/etc/.berrywm-xinitrc startx'
+abbr --add cutefish 'XINITRC=~/dotfiles/etc/.cutefish-xinitrc startx'
 
 source ~/.secrets
 source /opt/asdf-vm/asdf.fish

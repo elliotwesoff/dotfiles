@@ -3,7 +3,8 @@ local settings = require('settings')
 local keymaps = require('keymaps')
 
 settings.COLORSCHEME_LIGHT = 'catppuccin'
-settings.COLORSCHEME_DARK = 'carbonfox'
+-- settings.COLORSCHEME_DARK = 'carbonfox'
+settings.COLORSCHEME_DARK = 'default'
 
 lazy.bootstrap()
 lazy.init()

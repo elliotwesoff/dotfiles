@@ -77,7 +77,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F36>', "<cmd>lua require('aerial').toggle()<cr>", opts) -- ctrl + f12
   vim.keymap.set('n', '<F60>', "<cmd>lua require('glance').actions.open('references')<cr>", opts) -- alt + f12
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
-  vim.keymap.set('n', '<leader>cb', helpers.clear_bg_color, opts)
+  vim.keymap.set('n', '<leader>c', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 
   -- terminal mode mappings
