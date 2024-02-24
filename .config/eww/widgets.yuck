@@ -134,7 +134,7 @@
 (defwidget sleep []
   (box
     :class "btn-container p3"
-    (button :onclick "systemctl suspend"
+    (button :onclick "systemctl suspend &"
       (image :path "./images/moon.svg" :image-width 20))))
 
 (defwidget flugmodus []

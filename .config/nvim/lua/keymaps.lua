@@ -26,8 +26,7 @@ function M.apply_keymaps()
   vim.keymap.set('i', '<C-.>', '<Esc>:tabnext<CR>', opts)
 
   -- normal mode mappings
-  -- vim.keymap.set('n', ';', ':', opts)
-  -- vim.keymap.set('n', ':', ';', opts)
+
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
@@ -46,6 +45,18 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<A-j>', 'zr', opts)
   vim.keymap.set('n', '<A-k>', 'zm', opts)
   vim.keymap.set('n', '<A-l>', 'zR', opts)
+
+  -- leader mappings
+  vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
+  vim.keymap.set('n', '<leader>c', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
+  vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
+  vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
+  vim.keymap.set('n', '<leader>d', "<cmd>windo diffthis<cr>", opts)
+
+  -- terminal mode mappings
+  vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
+
+  -- F<1-12>
   vim.keymap.set('n', '<F1>', "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
   vim.keymap.set('n', '<F2>', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
   vim.keymap.set('n', '<F3>', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
@@ -58,6 +69,8 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F10>', "<cmd>lua require('glance').actions.open('type_definitions')<cr>", opts)
   vim.keymap.set('n', '<F11>', "<cmd>lua require('glance').actions.open('references')<cr>", opts)
   vim.keymap.set('n', '<F12>', "<cmd>lua require('glance').actions.open('definitions')<cr>", opts)
+
+  -- SHIFT + F<1-12>
   vim.keymap.set('n', '<F13>', ':echo "F13 unset"<CR>', opts)
   vim.keymap.set('n', '<F14>', ':echo "F14 unset"<CR>', opts)
   vim.keymap.set('n', '<F15>', ':echo "F15 unset"<CR>', opts)
@@ -65,23 +78,43 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F17>', helpers.refresh_config, opts)
   vim.keymap.set('n', '<F18>', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
   vim.keymap.set('n', '<F19>', ':messages<CR>', opts)
+  vim.keymap.set('n', '<F20>', ':echo "F20 unset"<CR>', opts)
+  vim.keymap.set('n', '<F21>', ':echo "F21 unset"<CR>', opts)
+  vim.keymap.set('n', '<F22>', ':echo "F22 unset"<CR>', opts)
   vim.keymap.set('n', '<F23>', "<cmd>lua require('telescope.builtin').treesitter()<cr>", opts)
   vim.keymap.set('n', '<S-F11>', "<cmd>lua require('telescope.builtin').treesitter()<cr>", opts) -- windows garbage
   vim.keymap.set('n', '<F24>', "<cmd>lua require('symbols-outline').toggle_outline()<cr>", opts)
   vim.keymap.set('n', '<S-F12>', "<cmd>lua require('symbols-outline').toggle_outline()<cr>", opts) -- windows garbage
+
+  -- CTRL + F<1-12>
   vim.keymap.set('n', '<F25>', "<cmd>lua require('telescope.builtin').git_status()<cr>", opts)
   vim.keymap.set('n', '<F26>', "<cmd>lua require('telescope.builtin').git_stash()<cr>", opts)
   vim.keymap.set('n', '<F27>', "<cmd>lua require('telescope.builtin').git_branches()<cr>", opts)
   vim.keymap.set('n', '<F28>', "<cmd>lua require('telescope.builtin').git_commits()<cr>", opts)
   vim.keymap.set('n', '<F29>', "<cmd>lua require('ibl').debounced_refresh()<cr>", opts) -- ctrl + f5
+  vim.keymap.set('n', '<F30>', ':echo "F30 unset"<CR>', opts)
+  vim.keymap.set('n', '<F31>', ':echo "F31 unset"<CR>', opts)
+  vim.keymap.set('n', '<F32>', ':echo "F32 unset"<CR>', opts)
+  vim.keymap.set('n', '<F33>', ':echo "F33 unset"<CR>', opts)
+  vim.keymap.set('n', '<F34>', ':echo "F34 unset"<CR>', opts)
+  vim.keymap.set('n', '<F35>', ':echo "F35 unset"<CR>', opts)
   vim.keymap.set('n', '<F36>', "<cmd>lua require('aerial').toggle()<cr>", opts) -- ctrl + f12
-  vim.keymap.set('n', '<F60>', "<cmd>lua require('glance').actions.open('references')<cr>", opts) -- alt + f12
-  vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
-  vim.keymap.set('n', '<leader>c', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
-  vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 
-  -- terminal mode mappings
-  vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
+  -- where did F37 - F48 go?
+
+  -- ALT + F<1-12>
+  vim.keymap.set('n', '<F49>', ':echo "F49 unset"<CR>', opts)
+  vim.keymap.set('n', '<F50>', ':echo "F50 unset"<CR>', opts)
+  vim.keymap.set('n', '<F51>', ':echo "F51 unset"<CR>', opts)
+  vim.keymap.set('n', '<F52>', ':echo "F52 unset"<CR>', opts)
+  vim.keymap.set('n', '<F53>', ':echo "F53 unset"<CR>', opts)
+  vim.keymap.set('n', '<F54>', ':echo "F54 unset"<CR>', opts)
+  vim.keymap.set('n', '<F55>', ':echo "F55 unset"<CR>', opts)
+  vim.keymap.set('n', '<F56>', ':echo "F56 unset"<CR>', opts)
+  vim.keymap.set('n', '<F57>', ':echo "F57 unset"<CR>', opts)
+  vim.keymap.set('n', '<F58>', ':echo "F58 unset"<CR>', opts)
+  vim.keymap.set('n', '<F59>', ':echo "F59 unset"<CR>', opts)
+  vim.keymap.set('n', '<F60>', "<cmd>lua require('glance').actions.open('references')<cr>", opts) -- alt + f12
 end
 
 function M.apply_lsp_keymaps()
