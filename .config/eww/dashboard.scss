@@ -1,5 +1,5 @@
 $border-width: 0px; // for layout debugging
-$border-radius: 6px;
+$border-radius: 4px;
 
 box.applauncher {
   font-size: 1.5em;
@@ -8,7 +8,7 @@ box.applauncher {
 window.dashboard {
   font-family: "Noto Sans Mono";
   color: #FFFFFF;
-  background: rgba(200, 200, 200, 0.5); // semi-transparent bg
+  background: rgba(200, 200, 200, 0.00); // semi-transparent bg
   border-radius: $border-radius;
 
   & > box.dashboard-container {

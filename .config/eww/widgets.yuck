@@ -114,10 +114,10 @@
     (box :orientation "v"
       (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
       (spacer)
-      (date :ha "center")
-      (spacer)
       (time :ha "center")
-      (cet_time :ha "center"))))
+      (cet_time :ha "center")
+      (spacer)
+      (date :ha "center"))))
 
 (defwidget lock []
   (box

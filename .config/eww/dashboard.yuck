@@ -24,7 +24,7 @@
         (statsstack)
         (battery-circle)
         (greeter)
-        (seo :iw 200)
+        (seo :iw 170)
         (box
           :orientation "v"
           (box 
