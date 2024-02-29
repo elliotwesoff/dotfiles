@@ -123,25 +123,25 @@
   (box
     :class "btn-container p3"
     (button :onclick "xset s activate"
-      (image :path "./images/lock.svg" :image-width 20))))
+      (image :path "./images/lock.svg" :image-width 15))))
 
 (defwidget close []
   (box
     :class "btn-container p3"
     (button :onclick "eww-toggle"
-      (image :path "./images/x.svg" :image-width 20))))
+      (image :path "./images/x.svg" :image-width 12))))
 
 (defwidget sleep []
   (box
     :class "btn-container p3"
     (button :onclick "systemctl suspend &"
-      (image :path "./images/moon.svg" :image-width 20))))
+      (image :path "./images/moon.svg" :image-width 15))))
 
 (defwidget flugmodus []
   (box
     :class "btn-container p3"
-    (button :onclick "eww update wifi_on=false; eww update wifi_off=true; elliot wifioff" :visible wifi_on (image :path "./images/wifi.svg" :image-width 25))
-    (button :onclick "eww update wifi_on=true; eww update wifi_off=false; elliot wifion"  :visible wifi_off (image :path "./images/jet-fighter.svg" :image-width 25))))
+    (button :onclick "eww update wifi_on=false; eww update wifi_off=true; elliot wifioff" :visible wifi_on (image :path "./images/wifi.svg" :image-width 20))
+    (button :onclick "eww update wifi_on=true; eww update wifi_off=false; elliot wifion"  :visible wifi_off (image :path "./images/jet-fighter.svg" :image-width 20))))
 
 (defwidget seo [iw]
   (box
@@ -203,15 +203,15 @@
   (box
     :class "applauncher"
     (button :onclick "kitty & disown"
-      (image :path "./images/terminal.svg" :image-width 30))
+      (image :path "./images/terminal.svg" :image-width 25))
     (button :onclick "firefox & disown"
-      (image :path "./images/firefox.svg" :image-width 30))
+      (image :path "./images/firefox.svg" :image-width 25))
     (button :onclick "discord & disown"
       (image :path "./images/discord.svg" :image-width 30))
     (button :onclick "whatsdesk & disown"
-      (image :path "./images/whatsapp.svg" :image-width 30))
+      (image :path "./images/whatsapp.svg" :image-width 25))
     (button :onclick "spotify & disown"
-      (image :path "./images/spotify.svg" :image-width 30))))
+      (image :path "./images/spotify.svg" :image-width 25))))
 
 (defwidget battery-circle []
   (box

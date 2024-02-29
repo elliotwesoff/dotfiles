@@ -77,6 +77,17 @@ redshift -P -l [lat]:[long] -t [day temp]:[night temp] &
 
 how to find the archive filename?
 
+### Mounting a drive
+
+Use `sudo mount /dev/[partition] [mount_point]`
+
+However, if you want the drive to show up in the sidebar in
+file managers like dolphin, thunar, etc., use:
+
+```
+sudo mount /dev/partition /run/media/elliot/[mount_point] --mkdir -o umask=0
+```
+
 ### Formatting a drive
 
 1. switch to root user
