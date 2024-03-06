@@ -28,10 +28,10 @@
         (box
           :orientation "v"
           (box 
-            (lock)
+            (theme)
             (close))
           (box
-            (flugmodus)
+            (lock)
             (sleep))))
 
       ;; lower widget container
@@ -39,7 +39,8 @@
         :orientation "h"
         (box
           (wifistack)
-          (lostack))
+          (lostack)
+          (vpnstack))
         (applauncher)
         (peripheralsstack)))
 

@@ -10,6 +10,11 @@ set -gx EDITOR 'nvim'
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 
+# android studio shiz
+set --export ANDROID_HOME /home/elliot/.android/SDK
+fish_add_path $ANDROID_HOME/emulator
+fish_add_path $ANDROID_HOME/platform-tools
+
 abbr --add x 'startx'
 abbr --add r 'ranger'
 abbr --add z 'zathura'
@@ -24,6 +29,7 @@ abbr --add safe 'mkdir -p /dev/shm/Safe.mount && gocryptfs ~/Documents/Safe.ciph
 abbr --add umsafe 'fusermount -u /dev/shm/Safe.mount && rmdir /dev/shm/Safe.mount'
 abbr --add fishc 'nvim ~/dotfiles/.config/fish/config.fish'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
+abbr --add kittyc 'nvim ~/dotfiles/.config/kitty/kitty.conf'
 abbr --add notes 'nvim ~/Documents/UNLV/2023/Fall/Fall\ 2023\ Class\ Notes.md'
 abbr --add diary 'nvim /dev/shm/Safe.mount/etc/diaries/2024/diary-2024.md'
 abbr --add intellij '~/Applications/idea-IC-232.9559.62/bin/idea.sh'

@@ -143,6 +143,12 @@
     (button :onclick "eww update wifi_on=false; eww update wifi_off=true; elliot wifioff" :visible wifi_on (image :path "./images/wifi.svg" :image-width 20))
     (button :onclick "eww update wifi_on=true; eww update wifi_off=false; elliot wifion"  :visible wifi_off (image :path "./images/jet-fighter.svg" :image-width 20))))
 
+(defwidget theme []
+  (box
+    :class "btn-container p3"
+    (button :onclick "eww update theme_light=false; eww update theme_dark=true; theme dark" :visible theme_light (image :path "./images/sun-solid.svg" :image-width 20))
+    (button :onclick "eww update theme_light=true; eww update theme_dark=false; theme light"  :visible theme_dark (image :path "./images/sun-regular.svg" :image-width 20))))
+
 (defwidget seo [iw]
   (box
     (eventbox
@@ -162,6 +168,13 @@
       (label :text "lo")
       (label :text "${EWW_NET.lo.NET_UP}")
       (label :text "${EWW_NET.lo.NET_DOWN}")))
+
+(defwidget vpnstack []
+  (box
+    :orientation "v"
+      (label :text "nordlynx")
+      (label :text vpn_ip)
+      (label :text vpn_city)))
 
 (defwidget statsstack []
   (box
