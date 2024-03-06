@@ -13,7 +13,7 @@ super + shift + {h, j, k, l}
     berryc window_resize {-50 0, 0 50, 0 -50, 50 0}
 
 super + {1-9}
-    berryc switch_workspace {1-9}
+    berryc switch_workspace {0-8}
 
 super + {a, s, d, f}
     berryc switch_workspace {1, 2, 3, 4}

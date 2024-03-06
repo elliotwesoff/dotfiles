@@ -1,6 +1,11 @@
 #!/bin/sh
 # .xinitrc
 
-sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 source ~/dotfiles/etc/.common-xinitrc
+
+sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
+elliot setvol &
+bspeww &
+picom &
+
 exec bspwm
