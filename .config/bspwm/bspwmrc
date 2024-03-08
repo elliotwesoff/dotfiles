@@ -36,9 +36,9 @@ bspc rule -a Zathura state=tiled
 bspc rule -a Deno state=tiled
 bspc rule -a Pavucontrol state=tiled
 bspc rule -a firefox desktop="I" state=pseudo_tiled
-bspc rule -a whatsdesk desktop="VII"
-bspc rule -a discord desktop="VII"
-bspc rule -a Spotify desktop="VII"
+bspc rule -a Spotify desktop="VI" state=pseudo_tiled
+bspc rule -a whatsdesk desktop="VII" state=pseudo_tiled
+bspc rule -a discord desktop="VII" state=pseudo_tiled
 bspc rule -a kitty state=pseudo_tiled
 
 source $HOME/dotfiles/.config/bspwm/bspwmrc-theme
