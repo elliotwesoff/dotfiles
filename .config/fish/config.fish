@@ -15,6 +15,8 @@ set --export ANDROID_HOME /home/elliot/.android/SDK
 fish_add_path $ANDROID_HOME/emulator
 fish_add_path $ANDROID_HOME/platform-tools
 
+set --universal nvm_default_version 18.19.1
+
 abbr --add x 'startx'
 abbr --add r 'ranger'
 abbr --add z 'zathura'

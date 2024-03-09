@@ -12,7 +12,12 @@ return {
         keymaps.apply_lsp_keymaps()
 
         lspconfig.pyright.setup(lsp_server_opts)
-        lspconfig.tsserver.setup(lsp_server_opts)
+        lspconfig.tsserver.setup({
+          root_dir = lspconfig.util.root_pattern('.git'),
+          on_attach = attach_fn,
+          flags = lsp_flags,
+          capabilities = capabilities
+        })
         lspconfig.ccls.setup(lsp_server_opts)
         lspconfig.texlab.setup(lsp_server_opts)
         lspconfig.solargraph.setup(lsp_server_opts)

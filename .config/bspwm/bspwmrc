@@ -40,6 +40,7 @@ bspc rule -a Spotify desktop="VI" state=pseudo_tiled
 bspc rule -a whatsdesk desktop="VII" state=pseudo_tiled
 bspc rule -a discord desktop="VII" state=pseudo_tiled
 bspc rule -a kitty state=pseudo_tiled
+bspc rule -a 1Password state=floating
 
 source $HOME/dotfiles/.config/bspwm/bspwmrc-theme
 
