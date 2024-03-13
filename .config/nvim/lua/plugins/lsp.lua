@@ -32,6 +32,7 @@ return {
           capabilities = capabilities,
           on_attach = attach_fn
         }
+        lspconfig.jdtls.setup(lsp_server_opts)
 
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
           vim.lsp.diagnostic.on_publish_diagnostics, {
