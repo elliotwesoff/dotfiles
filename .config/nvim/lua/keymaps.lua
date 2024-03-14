@@ -48,10 +48,11 @@ function M.apply_keymaps()
 
   -- leader mappings
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
-  vim.keymap.set('n', '<leader>c', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
+  -- vim.keymap.set('n', '<leader>c', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
-  vim.keymap.set('n', '<leader>d', "<cmd>windo diffthis<cr>", opts)
+  vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
+  -- vim.keymap.set('n', '<leader>d', "<cmd>windo diffthis<cr>", opts)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -131,8 +132,8 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<leader>.', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<leader>,', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>c', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>f', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', '<leader>s', vim.lsp.buf.type_definition, bufopts)
