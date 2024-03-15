@@ -33,6 +33,11 @@ return {
     end
 
     dashboard.section.footer.val = footer()
+    dashboard.section.buttons.val = {
+      dashboard.button("e", "new buffer", ":enew<bar>startinsert<cr>"),
+      dashboard.button("-", "file explorer", "<cmd>lua require('oil').open()<cr>"),
+      dashboard.button("q", "quit", "<cmd>q!<cr>")
+    }
     dashboard.opts.opts.noautocmd = true
     alpha.setup(dashboard.opts)
   end,
