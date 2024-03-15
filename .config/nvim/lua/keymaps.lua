@@ -9,15 +9,25 @@ M.ext_keymaps = {
 }
 
 function M.apply_keymaps()
+  -- personal keymap philosophy:
+  -- 1. navigation and session-wide keymaps are bound to C (ctrl + something)
+  -- 2. buffer-specific keybinds, i.e. commands which only affect the buffer
+  --    that the cursor is currently in, are bound to A (alt + something)
+  -- 3. LSP, telescope, and typical IDE shortcuts are bound to <leader>
+  -- 4. main IDE functions and misc. shortcuts like go to definition,
+  -- implementation, references, etc. are bound to F<1-60>
+
   -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
   -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
   -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
+  --
   -- but this is only on linux, windows sends different keys -____________-'
 
   local helpers = require('helpers')
   local opts = { noremap = true, silent = true }
 
   -- insert mode mappings
+
   vim.keymap.set('i', 'jj', '<Esc>', opts)
   vim.keymap.set('i', 'jk', '<Esc>:w<CR>', opts)
   vim.keymap.set('i', 'jq', '<Esc>:wq<CR>', opts)
@@ -33,18 +43,22 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
   vim.keymap.set('n', '<C-t>', ':tabnew<CR>', opts)
-  vim.keymap.set('n', '<A-t>', ':terminal<CR>', opts)
   vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
   vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
   vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
   vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
   vim.keymap.set('n', '<C-,>', ':tabprevious<CR>', opts)
   vim.keymap.set('n', '<C-.>', ':tabnext<CR>', opts)
+  vim.keymap.set('n', '<C-[>', ':cprevious<CR>', opts)
+  vim.keymap.set('n', '<C-]>', ':cnext<CR>', opts)
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
   vim.keymap.set('n', '<A-h>', 'zM', opts)
   vim.keymap.set('n', '<A-j>', 'zr', opts)
   vim.keymap.set('n', '<A-k>', 'zm', opts)
   vim.keymap.set('n', '<A-l>', 'zR', opts)
+  vim.keymap.set('n', '<A-[>', ':cprevious<CR>', opts)
+  vim.keymap.set('n', '<A-]>', ':cnext<CR>', opts)
+  vim.keymap.set('n', '<A-t>', ':terminal<CR>', opts)
 
   -- leader mappings
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
@@ -129,8 +143,8 @@ end
 function M.apply_lsp_buffer_keymaps(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader>c', vim.lsp.buf.signature_help, bufopts)

@@ -33,6 +33,7 @@
   "sunset.nvim": { "branch": "main", "commit": "3da65f6717f64600f4eab9cdb73506d681ed0d45" },
   "symbols-outline.nvim": { "branch": "master", "commit": "564ee65dfc9024bdde73a6621820866987cbb256" },
   "telescope.nvim": { "branch": "master", "commit": "36dce6261ae3660bb57ba942361067b2028aec31" },
+  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "zen-mode.nvim": { "branch": "main", "commit": "78557d972b4bfbb7488e17b5703d25164ae64e6a" },
   "zenbones.nvim": { "branch": "main", "commit": "072b21d16cc1d5ae5701455fadaa47b1e8a61780" }
 }
