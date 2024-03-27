@@ -1,5 +1,15 @@
 # Elliot's arch notes!
 
+* NOTE! running this command because yay broke after updates:
+
+```
+sudo ln -s /usr/lib/libalpm.so.14.0.0 /usr/lib/libalpm.so.13
+```
+
+taken from:
+
+https://www.reddit.com/r/EndeavourOS/comments/1be08gg/yay_paru_broken_cant_do_anything_with_them_even/
+
 ## Maintenance/general tasks and usage
 
 ### Adding a printer
@@ -96,6 +106,11 @@ sudo mount /dev/partition /run/media/elliot/[mount_point] --mkdir -o umask=0
 4. use fdisk commands to reformat the drive and its partitions
 5. create the filesystem using `mkfs.[fs-type] /dev/sdb[num]`
 6. victory!
+
+### Bluetooth
+
+Use the `blueman` package. Start the applet with `blueman-applet`
+before running `blueman-manager`.
 
 ## Applications
 

@@ -62,11 +62,15 @@ function M.apply_keymaps()
 
   -- leader mappings
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
-  -- vim.keymap.set('n', '<leader>c', "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
+  vim.keymap.set('n', '<leader>km', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
   vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
   -- vim.keymap.set('n', '<leader>d', "<cmd>windo diffthis<cr>", opts)
+  vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
+  vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
+  vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
+  vim.keymap.set('n', '<leader>s', ":SunsetToggle<CR>", opts)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -147,13 +151,13 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<leader>c', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<leader>f', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', '<leader>s', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>o', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<leader>.c', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>.f', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>.d', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<leader>.s', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>.a', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>.r', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>.o', vim.lsp.buf.formatting, bufopts)
 end
 
 function M.apply_aerial_keymaps(bufnr)

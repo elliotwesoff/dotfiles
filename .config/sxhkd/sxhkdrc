@@ -17,8 +17,11 @@ super + F1
 super + {Return,space,z,Delete}
   exec {kitty,eww-toggle,eww-toggle,xset s activate}
 
-super + alt + {f,z,x,c,d,m,w,b,Escape,space}
-  exec {thunar,firefox,firefox,nordvpn c,discord,kitty pulsemixer,whatsdesk,kitty btop,sxhkd-reload,rofi -show drun}
+super + shift + Return
+  exec kitty -c ~/dotfiles/.config/kitty/cozy.conf
+
+super + alt + {t,x,z,c,d,m,w,b,Escape,space}
+  exec {thunar,firefox,librewolf,nordvpn c,discord,kitty pulsemixer,whatsdesk,kitty btop,sxhkd-reload,rofi -show drun}
 
 XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown}
   exec {rofi -show drun,kitty ranger,xset s activate, blight set +5%, blight set -5%}
