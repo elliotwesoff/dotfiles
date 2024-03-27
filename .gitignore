@@ -33,6 +33,7 @@ __pycache__
 *.lock
 *.tmp
 *.history
+*.*vim
 
 .config/nvim/plugin/packer_compiled.lua
 
