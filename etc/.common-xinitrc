@@ -16,7 +16,7 @@ fi
 
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
-xrdb -merge ~/dotfiles/etc/.Xresources
+# xrdb -merge ~/dotfiles/etc/.Xresources
 
 # select monitor to use based on our super smart ---ruby--- c script
 # ruby $HOME/dotfiles/scripts/activate_display.rb

@@ -299,6 +299,15 @@ get a pretty sweet kitty feature:
 * `g` - last command output
 * `=` - font size up
 * `-` - font size down:wqa
+
+### KDE
+
+If the plasma taskbar disappears:
+
+1. `pkill plasmashell`
+2. `rm -rf .config/plasma-org.kde.plasma.desktop-appletsrc`
+3. `plasmashell` or restart KDE
+
 ## System
 
 ### Devices
