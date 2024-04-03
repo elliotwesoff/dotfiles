@@ -81,18 +81,18 @@ return {
       })
     end
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = {
-          component_separators = { left = '🍕', right = '' },
-          section_separators = { left = '', right = '' }
-        }
-      }
-    end
-  },
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   dependencies = { 'kyazdani42/nvim-web-devicons' },
+  --   config = function()
+  --     require('lualine').setup {
+  --       options = {
+  --         component_separators = { left = '🍕', right = '' },
+  --         section_separators = { left = '', right = '' }
+  --       }
+  --     }
+  --   end
+  -- },
   {
     'simrat39/symbols-outline.nvim',
     lazy = true,
