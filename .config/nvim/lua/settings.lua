@@ -1,10 +1,9 @@
 local M = {}
 
 function M.apply_settings()
-  -- vim.opt.hidden = true
+  vim.opt.hidden = true
   -- vim.opt.wildmenu = true
   vim.opt.showcmd = false
-  -- vim.opt.hlsearch = true
   vim.opt.ignorecase = true
   vim.opt.smartcase = true
   -- vim.opt.ruler = true
@@ -35,7 +34,7 @@ function M.apply_settings()
   vim.opt.softtabstop = 2
   vim.opt.tabstop = 2
   vim.opt.mouse = 'a'
-  vim.opt.cmdheight = 0
+  vim.opt.cmdheight = 1
   vim.opt.termguicolors = true
   vim.opt.foldmethod = 'indent'
   vim.opt.foldnestmax = 4
