@@ -194,7 +194,8 @@ return {
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 350
-    end
+    end,
+    opts = { }
   },
   {
     'nvim-java/nvim-java',

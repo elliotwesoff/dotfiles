@@ -39,8 +39,8 @@ abbr --add gnome 'XDG_SESSION_TYPE=wayland dbus-run-session gnome-session'
 abbr --add bsp 'XINITRC=~/dotfiles/etc/.bspwm-xinitrc startx'
 abbr --add berrywm 'XINITRC=~/dotfiles/etc/.berrywm-xinitrc startx'
 abbr --add cutefish 'XINITRC=~/dotfiles/etc/.cutefish-xinitrc startx'
-abbr --add plasma 'XINITRC=~/dotfiles/etc/.plasma-xinitrc startx'
-abbr --add plasma-wayland '/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland'
+abbr --add plasmax 'XINITRC=~/dotfiles/etc/.plasma-xinitrc startx'
+abbr --add plasmaw '/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland'
 
 source ~/.secrets
 source /opt/asdf-vm/asdf.fish
