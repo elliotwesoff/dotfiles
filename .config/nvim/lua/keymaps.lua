@@ -51,6 +51,8 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<C-.>', ':tabnext<CR>', opts)
   vim.keymap.set('n', '<C-[>', ':cprevious<CR>', opts)
   vim.keymap.set('n', '<C-]>', ':cnext<CR>', opts)
+  vim.keymap.set('n', '<C-;>', ':lprevious<CR>', opts)
+  vim.keymap.set('n', '<C-\'>', ':lnext<CR>', opts)
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
   vim.keymap.set('n', '<A-h>', 'zM', opts)
   vim.keymap.set('n', '<A-j>', 'zr', opts)
@@ -58,19 +60,30 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<A-l>', 'zR', opts)
   vim.keymap.set('n', '<A-[>', ':cprevious<CR>', opts)
   vim.keymap.set('n', '<A-]>', ':cnext<CR>', opts)
+  vim.keymap.set('n', '<A-;>', ':lprevious<CR>', opts)
+  vim.keymap.set('n', '<A-\'>', ':lnext<CR>', opts)
   vim.keymap.set('n', '<A-t>', ':terminal<CR>', opts)
 
   -- leader mappings
+  -- philosophy: as of right now i'm using the default leader key ('\').
+  --             '\' is all the way on the right side of the keyboard, so
+  --             to keep things ergonomic and fast, all or most leader
+  --             mappings should be on the left side of the keyboard.
+  --             lesser used ones and non-dev related keymaps can be on the
+  --             right half of the keyboard.
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
-  vim.keymap.set('n', '<leader>km', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
+  vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
+  vim.keymap.set('n', '<leader>r', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
+  vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
-  -- vim.keymap.set('n', '<leader>d', "<cmd>windo diffthis<cr>", opts)
+  vim.keymap.set('n', '<leader>c', ":SunsetToggle<CR>", opts)
+  vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
+  vim.keymap.set('n', '<leader>a', "<cmd>lua require('aerial').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
   vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
   vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
-  vim.keymap.set('n', '<leader>s', ":SunsetToggle<CR>", opts)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode

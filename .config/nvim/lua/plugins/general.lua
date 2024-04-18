@@ -65,6 +65,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     lazy = true,
+    event = 'BufReadPost',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('telescope').setup({
@@ -79,43 +80,6 @@ return {
         pickers = {},
         extensions = {}
       })
-    end
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = {
-          component_separators = { left = '🍕', right = '🍕' },
-          section_separators = { left = '', right = '' },
-        },
-        sections = {
-          lualine_a = {
-            -- 'buffer_number', -- magical undocumented option via chatgpt, don't delete!
-            {
-              'buffers', mode = 4, max_length = 1 -- only show one item per file
-            }
-          },
-          lualine_b = {},
-          lualine_c = {'diagnostics'},
-          lualine_x = {'branch', 'diff'},
-          -- lualine_y = {},
-          -- lualine_z = {}
-        },
-        inactive_sections = {
-          lualine_a = {
-            {
-              'buffers', mode = 4, max_length = 1
-            }
-          },
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {}
-        }
-      }
     end
   },
   {
@@ -224,6 +188,8 @@ return {
   },
   {
     'nvim-java/nvim-java',
+    lazy = true,
+    event = 'BufReadPost',
     dependencies = {
       'nvim-java/lua-async-await',
       'nvim-java/nvim-java-core',

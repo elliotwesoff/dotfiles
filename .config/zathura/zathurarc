@@ -14,9 +14,7 @@ set page-cache-size 1000
 set selection-clipboard clipboard
 set default-bg "#141414"
 set index-bg "#666666"
-set index-fg "#111199"
-set index-active-fg "#212121"
-set index-active-bg "#D6D6D6"
+set index-fg "#000000"
 set recolor false
 set recolor-lightcolor "#202020"
 set recolor-darkcolor "#BBBBBB"
@@ -24,7 +22,4 @@ set statusbar-bg "#141414"
 set statusbar-fg "#D6D6D6"
 set statusbar-h-padding 20
 set statusbar-v-padding 20
-set highlight-transparency 0.35
-set highlight-color "#6BE4FF"
-set highlight-active-color "#FFF420"
 set font "monospace normal 12"
