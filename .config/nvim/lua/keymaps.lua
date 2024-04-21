@@ -30,7 +30,7 @@ function M.apply_keymaps()
 
   vim.keymap.set('i', 'jj', '<Esc>', opts)
   vim.keymap.set('i', 'jk', '<Esc>:w<CR>', opts)
-  vim.keymap.set('i', 'jq', '<Esc>:wq<CR>', opts)
+  vim.keymap.set('i', 'jx', '<Esc>:wq<CR>', opts)
   vim.keymap.set('i', '<C-BS>', '<C-W>', opts)
   vim.keymap.set('i', '<C-,>', '<Esc>:tabprevious<CR>', opts)
   vim.keymap.set('i', '<C-.>', '<Esc>:tabnext<CR>', opts)
@@ -84,6 +84,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
   vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
   vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
+
+  -- pipe buffer contents to jq, then replace buffer contents with jq's stdout stream
+  vim.keymap.set('n', '<leader>jq', ":%!jq '.'<CR>", opts)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -163,7 +166,9 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '`', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader><enter>', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>.c', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>.f', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<leader>.d', vim.lsp.buf.definition, bufopts)
