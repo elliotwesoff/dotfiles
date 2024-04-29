@@ -6,7 +6,12 @@ return {
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lsp_flags = { debounce_text_changes = 0 }
-      local attach_fn = keymaps.apply_lsp_buffer_keymaps
+
+      local attach_fn = function (client, bufnr)
+        keymaps.apply_lsp_buffer_keymaps(client, bufnr)
+        require'lsp_signature'.on_attach(client, bufnr)
+      end
+
       local lsp_server_opts = { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
 
       keymaps.apply_lsp_keymaps()
@@ -45,7 +50,9 @@ return {
     end
   },
   {
-    'ray-x/lsp_signature.nvim',
-    event = 'InsertEnter'
-  },
+      "ray-x/lsp_signature.nvim",
+      event = "VeryLazy",
+      opts = {},
+      config = function(_, opts) require'lsp_signature'.setup(opts) end
+  }
 }

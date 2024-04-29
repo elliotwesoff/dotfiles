@@ -175,7 +175,7 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   vim.keymap.set('n', '<leader>.s', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>.a', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>.r', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>.o', vim.lsp.buf.formatting, bufopts)
+  -- vim.keymap.set('n', '<leader>.o', vim.lsp.buf.formatting, bufopts)
 end
 
 function M.apply_aerial_keymaps(bufnr)

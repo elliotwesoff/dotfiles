@@ -30,9 +30,9 @@ function M.apply_settings()
   -- vim.opt.encoding = 'utf-8'
   -- vim.opt.ttimeout = true
   vim.opt.ttimeoutlen = 10
-  vim.opt.shiftwidth = 2
-  vim.opt.softtabstop = 2
-  vim.opt.tabstop = 2
+  -- vim.opt.shiftwidth = 2
+  -- vim.opt.softtabstop = 2
+  -- vim.opt.tabstop = 2
   vim.opt.mouse = 'a'
   vim.opt.cmdheight = 1
   vim.opt.termguicolors = true
