@@ -77,6 +77,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
+  vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
   vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
   vim.keymap.set('n', '<leader>c', ":SunsetToggle<CR>", opts)
   vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
@@ -86,7 +87,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
 
   -- pipe buffer contents to jq, then replace buffer contents with jq's stdout stream
-  vim.keymap.set('n', '<leader>jq', ":%!jq '.'<CR>", opts)
+  vim.keymap.set('n', '<leader>q', ":%!jq '.'<CR>", opts)
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -118,8 +119,8 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F22>', ':echo "F22 unset"<CR>', opts)
   vim.keymap.set('n', '<F23>', "<cmd>lua require('telescope.builtin').treesitter()<cr>", opts)
   vim.keymap.set('n', '<S-F11>', "<cmd>lua require('telescope.builtin').treesitter()<cr>", opts) -- windows garbage
-  vim.keymap.set('n', '<F24>', "<cmd>lua require('symbols-outline').toggle_outline()<cr>", opts)
-  vim.keymap.set('n', '<S-F12>', "<cmd>lua require('symbols-outline').toggle_outline()<cr>", opts) -- windows garbage
+  vim.keymap.set('n', '<F24>', "<cmd>Outline<cr>", opts)
+  vim.keymap.set('n', '<S-F12>', "<cmd>Outline<cr>", opts) -- windows garbage
 
   -- CTRL + F<1-12>
   vim.keymap.set('n', '<F25>', "<cmd>lua require('telescope.builtin').git_status()<cr>", opts)

@@ -83,27 +83,13 @@ return {
     end
   },
   {
-    'simrat39/symbols-outline.nvim',
+    "hedyhli/outline.nvim",
     lazy = true,
-    config = function()
-      require("symbols-outline").setup({
-        highlight_hovered_item = true,
-        show_guides = true,
-        auto_preview = false,
-        position = 'right',
-        relative_width = true,
-        width = 15,
-        auto_close = false,
-        show_numbers = false,
-        show_relative_numbers = false,
-        show_symbol_details = false,
-        preview_bg_highlight = 'Pmenu',
-        autofold_depth = 1,
-        auto_unfold_hover = true,
-        fold_markers = { '', '' },
-        wrap = false,
-      })
-    end
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" } },
+    opts = {
+      -- Your setup opts here
+    },
   },
   {
     'stevearc/aerial.nvim',
