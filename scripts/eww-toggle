@@ -1,8 +1,7 @@
 #!/bin/fish
 
-if eww windows | grep "^*" > /dev/null;
+if eww active-windows | string match -r "\w+";
   eww close-all
 else;
-  # eww open main
   eww open dashboard
 end
