@@ -1,6 +1,8 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
+    lazy = true,
+    event = 'BufReadPre',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require('lualine').setup {

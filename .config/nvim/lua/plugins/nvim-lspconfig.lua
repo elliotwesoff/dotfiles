@@ -38,21 +38,15 @@ return {
         on_attach = attach_fn
       }
 
-      require('java').setup()
-      lspconfig.jdtls.setup(lsp_server_opts)
+      -- require('java').setup()
+      -- lspconfig.jdtls.setup(lsp_server_opts)
 
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        virtual_text = false
-      }
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+          underline = true,
+          virtual_text = false
+        }
       )
     end
-  },
-  {
-      "ray-x/lsp_signature.nvim",
-      event = "VeryLazy",
-      opts = {},
-      config = function(_, opts) require'lsp_signature'.setup(opts) end
   }
 }

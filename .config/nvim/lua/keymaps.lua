@@ -15,13 +15,11 @@ function M.apply_keymaps()
   --    that the cursor is currently in, are bound to A (alt + something)
   -- 3. LSP, telescope, and typical IDE shortcuts are bound to <leader>
   -- 4. main IDE functions and misc. shortcuts like go to definition,
-  -- implementation, references, etc. are bound to F<1-60>
+  --    go to implementation, references, etc. are bound to F<1-60>
 
-  -- Shift + F1-12: <F13><F14><F15><F16><F17><F18><F19><F20><F21><F22><F23><F24>
-  -- Ctrl  + F1-12: <F25><F26><F27><F28><F29><F30><F31><F32><F33><F34><F35><F36>
-  -- Alt   + F1-12: <F49><F50><F51><F52><F53><F54><F55><F56><F57><F58><F59><F60>
-  --
-  -- but this is only on linux, windows sends different keys -____________-'
+  -- Shift + F1-12: <F13-24>
+  -- Ctrl  + F1-12: <F25-36>
+  -- Alt   + F1-12: <F49-60>
 
   local helpers = require('helpers')
   local opts = { noremap = true, silent = true }
@@ -80,6 +78,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
   vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
   vim.keymap.set('n', '<leader>c', ":SunsetToggle<CR>", opts)
+  vim.keymap.set('n', '<leader>f', helpers.toggle_theme, { desc = 'Toggle background'})
   vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>a', "<cmd>lua require('aerial').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)

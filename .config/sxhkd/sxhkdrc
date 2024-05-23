@@ -15,16 +15,16 @@ super + F1
           ~/Documents/Notes/arch-notes.md
 
 super + {Return,space,z,Delete}
-  exec {kitty,eww-toggle,eww-toggle,xset s activate}
+  {kitty,eww-toggle,eww-toggle,xset s activate}
 
 super + shift + Return
-  exec kitty -c ~/dotfiles/.config/kitty/cozy.conf
+  kitty -c ~/dotfiles/.config/kitty/cozy.conf
 
 super + alt + {t,x,z,c,d,m,w,b,Escape,space}
-  exec {thunar,firefox,librewolf,nordvpn c,discord,kitty pulsemixer,whatsdesk,kitty btop,sxhkd-reload,rofi -show drun}
+  {thunar,firefox,librewolf,nordvpn c,discord,kitty pulsemixer,whatsdesk,kitty btop,sxhkd-reload,rofi -show drun}
 
 XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown}
-  exec {rofi -show drun,kitty ranger,xset s activate, blight set +5%, blight set -5%}
+  {rofi -show drun,kitty ranger,xset s activate, blight set +5%, blight set -5%}
 
 super + alt + {0,1,2}
   switch-mon {off,internal,external}
@@ -34,8 +34,6 @@ super + control + alt + shift + Escape
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
   elliot {volup,voldown,mute}
-  # pactl -f json list | jq -c ".sinks[0] | { mute: .mute, volume: .volume[0].front-left.value_percent }" >> /dev/shm/volume.json
-  # amixer -q sset Master {5%+,5%-,1+ toggle}; \
 
 super + shift + alt + {Up,Down}
   blight set {+5%,-5%}

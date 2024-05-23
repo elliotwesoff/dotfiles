@@ -104,7 +104,14 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
-    config = function() require('ibl').setup() end,
+    config = function()
+      require('ibl').setup({
+        scope = {
+          enabled = true,
+          show_exact_scope = true
+        }
+      })
+    end,
     event = 'BufReadPre'
   },
   {
@@ -137,7 +144,8 @@ return {
   {
     'JManch/sunset.nvim',
     enabled = true,
-    lazy = false,
+    lazy = true,
+    event = 'BufReadPre',
     priority = 1000,
     config = function()
       local sunset = require('sunset')
@@ -171,28 +179,5 @@ return {
       vim.o.timeoutlen = 350
     end,
     opts = { }
-  },
-  {
-    'nvim-java/nvim-java',
-    lazy = true,
-    event = 'BufReadPost',
-    dependencies = {
-      'nvim-java/lua-async-await',
-      'nvim-java/nvim-java-core',
-      'nvim-java/nvim-java-test',
-      'nvim-java/nvim-java-dap',
-      'MunifTanjim/nui.nvim',
-      'neovim/nvim-lspconfig',
-      'mfussenegger/nvim-dap',
-      {
-        'williamboman/mason.nvim',
-        opts = {
-          registries = {
-            'github:nvim-java/mason-registry',
-            'github:mason-org/mason-registry',
-          },
-        },
-      }
-    }
   }
 }
