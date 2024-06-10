@@ -36,7 +36,7 @@ sudo pacman -S \
   pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pavucontrol sof-firmware \
   bluez bluez-utils \
   cups cups-pdf \
-  noto-fonts noto-fonts-emoji \
+  noto-fonts noto-fonts-emoji ttf-hack-nerd \
   bspwm \
   vulkan-intel \
   vim \

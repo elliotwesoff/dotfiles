@@ -24,6 +24,9 @@ function M.apply_keymaps()
   local helpers = require('helpers')
   local opts = { noremap = true, silent = true }
 
+  -- dev mappings
+  vim.keymap.set('n', 'vx', ':lua require("explorer").select()<CR>')
+
   -- insert mode mappings
 
   vim.keymap.set('i', 'jj', '<Esc>', opts)

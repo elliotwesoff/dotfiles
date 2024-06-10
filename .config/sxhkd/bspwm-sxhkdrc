@@ -96,8 +96,8 @@ super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
 # send and follow to the given desktop
-super + alt + shift + {1-9,0}
-  bspc node -d '^{1-9,10}' --follow
+# super + alt + shift + {1-9,0}
+#   bspc node -d '^{1-9,10}' --follow
 
 #
 # preselect
