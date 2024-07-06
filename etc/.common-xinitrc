@@ -49,3 +49,7 @@ oneko &
 
 # set wallpaper
 $HOME/dotfiles/etc/.fehbg &
+
+# mute volume and set to 0
+amixer -q sset Master mute &
+amixer -q sset Master 0% &

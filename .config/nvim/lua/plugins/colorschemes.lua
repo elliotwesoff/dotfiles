@@ -1,16 +1,12 @@
 return {
   {
-    'shaunsingh/seoul256.nvim',
-    lazy = false,
-    priority = 999
-  },
-  {
     'mcchrish/zenbones.nvim',
     lazy = false,
-    priority = 999,
+    priority = 998,
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      local bg_contrast = { lightness = 'bright', darkness = 'stark' }
+      -- local bg_contrast = { lightness = 'bright', darkness = 'stark' }
+      local bg_contrast = {}
       vim.g.kanagawabones = bg_contrast
       vim.g.zenbones = bg_contrast
       vim.g.vimbones = bg_contrast

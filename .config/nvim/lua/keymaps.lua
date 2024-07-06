@@ -40,6 +40,7 @@ function M.apply_keymaps()
 
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
+  vim.keymap.set('n', '`', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
@@ -157,10 +158,10 @@ end
 
 function M.apply_lsp_keymaps()
   local keymap_opts = { noremap = true, silent = true }
-  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, keymap_opts)
+  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Current error in diag popup'})
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.setloclist, keymap_opts)
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.setloclist, { desc = 'Diagnostics in loclist'})
 end
 
 function M.apply_lsp_buffer_keymaps(client, bufnr)
@@ -169,7 +170,7 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '`', vim.lsp.buf.hover, bufopts)
+  -- vim.keymap.set('n', '`', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><enter>', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>.c', vim.lsp.buf.signature_help, bufopts)
