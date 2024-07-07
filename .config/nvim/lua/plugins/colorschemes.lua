@@ -1,8 +1,6 @@
 return {
   {
     'mcchrish/zenbones.nvim',
-    lazy = false,
-    priority = 998,
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
       -- local bg_contrast = { lightness = 'bright', darkness = 'stark' }
@@ -21,26 +19,18 @@ return {
   },
   {
     'catppuccin/nvim',
-    name = 'catppuccin',
-    lazy = false,
-    priority = 999
+    name = 'catppuccin'
   },
   {
     'rose-pine/neovim',
-    name = 'rose-pine',
-    lazy = false,
-    priority = 999
+    name = 'rose-pine'
   },
   {
     'EdenEast/nightfox.nvim',
-    name = 'nightfox',
-    lazy = false,
-    priority = 999
+    name = 'nightfox'
   },
   {
     'ramojus/mellifluous.nvim',
-    lazy = false,
-    priority = 999,
     config = function()
       require('mellifluous').setup({
         mellifluous = {
