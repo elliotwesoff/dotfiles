@@ -17,6 +17,16 @@ return {
       keymaps.apply_lsp_keymaps()
 
       lspconfig.pyright.setup(lsp_server_opts)
+      -- lspconfig.pyright.setup({
+      --   on_attach = attach_fn,
+      --   flags = lsp_flags,
+      --   capabilities = capabilities,
+      --   settings = {
+      --     python = {
+      --       pythonPath = '/home/elliot/code/UNLV_CS/490/bin/python'
+      --     }
+      --   }
+      -- })
       lspconfig.tsserver.setup({
         root_dir = lspconfig.util.root_pattern('.git'),
         on_attach = attach_fn,

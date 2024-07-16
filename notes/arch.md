@@ -155,6 +155,22 @@ test2
 test3
 ```
 
+#### python development
+
+For all python projects, first create a virtual environment:
+
+`python -m venv .`
+
+Then install stuff:
+
+`bin/pip install whatever`
+
+nvim isn't going to be able to find those packages in the virtual
+environment, since it only knows to look in the global python package
+cache. Tell pyright to look in your current venv:
+
+`:PyrightSetPythonPath [path/to/venv/bin/python]`
+
 ### feh
 
 View all images in a folder:
