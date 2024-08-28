@@ -95,6 +95,9 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
 
+super + {_,shift + }{a,b,c,d,e,f,g}
+  bspc {desktop -f,node -d} '^{a,b,c,d,e,f,g}'
+
 # send and follow to the given desktop
 # super + alt + shift + {1-9,0}
 #   bspc node -d '^{1-9,10}' --follow

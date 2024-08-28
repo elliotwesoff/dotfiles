@@ -171,6 +171,16 @@ cache. Tell pyright to look in your current venv:
 
 `:PyrightSetPythonPath [path/to/venv/bin/python]`
 
+### xxd (hex editing)
+
+The command line tool `xxd` is available by default in nvim. To
+convert a file to hex:
+
+Convert a file to hex: `:%!xxd`
+
+Convert it back: `:%!xxd -r`
+
+
 ### feh
 
 View all images in a folder:

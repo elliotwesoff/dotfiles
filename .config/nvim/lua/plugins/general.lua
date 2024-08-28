@@ -176,5 +176,11 @@ return {
       vim.o.timeoutlen = 350
     end,
     opts = { }
+  },
+  {
+    'RaafatTurki/hex.nvim',
+    config = function()
+      require('hex').setup()
+    end
   }
 }

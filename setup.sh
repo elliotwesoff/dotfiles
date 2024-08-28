@@ -99,7 +99,8 @@ sudo pacman -S \
   blueman \
   ripgrep \
   fisher \
-  vala
+  vala \
+  openvpn networkmanager-openvpn
 
 # install yay
 sudo pacman -S --needed git base-devel \

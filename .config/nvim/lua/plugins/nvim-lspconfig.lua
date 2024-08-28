@@ -35,7 +35,7 @@ return {
       })
       lspconfig.ccls.setup(lsp_server_opts)
       lspconfig.texlab.setup(lsp_server_opts)
-      lspconfig.solargraph.setup(lsp_server_opts)
+      -- lspconfig.solargraph.setup(lsp_server_opts)
       lspconfig.lua_ls.setup {
         settings = {
           Lua = {
@@ -47,6 +47,7 @@ return {
         capabilities = capabilities,
         on_attach = attach_fn
       }
+      lspconfig.ruby_lsp.setup(lsp_server_opts)
 
       -- require('java').setup()
       -- lspconfig.jdtls.setup(lsp_server_opts)

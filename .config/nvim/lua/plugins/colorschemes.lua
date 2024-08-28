@@ -3,8 +3,8 @@ return {
     'mcchrish/zenbones.nvim',
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      -- local bg_contrast = { lightness = 'bright', darkness = 'stark' }
-      local bg_contrast = {}
+      local bg_contrast = { lightness = 'bright', darkness = 'stark' }
+      -- local bg_contrast = {}
       vim.g.kanagawabones = bg_contrast
       vim.g.zenbones = bg_contrast
       vim.g.vimbones = bg_contrast
