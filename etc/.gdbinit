@@ -1,4 +1,4 @@
-add-auto-load-safe-path /usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.30-gdb.py
+# add-auto-load-safe-path /usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.30-gdb.py
 set debuginfod enabled on
 set startup-quietly on
 set auto-load safe-path .

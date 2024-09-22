@@ -234,6 +234,13 @@ Sorting: `o` (order)
 * `on` - order "natural" (default sorting)
 * `oN` - order reverse "natural"
 
+Filtering* by tag:
+
+* use `"[tag_letter]` to create any kind of tag letter on a file
+* `:mark_tag [tag_letter]` to select all files with that tag
+* `:narrow` to filter out files not selected
+* Ctrl-R to reset the view when done
+
 ### gpg
 
 To encrypt a file (assuming you already have your own pair of GPG

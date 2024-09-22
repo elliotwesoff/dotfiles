@@ -69,12 +69,9 @@ sudo pacman -S \
   pyright \
   libqalculate qalculate-qt \
   font-manager \
-  texlive-core texlab \
-  pinta \
   playerctl \
   unrar \
   qmk \
-  htop \
   btop \
   firefox \
   rustup \
@@ -84,7 +81,6 @@ sudo pacman -S \
   dunst \
   sxiv \
   wmctrl \
-  dunst \
   flameshot \
   jq \
   traceroute \
@@ -100,7 +96,8 @@ sudo pacman -S \
   ripgrep \
   fisher \
   vala \
-  openvpn networkmanager-openvpn
+  openvpn networkmanager-openvpn \
+  torbrowser-launcher nyx
 
 # install yay
 sudo pacman -S --needed git base-devel \
