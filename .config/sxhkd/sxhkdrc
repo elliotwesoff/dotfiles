@@ -9,22 +9,22 @@
 
 # my notes! i can't computer without my notes!
 super + F1
-  kitty nvim -O \
+  exec alacritty --command nvim -O \
           ~/dotfiles/.config/sxhkd/sxhkdrc \
           ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
           ~/Documents/Notes/arch-notes.md
 
 super + {Return,space,z,Backspace,Delete}
-  exec {kitty,eww-toggle,eww-toggle,xset s activate,systemctl suspend}
+  exec {alacritty,eww-toggle,eww-toggle,xset s activate,systemctl suspend}
 
 super + shift + Return
-  exec kitty -c ~/dotfiles/.config/kitty/cozy.conf
+  exec kitty
 
 super + alt + {t,x,p,z,c,d,m,w,b,Tab,Escape,space}
-  exec {thunar,firefox,firefox --private-window,librewolf,nordvpn c,discord,kitty pulsemixer,whatsdesk,kitty btop,kitty btop,sxhkd-reload,rofi -show drun}
+  exec {thunar,firefox,firefox --private-window,librewolf,nordvpn c,discord,alacritty --command pulsemixer,whatsdesk,alacritty --command btop,alacritty --command btop,sxhkd-reload,rofi -show drun}
 
 XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown}
-  exec {rofi -show drun,kitty ranger,xset s activate, blight set +5%, blight set -5%}
+  exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%}
 
 super + alt + {0,1,2}
   switch-mon {off,internal,external}

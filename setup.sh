@@ -43,8 +43,8 @@ sudo pacman -S \
   neovim \
   git \
   kitty \
-  zsh \
-  fish \
+  alacritty \
+  fish fisher \
   sxhkd \
   pulsemixer \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
@@ -94,7 +94,6 @@ sudo pacman -S \
   p7zip \
   blueman \
   ripgrep \
-  fisher \
   vala \
   openvpn networkmanager-openvpn \
   torbrowser-launcher nyx
