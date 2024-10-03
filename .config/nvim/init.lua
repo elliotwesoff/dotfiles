@@ -3,7 +3,8 @@ local settings = require('settings')
 local keymaps = require('keymaps')
 
 -- settings.COLORSCHEME_LIGHT = 'seoulbones'
-settings.COLORSCHEME_LIGHT = 'zenbones'
+-- settings.COLORSCHEME_LIGHT = 'tokyobones'
+settings.COLORSCHEME_LIGHT = 'zenwritten'
 settings.COLORSCHEME_DARK = 'nordbones'
 
 lazy.bootstrap()

@@ -40,7 +40,6 @@ function M.apply_keymaps()
 
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
-  -- vim.keymap.set('n', '`', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', 'qq', ':q<CR>', opts)
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
@@ -73,7 +72,7 @@ function M.apply_keymaps()
   --             to keep things ergonomic and fast, all or most leader
   --             mappings should be on the left side of the keyboard.
   --             lesser used ones and non-dev related keymaps can be on the
-  --             right half of the keyboard.
+  --             right hand side.
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
   vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
   vim.keymap.set('n', '<leader>r', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
@@ -87,12 +86,14 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>a', "<cmd>lua require('aerial').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>h', ":HexToggle<CR>", opts)
+  vim.keymap.set('n', '<leader>q', ":copen<CR>", opts)
   vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
   vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
   vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
 
   -- pipe buffer contents to jq, then replace buffer contents with jq's stdout stream
-  vim.keymap.set('n', '<leader>q', ":%!jq '.'<CR>", opts)
+  -- vim.keymap.set('n', '<leader>q', ":%!jq '.'<CR>", opts) -- TODO: make this a function somewhere else
+
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -163,7 +164,7 @@ function M.apply_lsp_keymaps()
   vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Current error in diag popup'})
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.setloclist, { desc = 'Diagnostics in loclist'})
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
 end
 
 function M.apply_lsp_buffer_keymaps(client, bufnr)

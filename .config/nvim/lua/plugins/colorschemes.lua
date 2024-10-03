@@ -4,7 +4,7 @@ return {
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
       local bg_contrast = {
-        lightness = 'dim', -- bright/default/dim
+        lightness = 'bright', -- bright/default/dim
         darkness = 'stark' -- stark/default/warm
       }
       -- local bg_contrast = {}
