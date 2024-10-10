@@ -1,0 +1,7 @@
+# Services TODO
+
+1. Rename ellimon to elliotd
+2. Create a makefile for this service
+3. Create a PKGBUILD and install the service via pacman
+4. Create a systemd service file, register, and enable the service
+5. Add commands to make, install, and enable the service in setup.sh
