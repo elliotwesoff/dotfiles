@@ -3,17 +3,6 @@
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
 
-if [[ "$(timedatectl show --property=Timezone)" =~ "Europe/Berlin" ]]
-then
-  # munich
-  export LOC_LAT=48.14803580815556
-  export LOC_LONG=11.588875333597782
-else
-  # surf beach
-  export LOC_LAT=34.6831139
-  export LOC_LONG=-120.6232676
-fi
-
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
 # xrdb -merge ~/dotfiles/etc/.Xresources
@@ -23,8 +12,8 @@ fi
 $HOME/dotfiles/scripts/bin/auto_display
 
 # disable energy star savings (screen timeout)
-xset -dpms &
-xset s off &
+xset -dpms
+xset s off
 xset r rate 250 75
 
 env XSECURELOCK_PASSWORD_PROMPT=time_hex \
@@ -40,15 +29,27 @@ env XSECURELOCK_PASSWORD_PROMPT=time_hex \
 xsetroot -cursor_name left_ptr
 
 # start background services
-sxhkd -c $HOME/dotfiles/.config/sxhkd/sxhkdrc &
-redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
+sxhkd -c ~/.config/sxhkd/sxhkdrc &
 dunst &
 eww daemon &
-~/dotfiles/services/bin/ellimon &
+ellid &
+
+if [[ "$(timedatectl show --property=Timezone)" =~ "Europe/Berlin" ]]
+then
+  # munich
+  export LOC_LAT=48.14803580815556
+  export LOC_LONG=11.588875333597782
+else
+  # surf beach
+  export LOC_LAT=34.6831139
+  export LOC_LONG=-120.6232676
+fi
+
+redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 
 # set wallpaper
-$HOME/dotfiles/etc/.fehbg &
+~/dotfiles/etc/.fehbg
 
 # mute volume and set to 0
-amixer -q sset Master mute &
-amixer -q sset Master 0% &
+amixer -q sset Master mute
+amixer -q sset Master 0%

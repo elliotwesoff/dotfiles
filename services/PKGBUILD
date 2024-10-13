@@ -1,0 +1,23 @@
+# Maintainer: elliot wesoff <io (at) ell10t (dot) net>
+pkgname=ellid
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="a daemon for system monitoring and notification purposes."
+arch=('x86_64')
+license=('GPL')
+makedepends=('gcc')
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+PKGDEST=/dev/shm/packages
+
+build() {
+  mkdir -p $PKGDEST
+	cd "$pkgname-$pkgver"
+	make
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+  install -Dm755 ellid "$pkgdir/usr/bin/ellid"
+}
