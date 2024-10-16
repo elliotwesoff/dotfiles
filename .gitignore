@@ -34,6 +34,8 @@ __pycache__
 *.tmp
 *.history
 *.*vim
+*.tar.zst
+*.tar.gz
 
 .config/nvim/plugin/packer_compiled.lua
 

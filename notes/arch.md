@@ -112,6 +112,13 @@ sudo mount /dev/partition /run/media/elliot/[mount_point] --mkdir -o umask=0
 Use the `blueman` package. Start the applet with `blueman-applet`
 before running `blueman-manager`.
 
+### Shell hacks
+
+You can concatenate multiple files together in memory and
+pipe/redirect them to another program via stdin:
+
+`some_program < <(cat file1 file2 file3)`
+
 ## Applications
 
 ### (n)vim
