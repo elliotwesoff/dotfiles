@@ -7,17 +7,32 @@ ln -sfv ~/dotfiles/.config ~/.config
 ln -sfv ~/dotfiles/.screenlayout ~/.screenlayout
 
 # files in etc
-for item in .fehbg .gdbinit .gitconfig .mime.types \
-            .tool-versions .xinitrc
+for item in \
+  .Xresources \
+  .fehbg \
+  .gdbinit \
+  .gitconfig \
+  .mime.types \
+  .tool-versions \
+  .xinitrc
 do
+  # back up old files, if any exist
   mv -v ~/$item ~/$item.old 2> /dev/null
-  ln -sfv ~/dotfiles/etc/$item ~/$item
+
+  # symlink home folder level dots to home
+  ln -sfv ~/dotfiles/$item ~/$item
 done
 
-# symlink scripts that need to be in PATH
-for item in bspeww elliot eww-toggle hostname \
-            switch-mon sxhkd-reload take-snapshots \
-            theme tp dpi
+# symlink local scripts that need to be in PATH
+for item in bspeww \
+  elliot \
+  eww-toggle hostname \
+  switch-mon \
+  sxhkd-reload \
+  take-snapshots \
+  theme \
+  tp  \
+  dpi
 do
   ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
 done

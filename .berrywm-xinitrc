@@ -2,5 +2,5 @@
 # .xinitrc
 
 sxhkd -c ~/dotfiles/.config/sxhkd/berrywm-sxhkdrc &
-source ~/dotfiles/etc/.common-xinitrc
+source ~/dotfiles/.common-xinitrc
 exec berry -c ~/dotfiles/.config/berry/autostart

@@ -1,0 +1,14 @@
+#!/bin/sh
+# .bspwm-xinitrc
+
+source ~/dotfiles/.common-xinitrc
+
+sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
+dunst &
+eww daemon &
+bspeww &
+picom &
+ellid &
+elliot setvol &
+
+exec bspwm
