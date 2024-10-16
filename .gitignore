@@ -23,6 +23,7 @@ __pycache__
 !.config/alacritty
 !.config/eww
 !.config/picom
+!.config/systemd
 !.local/bin
 
 !.config/fish/config.fish
