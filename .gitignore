@@ -52,8 +52,6 @@ __pycache__
 
 .config/eww/images/seo.jpg
 
-services/bin/*
-!services/bin/.keep
-
 scripts/bin/*
 !scripts/bin/.keep
+
