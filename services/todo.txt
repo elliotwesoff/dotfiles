@@ -1,0 +1,4 @@
+# Services TODO
+
+## ellid
+1. Add commands to install enable the service in setup.sh

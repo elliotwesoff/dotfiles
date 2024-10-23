@@ -25,5 +25,10 @@ compress: clean
 	cp ellid.c $(build_dir)
 	cp ellid_bat.c $(build_dir)
 	cp Makefile $(build_dir)
-	tar czvf $(build_dir).tar.gz $(build_dir)/ellid.c $(build_dir)/ellid_bat.c $(build_dir)/Makefile
+	cp ellid.service $(build_dir)
+	tar czvf $(build_dir).tar.gz \
+		$(build_dir)/ellid.c \
+		$(build_dir)/ellid_bat.c \
+		$(build_dir)/Makefile \
+		$(build_dir)/ellid.service
 

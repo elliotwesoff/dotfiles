@@ -1,0 +1,9 @@
+[Unit]
+Description=A hand-rolled general system monitoring daemon
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/ellid
+
+[Install]
+WantedBy=default.target

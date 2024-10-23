@@ -1,7 +1,7 @@
 # Maintainer: elliot wesoff <io (at) ell10t (dot) net>
 pkgname=ellid
 pkgver=0.1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="a daemon for system monitoring and notification purposes."
 arch=('x86_64')
 license=('GPL')
@@ -22,4 +22,8 @@ package() {
 	cd "$pkgname-$pkgver"
   install -Dm755 ellid "$pkgdir/usr/bin/ellid"
   install -Dm755 ellid_bat "$pkgdir/usr/bin/ellid_bat"
+
+  # TODO: probably add this to post_install() in a .install script
+  cp -fv ellid.service "$HOME/.config/systemd/user/ellid.service"
+  echo "YO! restart your ellid service with 'systemctl --user restart ellid.service'"
 }
