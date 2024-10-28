@@ -17,6 +17,16 @@ fish_add_path $ANDROID_HOME/platform-tools
 
 set --universal nvm_default_version 18.19.1
 
+if test (timedatectl show --property=Timezone) = "Timezone=Europe/Berlin"
+    # munich
+    set -x LOC_LAT 48.14803580815556
+    set -x LOC_LONG 11.588875333597782
+else
+    # surf beach
+    set -x LOC_LAT 34.6831139
+    set -x LOC_LONG -120.6232676
+end
+
 abbr --add x 'startx'
 abbr --add r 'ranger'
 abbr --add z 'zathura'

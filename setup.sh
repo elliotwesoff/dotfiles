@@ -26,15 +26,22 @@ done
 # symlink local scripts that need to be in PATH
 for item in bspeww \
   elliot \
-  eww-toggle hostname \
+  eww-toggle \
+  hostname \
   switch-mon \
   sxhkd-reload \
   take-snapshots \
   theme \
-  tp  \
+  tp \
   dpi
 do
   ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
+done
+
+# install udev rules
+for item in $(ls ~/dotfiles/udev/*.rules)
+do
+  sudo ln -sfv ~/dotfiles/udev/$item /etc/udev/rules.d/$item
 done
 
 # install all the things!

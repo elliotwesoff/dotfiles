@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # .xinitrc
 
 export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
@@ -31,21 +31,10 @@ xsetroot -cursor_name left_ptr
 # start background services
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
-if [[ "$(timedatectl show --property=Timezone)" =~ "Europe/Berlin" ]]
-then
-  # munich
-  export LOC_LAT=48.14803580815556
-  export LOC_LONG=11.588875333597782
-else
-  # surf beach
-  export LOC_LAT=34.6831139
-  export LOC_LONG=-120.6232676
-fi
-
 redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 
 # set wallpaper
-~/dotfiles/etc/.fehbg
+~/.fehbg &
 
 # mute volume and set to 0
 amixer -q sset Master mute
