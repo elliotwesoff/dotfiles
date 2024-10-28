@@ -1,4 +1,4 @@
-VERSION := 0.1.1
+VERSION := 0.1.2
 
 CC = gcc
 CFLAGS = -Wall -g
@@ -14,13 +14,21 @@ ellid_bat: ellid_bat.c
 	$(CC) $(CFLAGS) -o ellid_bat ellid_bat.c -ludev
 
 clean:
-	rm -rf ellid $(build_dir) $(build_dir).tar.gz src pkg *.o
+	rm -rf \
+		ellid \
+		ellid_bat \
+		src \
+		pkg \
+		*.o \
+		*.out \
+		$(build_dir) \
+		$(build_dir).tar.gz
 
 install:
 	install -Dm755 ellid /usr/bin/ellid
 	install -Dm755 ellid_bat /usr/bin/ellid_bat
 
-compress: clean
+prepare: clean
 	mkdir $(build_dir)
 	cp ellid.c $(build_dir)
 	cp ellid_bat.c $(build_dir)

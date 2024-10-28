@@ -6,14 +6,14 @@
 
 int main(int argc, char* argv[]) {
 
-  printf("***** ellid - v.0.1.1 *****\n");
+  printf("***** ellid - v.0.1.2 *****\n");
 
   pid_t ellid_bat_pid = fork();
 
   if (ellid_bat_pid < 0) {
     printf("fork() failed for ellid_bat\n");
   } else if (ellid_bat_pid == 0) {
-    execl("/usr/bin/ellid_bat", "ellid_bat", (char *)NULL);
+    execl("/usr/local/bin/ellid_bat", "ellid_bat", (char *)NULL);
   } else {
     int ellid_bat_status;
     printf("waiting for ellid_bat to exit...\n");
