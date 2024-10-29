@@ -24,10 +24,6 @@ clean:
 		$(build_dir) \
 		$(build_dir).tar.gz
 
-install:
-	install -Dm755 ellid /usr/bin/ellid
-	install -Dm755 ellid_bat /usr/bin/ellid_bat
-
 prepare: clean
 	mkdir $(build_dir)
 	cp ellid.c $(build_dir)

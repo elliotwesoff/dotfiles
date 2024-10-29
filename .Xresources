@@ -4,9 +4,10 @@
 ! this file should be auto-symlinked to
 ! ~/.Xresources via .xinitrc
 
-#include "/home/elliot/code/Xresources-themes/xcolors-nancy.Xresources"
+! #include "/home/elliot/code/Xresources-themes/xcolors-nancy.Xresources"
 
-Xcursor.size: 22
+Xft.dpi: 96
+Xcursor.size: 12
 
 Sxiv.background: #000000
 Sxiv.foreground: #FFFFFF

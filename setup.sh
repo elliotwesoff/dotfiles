@@ -4,7 +4,7 @@
 mkdir -p ~/code
 mkdir -p ~/.local/{bin,share,state}
 ln -sfv ~/dotfiles/.config ~/.config
-ln -sfv ~/dotfiles/.screenlayout ~/.screenlayout
+ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
 
 # files in etc
 for item in \
