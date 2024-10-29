@@ -55,3 +55,4 @@ __pycache__
 scripts/bin/*
 !scripts/bin/.keep
 
+build
