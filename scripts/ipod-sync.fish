@@ -26,6 +26,7 @@ if ! fish_is_root_user
 end
 
 set mp3_dir "/shared/Music/mp3"
+set flac_dir "/shared/Music/flac"
 
 set mp3_folders \
   "DIIV" \
@@ -234,8 +235,81 @@ set mp3_folders \
   "Yes" \
   "You Slut!"
 
+set flac_folders \
+  '・・・・・・・・・' \
+  '100 gecs' \
+  'a sunny day in glasgow' \
+  'broken social scene'
+  'caspian' \
+  'Co)))ltrane - Co)))ltrane' \
+  'covet' \
+  'Dead Sea' \
+  'deafheaven' \
+  "death's dynamic shroud" \
+  'della zyr' \
+  'diiv' \
+  'elliott smith' \
+  'enumclaw' \
+  'envy' \
+  'Five Pebbles' \
+  'forsaken autumn' \
+  'godspeed you! black emperor' \
+  'iron and wine' \
+  'isis' \
+  'jambinai' \
+  'jesu' \
+  'john coltrane' \
+  'kewlington' \
+  'king crimson' \
+  'LEENALCHI' \
+  'mates of state' \
+  'minus the bear' \
+  'moon in june' \
+  'moving mountains' \
+  'mum' \
+  'my bloody valentine' \
+  'my dead girlfriend' \
+  'night school' \
+  'omega massif' \
+  'Paramnesia' \
+  'parannoul' \
+  'pasteboard' \
+  'pinocchiop' \
+  'red sparowes' \
+  'rumi shishido' \
+  'slow pulp' \
+  'soft blue shimmer' \
+  'streetlight manifesto' \
+  'suffocate for fuck sake' \
+  'sumac' \
+  'the end of the ocean' \
+  'uchu nekoko' \
+  'vnv nation' \
+  'yuragi'
 
+echo "synchronizing mp3s"
 
 for dir in $mp3_folders
-  rsync -rv "$mp3_dir/$dir" /mnt/ipod/music/mp3
+  echo rsync -rv --dry-run "$mp3_dir/$dir" /mnt/ipod/music/mp3
 end
+
+echo => mp3 synchronization complete.
+
+# disabling this idiocy because it's a stupid ass idea
+# echo "synchronizing flacs (as mp3s)"
+
+# for dir in $flac_folders
+#   set tmpdir /dev/shm/flac/$dir 
+#
+#   for album in (ls $flac_dir/$dir)
+#     mkdir -pv $tmpdir/$album
+#
+#     for song in (ls $flac_dir/$dir/$album)
+#       set outfile (basename $song .flac).mp3
+#       ffmpeg -y -i "$flac_dir/$dir/$album/$song" "$tmpdir/$album/$outfile"
+#     end
+#   end
+#
+#   rsync -rv --dry-run "$tmpdir" /mnt/ipod/music/mp3
+#   rm -rfv $tmpdir
+# end
