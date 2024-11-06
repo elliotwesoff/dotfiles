@@ -3,11 +3,12 @@
 
 source ~/dotfiles/.common-xinitrc
 
-sxhkd -c $HOME/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
+sxhkd -c ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
 eww daemon &
 bspeww &
 picom &
 elliot setvol &
+nohup unclutter -idle 2 &
 
 exec bspwm

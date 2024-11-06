@@ -3,7 +3,7 @@ Description=A hand-rolled general system monitoring daemon
 
 [Service]
 Type=idle
-ExecStart=/usr/bin/ellid
+ExecStart=/usr/local/bin/ellid
 
 [Install]
 WantedBy=default.target

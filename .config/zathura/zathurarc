@@ -22,4 +22,6 @@ set statusbar-bg "#141414"
 set statusbar-fg "#D6D6D6"
 set statusbar-h-padding 20
 set statusbar-v-padding 20
-set font "monospace normal 12"
+set font "Noto Sans Mono normal 10"
+set pages-per-row 2
+set first-page-column 1:1:1:1

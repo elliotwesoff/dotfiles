@@ -24,11 +24,11 @@ bspc config single_monocle       true
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
-
 bspc config automatic_scheme longest_side
 
+
 # RULES
-#
+
 # a quick hint for finding window names:
 # https://www.reddit.com/r/bspwm/comments/fqpvx0/comment/flrof4s
 

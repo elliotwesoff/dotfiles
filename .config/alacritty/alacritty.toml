@@ -44,7 +44,7 @@ mouse = "Left"
 action = "Paste"
 mouse = "Right"
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 
 [window]

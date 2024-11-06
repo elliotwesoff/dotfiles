@@ -42,6 +42,7 @@ abbr --add umsafe 'fusermount -u /dev/shm/Safe.mount && rmdir /dev/shm/Safe.moun
 abbr --add fishc 'nvim ~/dotfiles/.config/fish/config.fish'
 abbr --add nvimc 'cd ~/dotfiles/.config/nvim && nvim init.lua && cd ~'
 abbr --add kittyc 'nvim ~/dotfiles/.config/kitty/kitty.conf'
+abbr --add alacrittyc 'nvim ~/dotfiles/.config/alacritty/alacritty.toml'
 abbr --add diary 'nvim /dev/shm/Safe.mount/etc/diaries/2024/diary-2024.md'
 abbr --add bsp 'XINITRC=~/dotfiles/.bspwm-xinitrc startx'
 abbr --add berrywm 'XINITRC=~/dotfiles/.berrywm-xinitrc startx'
