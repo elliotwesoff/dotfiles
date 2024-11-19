@@ -3,4 +3,4 @@
 # bspwmrc-dark
 
 bspc config focused_border_color "#F7F7F7"
-bspc config active_border_color  "#FFFFFF"
+# bspc config active_border_color  "#FFFFFF"

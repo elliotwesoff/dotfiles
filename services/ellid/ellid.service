@@ -4,6 +4,8 @@ Description=A hand-rolled general system monitoring daemon
 [Service]
 Type=idle
 ExecStart=/usr/local/bin/ellid
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=default.target

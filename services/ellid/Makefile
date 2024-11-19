@@ -1,4 +1,4 @@
-VERSION := 0.1.2
+VERSION := 0.1.3
 
 CC = gcc
 CFLAGS = -Wall -g
@@ -36,3 +36,5 @@ prepare: clean
 		$(build_dir)/Makefile \
 		$(build_dir)/ellid.service
 
+install:
+	makepkg -csi

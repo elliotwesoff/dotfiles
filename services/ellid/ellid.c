@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
 
-  printf("***** ellid - v.0.1.2 *****\n");
+  printf("***** ellid - v.0.1.3 *****\n");
 
   pid_t ellid_bat_pid = fork();
 

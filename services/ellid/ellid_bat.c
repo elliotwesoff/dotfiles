@@ -36,6 +36,10 @@ static void check_bat(const char* bat) {
   // 4. if the battery charges past the threshold, reset to
   //    initial state to start the process over if it again
   //    falls below the threshold.
+  
+  if (bat == NULL) {
+    return;
+  }
 
   int bat_i = atoi(bat);
 

@@ -9,6 +9,6 @@ eww daemon &
 bspeww &
 picom &
 elliot setvol &
-nohup unclutter -idle 2 &
+nohup unclutter -idle 2 > /dev/shm/nohup.out &
 
 exec bspwm

@@ -1,7 +1,7 @@
 # Maintainer: elliot wesoff <io (at) ell10t (dot) net>
 pkgname=ellid
-pkgver=0.1.2
-pkgrel=1
+pkgver=0.1.3
+pkgrel=2
 pkgdesc="a daemon for system monitoring and notification purposes."
 arch=('x86_64')
 license=('GPL')

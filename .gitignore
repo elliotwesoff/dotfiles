@@ -56,3 +56,4 @@ scripts/bin/*
 !scripts/bin/.keep
 
 build
+coredumps
