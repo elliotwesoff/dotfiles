@@ -1,6 +1,6 @@
 # Maintainer: elliot wesoff <io (at) ell10t (dot) net>
 pkgname=ellid
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=2
 pkgdesc="a daemon for system monitoring and notification purposes."
 arch=('x86_64')
@@ -21,7 +21,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
   install -Dm755 ellid "$pkgdir/usr/local/bin/ellid"
-  install -Dm755 ellid_bat "$pkgdir/usr/local/bin/ellid_bat"
 
   # TODO: probably add this to post_install() in a .install script
   cp -fv ellid.service "$HOME/.config/systemd/user/ellid.service"

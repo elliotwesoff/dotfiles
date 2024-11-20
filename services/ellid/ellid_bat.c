@@ -9,6 +9,8 @@
 #include <string.h>
 #include <libudev.h>
 
+#include "ellid_bat.h"
+
 
 static const int alert_lvl = 20;
 static bool initial_alert = false;
@@ -64,7 +66,7 @@ static void check_bat(const char* bat) {
   last_bat_i = bat_i;
 }
 
-int main() {
+void* ellid_bat_run() {
   printf("***** ellid - battery monitor startup *****\n");
 
   struct udev *udev;
@@ -108,6 +110,8 @@ int main() {
   }
 
   udev_unref(udev);
+
+  return NULL;
 }
 
 #endif
