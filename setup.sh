@@ -3,8 +3,8 @@
 # setup.sh
 #
 # This script should be ran as the *first* thing you do after installing a
-# fresh copy of arch and logging into the tty. Don't do anything else
-# beforehand!
+# fresh copy of arch and logging into the tty as your non-root user. Don't do
+# anything else beforehand!
 
 # setup dots
 mkdir -p ~/code
@@ -37,31 +37,24 @@ done
 # install all the things!
 sudo pacman -S \
   base-devel \
-  linux-lts linux-lts-headers \
+  linux linux-lts linux-lts-headers \
   xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
+  mesa mesa-utils vulkan-intel \
+  pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pipewire-docs wireplumber wireplumber-docs pulsemixer \
+  networkmanager \
+  openvpn networkmanager-openvpn \
   libnotify \
   xdg-utils \
-  mesa mesa-utils \
-  pipewire pipewire-docs \
-  wireplumber wireplumber-docs \
-  alsa-utils alsa-firmware \
-  pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pavucontrol sof-firmware \
   bluez bluez-utils \
   cups cups-pdf \
   noto-fonts noto-fonts-emoji ttf-hack-nerd \
-  bspwm \
-  vulkan-intel \
-  vim \
-  neovim \
+  bspwm sxhkd \
+  vim neovim \
   git \
-  kitty \
-  alacritty \
+  kitty alacritty \
   fish fisher \
-  sxhkd \
-  pulsemixer \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   pdftk \
-  tmux \
   rofi \
   feh \
   arandr \
@@ -72,7 +65,6 @@ sudo pacman -S \
   cmus \
   vlc \
   baobab \
-  ncdu \
   ffmpeg \
   man-db \
   gdb \
@@ -82,7 +74,6 @@ sudo pacman -S \
   libqalculate qalculate-qt \
   font-manager \
   playerctl \
-  unrar \
   qmk \
   btop \
   firefox \
@@ -98,16 +89,12 @@ sudo pacman -S \
   traceroute \
   whois \
   bind \
-  usbutils \
-  usbview \
-  xsecurelock \
-  xss-lock \
-  xscreensaver \
+  usbutils usbview \
+  xsecurelock xss-lock xscreensaver \
   p7zip \
   blueman \
   ripgrep \
   vala \
-  openvpn networkmanager-openvpn \
   torbrowser-launcher nyx \
   unclutter
 
@@ -136,3 +123,6 @@ yay -S \
   intel-opencl-runtime \
   gtk-layer-shell-git \
   eww-x11
+
+# enable services
+sudo systemctl enable NetworkManager.service
