@@ -1,4 +1,4 @@
-VERSION := 0.0.2
+VERSION := 0.0.3
 
 pkg_name := auto_display-$(VERSION)
 pkg_dir := build/$(pkg_name)

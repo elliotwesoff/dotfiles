@@ -8,7 +8,6 @@
 #
 # example edid: 00 ff ff ff ff ff ff 00 10 ac 32 a1 4c 31 47 30
 
-# FRAMEWORK = "09e55f09"
 FRAMEWORK = "09e5ca0b"
 SCREENLAYOUT_DIR = "/usr/local/src/screenlayouts"
 
@@ -32,7 +31,8 @@ DISPLAYS = [
   Display.new(FRAMEWORK, "#{SCREENLAYOUT_DIR}/framework-int.sh", "framework internal"),
   Display.new("06b30427", "#{SCREENLAYOUT_DIR}/asus-27in.sh", "asus VG27AQL1A"), 
   Display.new("10ac32a1", "#{SCREENLAYOUT_DIR}/unlv-dell.sh", "dell widescreen in TBE B"),
-  Display.new("09d1ed78", "#{SCREENLAYOUT_DIR}/seo-benq.sh", "seo's crappy BenQ monitor")
+  Display.new("09d1ed78", "#{SCREENLAYOUT_DIR}/seo-benq.sh", "seo's crappy BenQ monitor"),
+  Display.new("63181596", "#{SCREENLAYOUT_DIR}/tcl-55in.sh", "big ass tv dude")
 ]
 
 EXTERNAL_AUTO = Display.new(nil, "#{SCREENLAYOUT_DIR}/external-auto.sh", "external (xrandr --auto)")

@@ -1,7 +1,7 @@
 # Maintainer: elliot wesoff <io (at) ell10t (dot) net>
 pkgname=auto_display
-pkgver=0.0.2
-pkgrel=5
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="automatically switch display output to known/preconfigured screen layouts."
 arch=('x86_64')
 license=('GPL')

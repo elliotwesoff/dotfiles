@@ -11,6 +11,8 @@ set record full insn-number-max unlimited
 set tui border-kind acs
 set tui border-mode bold
 set disassembly intel
+# set scheduler-locking on
+
 
 tui new-layout nice {-horizontal asm 1 src 1 regs 1} 2 status 0 cmd 1
 tui new-layout vnice {-horizontal src 1 regs 1 cmd 1} 1 status 0
