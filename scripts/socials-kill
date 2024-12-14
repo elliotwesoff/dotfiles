@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+#
+# socials-kill.fish
+
+pkill --echo --ignore-case Discord
+pkill --echo --ignore-case --signal SIGKILL WhatsDesk
+
+echo waiting for discord and whatsdesk to terminate
+
+while pgrep -i whatsdesk; or pgrep -i discord
+  echo waiting...
+  sleep 1
+end
+
+notify-send "kill" "whatsdesk and discord straight up got moidered"
