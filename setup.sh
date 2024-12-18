@@ -13,7 +13,7 @@ ln -sfv ~/dotfiles/.config ~/.config
 ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
 
 # files in etc
-for item in .Xresources .fehbg .gdbinit .gitconfig .mime.types .tool-versions .xinitrc
+for item in .Xresources .fehbg .gitconfig .mime.types .tool-versions .xinitrc
 do
   # back up old files, if any exist
   mv -v ~/$item ~/$item.old 2> /dev/null

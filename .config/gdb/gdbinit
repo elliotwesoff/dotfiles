@@ -1,8 +1,10 @@
-# add-auto-load-safe-path /usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.30-gdb.py
+set auto-load safe-path .
+set auto-load safe-path /
+set auto-load local-gdbinit on
+# add-auto-load-safe-path /home/elliot/dotfiles
+
 set debuginfod enabled on
 set startup-quietly on
-set auto-load safe-path .
-set auto-load local-gdbinit on
 set logging enabled on
 set disable-randomization on
 set print inferior-events on
@@ -98,3 +100,4 @@ document start_draw_sideways_btree
   start_draw_sideways_btree ROOT_POINTER_NAME
   Draw a sideways representation of the binary tree pointed to by ROOT_POINTER_NAME 
 end
+

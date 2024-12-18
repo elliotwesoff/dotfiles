@@ -29,6 +29,9 @@ __pycache__
 !.config/fish/config.fish
 !.config/fish/fish_plugins
 
+!.config/gdb
+.config/gdb/*.txt
+
 *.log
 *.uuid
 *.lock
