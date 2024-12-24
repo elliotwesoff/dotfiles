@@ -1,15 +1,17 @@
 return {
   {
     'neovim/nvim-lspconfig',
+    dependencies = { 'saghen/blink.cmp' },
     config = function()
       local keymaps = require('keymaps')
       local lspconfig = require('lspconfig')
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local lsp_flags = { debounce_text_changes = 0 }
+      -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local lsp_flags = {}
 
       local attach_fn = function (client, bufnr)
         keymaps.apply_lsp_buffer_keymaps(client, bufnr)
-        require'lsp_signature'.on_attach(client, bufnr)
+        -- require('lsp_signature').on_attach(client, bufnr)
       end
 
       local lsp_server_opts = { on_attach = attach_fn, flags = lsp_flags, capabilities = capabilities }
