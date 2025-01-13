@@ -32,7 +32,8 @@ DISPLAYS = [
   Display.new("06b30427", "#{SCREENLAYOUT_DIR}/asus-27in.sh", "asus VG27AQL1A"), 
   Display.new("10ac32a1", "#{SCREENLAYOUT_DIR}/unlv-dell.sh", "dell widescreen in TBE B"),
   Display.new("09d1ed78", "#{SCREENLAYOUT_DIR}/seo-benq.sh", "seo's crappy BenQ monitor"),
-  Display.new("63181596", "#{SCREENLAYOUT_DIR}/tcl-55in.sh", "big ass tv dude")
+  Display.new("63181596", "#{SCREENLAYOUT_DIR}/tcl-55in.sh", "big ass tv dude"),
+  Display.new("06b32227", "#{SCREENLAYOUT_DIR}/seo-asus-vg27.sh", "seo's fancy new monitor")
 ]
 
 EXTERNAL_AUTO = Display.new(nil, "#{SCREENLAYOUT_DIR}/external-auto.sh", "external (xrandr --auto)")
@@ -46,7 +47,7 @@ end
 # begin!
 #
 
-puts "***** auto_display.rb - v0.0.3 *****"
+puts "***** auto_display.rb - v0.0.4 *****"
 
 xrandr_prop = `xrandr --prop`             # 1. get current connections from xrandr
                 .split("\n")              # 2. process linewise

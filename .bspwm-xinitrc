@@ -8,6 +8,7 @@ dunst &
 eww daemon &
 bspeww &
 picom &
+kando &
 elliot setvol &
 nohup unclutter -idle 2 > /dev/shm/nohup.out &
 

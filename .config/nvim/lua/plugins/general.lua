@@ -81,6 +81,9 @@ return {
             i = {
               ["<C-h>"] = "which_key"
             }
+          },
+          file_ignore_patterns = {
+            "tmp"
           }
         },
         pickers = {},
@@ -185,8 +188,36 @@ return {
   },
   {
     'RaafatTurki/hex.nvim',
+    lazy = true,
     config = function()
       require('hex').setup()
+    end
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    },
+    config = function()
+      require('neo-tree').setup({
+        sources = {
+        "filesystem",  -- You can keep filesystem as a source if needed
+        "git_status",  -- You can include git status as a source if desired
+        "buffers",     -- Buffer source for open buffers
+        "document_symbols",
+        }
+      })
+    end
+  },
+  {
+    "williamboman/mason.nvim",
+    config = function ()
+      require('mason').setup()
     end
   }
 }

@@ -26,6 +26,8 @@ function M.apply_keymaps()
 
   -- dev mappings
   vim.keymap.set('n', 'vx', ':lua require("explorer").select()<CR>')
+  vim.keymap.set('n', '<leader>w', ':write<CR>:source<CR>')
+  -- vim.keymap.set('n', '<leader>m', ':lua require("mob").main()<cr>')
 
   -- insert mode mappings
 
@@ -40,6 +42,7 @@ function M.apply_keymaps()
 
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
+  vim.keymap.set('n', '`', "<Cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
@@ -76,7 +79,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
   vim.keymap.set('n', '<leader>r', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-  vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
+  -- vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
   vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
@@ -93,7 +96,6 @@ function M.apply_keymaps()
 
   -- pipe buffer contents to jq, then replace buffer contents with jq's stdout stream
   -- vim.keymap.set('n', '<leader>q', ":%!jq '.'<CR>", opts) -- TODO: make this a function somewhere else
-
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -162,9 +164,9 @@ end
 function M.apply_lsp_keymaps()
   local keymap_opts = { noremap = true, silent = true }
   vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Current error in diag popup'})
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
 end
 
 function M.apply_lsp_buffer_keymaps(client, bufnr)
@@ -173,9 +175,10 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '`', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<leader>~', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<leader><enter>', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<C-.>', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>.c', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>.f', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<leader>.d', vim.lsp.buf.definition, bufopts)

@@ -69,7 +69,6 @@ sudo pacman -S \
   man-db \
   gdb \
   ccls \
-  lua-language-server \
   pyright \
   libqalculate qalculate-qt \
   font-manager \
@@ -91,7 +90,7 @@ sudo pacman -S \
   bind \
   usbutils usbview \
   xsecurelock xss-lock xscreensaver \
-  p7zip \
+  7zip \
   blueman \
   ripgrep \
   vala \
