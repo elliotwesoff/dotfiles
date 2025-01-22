@@ -9,7 +9,7 @@ settings.COLORSCHEME_DARK = 'nordbones'
 
 -- vim.cmd.colorscheme('habamax')
 
-vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+-- vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
 
 lazy.bootstrap()
 lazy.init()
