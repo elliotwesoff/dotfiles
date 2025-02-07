@@ -12,8 +12,8 @@ fish_add_path ~/.local/bin
 
 # android studio shiz
 set --export ANDROID_HOME /home/elliot/.android/SDK
-fish_add_path $ANDROID_HOME/emulator
-fish_add_path $ANDROID_HOME/platform-tools
+# fish_add_path $ANDROID_HOME/emulator
+# fish_add_path $ANDROID_HOME/platform-tools
 
 set --universal nvm_default_version 18.19.1
 
@@ -49,6 +49,21 @@ abbr --add berrywm 'XINITRC=~/dotfiles/.berrywm-xinitrc startx'
 abbr --add plasmax 'XINITRC=~/dotfiles/.plasma-xinitrc startx'
 abbr --add plasmaw '/usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland'
 abbr --add cosmic 'start-cosmic'
+abbr --add yolo 'git push heroku main'
 
 source ~/.secrets
-source /opt/asdf-vm/asdf.fish
+# source /opt/asdf-vm/asdf.fish
+
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
