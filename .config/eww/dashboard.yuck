@@ -3,7 +3,7 @@
   :geometry (geometry :anchor "center")
   :wm-ignore true
   :windowtype "dock"
-  ;; :stacking "bg"
+
   ;; main container - contains two vertical boxes:
   ;; the various widgets above, bspeww below
   (box
@@ -36,5 +36,5 @@
 
     ;; bspeww container
     (box
-      (box ;; nested boxes for easy css. fix later! TODO
-        (bspwm-widget))))))
+      :class "bspeww-container"
+      (bspwm-widget)))))

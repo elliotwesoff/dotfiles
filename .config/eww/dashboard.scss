@@ -12,7 +12,7 @@ window.dashboard {
   border-radius: $border-radius;
 
   & > box.dashboard-container {
-    background: rgba(0, 0, 0, 0);
+    /* background: rgba(0, 0, 0, 0); */
     border: $border-width solid red;
     margin: 0.3em;
 
@@ -46,18 +46,23 @@ window.dashboard {
     }
   }
 
-  .bspwm-widget {
-    .bspwm-win-state {
-      label.desktop-name {
-        margin: 0.5em;
-      }
-      box {
-        padding: 0.5em;
-        &.selected {
-          border: 1px solid #FFFFFF;
+  box.bspeww-container {
+    .bspwm-widget {
+      rgba(0,0,0,1.0);
+
+      .bspwm-win-state {
+        margin: 1em;
+        label.desktop-name {
+          margin: 0.5em;
         }
-        label.desktop-name, label.bspwm-win-state-windows {
-          border: 1px solid #000000;
+        box {
+          padding: 0.5em;
+          &.selected {
+            border: 1px solid #FFFFFF;
+          }
+          label.desktop-name, label.bspwm-win-state-windows {
+            border: 1px solid #000000;
+          }
         }
       }
     }
