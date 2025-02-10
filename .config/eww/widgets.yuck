@@ -82,28 +82,40 @@
 (defwidget bspwm-widget []
   (box
     :class "bspwm-widget"
-    (box :orientation "v"
-      (label :text "bspwm")
-      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}")
-      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}")
-      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}")
-      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: ''}")
-      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: ''}")
-      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: ''}")
+    (box
+      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}"))
+    (box
+      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}"))
+    (box
+      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}"))
+    (box
+      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: ''}"))
+    (box
+      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: ''}"))
+    (box
+      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: ''}"))
+    (box
       (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: ''}"))))
 
 (defwidget bspwm-win-state [name windows]
   (box
     :space-evenly false
     :hexpand false
+    :orientation "v"
     :class "bspwm-win-state ${name == bspwm_selected ? 'selected' : ''}"
-    (label :halign "start"
-           :class "desktop-name ${name == bspwm_selected ? 'selected' : ''}"
+    (label :halign "center"
+           :class "desktop-name"
            :text name)
-    (label :halign "end"
-           :hexpand true
-           :class "bspwm-win-state-windows ${name == bspwm_selected ? 'selected' : ''}"
-           :text "${windows}")))
+    (box
+      :space-evenly false
+      :orientation "v"
+      :vexpand true
+      :class "${name == bspwm_selected ? 'selected' : ''}"
+      (for win in windows
+        (label :halign "center" :valign "center"
+               :hexpand true
+               :class "bspwm-win-state-windows ${name == bspwm_selected ? 'selected' : ''}"
+               :text win)))))
 
 (defwidget spacer []
   (box))

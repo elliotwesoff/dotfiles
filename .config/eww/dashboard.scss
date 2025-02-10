@@ -48,13 +48,17 @@ window.dashboard {
 
   .bspwm-widget {
     .bspwm-win-state {
-      border: 1px solid #000000;
-      &.selected {
-        border: 1px solid #FFFFFF;
+      label.desktop-name {
+        margin: 0.5em;
       }
-      label.desktop-name, label.bspwm-win-state-windows {
-        padding: 0 0.5em;
-        border: 1px solid #000000;
+      box {
+        padding: 0.5em;
+        &.selected {
+          border: 1px solid #FFFFFF;
+        }
+        label.desktop-name, label.bspwm-win-state-windows {
+          border: 1px solid #000000;
+        }
       }
     }
   }

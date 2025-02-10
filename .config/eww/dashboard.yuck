@@ -34,17 +34,7 @@
             (lock)
             (sleep))))
 
-      ;; lower widget container
-      (box
-        :orientation "h"
-        (box
-          (wifistack)
-          (lostack)
-          (vpnstack))
-        (applauncher)
-        (peripheralsstack)))
-
     ;; bspeww container
     (box
       (box ;; nested boxes for easy css. fix later! TODO
-        (bspwm-widget)))))
+        (bspwm-widget))))))
