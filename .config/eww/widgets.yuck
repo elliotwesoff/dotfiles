@@ -83,19 +83,19 @@
   (box
     :class "bspwm-widget"
     (box
-      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: ''}"))
+      (bspwm-win-state :name "I" :windows "${bspwm_data[0] ?: []}"))
     (box
-      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: ''}"))
+      (bspwm-win-state :name "II" :windows "${bspwm_data[1] ?: []}"))
     (box
-      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: ''}"))
+      (bspwm-win-state :name "III" :windows "${bspwm_data[2] ?: []}"))
     (box
-      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: ''}"))
+      (bspwm-win-state :name "IV" :windows "${bspwm_data[3] ?: []}"))
     (box
-      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: ''}"))
+      (bspwm-win-state :name "V" :windows "${bspwm_data[4] ?: []}"))
     (box
-      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: ''}"))
+      (bspwm-win-state :name "VI" :windows "${bspwm_data[5] ?: []}"))
     (box
-      (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: ''}"))))
+      (bspwm-win-state :name "VII" :windows "${bspwm_data[6] ?: []}"))))
 
 (defwidget bspwm-win-state [name windows]
   (box

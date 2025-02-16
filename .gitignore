@@ -24,6 +24,7 @@ __pycache__
 !.config/eww
 !.config/picom
 !.config/systemd
+!.config/rofi
 !.local/bin
 
 !.config/fish/config.fish
