@@ -25,3 +25,4 @@ set statusbar-v-padding 20
 set font "Noto Sans Mono normal 10"
 set pages-per-row 2
 set first-page-column 1:1:1:1
+set database sqlite
