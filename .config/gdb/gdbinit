@@ -1,11 +1,9 @@
-source /usr/share/gef/gef.py
-
 set auto-load safe-path .
 set auto-load safe-path /
 set auto-load local-gdbinit on
 # add-auto-load-safe-path /home/elliot/dotfiles
 
-set quiet on
+# set quiet on
 set debuginfod enabled on
 set startup-quietly on
 set logging enabled on
@@ -33,6 +31,9 @@ set print elements 10
 # set this in local project's .gdbinit
 # set logging file gdb.log
 
+define gef
+  source /usr/share/gef/gef.py
+end
 
 define pll
   set var $n = $arg0

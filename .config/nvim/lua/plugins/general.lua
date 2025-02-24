@@ -190,7 +190,7 @@ return {
   },
   {
     'RaafatTurki/hex.nvim',
-    lazy = true,
+    event = "VeryLazy",
     config = function()
       require('hex').setup()
     end
