@@ -67,7 +67,7 @@ sudo pacman -S \
   baobab \
   ffmpeg \
   man-db \
-  gdb \
+  gdb gef \
   ccls \
   pyright \
   libqalculate qalculate-qt \

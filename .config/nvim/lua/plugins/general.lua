@@ -1,6 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    enabled = false,
     lazy = true,
     event = 'BufReadPre',
     config = function()
@@ -48,6 +49,7 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-refactor',
+    enabled = false,
     lazy = true,
     event = 'BufReadPre'
   },

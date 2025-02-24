@@ -1,8 +1,11 @@
+source /usr/share/gef/gef.py
+
 set auto-load safe-path .
 set auto-load safe-path /
 set auto-load local-gdbinit on
 # add-auto-load-safe-path /home/elliot/dotfiles
 
+set quiet on
 set debuginfod enabled on
 set startup-quietly on
 set logging enabled on
