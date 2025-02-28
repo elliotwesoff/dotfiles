@@ -119,6 +119,31 @@ pipe/redirect them to another program via stdin:
 
 `some_program < <(cat file1 file2 file3)`
 
+## Dev
+
+### ruby
+
+To make a virtual environment similar to python's venv, tell bundler
+to use a local folder, like vendor/bundle:
+
+`bundle config set --local path 'vendor/bundle'`
+
+Then install the gems:
+
+`bundle install`
+
+Then run the program using the gems installed in vendor/bundle:
+
+`bundle exec ruby [program.rb]`
+
+* you may or may not need these lines at the top of your program's
+  entry point:
+
+  ```
+  require 'bundler/setup'
+  Bundler.require
+  ```
+
 ## Applications
 
 ### (n)vim
