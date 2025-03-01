@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 #
-# notify-mon.fish
+# notify-mon
 
 # udev can't directly call notify-send (likely because root
 # doesn't have a handle on the x11 server), so we tail a
@@ -10,9 +10,9 @@
 set file $argv[1]
 set title $argv[2]
 
-# make sure an argument was supplied
+# make sure required argument was supplied
 if test -z $file
-  echo usage: ./notify-mon.fish /path/to/tail
+  echo "usage: \$ notify-mon /file/to/tail [title]"
   exit 1
 end
 

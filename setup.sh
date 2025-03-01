@@ -28,7 +28,7 @@ do
 done
 
 # symlink local scripts that need to be in PATH
-for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload
+for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon
 do
   ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
 done
