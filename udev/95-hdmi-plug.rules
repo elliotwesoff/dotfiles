@@ -1,0 +1,1 @@
+KERNEL=="card1", ACTION=="change", SUBSYSTEMS=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/elliot/.Xauthority", RUN+="/usr/local/bin/hdmi-hotplug"

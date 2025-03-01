@@ -6,6 +6,11 @@
 # fresh copy of arch and logging into the tty as your non-root user. Don't do
 # anything else beforehand!
 
+if [ "$(id -u)" -eq 0 ]; then
+    echo "don't run this as root! it's dangerous!!! bye."
+    exit 1
+fi
+
 # setup dots
 mkdir -p ~/code
 mkdir -p ~/.local/{bin,share,state}
