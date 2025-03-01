@@ -382,6 +382,43 @@ If the plasma taskbar disappears:
 * `/sys/class/drm` contains all of the various video "cards"
   detected on the system
 
+### udev
+
+Adding/modifying udev rules is a royal pain in the ass. If your
+script doesn't run off the bat, it's hard to know if udev is actually
+picking up your rule, it's error free, and that the commands are
+being ran. Tips to debug:
+
+* To trigger a udev "change" on block devices manually:
+
+`sudo udevadm trigger --subsystem-match=block`
+
+* udev rule changes should be reloaded/detected automatically, but
+  you can reload them manually:
+
+`sudo udevadm control --reload-rules`
+
+* Errors within rules, such as syntax errors, bad substitution chars,
+  etc. can be found in the journal:
+
+`sudo journalctl -u systemd-udevd --no-pager --follow`
+
+`journalctl -xe --follow`
+
+* You can watch the actual events that are propogated by udev with:
+
+`sudo udevadm monitor --kernel --property --subsystem-match=block`
+
+* You can test udev rules with:
+
+`udevadm test (udevadm info -q path -n /dev/sda)`
+
+(the udevadm info command returns a device path)
+
+On each of the above commands, remove the named arguments to see more
+output/make the output less restrictive.
+
+
 ### ramfs and tmpfs
 
 An in-memory filesystem is automatically made available by linux. It is
