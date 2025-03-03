@@ -47,6 +47,6 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = { day_brightness = "0.1" },
   }
 }
