@@ -1,5 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env fish
 #
-# dpi(.sh)
+# dpi(.fish)
 
+# set the new DPI in X11
 echo Xft.dpi: $1 | xrdb
+
+# restart GUI services
+pkill dunst; dunst & disown
+pkill -x eww; eww daemon &> /dev/null & disown
+
+# reset wallpaper
+~/dotfiles/.fehbg &
