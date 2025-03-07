@@ -3,7 +3,7 @@
 # dpi(.fish)
 
 # set the new DPI in X11
-echo Xft.dpi: $1 | xrdb
+echo Xft.dpi: $argv[1] | xrdb
 
 # restart GUI services
 pkill dunst; dunst & disown
