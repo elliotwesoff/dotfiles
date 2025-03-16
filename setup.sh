@@ -46,19 +46,20 @@ sudo pacman -S \
   xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
   mesa mesa-utils vulkan-intel \
   pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pipewire-docs wireplumber wireplumber-docs pulsemixer \
-  networkmanager \
   openvpn networkmanager-openvpn \
+  zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
+  noto-fonts noto-fonts-emoji ttf-hack-nerd \
+  networkmanager \
   libnotify \
   xdg-utils \
   bluez bluez-utils \
   cups cups-pdf \
-  noto-fonts noto-fonts-emoji ttf-hack-nerd \
   bspwm sxhkd \
   vim neovim \
+  ly \
   git \
   kitty alacritty \
   fish fisher \
-  zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   pdftk \
   rofi \
   feh \
@@ -130,3 +131,4 @@ yay -S \
 
 # enable services
 sudo systemctl enable NetworkManager.service
+sudo systemctl enable ly.service
