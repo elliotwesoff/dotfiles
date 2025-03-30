@@ -132,3 +132,7 @@ yay -S \
 # enable services
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable ly.service
+
+# set fish as default shell
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish

@@ -17,23 +17,7 @@ return {
       -- menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
       -- documentation = { auto_show = true, auto_show_delay_ms = 0 }
     },
-    keymap = {
-      preset = 'none',
-      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      ['<Tab>'] = { 'select_next', 'fallback' },
-      ['<S-Tab>'] = { 'select_prev', 'fallback' },
-      ['<Up>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<Down>'] = { 'scroll_documentation_down', 'fallback' },
-      ['<CR>'] = { 'accept', 'fallback' },
-      -- ['<Esc>'] = { 'hide', 'fallback' }
-
-      cmdline = {
-        preset = 'none',
-        ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
-        ['<C-CR>'] = { 'accept', 'fallback' }
-      }
-    },
+    keymap = require('keymaps').ext_keymaps.blink_cmp,
     signature = { enabled = true }
   }
 }

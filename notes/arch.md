@@ -119,6 +119,17 @@ pipe/redirect them to another program via stdin:
 
 `some_program < <(cat file1 file2 file3)`
 
+### Syncing music
+
+
+1. Mount the partition to `/run/media` with: `sudo mount /dev/[partition] /run/media --mkdir -o umask=0`
+  i. For some reason, root is still required to add/remove files on
+  the drive :[
+2. Run the script `~/dotfiles/scripts/sync-flac.fish`
+  i. The script runs in "dry run" mode by default.
+3. Comment out the `--dry-run` flag after inspecing `rsync` output.
+4. Run `sudo ~/dotfiles/scripts/sync-flac.fish`
+
 ## Dev
 
 ### ruby
