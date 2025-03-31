@@ -47,12 +47,12 @@ return {
       })
     end
   },
-  {
-    'nvim-treesitter/nvim-treesitter-refactor',
-    enabled = false,
-    lazy = true,
-    event = 'BufReadPre'
-  },
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-refactor',
+  --   enabled = false,
+  --   lazy = true,
+  --   event = 'BufReadPre'
+  -- },
   -- {
   --   'ray-x/lsp_signature.nvim',
   --   event = 'VeryLazy',
