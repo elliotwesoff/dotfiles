@@ -5,20 +5,34 @@
 # This script should be ran as the *first* thing you do after installing a
 # fresh copy of arch and logging into the tty as your non-root user. Don't do
 # anything else beforehand!
+#
+# Pre-script tasks:
+#
+# 1. When running the pacstrap command, in addition
+# to the minimum recommended packages, also install: vim, git,
+# ranger, sudo, networkmanager, grub, efibootmgr, intel-ucode,
+# curl, wget
+#
+# for virtualbox, also: openssh, ufw
+#
+# 2. Set up grub!
+#
+# 3. Create users:
+#   useradd -m -G wheel /bin/bash [user]
+#
+# 4. Uncomment wheel line in sudoers:
+#   EDITOR=vim visudo
+#
+# 5. Clone dots:
+#   git clone https://github.com/elliotwesoff/dotfiles.git
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "don't run this as root! it's dangerous!!! bye."
     exit 1
 fi
 
-# setup dots
-mkdir -p ~/code
-mkdir -p ~/.local/{bin,share,state}
-ln -sfv ~/dotfiles/.config ~/.config
-ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
-
 # files in etc
-for item in .Xresources .fehbg .gitconfig .mime.types .tool-versions .xinitrc
+for item in .Xresources .fehbg .gitconfig .mime.types .tool-versions .xinitrc .config
 do
   # back up old files, if any exist
   mv -v ~/$item ~/$item.old 2> /dev/null
@@ -27,6 +41,12 @@ do
   ln -sfv ~/dotfiles/$item ~/$item
 done
 
+# setup dots
+mkdir -p ~/code
+mkdir -p ~/.local/{bin,share,state}
+ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
+echo "#!/usr/bin/env fish" > ~/.secrets
+
 # symlink local scripts that need to be in PATH
 for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon
 do
@@ -34,16 +54,16 @@ do
 done
 
 # install udev rules
-for item in $(ls ~/dotfiles/udev/*.rules)
+for item in $(ls ~/dotfiles/udev)
 do
   sudo ln -sfv ~/dotfiles/udev/$item /etc/udev/rules.d/$item
 done
 
-# install all the things!
 sudo pacman -S \
   base-devel \
   linux linux-lts linux-lts-headers \
   xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
+  xsecurelock xss-lock xscreensaver \
   mesa mesa-utils vulkan-intel \
   pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pipewire-docs wireplumber wireplumber-docs pulsemixer \
   openvpn networkmanager-openvpn \
@@ -74,12 +94,9 @@ sudo pacman -S \
   ffmpeg \
   man-db \
   gdb gef \
-  ccls \
-  pyright \
   libqalculate qalculate-qt \
   font-manager \
   playerctl \
-  qmk \
   btop \
   firefox \
   rustup \
@@ -91,16 +108,10 @@ sudo pacman -S \
   wmctrl \
   flameshot \
   jq \
-  traceroute \
-  whois \
-  bind \
   usbutils usbview \
-  xsecurelock xss-lock xscreensaver \
   7zip \
   blueman \
   ripgrep \
-  vala \
-  torbrowser-launcher nyx \
   unclutter
 
 # install yay
@@ -109,30 +120,21 @@ sudo pacman -S --needed git base-devel \
   && cd yay \
   && makepkg -si
 
-# install all the things not in the pacman repos!
 yay -S \
   nvm \
-  nvim-packer-git \
   1password \
   discord \
-  cava \
-  xinit-xsession \
   soulseekqt \
   blight \
-  nordvpn-bin \
-  otf-intel-one-mono \
   asdf-vm \
-  vscode-codicons-git \
   spotify \
-  postman-bin \
-  intel-opencl-runtime \
-  gtk-layer-shell-git \
-  eww-x11
+  eww-x11 \
+  nordvpn-bin
 
 # enable services
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable ly.service
 
 # set fish as default shell
-echo /usr/local/bin/fish | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/fish
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
