@@ -34,6 +34,9 @@ super + {t,shift + t,f,shift + f}
 super + ctrl + {m,x,y,z}
   bspc node -g {marked,locked,sticky,private}
 
+super + {_,shift} + u
+  bspc node {_,any.hidden} -g hidden
+
 #
 # focus/swap
 #
