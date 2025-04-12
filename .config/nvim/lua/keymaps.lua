@@ -44,7 +44,6 @@ function M.apply_keymaps()
   -- dev mappings
   vim.keymap.set('n', 'vx', ':lua require("explorer").select()<CR>')
   vim.keymap.set('n', '<leader>w', ':write<CR>:source<CR>')
-  -- vim.keymap.set('n', '<leader>m', ':lua require("mob").main()<cr>')
 
   -- insert mode mappings
 
@@ -96,9 +95,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
   vim.keymap.set('n', '<leader>r', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-  vim.keymap.set('n', '<leader>m', "<cmd>lua require('telescope.builtin').marks()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
+  vim.keymap.set('n', '<leader>m', ":Mason<cr>", opts)
   vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
   vim.keymap.set('n', '<leader>cs', ":SunsetToggle<CR>", opts)
   vim.keymap.set('n', '<leader>cf', helpers.toggle_theme, { desc = 'Toggle background'})
@@ -188,20 +187,8 @@ function M.apply_lsp_buffer_keymaps(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'grd', vim.lsp.buf.definition)
   vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
-  -- vim.keymap.set('n', '<leader>.c', vim.lsp.buf.signature_help, bufopts)
-  -- vim.keymap.set('n', '<leader>.f', vim.lsp.buf.references, bufopts)
-  -- vim.keymap.set('n', '<leader>.d', vim.lsp.buf.definition, bufopts)
-  -- vim.keymap.set('n', '<leader>.s', vim.lsp.buf.type_definition, bufopts)
-  -- vim.keymap.set('n', '<leader>.a', vim.lsp.buf.code_action, bufopts)
-  -- vim.keymap.set('n', '<leader>.r', vim.lsp.buf.rename, bufopts)
-  -- vim.keymap.set('n', '<leader>.o', vim.lsp.buf.formatting, bufopts)
-end
-
-function M.apply_aerial_keymaps(bufnr)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrev<CR>', {})
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNext<CR>', {})
 end
 
 return M
-

@@ -4,8 +4,7 @@ local keymaps = require('keymaps')
 local lsp = require('lsp')
 
 settings.COLORSCHEME_LIGHT = 'tokyobones'
-settings.COLORSCHEME_DARK = 'nordbones'
-vim.cmd.colorscheme('habamax')
+settings.COLORSCHEME_DARK = 'habamax'
 
 lazy.bootstrap()
 lazy.init()
