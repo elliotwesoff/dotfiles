@@ -11,11 +11,9 @@
 # 1. When running the pacstrap command, in addition
 # to the minimum recommended packages, also install: vim, git,
 # ranger, sudo, networkmanager, grub, efibootmgr, intel-ucode,
-# curl, wget
+# curl, wget, gocryptfs
 #
-# for virtualbox, also: openssh, ufw
-#
-# 2. Set up grub!
+# 2. Set up grub
 #
 # 3. Create users:
 #   useradd -m -G wheel /bin/bash [user]
@@ -23,7 +21,9 @@
 # 4. Uncomment wheel line in sudoers:
 #   EDITOR=vim visudo
 #
-# 5. Clone dots:
+# 5. Set up gocryptfs
+#
+# 6. Clone dots:
 #   git clone https://github.com/elliotwesoff/dotfiles.git
 
 if [ "$(id -u)" -eq 0 ]; then
@@ -60,32 +60,25 @@ do
 done
 
 sudo pacman -S \
-  base-devel \
-  linux linux-lts linux-lts-headers \
   xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
   xsecurelock xss-lock xscreensaver \
   mesa mesa-utils vulkan-intel \
   pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pipewire-docs wireplumber wireplumber-docs pulsemixer \
-  openvpn networkmanager-openvpn \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   noto-fonts noto-fonts-emoji ttf-hack-nerd \
-  networkmanager \
+  bluez bluez-utils blueman \
   libnotify \
   xdg-utils \
-  bluez bluez-utils \
   cups cups-pdf \
   bspwm sxhkd \
-  vim neovim \
+  neovim \
   ly \
-  git \
   kitty alacritty \
   fish fisher \
   pdftk \
   rofi \
   feh \
   arandr \
-  wget \
-  deno \
   thunar gvfs \
   ntfs-3g \
   cmus \
@@ -110,7 +103,6 @@ sudo pacman -S \
   jq \
   usbutils usbview \
   7zip \
-  blueman \
   ripgrep \
   unclutter
 
@@ -120,6 +112,7 @@ sudo pacman -S --needed git base-devel \
   && cd yay \
   && makepkg -si
 
+# install aur packages
 yay -S \
   nvm \
   1password \
@@ -131,9 +124,24 @@ yay -S \
   eww-x11 \
   nordvpn-bin
 
+# install ruby and python
+asdf install ruby 3.4.2
+asdf install python 3.9.5
+asdf reshim
+
+# build and install local packages
+cd ~/dotfiles/scripts/auto_display
+make && makepkg -si
+
+cd ~/dotfiles/services/ellid
+make prepare && makepkg -si
+
+cd ~/dotfiles
+
 # enable services
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable ly.service
+systemctl --user enable ellid.service --now
 
 # set fish as default shell
 echo $(which fish) | sudo tee -a /etc/shells
