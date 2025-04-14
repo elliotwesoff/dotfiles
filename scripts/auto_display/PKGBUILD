@@ -10,8 +10,6 @@ source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 backup=('etc/udev/rules.d/95-hdmi-plug.rules')
 
-# PKGDEST=/dev/shm/packages
-
 package() {
 	cd "$pkgname-$pkgver"
   install -Dm755 auto_display.rb "$pkgdir/usr/local/bin/auto_display"

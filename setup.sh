@@ -131,10 +131,10 @@ asdf reshim
 
 # build and install local packages
 cd ~/dotfiles/scripts/auto_display
-make && makepkg -si
+make prepare && make install
 
 cd ~/dotfiles/services/ellid
-make prepare && makepkg -si
+make prepare && make install
 
 cd ~/dotfiles
 
