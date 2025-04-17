@@ -2,7 +2,7 @@ return {
   {
     'JManch/sunset.nvim',
     event = 'BufReadPre',
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       local sunset = require('sunset')

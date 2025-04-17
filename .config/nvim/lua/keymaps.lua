@@ -7,20 +7,30 @@ M.ext_keymaps = {
     extra = { above = 'gcO', below = 'gco', eol = 'gcA' }
   },
   blink_cmp = {
-    preset = 'none',
-    ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-    ['<Tab>'] = { 'select_next', 'fallback' },
-    ['<S-Tab>'] = { 'select_prev', 'fallback' },
-    ['<Up>'] = { 'scroll_documentation_up', 'fallback' },
-    ['<Down>'] = { 'scroll_documentation_down', 'fallback' },
-    ['<CR>'] = { 'accept', 'fallback' },
-    -- ['<Esc>'] = { 'hide', 'fallback' }
-
+    editor = {
+      preset = 'none',
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ['<Up>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<Down>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<CR>'] = { 'accept', 'fallback' }
+    },
     cmdline = {
       preset = 'none',
       ['<Tab>'] = { 'select_next', 'fallback' },
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
       ['<C-CR>'] = { 'accept', 'fallback' },
+      ['<Esc>'] = {
+        -- https://github.com/Saghen/blink.cmp/issues/547#issuecomment-2593493560
+        function(cmp)
+          if cmp.is_visible() then
+            cmp.cancel()
+          else
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-c>", true, true, true), "n", true)
+          end
+        end
+      }
     }
   }
 }
