@@ -23,5 +23,11 @@ function M.toggle_theme()
   end
 end
 
+function M.req_closure(plugin)
+  return function()
+    require('lazy').load({ plugins = { plugin }, wait = true })
+  end
+end
+
 return M
 
