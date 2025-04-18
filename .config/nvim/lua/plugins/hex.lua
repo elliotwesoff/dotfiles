@@ -1,9 +1,8 @@
 return {
-  {
-    'RaafatTurki/hex.nvim',
-    event = "VeryLazy",
-    config = function()
-      require('hex').setup()
-    end
-  }
+  'RaafatTurki/hex.nvim',
+  event = 'BufReadPost',
+  lazy = true,
+  config = function()
+    require('hex').setup()
+  end
 }

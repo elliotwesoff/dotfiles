@@ -1,6 +1,4 @@
 return {
-  {
-    'folke/zen-mode.nvim',
-    lazy = true
-  }
+  'folke/zen-mode.nvim',
+  lazy = true
 }

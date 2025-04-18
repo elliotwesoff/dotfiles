@@ -1,8 +1,8 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    config = function ()
-      require('mason').setup()
-    end
-  }
+  'williamboman/mason.nvim',
+  lazy = true,
+  event = 'BufReadPre',
+  config = function ()
+    require('mason').setup()
+  end
 }

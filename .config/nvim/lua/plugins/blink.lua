@@ -4,7 +4,7 @@ return {
   'saghen/blink.cmp',
   dependencies = 'rafamadriz/friendly-snippets',
   version = 'v1.1.1',
-  event = 'BufReadPre',
+  event = 'BufReadPost',
   opts = {
     enabled = function()
       return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)

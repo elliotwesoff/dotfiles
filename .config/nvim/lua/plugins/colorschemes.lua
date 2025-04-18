@@ -1,39 +1,39 @@
 return {
   {
     'mcchrish/zenbones.nvim',
+    lazy = true,
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
       local bg_contrast = {
-        lightness = 'bright', -- bright/default/dim
-        darkness = 'stark' -- stark/default/warm
+        -- lightness = 'bright', -- bright/default/dim
+        -- darkness = 'stark' -- stark/default/warm
       }
-      -- local bg_contrast = {}
-      vim.g.kanagawabones = bg_contrast
-      vim.g.zenbones = bg_contrast
-      vim.g.vimbones = bg_contrast
-      vim.g.neobones = bg_contrast
-      vim.g.seoulbones = bg_contrast
-      vim.g.tokyobones = bg_contrast
-      vim.g.rosebones = bg_contrast
-      vim.g.nordbones = bg_contrast
-      vim.g.duckbones = bg_contrast
-      vim.g.forestbones = bg_contrast
+      local colors = { 'kanagawabones', 'zenbones', 'vimbones', 'neobones',
+                       'seoulbones', 'tokyobones', 'rosebones', 'nordbones',
+                       'duckbones', 'forestbones' }
+      for _, color in ipairs(colors) do
+        vim.g[color] = bg_contrast
+      end
     end
   },
   {
     'catppuccin/nvim',
-    name = 'catppuccin'
+    name = 'catppuccin',
+    lazy = true,
   },
   {
     'rose-pine/neovim',
-    name = 'rose-pine'
+    name = 'rose-pine',
+    lazy = true,
   },
   {
     'EdenEast/nightfox.nvim',
-    name = 'nightfox'
+    name = 'nightfox',
+    lazy = true,
   },
   {
     'ramojus/mellifluous.nvim',
+    lazy = true,
     config = function()
       require('mellifluous').setup({
         mellifluous = {
@@ -44,9 +44,9 @@ return {
     end
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
+    'folke/tokyonight.nvim',
+    lazy = true,
     priority = 1000,
-    opts = { day_brightness = "0.1" },
+    opts = { day_brightness = '0.1' },
   }
 }
