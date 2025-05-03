@@ -1,11 +1,11 @@
 # Maintainer: elliot wesoff <io (at) ell10t (dot) net>
 pkgname=auto_display
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=2
 pkgdesc="automatically switch display output to known/preconfigured screen layouts."
 arch=('x86_64')
 license=('GPL')
-depends=('ruby')
+depends=('asdf-vm' 'xorg-xrandr')
 source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 backup=('etc/udev/rules.d/95-hdmi-plug.rules')

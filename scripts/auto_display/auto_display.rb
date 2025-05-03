@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # activate_display.rb
 #
 # this file should be executed automatically via a udev rule when an external
