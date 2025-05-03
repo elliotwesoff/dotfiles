@@ -27,8 +27,11 @@ __pycache__
 !.config/rofi
 !.local/bin
 
-!.config/fish/config.fish
-!.config/fish/fish_plugins
+!.config/fish
+.config/fish/completions
+.config/fish/conf.d
+.config/fish/functions
+.config/fish/fish_variables
 
 !.config/gdb
 .config/gdb/*.txt
@@ -49,7 +52,6 @@ __pycache__
 .config/kitty/theme.conf
 .config/polybar/theme.ini
 
-.local/bin/diary
 .local/bin/eww
 .local/bin/pyserial*
 .local/bin/bspeww

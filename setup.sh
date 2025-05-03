@@ -146,3 +146,7 @@ systemctl --user enable ellid.service --now
 # set fish as default shell
 echo $(which fish) | sudo tee -a /etc/shells
 chsh -s $(which fish)
+
+# install fisher and plugins
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher update
