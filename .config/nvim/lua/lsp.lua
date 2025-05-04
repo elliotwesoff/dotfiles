@@ -7,6 +7,7 @@ end
 
 function M.apply_lsp_config()
   keymaps.apply_lsp_keymaps()
+
   vim.lsp.config['luals'] = {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
@@ -19,19 +20,33 @@ function M.apply_lsp_config()
       }
     },
   }
+  vim.lsp.config['ruby_lsp'] = {
+    cmd = { 'ruby-lsp' },
+    on_attach = attach_fn,
+  }
 
-  vim.lsp.config['ts_ls'] = { on_attach = attach_fn }
-  vim.lsp.config['ruby_lsp'] = { on_attach = attach_fn }
-  vim.lsp.config['ccls'] = { on_attach = attach_fn }
-  vim.lsp.config['pyrght'] = { on_attach = attach_fn }
+  vim.lsp.config['ts_ls'] = {
+    cmd = { 'typescript-language-server' },
+    on_attach = attach_fn
+  }
 
-  vim.lsp.enable({
-    'luals',
-    'ts_ls',
-    'ruby_lsp',
-    'ccls',
-    'pyright'
-  })
+  vim.lsp.config['ccls'] = {
+    cmd = { 'ccls' },
+    on_attach = attach_fn
+  }
+
+  vim.lsp.config['pyright'] = {
+    cmd = { 'pyright-langserver --stdio' },
+    on_attach = attach_fn
+  }
+
+  -- vim.lsp.enable({
+  --   'luals',
+  --   'ts_ls',
+  --   'ruby_lsp',
+  --   'ccls',
+  --   'pyright'
+  -- })
 end
 
 function M.apply_diagnostic_config()

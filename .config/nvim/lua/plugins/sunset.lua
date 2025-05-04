@@ -1,5 +1,6 @@
 return {
   'JManch/sunset.nvim',
+  enabled = false,
   event = 'BufReadPre',
   lazy = true,
   priority = 1000,

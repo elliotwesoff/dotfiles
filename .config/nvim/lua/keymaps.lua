@@ -111,9 +111,10 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>a', "<cmd>lua require('aerial').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>h', ":HexToggle<CR>", opts)
-  vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
-  vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
-  vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
+  vim.keymap.set('n', '<leader>l', ":Lazy<CR>", opts)
+  -- vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
+  -- vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
+  -- vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
 
   -- manual requires - because i don't really know wtf lazy is doing sometimes
   vim.keymap.set('n', '<leader>rt', helpers.req_closure('telescope.nvim'), { desc = 'Require telescope' })
