@@ -17,10 +17,20 @@ return {
     completion = {
       -- menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
       -- documentation = { auto_show = true, auto_show_delay_ms = 0 }
+      list = {
+        selection = {
+          auto_insert = false
+        }
+      },
     },
     keymap = keymaps.editor,
     cmdline = {
       completion = {
+        list = {
+          selection = {
+            auto_insert = false
+          }
+        },
         menu = {
           auto_show = true
         }

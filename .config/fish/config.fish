@@ -10,12 +10,8 @@ set -gx EDITOR 'nvim'
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
 
-# android studio shiz
-set --export ANDROID_HOME /home/elliot/.android/SDK
-# fish_add_path $ANDROID_HOME/emulator
-# fish_add_path $ANDROID_HOME/platform-tools
-
-set --universal nvm_default_version 18.19.1
+# set --universal nvm_default_version 18.19.1
+set -gx nvm_default_version 18.19.1
 
 if test (timedatectl show --property=Timezone) = "Timezone=Europe/Berlin"
     # munich
@@ -48,7 +44,7 @@ source ~/.secrets
 # source /opt/asdf-vm/asdf.fish
 
 # ASDF configuration code
-if test -z $ASDF_DATA_DIR
+if test -z "$ASDF_DATA_DIR"
     set _asdf_shims "$HOME/.asdf/shims"
 else
     set _asdf_shims "$ASDF_DATA_DIR/shims"

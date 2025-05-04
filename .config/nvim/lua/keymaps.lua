@@ -120,7 +120,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>rt', helpers.req_closure('telescope.nvim'), { desc = 'Require telescope' })
   vim.keymap.set('n', '<leader>rl', helpers.req_closure('lsp'), { desc = 'Require lsp' })
   vim.keymap.set('n', '<leader>rb', helpers.req_closure('blink.cmp'), { desc = 'Require blink' })
-  vim.keymap.set('n', '<leader>rm', helpers.req_closure('mason'), { desc = 'Require mason' })
+  vim.keymap.set('n', '<leader>rm', helpers.req_closure('mason.nvim'), { desc = 'Require mason' })
   vim.keymap.set('n', '<leader>rz', helpers.req_closure('zen-mode'), { desc = 'Require zen-mode' })
 
   -- pipe buffer contents to jq, then replace buffer contents with jq's stdout stream

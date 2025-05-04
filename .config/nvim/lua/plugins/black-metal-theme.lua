@@ -11,7 +11,7 @@ return {
       -- Can be one of: 'light' | 'dark', or set via vim.o.background
       variant = 'dark',
       -- Use an alternate, lighter bg
-      alt_bg = true,
+      alt_bg = false,
       -- If true, docstrings will be highlighted like strings, otherwise they will be
       -- highlighted like comments. Note, behavior is dependent on the language server.
       colored_docstrings = true,

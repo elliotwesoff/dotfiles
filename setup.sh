@@ -122,7 +122,8 @@ yay -S \
   asdf-vm \
   spotify \
   eww-x11 \
-  nordvpn-bin
+  nordvpn-bin \
+  fish-lsp
 
 # install ruby and python
 asdf install ruby 3.4.2
