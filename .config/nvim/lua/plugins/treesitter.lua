@@ -16,7 +16,9 @@ return {
           "sql",
           "markdown",
           "fish",
-          "bash"
+          "bash",
+          "make",
+          "udev"
         },
         sync_install = false,
         auto_install = true,
