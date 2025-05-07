@@ -9,7 +9,7 @@
   prompt = false
   trustExitCode = true
 [difftool "nvimdiff"]
-  cmd = "nvim +\"lua require('lazy').load({ plugins = { 'diffview.nvim' }, wait = true })\" +DiffviewOpen"
+  cmd = "nvim +\"colorscheme default | lua require('lazy').load({ plugins = { 'diffview.nvim' }, wait = true })\" +DiffviewOpen"
 [core]
 	autocrlf = input
 [init]

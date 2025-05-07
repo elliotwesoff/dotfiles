@@ -1,7 +1,9 @@
-VERSION := 0.0.7
+VERSION := 0.0.8
 
 pkg_name := auto_display-$(VERSION)
 pkg_dir := build/$(pkg_name)
+
+all: prepare install
 
 prepare: clean
 	mkdir -p $(pkg_dir)
