@@ -20,8 +20,8 @@ super + {Return,space,Delete}
 super + shift + Return
   exec kitty
 
-super + alt + {t,f,p,c,d,m,w,o,r,b,Tab,Escape,space}
-  exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,alacritty --command btop,bspc quit,rofi -show drun}
+super + alt + {t,f,p,c,d,m,w,o,r,b,a,e,Tab,Escape,space}
+  exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,rofi -show drun,rofi -modi emoji -show emoji,alacritty --command btop,bspc quit,rofi -show drun}
 
 XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown}
   exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%}

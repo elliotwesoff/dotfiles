@@ -5,7 +5,8 @@ if status is-interactive
 end
 
 # set -U fish_greeting
-set -gx EDITOR 'nvim'
+set -x EDITOR 'nvim'
+set -x MANPAGER 'nvim +Man!'
 
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.local/bin
@@ -41,7 +42,6 @@ abbr --add diary 'nvim ~/Safe/etc/secret/diaries/diary.md'
 abbr --add yolo 'git push heroku main'
 
 source ~/.secrets
-# source /opt/asdf-vm/asdf.fish
 
 # ASDF configuration code
 if test -z "$ASDF_DATA_DIR"

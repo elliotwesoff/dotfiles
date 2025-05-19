@@ -2,7 +2,7 @@
 #
 # bspeww.sh
 
-BSPEWW_DIR=/dev/shm/bspeww
+BSPEWW_DIR=/tmp
 
 function node_callback() {
   echo $1 >> $BSPEWW_DIR/bspeww.log
@@ -16,14 +16,14 @@ function node_callback() {
     | jq -c '.monitors[].desktops[] | .root // {} | [.[] | recurse | select(.className?) | .className]' \
     | jq -c -s . \
     | tr '[:upper:]' '[:lower:]' \
-    &>> $BSPEWW_DIR/data
+    &>> $BSPEWW_DIR/bspeww.json
 }
 
 function desktop_callback() {
   echo $1 >> $BSPEWW_DIR/bspeww.log
 
   # parse the currently selected desktop node from wmtrl -d and write to disk.
-  wmctrl -d | grep -F '*' | rev | cut -d ' ' -f 1 | rev >> $BSPEWW_DIR/selected
+  wmctrl -d | grep -F '*' | rev | cut -d ' ' -f 1 | rev >> $BSPEWW_DIR/bspeww.desktop
 }
 
 # kill any prior running services
