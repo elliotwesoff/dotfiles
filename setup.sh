@@ -123,7 +123,8 @@ yay -S \
   spotify \
   eww-x11 \
   nordvpn-bin \
-  fish-lsp
+  fish-lsp \
+  rofi-emoji-git
 
 # install ruby and python
 asdf install ruby 3.4.2
