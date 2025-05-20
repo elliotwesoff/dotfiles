@@ -7,18 +7,19 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup({
         ensure_installed = {
-          "c",
-          "cpp",
-          "lua",
-          "python",
-          "typescript",
-          "ruby",
-          "sql",
-          "markdown",
-          "fish",
-          "bash",
-          "make",
-          "udev"
+          'c',
+          'cpp',
+          'lua',
+          'python',
+          'typescript',
+          'ruby',
+          'sql',
+          'markdown',
+          'fish',
+          'bash',
+          'make',
+          'udev',
+          'toml'
         },
         sync_install = false,
         auto_install = true,
@@ -44,11 +45,11 @@ return {
           navigation = {
             enable = true,
             keymaps = { -- TODO: move to keymaps.lua
-              goto_definition = "gnd",
-              list_definitions = "gnD",
-              list_definitions_toc = "gO",
-              goto_next_usage = "<a-n>",
-              goto_previous_usage = "<a-p>",
+              goto_definition = 'gnd',
+              list_definitions = 'gnD',
+              list_definitions_toc = 'gO',
+              goto_next_usage = '<a-n>',
+              goto_previous_usage = '<a-p>',
             }
           }
         }
