@@ -1,4 +1,4 @@
-$border-width: 0px; // for layout debugging
+$border-width: 1px; // for layout debugging
 $border-radius: 4px;
 
 box.applauncher {
@@ -12,26 +12,27 @@ window.dashboard {
   border-radius: $border-radius;
 
   & > box.dashboard-container {
-    /* background: rgba(0, 0, 0, 0); */
     border: $border-width solid red; // debug
     margin: 0.3em;
 
     & > box { // widgets and bspeww containers
 
       & > box {
-        border: $border-width solid green; // debug
+        /* border: $border-width solid green; // debug */
 
         // actual widget blocks, labels, bspwm-widget, etc
         & > * {
           // don't use em units because containers with icons get funky
-          // margin: 0.5em;
-          // padding: 1em;
           margin: 12px;
           padding: 24px;
           background: rgba(0, 0, 0, 0.85);
-          /* border: $border-width solid blue; // debug */
-          border: 1px solid #202020;
           border-radius: $border-radius; 
+          border: 1px solid #202020;
+          /* border: $border-width solid blue; // debug */
+
+          & > .battery-circle {
+            color: #e7d000;
+          }
         }
       }
     }
@@ -49,8 +50,6 @@ window.dashboard {
 
   box.bspeww-container {
     .bspwm-widget {
-      /* background: rgba(0,0,0,1.0); */
-
       .bspwm-win-state {
         margin: 1em;
         label.desktop-name {
@@ -59,7 +58,7 @@ window.dashboard {
         box {
           padding: 0.5em;
           &.selected {
-            border: 1px solid #FFFFFF;
+            border: 1px solid #ffffff;
           }
           label.desktop-name, label.bspwm-win-state-windows {
             border: 1px solid #000000;
@@ -78,12 +77,12 @@ window.dashboard {
   }
 
   trough, progress, highlight {
-    min-height: 1em;
+    min-height: 0em;
   }
   progressbar trough, scale trough {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.15);
   }
   progressbar trough progress, scale trough highlight {
-    background-color: rgba(255,255,255,1.0);
+    background-color: rgba(255,0,187,1.0);
   }
 }

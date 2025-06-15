@@ -124,7 +124,10 @@
   (box
     :orientation "v"
     (box :orientation "v"
-      (label :text "good ${hour < 5 ? 'night' : (hour < 12 ? 'morning' : (hour < 18 ? 'afternoon' : (hour < 21 ? 'evening' : 'night')))}")
+      (label :text "good ${hour < 5 ? 'night'
+                        : (hour < 12 ? 'morning'
+                        : (hour < 18 ? 'afternoon'
+                        : (hour < 21 ? 'evening' : 'night')))}")
       (spacer)
       (time :ha "center")
       (cet_time :ha "center")
@@ -191,12 +194,14 @@
 (defwidget statsstack []
   (box
     :orientation "v"
-    (spacer)
-    (cpubar)
-    (ram)
-    (disk)
-    (cputemp)
-    (spacer)))
+    (box
+      :orientation "v"
+      (cpubar_full))
+    (box
+      :orientation "v"
+      (ram)
+      (disk)
+      (cputemp))))
 
 (defwidget brightval []
   (label :text "${round((bright / 96000) * 100, 0)}%"))
@@ -247,6 +252,7 @@
       (label :text "${round(EWW_BATTERY.total_avg, 2)}%")
       (spacer))
     (circular-progress
+      :class "battery-circle"
       :value "${round(EWW_BATTERY.total_avg > 100.0 ? 100.0 : EWW_BATTERY.total_avg, 2)}"
       :start-at 75.0
       :thickness 12.0
@@ -256,3 +262,11 @@
   (progress
     :value "${round(EWW_CPU.avg, 0)}"
     :orientation "h"))
+
+(defwidget cpubar_full [] 
+  (box
+    (for core in "${EWW_CPU.cores}"
+      (progress
+        :value "${core.usage}"
+        :flipped true
+        :orientation "v"))))
