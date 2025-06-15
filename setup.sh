@@ -67,6 +67,7 @@ sudo pacman -S \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
   noto-fonts noto-fonts-emoji ttf-hack-nerd \
   bluez bluez-utils blueman \
+  pam_mount \
   libnotify \
   xdg-utils \
   cups cups-pdf \

@@ -13,13 +13,13 @@ window.dashboard {
 
   & > box.dashboard-container {
     /* background: rgba(0, 0, 0, 0); */
-    border: $border-width solid red;
+    border: $border-width solid red; // debug
     margin: 0.3em;
 
     & > box { // widgets and bspeww containers
 
       & > box {
-        border: $border-width solid green;
+        border: $border-width solid green; // debug
 
         // actual widget blocks, labels, bspwm-widget, etc
         & > * {
@@ -28,8 +28,9 @@ window.dashboard {
           // padding: 1em;
           margin: 12px;
           padding: 24px;
-          background: rgba(0, 0, 0, 1.00);
-          border: $border-width solid blue;
+          background: rgba(0, 0, 0, 0.85);
+          /* border: $border-width solid blue; // debug */
+          border: 1px solid #202020;
           border-radius: $border-radius; 
         }
       }

@@ -1,6 +1,10 @@
 (defwindow dashboard
   :monitor 0
-  :geometry (geometry :anchor "center")
+  :geometry
+    (geometry
+      :anchor "center"
+      :width "100%"
+      :height "100%")
   :wm-ignore true
   :windowtype "dock"
 
@@ -10,6 +14,8 @@
     :orientation "v"
     :class "dashboard-container"
     :space-evenly false
+    :halign "center"
+    :valign "center"
 
     ;; widgets container
     (box

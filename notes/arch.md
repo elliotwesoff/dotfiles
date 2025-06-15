@@ -1,4 +1,4 @@
-# Elliot's arch notes!
+# Arch Linux Notes
 
 * NOTE! running this command because yay broke after updates:
 
@@ -28,7 +28,7 @@ To disconnect:
 
 `nmcli con down [network name]`
 
-To enable/disable a device:
+To enable/disable a device, i.e. wifi card:
 
 `nmcli radio wifi [on|off]`
 
@@ -54,16 +54,11 @@ editing connections.
 
 ### Color temperature
 
-#### HEY! don't use xflux, it's super buggy
+#### Don't use xflux, it's super buggy
 
-* using xflux (aur), set commands in .xinitrc
-* `xflux -z 91016 &` # => los angeles
-* `xflux -l 48 -g 11 &` # => munich
+#### redshift
 
-~~redshift is supposed to work well, but it wouldn't work on my pc
-for whatever reason.~~
-
-`redshift` seems to work now, so to set a one-time temperature:
+Set a one-time temperature:
 
 ```
 redshift -P -O [temp]
@@ -385,6 +380,12 @@ If the plasma taskbar disappears:
 3. `plasmashell` or restart KDE
 
 ## System
+
+### pam & gocryptfs
+
+I *believe*
+[this](https://github.com/rfjakob/gocryptfs/wiki/Mounting-on-login-using-pam_mount)
+guide was used for setting up home folder encryption.
 
 ### Devices
 
