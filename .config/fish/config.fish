@@ -38,7 +38,7 @@ abbr --add kittyc 'nvim ~/dotfiles/.config/kitty/kitty.conf'
 abbr --add alacrittyc 'nvim ~/dotfiles/.config/alacritty/alacritty.toml'
 abbr --add safe 'mkdir -m 700 -p /dev/shm/Safe.mount && gocryptfs ~/Documents/Safe.cipher/ /dev/shm/Safe.mount'
 abbr --add umsafe 'fusermount -u /dev/shm/Safe.mount && rmdir /dev/shm/Safe.mount'
-abbr --add diary 'nvim ~/Safe/etc/secret/diaries/diary.md'
+abbr --add diary 'nvim ~/secret.mount/diaries/diary.md'
 abbr --add yolo 'git push heroku main'
 
 source ~/.secrets
