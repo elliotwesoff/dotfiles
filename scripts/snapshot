@@ -4,15 +4,14 @@ set year $(date +%Y)
 set month $(date +%m)
 set day $(date +%d)
 set dt_full $(date "+%Y-%m-%d-%H_%M_%S")
-set backup_dir "/@snapshots/$USER/$year/$month/$day"
+set backup_dir "/snapshots/$USER/$year/$month/$day"
 set path "$backup_dir/$dt_full"
 
 mkdir --parents --verbose --mode=775 $backup_dir
 
 sudo btrfs subvolume snapshot -r / "$path-@.snapshot"
 sudo btrfs subvolume snapshot -r /home "$path-@home.snapshot"
-sudo btrfs subvolume snapshot -r /shared "$path-@shared.snapshot"
+# sudo btrfs subvolume snapshot -r /shared "$path-@shared.snapshot"
 sudo btrfs subvolume snapshot -r /tmp "$path-@tmp.snapshot"
 sudo btrfs subvolume snapshot -r /var/log "$path-@log.snapshot"
 sudo btrfs subvolume snapshot -r /var/cache/pacman/pkg "$path-@pkg.snapshot"
-

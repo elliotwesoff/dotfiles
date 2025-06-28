@@ -1,7 +1,6 @@
 #!/bin/sh
 #
 # wm independent hotkeys
-#
 
 #
 # program shortcuts
@@ -23,8 +22,8 @@ super + shift + Return
 super + alt + {t,f,p,c,d,m,w,o,r,b,a,e,Tab,Escape,space}
   exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,rofi -show drun,rofi -modi emoji -show emoji,alacritty --command btop,bspc quit,rofi -show drun}
 
-XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown}
-  exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%}
+XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia}
+  exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%,alacritty --command pulsemixer}
 
 super + alt + {0,1,2}
   switch-mon {off,internal,external}
@@ -34,9 +33,6 @@ super + control + alt + shift + Escape
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
   elliot {volup,voldown,mute}
-
-super + shift + alt + {Up,Down}
-  blight set {+5%,-5%}
 
 Print
   flameshot gui

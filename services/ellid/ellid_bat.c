@@ -66,7 +66,7 @@ static void check_bat(const char* bat) {
   last_bat_i = bat_i;
 }
 
-void* ellid_bat_run() {
+void* ellid_bat_run(void *arg) {
   printf("***** ellid - battery monitor startup *****\n");
 
   struct udev *udev;

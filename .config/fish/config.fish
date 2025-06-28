@@ -4,7 +4,8 @@ end
 if status is-interactive
 end
 
-# set -U fish_greeting
+set -g fish_greeting
+set -g fish_color_command blue
 set -x EDITOR 'nvim'
 set -x MANPAGER 'nvim +Man!'
 

@@ -11,7 +11,7 @@
 # 1. When running the pacstrap command, in addition
 # to the minimum recommended packages, also install: vim, git,
 # ranger, sudo, networkmanager, grub, efibootmgr, intel-ucode,
-# curl, wget, gocryptfs
+# curl, wget, gocryptfs, base-devel
 #
 # 2. Set up grub
 #
@@ -48,7 +48,7 @@ ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
 echo "#!/usr/bin/env fish" > ~/.secrets
 
 # symlink local scripts that need to be in PATH
-for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon
+for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon dpi
 do
   ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
 done
@@ -65,7 +65,7 @@ sudo pacman -S \
   mesa mesa-utils vulkan-intel \
   pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pipewire-docs wireplumber wireplumber-docs pulsemixer \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
-  noto-fonts noto-fonts-emoji ttf-hack-nerd \
+  noto-fonts noto-fontscjk noto-fonts-emoji ttf-hack-nerd \
   bluez bluez-utils blueman \
   pam_mount \
   libnotify \
@@ -75,6 +75,9 @@ sudo pacman -S \
   neovim \
   ly \
   kitty alacritty \
+  picom \
+  python-pillow \
+  rustup \
   fish fisher \
   pdftk \
   rofi \
@@ -94,6 +97,7 @@ sudo pacman -S \
   btop \
   firefox \
   rustup \
+  ccls \
   rclone \
   xclip \
   redshift \
@@ -119,17 +123,18 @@ yay -S \
   1password \
   discord \
   soulseekqt \
+  qbittorrent \
   blight \
   asdf-vm \
   spotify \
-  eww-x11 \
   nordvpn-bin \
   fish-lsp \
-  rofi-emoji-git
+  rofi-emoji-git \
+  cozette-otb
 
 # install ruby and python
-asdf install ruby 3.4.2
-asdf install python 3.9.5
+asdf plugin add ruby && asdf install ruby 3.4.2
+asdf plugin add python && asdf install python 3.9.5
 asdf reshim
 
 # build and install local packages
@@ -153,3 +158,7 @@ chsh -s $(which fish)
 # install fisher and plugins
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher update
+
+# allow bitmap fonts
+sudo rm 70-no-bitmaps-except-emoji.conf
+sudo ln -sfv /usr/share/fontconfig/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d/70-yes-bitmaps.conf

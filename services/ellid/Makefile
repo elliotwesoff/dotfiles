@@ -33,7 +33,7 @@ prepare: clean
 	cp $(pkg_dir).tar.gz .
 
 clean:
-	rm -rf build pkg src *.tar.gz *tar.zst
+	rm -rf build pkg src ellid *.tar.gz *tar.zst *.o
 
 install:
 	makepkg -csi
