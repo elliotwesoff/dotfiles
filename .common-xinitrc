@@ -34,7 +34,3 @@ redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 
 # set wallpaper
 ~/.fehbg &
-
-# mute volume and set to 0
-amixer -q sset Master mute
-amixer -q sset Master 0%

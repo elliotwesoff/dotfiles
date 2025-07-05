@@ -21,6 +21,7 @@ return {
       lspconfig.ruby_lsp.setup(lsp_server_opts)
       lspconfig.ts_ls.setup(lsp_server_opts)
       lspconfig.fish_lsp.setup(lsp_server_opts)
+      lspconfig.rust_analyzer.setup(lsp_server_opts)
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {

@@ -2,7 +2,7 @@
 import = ["~/.config/alacritty/theme.toml"]
 
 [font]
-size = 10.0
+size = 16.0
 offset.y = 1
 
 [font.normal]

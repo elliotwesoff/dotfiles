@@ -1,11 +1,6 @@
 local M = {}
 
 M.ext_keymaps = {
-  comment = {
-    toggler = { line = '<C-/>', block = 'gbc' },
-    opleader = { line = '<C-/>', block = 'gb' },
-    extra = { above = 'gcO', below = 'gco', eol = 'gcA' }
-  },
   blink_cmp = {
     editor = {
       preset = 'none',
@@ -68,7 +63,6 @@ function M.apply_keymaps()
 
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
-  vim.keymap.set('n', '`', "<Cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-q>', ':q<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
@@ -83,6 +77,8 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<C-]>', ':cnext<CR>', opts)
   vim.keymap.set('n', '<C-;>', ':lprevious<CR>', opts)
   vim.keymap.set('n', '<C-\'>', ':lnext<CR>', opts)
+  vim.keymap.set('n', '<A-[>', ':lprevious<CR>', opts)
+  vim.keymap.set('n', '<A-]>', ':lnext<CR>', opts)
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
   vim.keymap.set('n', '<A-=>', '<cmd>wincmd =<CR>', opts)
   vim.keymap.set('n', '<A-h>', 'zM', opts)
@@ -100,12 +96,11 @@ function M.apply_keymaps()
   --             right hand side.
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
   vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
-  -- vim.keymap.set('n', '<leader>r', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
   vim.keymap.set('n', '<leader>m', ":Mason<cr>", opts)
-  vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
+  vim.keymap.set('n', '<leader><leader>', ":Telescope<CR>", opts)
   vim.keymap.set('n', '<leader>cs', ":SunsetToggle<CR>", opts)
   vim.keymap.set('n', '<leader>cf', helpers.toggle_theme, { desc = 'Toggle background'})
   vim.keymap.set('n', '<leader>cc', helpers.clear_bg_color, { desc = 'Transparent background'})
@@ -113,9 +108,11 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>a', "<cmd>lua require('aerial').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>h', ":HexToggle<CR>", opts)
   vim.keymap.set('n', '<leader>l', ":Lazy<CR>", opts)
-  -- vim.keymap.set('n', '<leader>ls', ":LspStop<CR>", opts)
-  -- vim.keymap.set('n', '<leader>lg', ":LspStart<CR>", opts)
-  -- vim.keymap.set('n', '<leader>li', ":LspInfo<CR>", opts)
+  vim.keymap.set('n', '<leader>th', ":TidalHush<cr>", { desc = 'Tidal hush' })
+  vim.keymap.set('n', '<leader>tp', ":TidalPlay<cr>", { desc = 'Tidal play' })
+  vim.keymap.set('n', '<leader>ts', ":TidalSend<cr>", { desc = 'Tidal send' })
+
+  vim.keymap.set('n', '<CR>', '<C-e>');
 
   -- manual requires - because i don't really know wtf lazy is doing sometimes
   vim.keymap.set('n', '<leader>rt', helpers.req_closure('telescope.nvim'), { desc = 'Require telescope' })
@@ -125,13 +122,12 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>rz', helpers.req_closure('zen-mode'), { desc = 'Require zen-mode' })
 
   -- pipe buffer contents to jq, then replace buffer contents with jq's stdout stream
-  -- vim.keymap.set('n', '<leader>q', ":%!jq '.'<CR>", opts) -- TODO: make this a function somewhere else
 
   -- terminal mode mappings
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
 
   -- F<1-12>
-  vim.keymap.set('n', '<F1>', "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+  vim.keymap.set('n', '<F1>', ":tab h<cr><cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
   vim.keymap.set('n', '<F2>', "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
   vim.keymap.set('n', '<F3>', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<F4>', "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", opts)
@@ -172,9 +168,21 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<F33>', ':echo "F33 not set"<CR>', opts)
   vim.keymap.set('n', '<F34>', ':echo "F34 not set"<CR>', opts)
   vim.keymap.set('n', '<F35>', ':echo "F35 not set"<CR>', opts)
-  vim.keymap.set('n', '<F36>', "<cmd>lua require('aerial').toggle()<cr>", opts) -- ctrl + f12
+  vim.keymap.set('n', '<F36>', ':echo "F35 not set"<CR>', opts)
 
-  -- where did F37 - F48 go?
+  -- CTRL + SHIFT + F<1-12>
+  vim.keymap.set('n', '<F37>', ':echo "F37 not set"<CR>', opts)
+  vim.keymap.set('n', '<F38>', ':echo "F38 not set"<CR>', opts)
+  vim.keymap.set('n', '<F39>', ':echo "F39 not set"<CR>', opts)
+  vim.keymap.set('n', '<F40>', ':echo "F40 not set"<CR>', opts)
+  vim.keymap.set('n', '<F41>', ':echo "F41 not set"<CR>', opts)
+  vim.keymap.set('n', '<F42>', ':echo "F42 not set"<CR>', opts)
+  vim.keymap.set('n', '<F43>', ':echo "F43 not set"<CR>', opts)
+  vim.keymap.set('n', '<F44>', ':echo "F44 not set"<CR>', opts)
+  vim.keymap.set('n', '<F45>', ':echo "F45 not set"<CR>', opts)
+  vim.keymap.set('n', '<F46>', ':echo "F46 not set"<CR>', opts)
+  vim.keymap.set('n', '<F47>', ':echo "F47 not set"<CR>', opts)
+  vim.keymap.set('n', '<F48>', ':echo "F48 not set"<CR>', opts)
 
   -- ALT + F<1-12>
   vim.keymap.set('n', '<F49>', ':echo "F49 not set"<CR>', opts)
@@ -196,14 +204,27 @@ function M.apply_lsp_keymaps()
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, keymap_opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, keymap_opts)
+
+  local hover = false
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+      if hover then
+        vim.lsp.buf.hover({ focusable = false })
+      end
+    end
+  })
+  vim.keymap.set("n", "K", function()
+      hover = not hover
+    end
+  )
 end
 
-function M.apply_lsp_buffer_keymaps(client, bufnr)
+function M.apply_lsp_buffer_keymaps(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'grd', vim.lsp.buf.definition)
-  vim.keymap.set('n', '<leader><leader>', vim.lsp.buf.hover, bufopts)
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.keymap.set('n', '`', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'grd', vim.lsp.buf.definition, bufopts)
+
 end
 
 return M
