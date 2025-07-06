@@ -1,8 +1,7 @@
 return {
   {
     'metalelf0/black-metal-theme-neovim',
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     config = function()
       require('black-metal').setup({
         -----MAIN OPTIONS-----
