@@ -23,7 +23,8 @@ function M.apply_keymaps()
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-  vim.keymap.set('n', '<Esc>', ':quit<CR>', opts)
+  vim.keymap.set('n', '<Esc>', helpers.conditional_qf_close, opts)
+  vim.keymap.set('n', '<S-Esc>', ':quit<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
   vim.keymap.set('n', '<C-n>', ':vnew<CR>', opts)
   vim.keymap.set('n', '<C-t>', ':tabnew<CR>', opts)
@@ -107,7 +108,7 @@ function M.apply_lsp_buffer_keymaps(_client, bufnr)
     return { noremap = true, silent = true, buffer = bufnr, desc = desc }
   end
 
-  local list_opts = { loclist = true }
+  local list_opts = { loclist = true, reuse_win = false }
 
   -- lsp
   vim.keymap.set('n', 'gr1', vim.lsp.buf.code_action, genopts('code action'))

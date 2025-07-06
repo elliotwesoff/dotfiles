@@ -29,5 +29,13 @@ function M.req_closure(plugin)
   end
 end
 
+function M.conditional_qf_close()
+  if #vim.diagnostic.count() > 0 then
+    vim.diagnostic.setqflist()
+  else
+    vim.cmd('quit')
+  end
+end
+
 return M
 

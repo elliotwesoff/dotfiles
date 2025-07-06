@@ -16,6 +16,13 @@ return {
 
       keymaps.apply_lsp_keymaps()
 
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+          underline = true,
+          virtual_text = false
+        }
+      )
+
       lspconfig.pyright.setup(lsp_server_opts)
       lspconfig.ccls.setup(lsp_server_opts)
       lspconfig.ruby_lsp.setup(lsp_server_opts)
@@ -33,13 +40,6 @@ return {
         capabilities = capabilities,
         on_attach = attach_fn
       })
-
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
-          underline = true,
-          virtual_text = false
-        }
-      )
     end
   }
 }
