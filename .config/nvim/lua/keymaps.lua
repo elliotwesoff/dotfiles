@@ -23,6 +23,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
+  vim.keymap.set('n', '<C-q>', helpers.conditional_qf_close, opts)
   vim.keymap.set('n', '<Esc>', helpers.conditional_qf_close, opts)
   vim.keymap.set('n', '<S-Esc>', ':quit<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
@@ -56,11 +57,11 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
-  vim.keymap.set('n', '<leader>m', ":Mason<cr>", opts)
-  vim.keymap.set('n', '<leader>t', ":Telescope<CR>", opts)
-  vim.keymap.set('n', '<leader>h', ":HexToggle<CR>", opts)
-  vim.keymap.set('n', '<leader>l', ":Lazy<CR>", opts)
-  vim.keymap.set('n', '<leader>cs', ":SunsetToggle<CR>", opts)
+  vim.keymap.set('n', '<leader>m', ':Mason<cr>', opts)
+  vim.keymap.set('n', '<leader>t', ':Telescope<CR>', opts)
+  vim.keymap.set('n', '<leader>h', ':HexToggle<CR>', opts)
+  vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts)
+  vim.keymap.set('n', '<leader>cs', ':SunsetToggle<CR>', opts)
   vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>cf', helpers.toggle_theme, { desc = 'Toggle background'})
   vim.keymap.set('n', '<leader>cc', helpers.clear_bg_color, { desc = 'Transparent background'})
@@ -77,7 +78,7 @@ function M.apply_keymaps()
 
   -- F<1-12>
   vim.keymap.set('n', '<F1>', ":tab h<cr><cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
-  vim.keymap.set('n', '<F12>', "<cmd>Outline<cr>", opts)
+  vim.keymap.set('n', '<F12>', '<cmd>Outline<cr>', opts)
 
   -- SHIFT        + F1-12 => <F13-24>
   -- CTRL         + F1-12 => <F25-36>
@@ -86,20 +87,27 @@ function M.apply_keymaps()
 end
 
 function M.apply_lsp_keymaps()
-  vim.keymap.set('n', '<leader>d', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
+  local show_hover = false
 
-  local hover = false
-  vim.api.nvim_create_autocmd("CursorHold", { -- K to toggle auto-hover on/off
+  local hover_toggle_fn = function()
+    show_hover = not show_hover
+    if not show_hover then
+      vim.cmd('fclose')
+    end
+  end
+
+
+  vim.api.nvim_create_autocmd('CursorHold', {
     callback = function()
-      if hover then
-        vim.lsp.buf.hover({ focusable = false })
+      if show_hover then
+        vim.lsp.buf.hover({ focusable = true })
       end
     end
   })
-  vim.keymap.set("n", "K", function()
-      hover = not hover
-    end
-  )
+
+  vim.keymap.set("n", "K", hover_toggle_fn)
+  vim.keymap.set("n", "`", hover_toggle_fn)
+  vim.keymap.set('n', '<leader>d', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
 end
 
 
