@@ -1,29 +1,5 @@
-if status is-login
-end
-
-if status is-interactive
-end
-
-set -g fish_greeting
-set -g fish_color_command blue
-set -x EDITOR 'nvim'
-set -x MANPAGER 'nvim +Man!'
-
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.local/bin
-
-# set --universal nvm_default_version 18.19.1
-set -gx nvm_default_version 18.19.1
-
-if test (timedatectl show --property=Timezone) = "Timezone=Europe/Berlin"
-    # munich
-    set -x LOC_LAT 48.14803580815556
-    set -x LOC_LONG 11.588875333597782
-else
-    # surf beach
-    set -x LOC_LAT 34.6831139
-    set -x LOC_LONG -120.6232676
-end
+set -gx PATH $fish_user_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
+set_coordinates
 
 abbr --add x 'startx'
 abbr --add r 'ranger'
@@ -41,19 +17,3 @@ abbr --add safe 'mkdir -m 700 -p /dev/shm/Safe.mount && gocryptfs ~/Documents/Sa
 abbr --add umsafe 'fusermount -u /dev/shm/Safe.mount && rmdir /dev/shm/Safe.mount'
 abbr --add diary 'nvim ~/secret.mount/diaries/diary.md'
 abbr --add yolo 'git push heroku main'
-
-source ~/.secrets
-
-# ASDF configuration code
-if test -z "$ASDF_DATA_DIR"
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
