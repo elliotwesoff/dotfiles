@@ -32,7 +32,7 @@ function M.apply_settings()
   vim.opt.foldnestmax = 4
   vim.opt.foldlevelstart = 4
   vim.opt.scrolloff = 2
-  vim.opt.winborder = "rounded"
+  -- vim.opt.winborder = "rounded"
 end
 
 return M

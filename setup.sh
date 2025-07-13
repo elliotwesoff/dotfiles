@@ -25,6 +25,17 @@
 #
 # 6. Clone dots:
 #   git clone https://github.com/elliotwesoff/dotfiles.git
+#
+# Post-setup:
+#
+# 1. Once in a fish shell, update fish_user_paths
+#
+#   set -U fish_user_paths $HOME/.local/bin $HOME/.cargo/bin $HOME/.asdf/shims
+#
+# 2. Add user to video group, set group of backlight file to video, chmod to 664
+#
+# 3. Add user to wheel group, set group of udev files to wheel, chmod to 664
+# 
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "don't run this as root! it's dangerous!!! bye."
@@ -45,7 +56,6 @@ done
 mkdir -p ~/code
 mkdir -p ~/.local/{bin,share,state}
 ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
-echo "#!/usr/bin/env fish" > ~/.secrets
 
 # symlink local scripts that need to be in PATH
 for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon dpi
@@ -109,7 +119,8 @@ sudo pacman -S \
   usbutils usbview \
   7zip \
   ripgrep \
-  unclutter
+  unclutter \
+  qmk
 
 # install yay
 sudo pacman -S --needed git base-devel \
@@ -128,7 +139,6 @@ yay -S \
   asdf-vm \
   spotify \
   nordvpn-bin \
-  fish-lsp \
   rofi-emoji-git \
   cozette-otb
 
