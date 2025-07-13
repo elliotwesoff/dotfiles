@@ -23,7 +23,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
   vim.keymap.set('n', '-', "<cmd>lua require('oil').open()<cr>", { desc = 'Open parent directory' })
   vim.keymap.set('n', '<C-p>', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-  vim.keymap.set('n', '<C-q>', helpers.conditional_qf_close, opts)
+  vim.keymap.set('n', '<C-q>', ':quit<CR>', opts)
   vim.keymap.set('n', '<Esc>', helpers.conditional_qf_close, opts)
   vim.keymap.set('n', '<S-Esc>', ':quit<CR>', opts)
   vim.keymap.set('n', '<C-s>', ':write<CR>', opts)
@@ -72,6 +72,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>rz', helpers.req_closure('zen-mode'), { desc = 'Require zen-mode' })
   vim.keymap.set('n', '<leader>rh', helpers.req_closure('hex.nvim'), { desc = 'Require hex' })
   vim.keymap.set('n', '<leader>ro', helpers.req_closure('outline.nvim'), { desc = 'Require hex' })
+  vim.keymap.set('n', '<leader>rd', helpers.req_closure('diffview'), { desc = 'Require diffview' })
 
   -- terminal mode
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode
@@ -107,7 +108,9 @@ function M.apply_lsp_keymaps()
 
   vim.keymap.set("n", "K", hover_toggle_fn)
   vim.keymap.set("n", "`", hover_toggle_fn)
-  vim.keymap.set('n', '<leader>d', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list'})
+  vim.keymap.set('n', '<leader>d', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list' })
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 end
 
 

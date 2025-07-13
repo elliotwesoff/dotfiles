@@ -1,6 +1,7 @@
 local lazy = require('lazy_config')
 local settings = require('settings')
 local keymaps = require('keymaps')
+local user_commands = require('user_commands')
 
 settings.COLORSCHEME_LIGHT = 'catppuccin-latte'
 settings.COLORSCHEME_DARK = 'burzum'
@@ -10,3 +11,4 @@ lazy.init()
 
 settings.apply_settings()
 keymaps.apply_keymaps()
+user_commands.apply_user_commands()
