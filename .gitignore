@@ -25,7 +25,11 @@ __pycache__
 !.config/picom
 !.config/systemd
 !.config/rofi
-!.local/bin
+!.config/gtk-*
+!.config/gtk-*
+
+!.config/fontconfig
+.config/fontconfig/conf.d
 
 !.config/fish
 .config/fish/completions
