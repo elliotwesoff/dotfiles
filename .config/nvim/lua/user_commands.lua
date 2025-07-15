@@ -12,8 +12,8 @@ function M.apply_user_commands()
     end
 
     local choice = vim.fn.confirm(prompt, "&Yes\n&No", 2)
-    if choice == 1 then
-      vim.cmd('bd')  -- or use 'bdelete' to close buffer
+    if choice <= 1 then
+      vim.cmd('quit')
     end
   end, {})
 

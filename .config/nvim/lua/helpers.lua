@@ -33,7 +33,7 @@ function M.conditional_qf_close()
   if #vim.diagnostic.count() > 0 then
     vim.diagnostic.setqflist()
   else
-    vim.cmd('quit')
+    vim.cmd(':ConfirmClose')
   end
 end
 
