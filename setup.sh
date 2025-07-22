@@ -140,7 +140,8 @@ yay -S \
   spotify \
   nordvpn-bin \
   rofi-emoji-git \
-  cozette-otb
+  cozette-otb \
+  tor-browser-bin
 
 # install ruby and python
 asdf plugin add ruby && asdf install ruby 3.4.2

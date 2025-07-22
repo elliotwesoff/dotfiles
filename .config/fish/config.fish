@@ -1,6 +1,8 @@
 set -gx PATH $fish_user_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
+
 set_coordinates
 
+abbr --add a 'source bin/activate.fish'
 abbr --add x 'startx'
 abbr --add r 'ranger'
 abbr --add z 'zathura'
