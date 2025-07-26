@@ -12,5 +12,6 @@
   cmd = "nvim -c \"lua require('lazy').load({ plugins = { 'diffview.nvim' }, wait = true })\" -c \"colorscheme catppuccin\" -c \"DiffviewOpen\" -c \"bdelete 1\""
 [core]
 	autocrlf = input
+	editor = nvim
 [init]
 	defaultBranch = main
