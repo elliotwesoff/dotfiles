@@ -49,7 +49,6 @@ function M.apply_keymaps()
 
   -- leader mappings
 
-  vim.keymap.set('n', '<leader>q', ':quit<CR>', opts)
   vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
   vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
   vim.keymap.set('n', '<leader>p', ':edit ~/dotfiles/.config/nvim/lua/plugins<CR>', opts)
@@ -108,8 +107,11 @@ function M.apply_lsp_keymaps()
   vim.keymap.set("n", "K", hover_toggle_fn)
   vim.keymap.set("n", "`", hover_toggle_fn)
   vim.keymap.set('n', '<leader>d', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list' })
+  vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list' })
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
+  vim.keymap.set('n', '[[', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+  vim.keymap.set('n', ']]', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 end
 
 
