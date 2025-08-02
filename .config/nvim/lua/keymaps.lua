@@ -17,6 +17,10 @@ function M.apply_keymaps()
   vim.keymap.set('i', 'jk', '<Esc>:w<CR>', opts)
   vim.keymap.set('i', 'jx', '<Esc>:wq<CR>', opts)
   vim.keymap.set('i', '<C-BS>', '<C-W>', opts)
+  vim.keymap.set('i', '<C-h>', '<cmd>:normal h<cr>', opts)
+  vim.keymap.set('i', '<C-j>', '<cmd>:normal j<cr>', opts)
+  vim.keymap.set('i', '<C-k>', '<cmd>:normal k<cr>', opts)
+  vim.keymap.set('i', '<C-l>', '<cmd>:normal l<cr>', opts)
 
   -- normal mode mappings
 
@@ -55,6 +59,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)
+  vim.keymap.set('n', '<leader>o', '<cmd>Outline<cr>', opts)
   vim.keymap.set('n', '<leader>m', ':Mason<cr>', opts)
   vim.keymap.set('n', '<leader>t', ':Telescope<CR>', opts)
   vim.keymap.set('n', '<leader>h', ':HexToggle<CR>', opts)

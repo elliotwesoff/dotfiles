@@ -1,3 +1,6 @@
+# ~/.config/fish/config.fish
+
+# manually set PATH to remove perl and other entries that shouldn't be there
 set -gx PATH $fish_user_paths /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin
 
 set_coordinates
@@ -7,9 +10,7 @@ abbr --add x 'startx'
 abbr --add r 'ranger'
 abbr --add z 'zathura'
 abbr --add l 'ls -lah'
-abbr --add v 'nvim'
 abbr --add dft 'git difftool --no-symlinks --dir-diff'
-abbr --add sus 'systemctl suspend'
 abbr --add bak 'rclone sync --verbose --skip-links ~/Documents ewesoff-g-drive:framework/Documents'
 abbr --add fishc 'nvim ~/dotfiles/.config/fish/config.fish'
 abbr --add nvimc 'nvim --cmd \'cd ~/dotfiles/.config/nvim\' ~/dotfiles/.config/nvim/init.lua'

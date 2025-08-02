@@ -8,10 +8,13 @@
 
 # my notes! i can't computer without my notes!
 super + F1
-  exec alacritty --command nvim -O \
+  exec alacritty --command nvim -p \
           ~/dotfiles/.config/sxhkd/sxhkdrc \
           ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc \
-          ~/Documents/Notes/arch-notes.md
+          ~/Documents/Notes/arch-notes.md \
+          ~/dotfiles/.config/fish/config.fish \
+          ~/dotfiles/.config/alacritty/alacritty.toml \
+          ~/dotfiles/.config/nvim/lua/keymaps.lua
 
 super + {Return,space,Delete}
   exec {alacritty,eww-toggle,systemctl suspend}
@@ -22,17 +25,14 @@ super + shift + Return
 super + alt + {t,f,p,c,d,m,w,o,r,b,a,e,Tab,Escape,space}
   exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,rofi -show drun,rofi -modi emoji -show emoji,alacritty --command btop,bspc quit,rofi -show drun}
 
-XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia}
-  exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%,alacritty --command pulsemixer}
+XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia,RaiseVolume,LowerVolume,Mute}
+  exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%,alacritty --command pulsemixer, elliot volup, elliot voldown, elliot mute}
 
 super + alt + {0,1,2}
   switch-mon {off,internal,external}
 
 super + control + alt + shift + Escape
   pkill Xorg
-
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-  elliot {volup,voldown,mute}
 
 Print
   flameshot gui
