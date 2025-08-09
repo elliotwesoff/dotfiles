@@ -27,6 +27,10 @@ env XSECURELOCK_PASSWORD_PROMPT=time_hex \
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
 xsetroot -cursor_name left_ptr
 
+# adjust cursor speed - *not* mouse acceleration!
+# VAL set in universal fish vars
+xinput --set-prop "Logitech G502 X" 178 $COORDINATE_TRANSFORMATION_MATRIX_VALUE 0 0 0 $COORDINATE_TRANSFORMATION_MATRIX_VALUE 0 0 0 1
+
 # start background services
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
 

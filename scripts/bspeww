@@ -26,6 +26,8 @@ function desktop_callback() {
   wmctrl -d | grep -F '*' | rev | cut -d ' ' -f 1 | rev >> $BSPEWW_DIR/bspeww.desktop
 }
 
+# --- start ---
+
 # kill any prior running services
 pkill --echo --full "^bspc\s+subscribe(\s+node_(add|remove|transfer)){3,}"
 pkill --echo --full "^bspc\s+subscribe\s+desktop_focus"
@@ -33,7 +35,10 @@ pkill --echo --full "^bspc\s+subscribe\s+desktop_focus"
 mkdir -p $BSPEWW_DIR
 
 # wait for bspwm to start
-sleep 3
+until [ -S "/tmp/bspwm_0_0-socket" ];
+do
+  sleep 0.1
+done
 
 bspc subscribe node_add node_remove node_transfer | while read line
 do
