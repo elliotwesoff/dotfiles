@@ -65,6 +65,8 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>h', ':HexToggle<CR>', opts)
   vim.keymap.set('n', '<leader>l', ':Lazy<CR>', opts)
   vim.keymap.set('n', '<leader>cs', ':SunsetToggle<CR>', opts)
+  vim.keymap.set('n', '<leader>cn', ':ColorschemeNext<CR>', opts)
+  vim.keymap.set('n', '<leader>cp', ':ColorschemePrevious<CR>', opts)
   vim.keymap.set('n', '<leader>z', "<cmd>lua require('zen-mode').toggle()<cr>", opts)
   vim.keymap.set('n', '<leader>cf', helpers.toggle_theme, { desc = 'Toggle background'})
   vim.keymap.set('n', '<leader>cc', helpers.clear_bg_color, { desc = 'Transparent background'})
@@ -74,7 +76,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>rm', helpers.req_closure('mason.nvim'), { desc = 'Require mason' })
   vim.keymap.set('n', '<leader>rz', helpers.req_closure('zen-mode'), { desc = 'Require zen-mode' })
   vim.keymap.set('n', '<leader>rh', helpers.req_closure('hex.nvim'), { desc = 'Require hex' })
-  vim.keymap.set('n', '<leader>ro', helpers.req_closure('outline.nvim'), { desc = 'Require hex' })
+  vim.keymap.set('n', '<leader>ro', helpers.req_closure('outline.nvim'), { desc = 'Require outline' })
   vim.keymap.set('n', '<leader>rd', helpers.req_closure('diffview'), { desc = 'Require diffview' })
 
   -- terminal mode
@@ -100,7 +102,6 @@ function M.apply_lsp_keymaps()
     end
   end
 
-
   vim.api.nvim_create_autocmd('CursorHold', {
     callback = function()
       if show_hover then
@@ -111,12 +112,10 @@ function M.apply_lsp_keymaps()
 
   vim.keymap.set("n", "K", hover_toggle_fn)
   vim.keymap.set("n", "`", hover_toggle_fn)
-  vim.keymap.set('n', '<leader>d', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list' })
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list' })
+  vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Diagnostics in loclist' })
+  vim.keymap.set('n', '<leader>dq', vim.diagnostic.setqflist, { desc = 'Diagnostics in quickfix list' })
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
-  vim.keymap.set('n', '[[', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
-  vim.keymap.set('n', ']]', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 end
 
 
@@ -147,6 +146,10 @@ function M.apply_lsp_buffer_keymaps(_client, bufnr)
   vim.keymap.set('n', 'grj', function() vim.lsp.buf.type_definition(list_opts) end, genopts('go to type definition (loclist)'))
   vim.keymap.set('n', 'grk', function() vim.lsp.buf.document_symbol(list_opts) end, genopts('all document symbols (loclist)'))
   vim.keymap.set('n', 'grl', function() vim.lsp.buf.workspace_symbol(list_opts) end, genopts('workspace symbols (loclist)'))
+
+  -- diagnostic keybinds that shouldn't be overwritten by plugins
+  vim.keymap.set('n', '[[', vim.diagnostic.goto_prev, genopts('Prev diagnostic'))
+  vim.keymap.set('n', ']]', vim.diagnostic.goto_next, genopts('Next diagnostic'))
 end
 
 M.ext_keymaps = {
