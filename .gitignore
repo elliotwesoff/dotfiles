@@ -23,9 +23,7 @@ __pycache__
 !.config/alacritty
 !.config/eww
 !.config/picom
-!.config/systemd
 !.config/rofi
-!.config/gtk-*
 !.config/gtk-*
 
 !.config/fontconfig
