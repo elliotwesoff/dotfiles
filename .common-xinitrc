@@ -1,7 +1,6 @@
-#!/bin/bash
-# .xinitrc
-
-export XORG_COLORSCHEME=$(cat ~/.local/state/colorscheme)
+#!/usr/bin/env fish
+#
+# .common-xinitrc
 
 # use .Xresources and set DPI via xrdb because
 # setting DPI via xrandr doesn't work.
@@ -34,6 +33,7 @@ xinput --set-prop "Logitech G502 X" 178 $COORDINATE_TRANSFORMATION_MATRIX_VALUE 
 # start background services
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
+# set blue light dimming according to location
 redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 
 # set wallpaper
