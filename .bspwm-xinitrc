@@ -2,7 +2,39 @@
 #
 # .bspwm-xinitrc
 
-source ~/dotfiles/.common-xinitrc
+# use .Xresources and set DPI via xrdb because
+# setting DPI via xrandr doesn't work.
+xrdb -merge ~/dotfiles/.Xresources
+
+# select monitor to use based on our super smart ruby script
+auto_display
+
+# disable energy star savings (screen timeout)
+xset -dpms
+xset s off
+xset r rate 250 75
+
+env XSECURELOCK_PASSWORD_PROMPT=time_hex \
+    XSECURELOCK_SAVER=saver_xscreensaver \
+    XSECURELOCK_SHOW_DATETIME=1 \
+    XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 \
+    XSECURELOCK_SHOW_HOSTNAME=1 \
+    XSECURELOCK_SHOW_USERNAME=1 \
+    xss-lock -l -- xsecurelock &
+
+# always show regular mouse pointer instead of stupid X
+# https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
+xsetroot -cursor_name left_ptr
+
+# adjust cursor speed - *not* mouse acceleration!
+# COORDINATE_TRANSFORMATION_MATRIX_VALUE set in universal fish vars
+xinput --set-prop "Logitech G502 X" 178 $COORDINATE_TRANSFORMATION_MATRIX_VALUE 0 0 0 $COORDINATE_TRANSFORMATION_MATRIX_VALUE 0 0 0 1
+
+# start background services
+sxhkd -c ~/.config/sxhkd/sxhkdrc &
+
+# set blue light dimming according to location
+redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 
 sxhkd -c ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
@@ -11,5 +43,8 @@ bspeww &
 picom &
 nohup unclutter -idle 2 > /dev/shm/nohup.out &
 notify-mon /dev/shm/udev-blk.log udev &
+
+# set wallpaper
+~/.fehbg &
 
 exec bspwm
