@@ -1,0 +1,12 @@
+! requires higher dpi for default resolution
+!
+! this file should be auto-symlinked to
+! ~/.Xresources via .xinitrc
+
+! #include "/home/elliot/code/Xresources-themes/xcolors-nancy.Xresources"
+
+Xft.dpi: 96
+Xcursor.size: 12
+
+Sxiv.background: #000000
+Sxiv.foreground: #FFFFF

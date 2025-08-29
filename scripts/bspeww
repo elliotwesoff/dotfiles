@@ -37,7 +37,7 @@ mkdir -p $BSPEWW_DIR
 # wait for bspwm to start
 until [ -S "/tmp/bspwm_0_0-socket" ];
 do
-  sleep 0.1
+  sleep 1.0
 done
 
 bspc subscribe node_add node_remove node_transfer | while read line
