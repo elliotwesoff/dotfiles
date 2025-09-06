@@ -23,7 +23,7 @@ super + shift + Return
   exec kitty
 
 super + alt + {t,f,p,c,d,m,w,o,r,b,a,e,Tab,Escape,space}
-  exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,rofi -show drun,rofi -modi emoji -show emoji,alacritty --command btop,bspc quit,rofi -show drun}
+  exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,rofi -show combi -combi-modes "drun" -modes combi,rofi -modi emoji -show emoji,alacritty --command btop,bspc quit,rofi -show combi -combi-modes "window\,drun" -modes combi}
 
 XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia,RaiseVolume,LowerVolume,Mute}
   exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%,alacritty --command pulsemixer, elliot volup, elliot voldown, elliot mute}

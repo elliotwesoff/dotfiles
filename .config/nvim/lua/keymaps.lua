@@ -38,6 +38,7 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
   vim.keymap.set('n', '<C-,>', ':tabprevious<CR>', opts)
   vim.keymap.set('n', '<C-.>', ':tabnext<CR>', opts)
+  vim.keymap.set('n', '<C-/>', ':normal gcl<CR>', opts)
   vim.keymap.set('n', '<S-Tab>', ':tabprevious<CR>', opts)
   vim.keymap.set('n', '<Tab>', ':tabnext<CR>', opts)
   vim.keymap.set('n', '<C-[>', ':cprevious<CR>', opts)
@@ -78,6 +79,9 @@ function M.apply_keymaps()
   vim.keymap.set('n', '<leader>rh', helpers.req_closure('hex.nvim'), { desc = 'Require hex' })
   vim.keymap.set('n', '<leader>ro', helpers.req_closure('outline.nvim'), { desc = 'Require outline' })
   vim.keymap.set('n', '<leader>rd', helpers.req_closure('diffview'), { desc = 'Require diffview' })
+
+  -- visual mode mappings
+  vim.keymap.set('v', '<C-/>', 'gc', { noremap = false, silent = true })
 
   -- terminal mode
   vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', opts) -- switch to normal mode

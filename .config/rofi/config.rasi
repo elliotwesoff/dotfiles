@@ -1,6 +1,82 @@
 configuration {
- modi: "window,drun,ssh,combi";
- font: "hack 10";
- combi-modi: "window,drun,ssh";
- }
-@theme "solarized"
+  modi: "drun";
+  show-icons: true;
+  icon-theme: "Papirus";
+  font: "Hack Nerd Font Mono 14";
+  drun-display-format: "{name}";
+}
+
+* {
+  background: transparent;
+  foreground: #2a2a2a;
+  border: 0;
+  padding: 0;
+  spacing: 6;
+}
+
+window {
+  fullscreen: true;
+  location: center;
+  anchor: center;
+}
+
+mainbox {
+  margin: 18em;
+}
+
+entry {
+  placeholder: "search";
+  color: #2a2a2a;
+}
+
+inputbar {
+  padding: 20px;
+  children: [icon-search,entry];
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+prompt {
+  enabled: false;
+}
+
+listview {
+  spacing: 2px;
+  columns: 6;
+  fixed-columns: true;
+  scrollbar: false;
+}
+
+element, element-text, element-icon {
+  cursor: pointer;
+}
+
+element {
+  padding: 16px;
+  orientation: vertical;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+element alternate normal, element selected normal {
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #000000;
+}
+
+element selected normal, element selected active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+element selected active {
+  color: #008ed4;
+}
+
+element-text {
+  font: "Hack Nerd Font Mono 10";
+  horizontal-align: 0.5;
+}
+
+element-icon {
+  size: 3em;
+}
+
+

@@ -14,15 +14,6 @@ xset -dpms
 xset s off
 xset r rate 250 75
 
-# disabling until we figure out why it's crashing >:[
-# env XSECURELOCK_PASSWORD_PROMPT=time_hex \
-#     XSECURELOCK_SAVER=saver_xscreensaver \
-#     XSECURELOCK_SHOW_DATETIME=1 \
-#     XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 \
-#     XSECURELOCK_SHOW_HOSTNAME=1 \
-#     XSECURELOCK_SHOW_USERNAME=1 \
-#     xss-lock -l -- xsecurelock &
-
 # always show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
 xsetroot -cursor_name left_ptr
@@ -46,6 +37,14 @@ bspeww &
 picom &
 nohup unclutter -idle 2 > /dev/shm/nohup.out &
 notify-mon /dev/shm/udev-blk.log udev &
+
+env XSECURELOCK_PASSWORD_PROMPT=time_hex \
+    XSECURELOCK_SAVER=saver_xscreensaver \
+    XSECURELOCK_SHOW_DATETIME=1 \
+    XSECURELOCK_SHOW_KEYBOARD_LAYOUT=0 \
+    XSECURELOCK_SHOW_HOSTNAME=1 \
+    XSECURELOCK_SHOW_USERNAME=1 \
+    xss-lock -l -- xsecurelock &
 
 # set wallpaper
 ~/.fehbg &
