@@ -12,17 +12,10 @@ auto_display
 # disable energy star savings (screen timeout)
 xset -dpms
 xset s off
-xset r rate 250 75
 
 # always show regular mouse pointer instead of stupid X
 # https://github.com/baskerville/bspwm/issues/11#issuecomment-9695402
 xsetroot -cursor_name left_ptr
-
-# adjust cursor speed - *not* mouse acceleration!
-# COORDINATE_TRANSFORMATION_MATRIX_VALUE set in universal fish vars
-xinput --set-prop "Logitech G502 X" 178 \
-  $COORDINATE_TRANSFORMATION_MATRIX_VALUE 0 0 0 \
-  $COORDINATE_TRANSFORMATION_MATRIX_VALUE 0 0 0 1
 
 # start background services
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
@@ -30,6 +23,7 @@ sxhkd -c ~/.config/sxhkd/sxhkdrc &
 # set blue light dimming according to location
 redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 
+config_mouse_kb &
 sxhkd -c ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
 dunst &
 eww daemon &

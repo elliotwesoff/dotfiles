@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+#
+# config_mouse_kb.fish
+
+# adjust cursor speed - *not* mouse acceleration!
+xinput --set-prop "Logitech G502 X" 178 \
+                                    0.3 0 0 0 \
+                                    0.3 0 0 0 1
+
+# keyboard go brrrrrrrrrrrrrrrrrr
+xset r rate 125 75

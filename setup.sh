@@ -58,7 +58,7 @@ mkdir -p ~/.local/{bin,share,state}
 ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
 
 # symlink local scripts that need to be in PATH
-for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon dpi
+for item in bspeww elliot eww-toggle hostname switch-mon sxhkd-reload notify-mon dpi config_mouse_kb
 do
   ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
 done
