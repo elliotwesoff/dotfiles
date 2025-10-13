@@ -30,7 +30,7 @@
         (statsstack)
         (battery-circle)
         (greeter)
-        (seo :iw 170)
+        (box)
         (box
           :orientation "v"
           (box 
