@@ -29,5 +29,5 @@
 (defpoll vpn_ip :interval "1m" `nordvpn status | grep IP | cut -b 5-`)
 (defpoll vpn_city :interval "1m" `nordvpn status | grep City | cut -b 7-`)
 (deflisten vollisten :initial "{'volume': '0%', 'mute': true}" `tail -F /dev/shm/volume.json`)
-(deflisten bspwm_selected :initial "" `tail -F /tmp/bspeww/bspeww_desktops`)
-(deflisten bspwm_data :initial "{}" `tail -F /tmp/bspeww/bspeww_nodes`)
+(deflisten bspwm_selected :initial "" `~/dotfiles/services/bspeww/bspeww_desktops.fish`)
+(deflisten bspwm_data :initial "{}" `~/dotfiles/services/bspeww/bspeww_nodes.fish`)
