@@ -1,0 +1,18 @@
+#!/usr/bin/env fish
+
+mkdir -p /tmp/bspeww
+
+mkfifo /tmp/bspeww/bspeww_desktops 2>/dev/null
+
+pkill --echo --full "^bspc\s+subscribe\s+desktop_focus"
+
+while not test -S "/tmp/bspwm_0_0-socket"
+  sleep 1.0
+end
+
+bspc subscribe desktop_focus | while read line
+  # parse the currently selected desktop node from wmtrl -d
+  wmctrl -d | grep -F '*' | rev | cut -d ' ' -f 1 | rev > /tmp/bspeww/bspeww_desktops
+end
+
+exit 1

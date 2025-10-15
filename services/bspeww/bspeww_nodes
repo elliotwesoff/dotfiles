@@ -1,0 +1,25 @@
+#!/usr/bin/env fish
+
+mkdir -p /tmp/bspeww
+
+mkfifo /tmp/bspeww/bspeww_nodes 2>/dev/null
+
+pkill --echo --full "^bspc\s+subscribe(\s+node_(add|remove|transfer)){3,}"
+
+while not test -S "/tmp/bspwm_0_0-socket"
+  sleep 1.0
+end
+
+bspc subscribe node_add node_remove node_transfer | while read line
+  # dump the bspwm world state and pipe it to jq. recursively grab all node
+  # names (open programs) for each desktop, concatenate them, and assign them
+  # to an array. honestly i don't know how the jq functions work. chatgpt is
+  # the real hero here.
+  bspc wm -d \
+    | jq -c '.monitors[].desktops[] | .root // {} | [.[] | recurse | select(.className?) | .className]' \
+    | jq -c -s . \
+    | tr '[:upper:]' '[:lower:]' \
+    &> /tmp/bspeww/bspeww_nodes
+end
+
+exit 1

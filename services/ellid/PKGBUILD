@@ -1,10 +1,10 @@
-# Maintainer: elliot wesoff <io (at) ell10t (dot) net>
+# Maintainer: elliot wesoff
 pkgname=ellid
 pkgver=0.1.5
 pkgrel=1
 pkgdesc="a daemon for system monitoring and notification purposes."
 arch=('x86_64')
-license=('GPL')
+license=('MIT')
 depends=('systemd')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz")

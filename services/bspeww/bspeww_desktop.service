@@ -1,0 +1,15 @@
+[Unit]
+Description=watching your bspwm desktops
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/bspeww_desktops
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+PrivateTmp=no
+Environment=DISPLAY=:0
+RestartSec=5
+
+[Install]
+WantedBy=default.target
