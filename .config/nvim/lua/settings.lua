@@ -26,13 +26,13 @@ function M.apply_settings()
   vim.opt.cmdheight = 1
   vim.opt.termguicolors = true
   vim.opt.foldmethod = 'indent'
+  vim.opt.foldcolumn = 'auto:8'
   vim.opt.shiftwidth = 2
   vim.opt.softtabstop = 2
   vim.opt.tabstop = 2
   vim.opt.foldnestmax = 4
   vim.opt.foldlevelstart = 4
   vim.opt.scrolloff = 2
-  -- vim.opt.winborder = "rounded"
 end
 
 return M

@@ -131,5 +131,18 @@ return {
     'folke/tokyonight.nvim',
     lazy = true,
     opts = { day_brightness = '0.1' },
+  },
+  {
+    'yorickpeterse/nvim-grey',
+    lazy = true
+  },
+  {
+    "navarasu/onedark.nvim",
+    config = function()
+      require('onedark').setup {
+        style = 'darker'
+      }
+      -- require('onedark').load()
+    end
   }
 }

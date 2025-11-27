@@ -3,7 +3,7 @@ local settings = require('settings')
 local keymaps = require('keymaps')
 local user_commands = require('user_commands')
 
-settings.COLORSCHEME_LIGHT = 'catppuccin-latte'
+settings.COLORSCHEME_LIGHT = 'onedark'
 settings.COLORSCHEME_DARK = 'burzum'
 
 lazy.bootstrap()
