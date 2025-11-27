@@ -6,12 +6,12 @@ pkgdesc="watch your bspwm things"
 arch=('x86_64')
 license=('MIT')
 depends=('systemd' 'jq' 'wmctrl')
-source=('bspeww_nodes' 'bspeww_desktops')
+source=('bspeww_nodes.fish' 'bspeww_desktops.fish')
 sha256sums=('SKIP' 'SKIP')
 
 package() {
   dest=$pkgdir/usr/local/bin
   mkdir -p $dest
-  install -Dm755 $srcdir/bspeww_nodes $dest/bspeww_nodes
-  install -Dm755 $srcdir/bspeww_desktops $dest/bspeww_desktops
+  install -Dm755 $srcdir/bspeww_nodes.fish $pkgdir/usr/local/bin/bspeww_nodes
+  install -Dm755 $srcdir/bspeww_desktops.fish $pkgdir/usr/local/bin/bspeww_desktops
 }
