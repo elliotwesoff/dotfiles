@@ -19,19 +19,15 @@ xsetroot -cursor_name left_ptr
 
 # start background services
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
-
-# set blue light dimming according to location
-redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
-
-start-xss-lock &
-config_peripherals &
 sxhkd -c ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
-dunst &
-eww daemon &
-bspeww &
-picom &
 nohup unclutter -idle 2 > /dev/shm/nohup.out &
 notify-mon /dev/shm/udev-blk.log udev &
+redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
+config_peripherals &
+eww daemon &
+dunst &
+bspeww &
+picom &
 
 # set wallpaper
 ~/.fehbg &
