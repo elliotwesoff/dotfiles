@@ -7,11 +7,11 @@ configuration {
 }
 
 * {
-  background: transparent;
-  foreground: #2a2a2a;
+  background: rgba(0, 0, 0, 0.3);
+  foreground: #cacaca;
   border: 0;
   padding: 0;
-  spacing: 6;
+  spacing: 16;
 }
 
 window {
@@ -26,13 +26,13 @@ mainbox {
 
 entry {
   placeholder: "search";
-  color: #2a2a2a;
+  color: #cacaca;
+  border: none;
 }
 
 inputbar {
   padding: 20px;
   children: [icon-search,entry];
-  background-color: rgba(0, 0, 0, 0.0);
 }
 
 prompt {
@@ -44,6 +44,17 @@ listview {
   columns: 6;
   fixed-columns: true;
   scrollbar: false;
+  padding: 1em 0;
+}
+
+element-text {
+  font: "Hack Nerd Font Mono 12";
+  horizontal-align: 0.5;
+  margin: 1em 0;
+}
+
+element-icon {
+  size: 3em;
 }
 
 element, element-text, element-icon {
@@ -51,32 +62,24 @@ element, element-text, element-icon {
 }
 
 element {
-  padding: 16px;
+  padding: 2em;
+  margin: 4px;
   orientation: vertical;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.0);
+  border-radius: 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #cacaca;
 }
 
 element alternate normal, element selected normal {
-  background-color: rgba(0, 0, 0, 0.0);
-  color: #000000;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #cacaca;
 }
 
 element selected normal, element selected active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.0);
 }
 
 element selected active {
-  color: #008ed4;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #cacaca;
 }
-
-element-text {
-  font: "Hack Nerd Font Mono 10";
-  horizontal-align: 0.5;
-}
-
-element-icon {
-  size: 3em;
-}
-
-
