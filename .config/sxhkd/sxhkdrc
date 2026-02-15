@@ -16,8 +16,8 @@ super + F1
           ~/dotfiles/.config/alacritty/alacritty.toml \
           ~/dotfiles/.config/nvim/lua/keymaps.lua
 
-super + {Return,space,Delete}
-  exec {alacritty,eww-toggle,systemctl suspend}
+super + {Return,space,z,Delete}
+  exec {alacritty,eww-toggle,eww-toggle,systemctl suspend}
 
 super + shift + Return
   exec kitty

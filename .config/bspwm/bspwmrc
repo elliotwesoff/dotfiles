@@ -39,6 +39,8 @@ bspc rule -a discord desktop="VII" state=pseudo_tiled rectangle=1024x768
 bspc rule -a kitty state=pseudo_tiled
 bspc rule -a 1Password state=floating
 bspc rule -a Alacritty state=pseudo_tiled
+bspc rule -a "org.mozilla.Thunderbird" state=pseudo_tiled
+bspc rule -a firefox state=pseudo_tiled
 
 source $HOME/dotfiles/.config/bspwm/bspwmrc-theme
 

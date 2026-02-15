@@ -20,7 +20,7 @@ xsetroot -cursor_name left_ptr
 # start background services
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
 sxhkd -c ~/dotfiles/.config/sxhkd/bspwm-sxhkdrc &
-nohup unclutter -idle 2 > /dev/shm/nohup.out &
+nohup unclutter --timeout 2 --ignore-scrolling > /dev/shm/nohup_unclutter.log &
 notify-mon /dev/shm/udev-blk.log udev &
 redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 config_peripherals &

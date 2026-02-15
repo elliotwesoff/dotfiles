@@ -3,8 +3,8 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
     config = function()
+      local lsp = vim.lsp
       local keymaps = require('keymaps')
-      local lspconfig = require('lspconfig')
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local lsp_flags = {}
 
@@ -16,29 +16,39 @@ return {
 
       keymaps.apply_lsp_keymaps()
 
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics, {
+      lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(
+        lsp.diagnostic.on_publish_diagnostics, {
           underline = true,
           virtual_text = false
         }
       )
 
-      lspconfig.pyright.setup(lsp_server_opts)
-      lspconfig.ccls.setup(lsp_server_opts)
-      lspconfig.ruby_lsp.setup(lsp_server_opts)
-      lspconfig.ts_ls.setup(lsp_server_opts)
-      lspconfig.fish_lsp.setup(lsp_server_opts)
-      lspconfig.rust_analyzer.setup(lsp_server_opts)
-      lspconfig.lua_ls.setup({
+      lsp.config('pyright', lsp_server_opts)
+      lsp.config('ccls', lsp_server_opts)
+      lsp.config('ruby_lsp', lsp_server_opts)
+      lsp.config('ts_ls', lsp_server_opts)
+      lsp.config('fish_lsp', lsp_server_opts)
+      lsp.config('rust_analyzer', lsp_server_opts)
+      lsp.config('lua_ls', {
         settings = {
           Lua = {
             diagnostics = {
-              globals = { "vim" }
-            }
-          }
+              globals = { 'vim' },
+            },
+          },
         },
         capabilities = capabilities,
-        on_attach = attach_fn
+        on_attach = attach_fn,
+      })
+
+      lsp.enable({
+        'pyright',
+        'ccls',
+        'ruby_lsp',
+        'ts_ls',
+        'fish_lsp',
+        'rust_analyzer',
+        'lua_ls'
       })
     end
   }
