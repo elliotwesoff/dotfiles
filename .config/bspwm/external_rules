@@ -1,0 +1,23 @@
+#!/bin/sh
+# vi: set ts=4 sw=4:
+# requires https://github.com/baskerville/xwinfo
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+
+eval "$4"
+
+case "$class" in
+firefox)
+	case "$instance" in
+	firefox)
+		case "$(xwinfo -t $wid)" in
+		dialog) printf 'state=floating\n' ;;
+		*) printf 'state=pseudo_tiled\n' ;;
+		esac
+		;;
+	esac
+	;;
+esac
