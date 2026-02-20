@@ -1,23 +1,23 @@
-#!/bin/sh
-# vi: set ts=4 sw=4:
+#!/usr/bin/env fish
+# vi: set ts=2 sw=2:
 # requires https://github.com/baskerville/xwinfo
 
-wid=$1
-class=$2
-instance=$3
-consequences=$4
+set wid $argv[1]
+set class $argv[2]
+set instance $argv[3]
+set consequences $argv[4]
 
-eval "$4"
+eval $consequences
 
-case "$class" in
-firefox)
-	case "$instance" in
-	firefox)
-		case "$(xwinfo -t $wid)" in
-		dialog) printf 'state=floating\n' ;;
-		*) printf 'state=pseudo_tiled\n' ;;
-		esac
-		;;
-	esac
-	;;
-esac
+switch "$class"
+  case firefox
+    switch "$instance"
+      case firefox
+        switch (xwinfo -t $wid)
+          case dialog
+            printf 'state=floating\n'
+          case '*'
+            printf 'state=pseudo_tiled\n'
+        end
+    end
+end
