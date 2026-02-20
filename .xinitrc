@@ -26,7 +26,6 @@ redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 config_peripherals &
 eww daemon &
 dunst &
-bspeww &
 picom &
 
 # set wallpaper

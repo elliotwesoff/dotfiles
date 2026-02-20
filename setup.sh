@@ -84,7 +84,7 @@ sudo pacman -S \
   mesa mesa-utils vulkan-intel \
   pipewire pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack pipewire-docs wireplumber wireplumber-docs pulsemixer \
   zathura zathura-cb zathura-djvu zathura-pdf-mupdf \
-  noto-fonts noto-fontscjk noto-fonts-emoji ttf-hack-nerd \
+  noto-fonts noto-fonts-emoji ttf-hack-nerd \
   bluez bluez-utils blueman \
   pam_mount \
   libnotify \
