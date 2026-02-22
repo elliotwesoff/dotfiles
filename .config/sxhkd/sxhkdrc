@@ -22,17 +22,36 @@ super + {Return,space,z,Delete}
 super + shift + Return
   exec kitty
 
-super + alt + {t,f,p,c,d,m,w,o,r,b,a,e,Tab,Escape,space}
-  exec {thunar,firefox,firefox --private-window,nordvpn c Los_Angeles,discord,alacritty --command pulsemixer,xdg-open https://web.whatsapp.com,socials-kill,bspc wm -r,alacritty --command btop,rofi -show combi -combi-modes "drun" -modes combi,rofi -modi emoji -show emoji,alacritty --command btop,bspc quit,rofi -show combi -combi-modes "window\,drun" -modes combi}
+super + control + alt + shift + {Escape}
+  exec {pkill Xorg}
 
-XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia,RaiseVolume,LowerVolume,Mute}
-  exec {rofi -show drun,alacritty --command ranger,xset s activate, blight set +5%, blight set -5%,alacritty --command pulsemixer, pamixer -i 5, pamixer -d 5, pamixer -t}
+super + alt + {t,f,p,d,Tab,r,m,w,o,a,e,space,0,1,2}
+  exec {thunar, \
+        firefox, \
+        firefox --private-window, \
+        discord, \
+        alacritty --class Alacritty\,btop --command btop, \
+        alacritty --class Alacritty\,ranger --command ranger,\
+        alacritty --class Alacritty\,pulsemixer --command pulsemixer,\
+        xdg-open https://web.whatsapp.com, \
+        socials-kill, \
+        rofi -show combi -combi-modes "drun" -modes combi, \
+        rofi -modi emoji -show emoji, \
+        rofi -show combi -combi-modes "window\,drun" -modes combi, \
+        switch-mon off, \
+        switch-mon internal, \
+        switch-mon external}
 
-super + alt + {0,1,2}
-  switch-mon {off,internal,external}
-
-super + control + alt + shift + Escape
-  pkill Xorg
+XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia,AudioRaiseVolume,AudioLowerVolume,AudioMute}
+  exec {rofi -show drun, \
+        alacritty --command ranger, \
+        xset s activate, \
+        blight set +5%, \
+        blight set -5%, \
+        alacritty --command pulsemixer, \
+        pamixer -i 5, \
+        pamixer -d 5, \
+        pamixer -t}
 
 Print
   flameshot gui
