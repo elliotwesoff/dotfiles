@@ -42,13 +42,9 @@ if [ "$(id -u)" -eq 0 ]; then
   exit 1
 fi
 
-# files in etc
-for item in .Xresources .fehbg .gitconfig .mime.types .tool-versions .xinitrc .config
+# symlink dotfiles to home
+for item in .fehbg .gitconfig .mime.types .tool-versions .xinitrc .config
 do
-  # back up old files, if any exist
-  mv -v ~/$item ~/$item.old 2> /dev/null
-
-  # symlink home folder level dots to home
   ln -sfv ~/dotfiles/$item ~/$item
 done
 
@@ -58,16 +54,11 @@ mkdir -p ~/.local/{bin,share,state}
 ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
 
 # symlink local scripts that need to be in PATH
-for item in bspeww   \
-  elliot             \
+for item in scripts  \
   eww-toggle         \
-  hostname           \
-  switch-mon         \
   sxhkd-reload       \
-  notify-mon         \
   dpi                \
   config_peripherals \
-  start-xss-lock
 do
   ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
 done
@@ -89,20 +80,17 @@ sudo pacman -S \
   pam_mount \
   libnotify \
   xdg-utils \
-  cups cups-pdf \
-  bspwm sxhkd \
-  neovim \
-  ly \
+  bspwm sxhkd wmctrl \
   kitty alacritty \
-  picom \
-  python-pillow \
-  rustup \
   fish fisher \
+  neovim xclip \
+  picom \
+  rustup \
   pdftk \
   rofi \
   feh \
   arandr \
-  thunar gvfs \
+  thunar \
   ntfs-3g \
   cmus \
   vlc \
@@ -115,14 +103,10 @@ sudo pacman -S \
   playerctl \
   btop \
   firefox \
-  rustup \
-  ccls \
   rclone \
-  xclip \
   redshift \
   dunst \
   sxiv \
-  wmctrl \
   flameshot \
   jq \
   usbutils usbview \
@@ -146,15 +130,13 @@ yay -S \
   qbittorrent \
   blight \
   asdf-vm \
-  spotify \
-  nordvpn-bin \
   rofi-emoji-git \
   cozette-otb \
   tor-browser-bin
 
 # install ruby and python
-asdf plugin add ruby && asdf install ruby 3.4.2
-asdf plugin add python && asdf install python 3.9.5
+asdf plugin add ruby && asdf install ruby latest
+asdf plugin add python && asdf install python latest
 asdf reshim
 
 # build and install local packages
@@ -175,10 +157,6 @@ systemctl --user enable ellid.service --now
 echo $(which fish) | sudo tee -a /etc/shells
 chsh -s $(which fish)
 
-# install fisher and plugins
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-fisher update
-
 # allow bitmap fonts
-sudo rm 70-no-bitmaps-except-emoji.conf
+sudo rm /etc/fonts/conf.d/70-no-bitmaps-except-emoji.conf
 sudo ln -sfv /usr/share/fontconfig/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d/70-yes-bitmaps.conf

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env fish
 
 pkill --signal SIGUSR1 --exact sxhkd && \
   notify-send --expire-time 2000 "sxhkd-reload" "reloaded keybinds"

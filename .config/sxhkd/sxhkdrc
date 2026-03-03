@@ -42,13 +42,13 @@ super + alt + {t,f,p,d,Tab,r,m,w,o,a,e,space,0,1,2}
         switch-mon internal, \
         switch-mon external}
 
-XF86{LaunchA,Search,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioMedia,AudioRaiseVolume,AudioLowerVolume,AudioMute}
+XF86{LaunchA,Search,AudioMedia,ScreenSaver,MonBrightnessUp,MonBrightnessDown,AudioRaiseVolume,AudioLowerVolume,AudioMute}
   exec {rofi -show drun, \
-        alacritty --command ranger, \
+        alacritty --class Alacritty\,ranger --command ranger,\
+        alacritty --class Alacritty\,pulsemixer --command pulsemixer,\
         xset s activate, \
         blight set +5%, \
         blight set -5%, \
-        alacritty --command pulsemixer, \
         pamixer -i 5, \
         pamixer -d 5, \
         pamixer -t}

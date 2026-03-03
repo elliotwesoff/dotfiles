@@ -35,6 +35,11 @@ return {
             diagnostics = {
               globals = { 'vim' },
             },
+            workspace = {
+              checkThirdParty = false,
+              library = { vim.env.VIMRUNTIME },
+              ignoreDir = { ".config/1Password" },
+            },
           },
         },
         capabilities = capabilities,
