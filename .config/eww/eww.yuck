@@ -2,3 +2,4 @@
 (include "./widgets.yuck")
 (include "./windows.yuck")
 (include "./dashboard.yuck")
+(include "./new_dash.yuck")

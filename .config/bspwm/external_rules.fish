@@ -9,7 +9,7 @@ set consequences $argv[4]
 
 # eval $consequences # wat
 
-notify-send $consequences
+# notify-send $consequences
 
 # echo "$(date): external_rules invocation - wid: $wid, class: $class, instance: $instance, consequences: $consequences, win_name: $win_name, win_role: $win_role" >> /dev/shm/external_rules.log
 
@@ -36,3 +36,4 @@ switch "$class"
       case '*'
         printf 'state=floating\n'
     end
+end

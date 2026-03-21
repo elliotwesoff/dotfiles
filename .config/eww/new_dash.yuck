@@ -1,0 +1,39 @@
+(defwindow dashboard_v2
+  :monitor 0
+  :wm-ignore true
+  :windowtype "dock"
+  :geometry
+    (geometry
+      :width "100%"
+      :height "100%")
+
+  (box
+    :orientation "v"
+    :class "dashboard-container-v2"
+    :space-evenly false
+
+    ;; widgets container
+    (box
+      :orientation "h"
+
+      (box)
+      (box
+        :class "widget-container"
+        :halign "center"
+
+       (greeter))
+      (box))
+
+    (box
+        (box)
+        (statsstack)
+        (box)
+        (battery-circle)
+        (box))
+
+    (box
+      :class "bspeww-container"
+      (bspwm-widget))
+  )
+)
+

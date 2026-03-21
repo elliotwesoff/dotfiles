@@ -1,0 +1,17 @@
+$border-width: 1px; // for layout debugging
+
+box.applauncher {
+  font-size: 1.5em;
+}
+
+window.dashboard_v2 {
+  font-family: "Noto Sans Mono";
+
+  box.dashboard-container-v2 {
+    margin: 1em;
+  }
+
+  box {
+    border: $border-width solid red;
+  }
+}
