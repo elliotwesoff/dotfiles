@@ -50,27 +50,6 @@ if test $user_id -eq 0
 	exit 1
 end
 
-mkdir -p ~/code
-mkdir -p ~/.local/{bin,share,state}
-
-# symlink dotfiles to home
-for item in {.fehbg, .gitconfig, .mime.types, .tool-versions, .xinitrc, .config, .Xresources}
-	ln -sfv ~/dotfiles/$item ~/$item
-end
-
-# TODO: this should be set during auto display install
-ln -sfv ~/dotfiles/scripts/auto_display/screenlayouts ~/.screenlayout
-
-# symlink local scripts that need to be in PATH
-for item in {scripts, eww-toggle, sxhkd-reload, dpi, config_peripherals}
-	ln -sfv ~/dotfiles/scripts/$item ~/.local/bin/$item
-end
-
-# install udev rules
-for item in (ls ~/dotfiles/udev)
-	ln -sfv ~/dotfiles/udev/$item /etc/udev/rules.d/$item
-end
-
 sudo pacman -S \
 	xorg-server xorg-xinit xorg-xinput xorg-xsetroot xorg-xev \
 	xsecurelock xss-lock xscreensaver \
@@ -85,7 +64,7 @@ sudo pacman -S \
 	bspwm sxhkd wmctrl \
 	kitty alacritty \
 	fish fisher \
-	neovim xclip \
+	neovim tree-sitter-cli xclip \
 	picom \
 	rustup \
 	pdftk \
@@ -134,16 +113,12 @@ asdf plugin add python && asdf install python latest
 asdf reshim
 
 # build and install local packages
-cd ~/dotfiles/scripts/auto_display && make prepare && make install
-
-cd ~/dotfiles/services/ellid && make prepare && make install
-
-cd ~/dotfiles/services/bspeww && make install
-
-cd ~/dotfiles
+cd ~/code/dotfiles/scripts/auto_display && make prepare && make install
+cd ~/code/dotfiles/services/ellid && make prepare && make install
+cd ~/code/dotfiles/services/bspeww && make install
+cd ~/code/dotfiles
 
 # enable services
-sudo systemctl enable NetworkManager.service
 systemctl --user enable ellid.service --now
 
 # allow bitmap fonts

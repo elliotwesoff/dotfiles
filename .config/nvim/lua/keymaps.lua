@@ -54,9 +54,9 @@ function M.apply_keymaps()
 
   -- leader mappings
 
-  vim.keymap.set('n', '<leader>v', ':edit ~/dotfiles/.config/nvim/init.lua<CR>', opts)
-  vim.keymap.set('n', '<leader>k', ':edit ~/dotfiles/.config/nvim/lua/keymaps.lua<CR>', opts)
-  vim.keymap.set('n', '<leader>p', ':edit ~/dotfiles/.config/nvim/lua/plugins<CR>', opts)
+  vim.keymap.set('n', '<leader>v', ':edit ~/.config/nvim/init.lua<CR>', opts)
+  vim.keymap.set('n', '<leader>k', ':edit ~/.config/nvim/lua/keymaps.lua<CR>', opts)
+  vim.keymap.set('n', '<leader>p', ':edit ~/.config/nvim/lua/plugins<CR>', opts)
   vim.keymap.set('n', '<leader>b', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
   vim.keymap.set('n', '<leader>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
   vim.keymap.set('n', '<leader>j', "<cmd>lua require('telescope.builtin').jumplist()<cr>", opts)

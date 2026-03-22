@@ -10,4 +10,4 @@ pkill dunst; dunst & disown
 pkill -x eww; eww daemon &> /dev/null & disown
 
 # reset wallpaper
-~/dotfiles/.fehbg &
+~/.fehbg &
