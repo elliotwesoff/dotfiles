@@ -21,7 +21,8 @@ xsetroot -cursor_name left_ptr
 sxhkd -c ~/.config/sxhkd/sxhkdrc &
 sxhkd -c ~/.config/sxhkd/bspwm-sxhkdrc &
 nohup unclutter --timeout 2 --ignore-scrolling > /dev/shm/nohup_unclutter.log &
-notify-mon /tmp/udev-blk.log udev &
+udev-notify-mon udev-usb &
+udev-notify-mon udev-block &
 redshift -P -l $LOC_LAT:$LOC_LONG -t 6500:4750 &
 config_peripherals &
 eww daemon &

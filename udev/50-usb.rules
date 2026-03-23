@@ -1,3 +1,2 @@
-ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTRS{busnum}=="*", RUN+="/home/elliot/dotfiles/scripts/udev-blk.fish %E{ACTION} /dev/%k"
-ACTION=="remove", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTRS{busnum}=="*", RUN+="/home/elliot/dotfiles/scripts/udev-blk.fish %E{ACTION} /dev/%k"
-ACTION=="change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTRS{busnum}=="*", RUN+="/home/elliot/dotfiles/scripts/udev-blk.fish %E{ACTION} /dev/%k"
+ACTION=="add|remove|change", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ATTRS{busnum}=="*", RUN+="/home/elliot/code/dotfiles/scripts/udev-notify.fish udev-block %E{ACTION} /dev/%k"
+ACTION=="add|remove|change", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/home/elliot/code/dotfiles/scripts/udev-notify.fish udev-usb %E{ACTION} /dev/%k %E{ID_VENDOR_FROM_DATABASE} %E{ID_USB_MODEL}"
